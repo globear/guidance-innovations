@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#products", label: "Products" },
   { href: "#about", label: "About" },
-  { href: "#cases", label: "Case Studies" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -15,19 +14,19 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
     >
       <div className="mx-auto max-w-7xl">
-        <nav className="flex items-center justify-between rounded-full border border-border/50 bg-background/80 px-6 py-3 backdrop-blur-xl">
+        <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-              <span className="font-display text-xl font-bold text-primary-foreground">G</span>
+          <a href="#" className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground">
+              <span className="font-display text-lg font-bold text-background">G</span>
             </div>
-            <span className="hidden font-display text-lg font-semibold sm:block">
+            <span className="hidden font-body text-sm font-semibold tracking-tight sm:block">
               Guidance Innovation
             </span>
           </a>
@@ -38,7 +37,7 @@ const Header = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="animated-underline text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {link.label}
                 </a>
@@ -50,9 +49,10 @@ const Header = () => {
           <div className="hidden items-center gap-4 md:flex">
             <a
               href="#contact"
-              className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+              className="btn-primary"
             >
-              Book a Call
+              Get in Touch
+              <ArrowRight className="h-4 w-4" />
             </a>
           </div>
 
@@ -69,11 +69,11 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-6 right-6 top-20 rounded-2xl border border-border bg-card p-6 backdrop-blur-xl md:hidden"
+              className="absolute left-6 right-6 top-20 rounded-2xl border border-border bg-card p-6 shadow-lg md:hidden"
             >
               <ul className="flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -91,9 +91,10 @@ const Header = () => {
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(false)}
-                    className="block w-full rounded-full bg-primary py-3 text-center font-semibold text-primary-foreground"
+                    className="btn-primary w-full justify-center"
                   >
-                    Book a Call
+                    Get in Touch
+                    <ArrowRight className="h-4 w-4" />
                   </a>
                 </li>
               </ul>

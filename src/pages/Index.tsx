@@ -4,16 +4,12 @@ import ServicesSection from "@/components/ServicesSection";
 import ProductsSection from "@/components/ProductsSection";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import FounderSection from "@/components/FounderSection";
-import CaseStudiesSection from "@/components/CaseStudiesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background">
-      {/* Noise overlay for texture */}
-      <div className="noise-overlay" />
-      
       <Header />
       
       <main>
@@ -22,7 +18,6 @@ const Index = () => {
         <ProductsSection />
         <WhyChooseUsSection />
         <FounderSection />
-        <CaseStudiesSection />
         <ContactSection />
       </main>
       

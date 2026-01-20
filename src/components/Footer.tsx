@@ -1,48 +1,51 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+const footerLinks = {
+  about: [
+    { label: "News", href: "#" },
+    { label: "Insight", href: "#" },
+    { label: "Careers", href: "#" },
+    { label: "Events & Meetups", href: "#" },
+  ],
+  resources: [
+    { label: "Founder Toolkit", href: "#" },
+    { label: "How it Works", href: "#" },
+    { label: "Pricing", href: "#" },
+    { label: "Case Studies", href: "#" },
+  ],
+  support: [
+    { label: "FAQ", href: "#" },
+    { label: "Contact Us", href: "#contact" },
+    { label: "Community Guidelines", href: "#" },
+    { label: "Help Center", href: "#" },
+  ],
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-border px-6 py-16">
+    <footer className="border-t border-border px-6 py-16">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 md:grid-cols-4">
-          {/* Brand */}
+        <div className="grid gap-12 md:grid-cols-5">
+          {/* Logo & Description */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <span className="font-display text-xl font-bold text-primary-foreground">G</span>
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground">
+                <span className="font-display text-lg font-bold text-background">G</span>
               </div>
-              <span className="font-display text-lg font-semibold">
-                Guidance Innovation
-              </span>
+              <span className="font-body text-sm font-semibold">Guidance Innovation</span>
             </div>
-            <p className="mt-4 max-w-sm text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground max-w-xs">
               Building practical AI products and automation systems for real businesses.
-              No hype. Just systems that work.
-            </p>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Guidance Innovation Co., Ltd. (Thailand)
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Links */}
           <div>
-            <h4 className="font-display font-semibold">Quick Links</h4>
-            <ul className="mt-4 space-y-3">
-              {[
-                { href: "#services", label: "Services" },
-                { href: "#products", label: "Products" },
-                { href: "#about", label: "About" },
-                { href: "#cases", label: "Case Studies" },
-                { href: "#contact", label: "Contact" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
+            <h4 className="font-medium text-sm mb-4">About</h4>
+            <ul className="space-y-3">
+              {footerLinks.about.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
                     {link.label}
                   </a>
                 </li>
@@ -50,28 +53,29 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Products */}
           <div>
-            <h4 className="font-display font-semibold">Products</h4>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <a
-                  href="#products"
-                  className="group flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  GuidanceStream
-                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#products"
-                  className="group flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  CareRouters
-                  <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
-                </a>
-              </li>
+            <h4 className="font-medium text-sm mb-4">Resources</h4>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-medium text-sm mb-4">Support</h4>
+            <ul className="space-y-3">
+              {footerLinks.support.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -81,9 +85,13 @@ const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {currentYear} Guidance Innovation Co., Ltd. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">Based in Thailand • Serving Global Clients</span>
+          <div className="flex items-center gap-4">
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+              Privacy
+            </a>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+              Terms
+            </a>
           </div>
         </div>
       </div>
