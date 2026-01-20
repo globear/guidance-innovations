@@ -19,6 +19,15 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.badge": "✦ AI Products & Systems",
+    "hero.growthStage": "Growth Stage",
+    "products.ind.tech": "Technology",
+    "products.ind.techDesc": "AI systems and SaaS products for modern businesses.",
+    "products.ind.health": "Healthcare",
+    "products.ind.healthDesc": "Platforms connecting families with care services.",
+    "products.ind.auto": "Automation",
+    "products.ind.autoDesc": "Workflow automation and process optimization.",
+    "products.ind.ops": "Operations",
+    "products.ind.opsDesc": "E-commerce and logistics system integration.",
     "hero.title1": "Building AI",
     "hero.title2": "for Real",
     "hero.title3": "Businesses",
@@ -131,6 +140,15 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.badge": "✦ ผลิตภัณฑ์ AI และระบบอัตโนมัติ",
+    "hero.growthStage": "ระยะการเติบโต",
+    "products.ind.tech": "เทคโนโลยี",
+    "products.ind.techDesc": "ระบบ AI และผลิตภัณฑ์ SaaS สำหรับธุรกิจสมัยใหม่",
+    "products.ind.health": "สุขภาพ",
+    "products.ind.healthDesc": "แพลตฟอร์มเชื่อมต่อครอบครัวกับบริการดูแล",
+    "products.ind.auto": "ระบบอัตโนมัติ",
+    "products.ind.autoDesc": "ระบบอัตโนมัติและการปรับปรุงกระบวนการ",
+    "products.ind.ops": "การดำเนินงาน",
+    "products.ind.opsDesc": "การบูรณาการระบบอีคอมเมิร์ซและโลจิสติกส์",
     "hero.title1": "สร้างระบบ AI",
     "hero.title2": "สำหรับ",
     "hero.title3": "ธุรกิจจริง",
@@ -243,6 +261,15 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.badge": "✦ AI产品与自动化系统",
+    "hero.growthStage": "成长阶段",
+    "products.ind.tech": "技术",
+    "products.ind.techDesc": "为现代企业提供AI系统和SaaS产品。",
+    "products.ind.health": "医疗",
+    "products.ind.healthDesc": "连接家庭与护理服务的平台。",
+    "products.ind.auto": "自动化",
+    "products.ind.autoDesc": "工作流自动化和流程优化。",
+    "products.ind.ops": "运营",
+    "products.ind.opsDesc": "电子商务和物流系统集成。",
     "hero.title1": "构建AI系统",
     "hero.title2": "服务于",
     "hero.title3": "真实商业",
