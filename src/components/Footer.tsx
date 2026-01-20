@@ -5,23 +5,16 @@ const Footer = () => {
   const { t } = useLanguage();
 
   const footerLinks = {
-    about: [
-      { label: t("footer.news"), href: "#" },
-      { label: t("footer.insight"), href: "#" },
-      { label: t("footer.careers"), href: "#" },
-      { label: t("footer.events"), href: "#" },
+    company: [
+      { label: t("footer.aboutUs"), href: "#about" },
+      { label: t("footer.careers"), href: "mailto:contact@guidanceinnovations.tech?subject=Careers" },
     ],
-    resources: [
-      { label: t("footer.toolkit"), href: "#" },
-      { label: t("footer.howItWorks"), href: "#" },
-      { label: t("footer.pricing"), href: "#" },
-      { label: t("footer.caseStudies"), href: "#" },
+    products: [
+      { label: t("footer.guidanceStream"), href: "#products" },
+      { label: t("footer.careRouters"), href: "#products" },
     ],
     support: [
-      { label: t("footer.faq"), href: "#" },
       { label: t("footer.contactUs"), href: "#contact" },
-      { label: t("footer.guidelines"), href: "#" },
-      { label: t("footer.helpCenter"), href: "#" },
     ],
   };
 
@@ -44,9 +37,9 @@ const Footer = () => {
 
           {/* Links */}
           <div>
-            <h4 className="font-medium text-sm mb-4">{t("footer.about")}</h4>
+            <h4 className="font-medium text-sm mb-4">{t("footer.company")}</h4>
             <ul className="space-y-3">
-              {footerLinks.about.map((link) => (
+              {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
                     {link.label}
@@ -57,9 +50,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-medium text-sm mb-4">{t("footer.resources")}</h4>
+            <h4 className="font-medium text-sm mb-4">{t("footer.products")}</h4>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
+              {footerLinks.products.map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
                     {link.label}
@@ -89,12 +82,12 @@ const Footer = () => {
             {t("footer.copyright").replace("{year}", String(currentYear))}
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            <span className="text-sm text-muted-foreground">
               {t("footer.privacy")}
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            </span>
+            <span className="text-sm text-muted-foreground">
               {t("footer.terms")}
-            </a>
+            </span>
           </div>
         </div>
       </div>

@@ -99,15 +99,15 @@ const HeroSection = () => {
                     </div>
                   </div>
 
-                  {/* Stats row */}
+                  {/* Stats row - Updated with authentic values */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="rounded-2xl bg-card p-4 shadow-sm text-center">
-                      <p className="font-display text-3xl font-medium">95%</p>
-                      <p className="text-xs text-muted-foreground mt-1">{t("hero.clientRetention")}</p>
+                      <p className="font-display text-3xl font-medium">2</p>
+                      <p className="text-xs text-muted-foreground mt-1">{t("hero.productsInDev")}</p>
                     </div>
                     <div className="rounded-2xl bg-card p-4 shadow-sm text-center">
-                      <p className="font-display text-3xl font-medium">50+</p>
-                      <p className="text-xs text-muted-foreground mt-1">{t("hero.projectsDelivered")}</p>
+                      <p className="font-display text-3xl font-medium">TH/MY</p>
+                      <p className="text-xs text-muted-foreground mt-1">{t("hero.marketsServed")}</p>
                     </div>
                   </div>
                 </div>

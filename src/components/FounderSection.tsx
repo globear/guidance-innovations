@@ -30,7 +30,7 @@ const FounderSection = () => {
           </div>
         </motion.div>
 
-        {/* Founder Card */}
+        {/* Founder Card - Simplified to focus on single founder */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -50,7 +50,7 @@ const FounderSection = () => {
             <p className="text-sm text-muted-foreground">{t("founder.role")}</p>
           </div>
 
-          {/* Placeholder for future team */}
+          {/* Hiring placeholder */}
           <div className="text-center opacity-60">
             <div className="mx-auto mb-6 h-64 w-full max-w-[240px] rounded-3xl bg-muted overflow-hidden">
               <div className="flex h-full items-center justify-center">
@@ -61,6 +61,7 @@ const FounderSection = () => {
             <p className="text-sm text-muted-foreground">{t("founder.joinDesc")}</p>
           </div>
 
+          {/* Growing team placeholder */}
           <div className="text-center opacity-40">
             <div className="mx-auto mb-6 h-64 w-full max-w-[240px] rounded-3xl bg-muted overflow-hidden">
               <div className="flex h-full items-center justify-center">

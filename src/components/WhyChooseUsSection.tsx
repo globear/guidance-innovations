@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -69,24 +69,30 @@ const WhyChooseUsSection = () => {
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className="flex w-full items-center justify-between text-left"
+                    aria-expanded={openIndex === index}
                   >
                     <span className="font-medium text-foreground">{faq.question}</span>
                     <ChevronDown
-                      className={`h-5 w-5 text-muted-foreground transition-transform ${
+                      className={`h-5 w-5 text-muted-foreground transition-transform duration-200 ${
                         openIndex === index ? "rotate-180" : ""
                       }`}
                     />
                   </button>
-                  {openIndex === index && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="mt-4 text-sm text-muted-foreground leading-relaxed"
-                    >
-                      {faq.answer}
-                    </motion.p>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <p className="pt-4 pb-2 text-sm text-muted-foreground leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
             </div>
