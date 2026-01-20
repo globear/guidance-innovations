@@ -1,26 +1,28 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const products = [
-  {
-    name: "GuidanceStream",
-    tagline: "AI Customer Service Agent",
-    description: "An AI-powered customer service platform for businesses that handle high volumes of inquiries. Designed for e-commerce sellers, service providers, and multi-channel operations.",
-    features: ["Multi-channel support", "RAG knowledge base", "Brand-aligned responses", "Workflow automation"],
-    status: "Private Beta",
-  },
-  {
-    name: "CareRouters",
-    tagline: "Hospital Escort Platform",
-    description: "A mobile platform designed to help elderly individuals and families access hospital escort services in Thailand and Malaysia.",
-    features: ["iOS app booking", "Real hospital workflows", "Safety focused", "Elderly-friendly UX"],
-    status: "MVP Stage",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
+
+  const products = [
+    {
+      name: t("products.gs.name"),
+      tagline: t("products.gs.tagline"),
+      description: t("products.gs.desc"),
+      features: [t("products.gs.f1"), t("products.gs.f2"), t("products.gs.f3"), t("products.gs.f4")],
+      status: t("products.gs.status"),
+    },
+    {
+      name: t("products.cr.name"),
+      tagline: t("products.cr.tagline"),
+      description: t("products.cr.desc"),
+      features: [t("products.cr.f1"), t("products.cr.f2"), t("products.cr.f3"), t("products.cr.f4")],
+      status: t("products.cr.status"),
+    },
+  ];
 
   return (
     <section id="products" className="relative px-6 py-24" ref={ref}>
@@ -35,12 +37,12 @@ const ProductsSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="text-sm font-medium text-muted-foreground">Our Products</span>
+          <span className="text-sm font-medium text-muted-foreground">{t("products.label")}</span>
           <h2 className="mt-4 font-display text-4xl font-medium sm:text-5xl">
-            Built for Real-World Use
+            {t("products.title")}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Products designed around actual business needs and validated with real users.
+            {t("products.subtitle")}
           </p>
         </motion.div>
 

@@ -1,26 +1,28 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-  {
-    question: "Why Founders Choose Us",
-    answer: "Founders choose us because we fully understand their vision and challenges. We provide tailored solutions, trusted guidance, and a partner-driven approach that helps them scale faster and smarter.",
-  },
-  {
-    question: "What Makes Us Different",
-    answer: "We're builders, not consultants. Led by a founder who actively builds systems with deep real-world business experience. Our practical approach to AI prioritizes reliability over novelty, maintainability over shortcuts.",
-  },
-  {
-    question: "Our Approach to AI",
-    answer: "We focus on production-ready systems that solve concrete problems. No hype, no buzzwords — just AI and automation that works reliably in real business operations.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhyChooseUsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { t } = useLanguage();
+
+  const faqs = [
+    {
+      question: t("why.q1"),
+      answer: t("why.a1"),
+    },
+    {
+      question: t("why.q2"),
+      answer: t("why.a2"),
+    },
+    {
+      question: t("why.q3"),
+      answer: t("why.a3"),
+    },
+  ];
 
   return (
     <section id="about" className="relative px-6 py-24" ref={ref}>
@@ -55,15 +57,15 @@ const WhyChooseUsSection = () => {
             className="flex flex-col justify-center"
           >
             <h2 className="font-display text-4xl font-medium leading-tight sm:text-5xl">
-              The Founder's
+              {t("why.title1")}
               <br />
-              Advantage
+              {t("why.title2")}
             </h2>
 
             {/* Accordion FAQ */}
             <div className="mt-10 space-y-0">
               {faqs.map((faq, index) => (
-                <div key={faq.question} className="accordion-minimal">
+                <div key={index} className="accordion-minimal">
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className="flex w-full items-center justify-between text-left"

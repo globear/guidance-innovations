@@ -1,26 +1,29 @@
-const footerLinks = {
-  about: [
-    { label: "News", href: "#" },
-    { label: "Insight", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Events & Meetups", href: "#" },
-  ],
-  resources: [
-    { label: "Founder Toolkit", href: "#" },
-    { label: "How it Works", href: "#" },
-    { label: "Pricing", href: "#" },
-    { label: "Case Studies", href: "#" },
-  ],
-  support: [
-    { label: "FAQ", href: "#" },
-    { label: "Contact Us", href: "#contact" },
-    { label: "Community Guidelines", href: "#" },
-    { label: "Help Center", href: "#" },
-  ],
-};
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
+
+  const footerLinks = {
+    about: [
+      { label: t("footer.news"), href: "#" },
+      { label: t("footer.insight"), href: "#" },
+      { label: t("footer.careers"), href: "#" },
+      { label: t("footer.events"), href: "#" },
+    ],
+    resources: [
+      { label: t("footer.toolkit"), href: "#" },
+      { label: t("footer.howItWorks"), href: "#" },
+      { label: t("footer.pricing"), href: "#" },
+      { label: t("footer.caseStudies"), href: "#" },
+    ],
+    support: [
+      { label: t("footer.faq"), href: "#" },
+      { label: t("footer.contactUs"), href: "#contact" },
+      { label: t("footer.guidelines"), href: "#" },
+      { label: t("footer.helpCenter"), href: "#" },
+    ],
+  };
 
   return (
     <footer className="border-t border-border px-6 py-16">
@@ -35,13 +38,13 @@ const Footer = () => {
               <span className="font-body text-sm font-semibold">Guidance Innovation</span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
-              Building practical AI products and automation systems for real businesses.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-medium text-sm mb-4">About</h4>
+            <h4 className="font-medium text-sm mb-4">{t("footer.about")}</h4>
             <ul className="space-y-3">
               {footerLinks.about.map((link) => (
                 <li key={link.label}>
@@ -54,7 +57,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-medium text-sm mb-4">Resources</h4>
+            <h4 className="font-medium text-sm mb-4">{t("footer.resources")}</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
@@ -67,7 +70,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-medium text-sm mb-4">Support</h4>
+            <h4 className="font-medium text-sm mb-4">{t("footer.support")}</h4>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.label}>
@@ -83,14 +86,14 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Guidance Innovation Co., Ltd. All rights reserved.
+            {t("footer.copyright").replace("{year}", String(currentYear))}
           </p>
           <div className="flex items-center gap-4">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-              Privacy
+              {t("footer.privacy")}
             </a>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
-              Terms
+              {t("footer.terms")}
             </a>
           </div>
         </div>

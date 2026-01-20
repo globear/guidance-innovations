@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen overflow-hidden px-6 pt-28 pb-20">
       {/* Gradient blobs */}
@@ -21,7 +24,7 @@ const HeroSection = () => {
               className="mb-6"
             >
               <span className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-1.5 text-xs font-medium text-muted-foreground">
-                ✦ AI Products & Systems
+                {t("hero.badge")}
               </span>
             </motion.div>
 
@@ -32,11 +35,11 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-display text-5xl font-medium leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
             >
-              Building AI
+              {t("hero.title1")}
               <br />
-              for Real
+              {t("hero.title2")}
               <br />
-              Businesses
+              {t("hero.title3")}
             </motion.h1>
 
             {/* Subheadline */}
@@ -46,7 +49,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-6 max-w-md text-base text-muted-foreground"
             >
-              Guiding Innovations in Driving the Next Generation of Transformative AI and Automation Technology.
+              {t("hero.subtitle")}
             </motion.p>
 
             {/* CTA Buttons */}
@@ -57,11 +60,11 @@ const HeroSection = () => {
               className="mt-8 flex flex-wrap items-center gap-4"
             >
               <a href="#contact" className="btn-primary">
-                Get in Touch
+                {t("hero.cta.primary")}
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a href="#products" className="btn-secondary">
-                Learn More
+                {t("hero.cta.secondary")}
               </a>
             </motion.div>
           </div>
@@ -80,18 +83,18 @@ const HeroSection = () => {
                   {/* Focus Areas */}
                   <div className="space-y-4">
                     <div className="rounded-2xl bg-card p-5 shadow-sm">
-                      <p className="text-xs font-medium text-muted-foreground mb-2">Focus Area</p>
-                      <p className="font-display text-lg font-medium">SaaS Products</p>
+                      <p className="text-xs font-medium text-muted-foreground mb-2">{t("hero.focusArea")}</p>
+                      <p className="font-display text-lg font-medium">{t("hero.saasProducts")}</p>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        Production-ready AI products built for real business use.
+                        {t("hero.saasDesc")}
                       </p>
                     </div>
                     
                     <div className="rounded-2xl bg-card p-5 shadow-sm">
-                      <p className="text-xs font-medium text-muted-foreground mb-2">Expertise</p>
-                      <p className="font-display text-lg font-medium">AI Automation</p>
+                      <p className="text-xs font-medium text-muted-foreground mb-2">{t("hero.expertise")}</p>
+                      <p className="font-display text-lg font-medium">{t("hero.aiAutomation")}</p>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        Custom AI systems for measurable operational improvement.
+                        {t("hero.aiDesc")}
                       </p>
                     </div>
                   </div>
@@ -100,11 +103,11 @@ const HeroSection = () => {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="rounded-2xl bg-card p-4 shadow-sm text-center">
                       <p className="font-display text-3xl font-medium">95%</p>
-                      <p className="text-xs text-muted-foreground mt-1">Client Retention</p>
+                      <p className="text-xs text-muted-foreground mt-1">{t("hero.clientRetention")}</p>
                     </div>
                     <div className="rounded-2xl bg-card p-4 shadow-sm text-center">
                       <p className="font-display text-3xl font-medium">50+</p>
-                      <p className="text-xs text-muted-foreground mt-1">Projects Delivered</p>
+                      <p className="text-xs text-muted-foreground mt-1">{t("hero.projectsDelivered")}</p>
                     </div>
                   </div>
                 </div>
@@ -120,7 +123,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 text-center text-sm text-muted-foreground"
         >
-          Guidance Innovation Co., Ltd. — Thailand
+          {t("hero.companyBadge")}
         </motion.div>
       </div>
     </section>
