@@ -39,12 +39,12 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="relative px-6 py-24" ref={ref}>
+    <section id="contact" className="relative px-6 py-16" ref={ref}>
       {/* Gradient blob */}
       <div className="gradient-blob gradient-blob-pink absolute bottom-0 left-1/4 h-[400px] w-[400px] opacity-40" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left - CTA */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

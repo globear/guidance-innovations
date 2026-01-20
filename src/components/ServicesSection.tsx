@@ -29,14 +29,14 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="relative px-6 py-24" ref={ref}>
+    <section id="services" className="relative px-6 py-16" ref={ref}>
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10"
         >
           <span className="text-sm font-medium text-muted-foreground">{t("services.label")}</span>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
