@@ -6,14 +6,14 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 pt-28 pb-20">
+    <section className="relative min-h-[85vh] overflow-hidden px-6 pt-24 pb-12">
       {/* Gradient blobs */}
       <div className="gradient-blob gradient-blob-blue absolute -top-20 right-0 h-[500px] w-[500px]" />
       <div className="gradient-blob gradient-blob-pink absolute top-40 -left-20 h-[400px] w-[400px]" />
       <div className="gradient-blob gradient-blob-orange absolute bottom-20 right-20 h-[300px] w-[300px]" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left Content */}
           <div className="flex flex-col justify-center">
             {/* Badge */}
