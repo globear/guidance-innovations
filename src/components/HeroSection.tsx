@@ -6,7 +6,7 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[80vh] overflow-hidden px-6 pt-24 pb-8">
+    <section className="relative min-h-[85vh] overflow-hidden px-6 pt-24 pb-12">
       {/* Gradient blobs */}
       <div className="gradient-blob gradient-blob-blue absolute -top-20 right-0 h-[500px] w-[500px]" />
       <div className="gradient-blob gradient-blob-pink absolute top-40 -left-20 h-[400px] w-[400px]" />
@@ -78,7 +78,7 @@ const HeroSection = () => {
               className="relative w-full"
             >
               {/* Main visual card */}
-              <div className="relative rounded-3xl bg-gradient-to-br from-secondary via-muted to-card p-8 border border-border">
+              <div className="relative rounded-3xl bg-gradient-to-br from-blue-100 via-purple-50 to-orange-50 p-8">
                 <div className="space-y-6">
                   {/* Focus Areas */}
                   <div className="space-y-4">
@@ -121,7 +121,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8 text-center text-sm text-muted-foreground"
+          className="mt-16 text-center text-sm text-muted-foreground"
         >
           {t("hero.companyBadge")}
         </motion.div>
