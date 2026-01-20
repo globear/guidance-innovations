@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-
-const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#products", label: "Products" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: "#services", label: t("nav.services") },
+    { href: "#products", label: t("nav.products") },
+    { href: "#about", label: t("nav.about") },
+    { href: "#contact", label: t("nav.contact") },
+  ];
 
   return (
     <motion.header
@@ -45,13 +48,14 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* CTA Button */}
+          {/* CTA Button & Language Switcher */}
           <div className="hidden items-center gap-4 md:flex">
+            <LanguageSwitcher />
             <a
               href="#contact"
               className="btn-primary"
             >
-              Get in Touch
+              {t("nav.getInTouch")}
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -88,12 +92,15 @@ const Header = () => {
                   </li>
                 ))}
                 <li className="pt-4">
+                  <LanguageSwitcher />
+                </li>
+                <li className="pt-2">
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(false)}
                     className="btn-primary w-full justify-center"
                   >
-                    Get in Touch
+                    {t("nav.getInTouch")}
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </li>

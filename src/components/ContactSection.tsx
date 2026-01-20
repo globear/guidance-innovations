@@ -4,12 +4,14 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ const ContactSection = () => {
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    toast.success("Thanks! We'll be in touch soon.");
+    toast.success(t("contact.success"));
     setIsSubmitting(false);
     setEmail("");
   };
@@ -37,19 +39,19 @@ const ContactSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-display text-5xl font-medium leading-tight sm:text-6xl">
-              Realize Your
+              {t("contact.title1")}
               <br />
-              Full Potential
+              {t("contact.title2")}
             </h2>
 
             <form onSubmit={handleSubmit} className="mt-8">
               <p className="text-sm text-muted-foreground mb-4">
-                Subscribe for growth tips and founder resources!
+                {t("contact.subscribe")}
               </p>
               <div className="flex gap-3">
                 <Input
                   type="email"
-                  placeholder="Enter your email address"
+                  placeholder={t("contact.placeholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -73,7 +75,7 @@ const ContactSection = () => {
               href="#contact"
               className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
             >
-              Get in Touch
+              {t("contact.getInTouch")}
               <ArrowRight className="h-4 w-4" />
             </a>
           </motion.div>
@@ -85,19 +87,19 @@ const ContactSection = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-col justify-center"
           >
-            <p className="text-sm text-muted-foreground mb-2">Supported by</p>
-            <p className="font-display text-2xl font-medium">Guidance Innovation Co., Ltd.</p>
-            <p className="text-muted-foreground mt-2">Thailand • Serving Global Clients</p>
+            <p className="text-sm text-muted-foreground mb-2">{t("contact.supportedBy")}</p>
+            <p className="font-display text-2xl font-medium">{t("contact.company")}</p>
+            <p className="text-muted-foreground mt-2">{t("contact.location")}</p>
 
             <div className="mt-8 space-y-4">
               <div>
-                <p className="text-sm font-medium">Email</p>
+                <p className="text-sm font-medium">{t("contact.email")}</p>
                 <a href="mailto:contact@guidanceinnovations.tech" className="text-sm text-muted-foreground hover:text-foreground">
                   contact@guidanceinnovations.tech
                 </a>
               </div>
               <div>
-                <p className="text-sm font-medium">Website</p>
+                <p className="text-sm font-medium">{t("contact.website")}</p>
                 <a href="https://guidancestream.com" className="text-sm text-muted-foreground hover:text-foreground">
                   guidancestream.com
                 </a>

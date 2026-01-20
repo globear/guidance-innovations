@@ -1,9 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const FounderSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   return (
     <section className="relative px-6 py-24" ref={ref}>
@@ -15,15 +17,15 @@ const FounderSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-sm font-medium text-muted-foreground">Our Team</span>
+          <span className="text-sm font-medium text-muted-foreground">{t("founder.label")}</span>
           <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <h2 className="font-display text-4xl font-medium leading-tight sm:text-5xl">
-              Meet the Trusted Minds
+              {t("founder.title1")}
               <br />
-              Every Founder's Growth.
+              {t("founder.title2")}
             </h2>
             <p className="max-w-md text-sm text-muted-foreground">
-              A network of experienced advisors dedicated to guiding founders through critical stages of their journey from early challenges to long-term success.
+              {t("founder.subtitle")}
             </p>
           </div>
         </motion.div>
@@ -44,8 +46,8 @@ const FounderSection = () => {
                 </div>
               </div>
             </div>
-            <h3 className="font-display text-xl font-medium">Te</h3>
-            <p className="text-sm text-muted-foreground">Founder & Lead Builder</p>
+            <h3 className="font-display text-xl font-medium">{t("founder.name")}</h3>
+            <p className="text-sm text-muted-foreground">{t("founder.role")}</p>
           </div>
 
           {/* Placeholder for future team */}
@@ -55,8 +57,8 @@ const FounderSection = () => {
                 <span className="text-4xl text-muted-foreground/40">+</span>
               </div>
             </div>
-            <h3 className="font-display text-xl font-medium">Join Our Team</h3>
-            <p className="text-sm text-muted-foreground">We're hiring</p>
+            <h3 className="font-display text-xl font-medium">{t("founder.join")}</h3>
+            <p className="text-sm text-muted-foreground">{t("founder.joinDesc")}</p>
           </div>
 
           <div className="text-center opacity-40">
@@ -65,8 +67,8 @@ const FounderSection = () => {
                 <span className="text-4xl text-muted-foreground/40">+</span>
               </div>
             </div>
-            <h3 className="font-display text-xl font-medium">Growing Team</h3>
-            <p className="text-sm text-muted-foreground">Future advisors</p>
+            <h3 className="font-display text-xl font-medium">{t("founder.growing")}</h3>
+            <p className="text-sm text-muted-foreground">{t("founder.growingDesc")}</p>
           </div>
         </motion.div>
       </div>
