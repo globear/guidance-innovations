@@ -11,10 +11,23 @@ const ContactSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState("");
   const { t } = useLanguage();
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setEmailError("");
+
+    if (!validateEmail(email)) {
+      setEmailError(t("contact.invalidEmail"));
+      return;
+    }
+
     setIsSubmitting(true);
     
     // Simulate form submission
@@ -49,14 +62,28 @@ const ContactSection = () => {
                 {t("contact.subscribe")}
               </p>
               <div className="flex gap-3">
-                <Input
-                  type="email"
-                  placeholder={t("contact.placeholder")}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="flex-1 rounded-full border-border bg-card px-5 py-3"
-                />
+                <div className="flex-1">
+                  <Input
+                    type="email"
+                    placeholder={t("contact.placeholder")}
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (emailError) setEmailError("");
+                    }}
+                    required
+                    aria-invalid={!!emailError}
+                    aria-describedby={emailError ? "email-error" : undefined}
+                    className={`rounded-full border-border bg-card px-5 py-3 ${
+                      emailError ? "border-destructive" : ""
+                    }`}
+                  />
+                  {emailError && (
+                    <p id="email-error" className="mt-2 text-sm text-destructive">
+                      {emailError}
+                    </p>
+                  )}
+                </div>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
@@ -72,10 +99,10 @@ const ContactSection = () => {
             </form>
 
             <a
-              href="#contact"
+              href="mailto:contact@guidanceinnovations.tech"
               className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
             >
-              {t("contact.getInTouch")}
+              {t("contact.cta")}
               <ArrowRight className="h-4 w-4" />
             </a>
           </motion.div>
@@ -100,7 +127,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-sm font-medium">{t("contact.website")}</p>
-                <a href="https://guidancestream.com" className="text-sm text-muted-foreground hover:text-foreground">
+                <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">
                   guidancestream.com
                 </a>
               </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -6,7 +6,16 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { href: "#services", label: t("nav.services") },
@@ -20,7 +29,9 @@ const Header = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+      className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
+        isScrolled ? "bg-background/80 backdrop-blur-lg shadow-sm" : ""
+      }`}
     >
       <div className="mx-auto max-w-7xl">
         <nav className="flex items-center justify-between">
@@ -63,6 +74,8 @@ const Header = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-border md:hidden"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -91,7 +104,7 @@ const Header = () => {
                     </a>
                   </li>
                 ))}
-                <li className="pt-4">
+                <li className="pt-4 border-t border-border">
                   <LanguageSwitcher />
                 </li>
                 <li className="pt-2">
