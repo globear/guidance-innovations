@@ -67,7 +67,7 @@ const ProductsSection = () => {
           >
             {industries.map((industry, index) => (
               <div key={industry.name} className="flex items-start gap-4 p-4 rounded-xl hover:bg-card transition-colors">
-                <div className="feature-icon bg-gradient-to-br from-blue-100 to-purple-100">
+                <div className="feature-icon bg-gradient-to-br from-primary/30 to-accent/20">
                   <industry.icon className="h-5 w-5 text-primary" />
                 </div>
                 <div>

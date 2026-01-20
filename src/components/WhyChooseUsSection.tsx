@@ -35,29 +35,29 @@ const WhyChooseUsSection = () => {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative aspect-square rounded-[40px] bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 overflow-hidden">
+            <div className="relative aspect-square rounded-[40px] bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 overflow-hidden">
               {/* Abstract 3D-like visual */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative">
                   {/* Outer glow ring */}
-                  <div className="h-64 w-64 rounded-full bg-gradient-to-br from-blue-200/60 to-purple-200/60 blur-2xl" />
+                  <div className="h-64 w-64 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 blur-2xl" />
                   
                   {/* Middle ring */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-48 rounded-full bg-gradient-to-br from-orange-200/80 to-pink-200/80 blur-xl" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-48 w-48 rounded-full bg-gradient-to-br from-accent/50 to-primary/50 blur-xl" />
                   
                   {/* Inner sphere */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-32 w-32 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 shadow-xl" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-32 w-32 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 shadow-xl" />
                   
                   {/* Center logo */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 rounded-full bg-card shadow-lg flex items-center justify-center border border-border/50">
-                    <span className="font-display text-2xl font-medium text-foreground">G</span>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 rounded-full bg-card shadow-lg flex items-center justify-center border border-primary/30">
+                    <span className="font-display text-2xl font-medium text-primary">G</span>
                   </div>
                 </div>
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-8 right-8 w-16 h-16 rounded-full bg-gradient-to-br from-orange-200 to-yellow-200 opacity-60 blur-sm" />
-              <div className="absolute bottom-12 left-8 w-12 h-12 rounded-full bg-gradient-to-br from-blue-200 to-cyan-200 opacity-60 blur-sm" />
+              <div className="absolute top-8 right-8 w-16 h-16 rounded-full bg-gradient-to-br from-accent/40 to-primary/30 opacity-60 blur-sm" />
+              <div className="absolute bottom-12 left-8 w-12 h-12 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 opacity-60 blur-sm" />
             </div>
           </motion.div>
 

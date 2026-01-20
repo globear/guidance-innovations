@@ -12,21 +12,21 @@ const FounderSection = () => {
       name: t("founder.name"),
       role: t("founder.role"),
       initial: "T",
-      gradient: "from-blue-100 to-purple-100",
+      gradient: "from-primary/30 to-accent/20",
       active: true,
     },
     {
       name: t("founder.join"),
       role: t("founder.joinDesc"),
       initial: "+",
-      gradient: "from-gray-100 to-gray-100",
+      gradient: "from-muted to-muted",
       active: false,
     },
     {
       name: t("founder.growing"),
       role: t("founder.growingDesc"),
       initial: "+",
-      gradient: "from-gray-100 to-gray-100",
+      gradient: "from-muted to-muted",
       active: false,
     },
   ];
@@ -69,7 +69,7 @@ const FounderSection = () => {
                   {member.active ? (
                     <div className="relative">
                       {/* Avatar with glow */}
-                      <div className="h-20 w-20 rounded-full bg-gradient-to-br from-blue-200 to-purple-200 blur-xl absolute -inset-4" />
+                      <div className="h-20 w-20 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 blur-xl absolute -inset-4" />
                       <div className="relative h-24 w-24 rounded-full bg-card shadow-lg flex items-center justify-center border border-border/50">
                         <span className="font-display text-4xl font-medium text-foreground">{member.initial}</span>
                       </div>

@@ -79,7 +79,7 @@ const HeroSection = () => {
               className="relative w-full max-w-md"
             >
               {/* Decorative gradient background */}
-              <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-br from-blue-100/80 via-purple-50/60 to-orange-50/80 blur-sm" />
+              <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 blur-sm" />
               
               <div className="relative space-y-4">
                 {/* Growth Stage Badge */}
@@ -90,7 +90,7 @@ const HeroSection = () => {
                   className="absolute -top-2 right-4 z-10"
                 >
                   <div className="info-card flex items-center gap-2 py-2 px-4">
-                    <div className="feature-icon bg-gradient-to-br from-blue-100 to-blue-200">
+                    <div className="feature-icon bg-gradient-to-br from-primary/30 to-primary/20">
                       <TrendingUp className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-xs font-medium">{t("hero.growthStage")}</span>
