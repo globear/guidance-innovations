@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -64,7 +64,6 @@ const ContactSection = () => {
               <div className="flex gap-3">
                 <div className="flex-1">
                   <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
                       type="email"
                       placeholder={t("contact.placeholder")}
@@ -76,7 +75,7 @@ const ContactSection = () => {
                       required
                       aria-invalid={!!emailError}
                       aria-describedby={emailError ? "email-error" : undefined}
-                      className={`rounded-full border-border bg-card pl-11 pr-5 py-6 ${
+                      className={`rounded-full border-border bg-card px-5 py-6 ${
                         emailError ? "border-destructive" : ""
                       }`}
                     />

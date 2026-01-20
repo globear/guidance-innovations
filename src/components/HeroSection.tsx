@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, TrendingUp, Globe2 } from "lucide-react";
+import { ArrowRight, Circle, Layers, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
@@ -24,7 +24,7 @@ const HeroSection = () => {
               className="mb-8"
             >
               <span className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-xs font-medium text-muted-foreground shadow-sm">
-                <Sparkles className="h-3.5 w-3.5 text-primary" />
+                <Circle className="h-2 w-2 fill-primary text-primary" />
                 {t("hero.badge")}
               </span>
             </motion.div>
@@ -91,7 +91,7 @@ const HeroSection = () => {
                 >
                   <div className="info-card flex items-center gap-2 py-2 px-4">
                     <div className="feature-icon bg-gradient-to-br from-primary/30 to-primary/20">
-                      <TrendingUp className="h-5 w-5 text-primary" />
+                      <Layers className="h-4 w-4 text-primary" />
                     </div>
                     <span className="text-xs font-medium">{t("hero.growthStage")}</span>
                   </div>
@@ -123,7 +123,7 @@ const HeroSection = () => {
                   </div>
                   <div className="info-card text-center py-6">
                     <div className="flex items-center justify-center gap-2">
-                      <Globe2 className="h-5 w-5 text-muted-foreground" />
+                      <MapPin className="h-4 w-4 text-muted-foreground" />
                       <p className="font-display text-2xl font-medium">TH/MY</p>
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">{t("hero.marketsServed")}</p>

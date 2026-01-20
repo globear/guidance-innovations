@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Cpu, Heart, Zap, Shield } from "lucide-react";
+import { Circle, Square, Triangle, Hexagon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductsSection = () => {
@@ -15,8 +15,8 @@ const ProductsSection = () => {
       description: t("products.gs.desc"),
       features: [t("products.gs.f1"), t("products.gs.f2"), t("products.gs.f3"), t("products.gs.f4")],
       status: t("products.gs.status"),
-      icon: Cpu,
-      gradient: "from-blue-100 to-purple-100",
+      icon: Circle,
+      gradient: "from-primary/20 to-accent/20",
     },
     {
       name: t("products.cr.name"),
@@ -24,16 +24,16 @@ const ProductsSection = () => {
       description: t("products.cr.desc"),
       features: [t("products.cr.f1"), t("products.cr.f2"), t("products.cr.f3"), t("products.cr.f4")],
       status: t("products.cr.status"),
-      icon: Heart,
-      gradient: "from-orange-100 to-pink-100",
+      icon: Square,
+      gradient: "from-accent/20 to-primary/20",
     },
   ];
 
   const industries = [
-    { name: t("products.ind.tech"), icon: Cpu, desc: t("products.ind.techDesc") },
-    { name: t("products.ind.health"), icon: Heart, desc: t("products.ind.healthDesc") },
-    { name: t("products.ind.auto"), icon: Zap, desc: t("products.ind.autoDesc") },
-    { name: t("products.ind.ops"), icon: Shield, desc: t("products.ind.opsDesc") },
+    { name: t("products.ind.tech"), icon: Circle, desc: t("products.ind.techDesc") },
+    { name: t("products.ind.health"), icon: Square, desc: t("products.ind.healthDesc") },
+    { name: t("products.ind.auto"), icon: Triangle, desc: t("products.ind.autoDesc") },
+    { name: t("products.ind.ops"), icon: Hexagon, desc: t("products.ind.opsDesc") },
   ];
 
   return (

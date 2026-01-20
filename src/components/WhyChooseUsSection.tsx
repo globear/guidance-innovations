@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { ChevronDown, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const WhyChooseUsSection = () => {
@@ -86,7 +86,7 @@ const WhyChooseUsSection = () => {
                       openIndex === index ? "bg-foreground" : "bg-transparent"
                     }`}>
                       {openIndex === index ? (
-                        <ChevronDown className="h-4 w-4 text-background" />
+                        <Minus className="h-4 w-4 text-background" />
                       ) : (
                         <Plus className="h-4 w-4 text-foreground" />
                       )}

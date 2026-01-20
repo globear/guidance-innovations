@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { Circle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -20,9 +20,9 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Circle, href: "#", label: "LinkedIn" },
+    { icon: Circle, href: "#", label: "Twitter" },
+    { icon: Circle, href: "#", label: "GitHub" },
   ];
 
   return (
