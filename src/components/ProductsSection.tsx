@@ -25,7 +25,7 @@ const ProductsSection = () => {
   ];
 
   return (
-    <section id="products" className="relative px-6 py-16" ref={ref}>
+    <section id="products" className="relative px-6 py-24" ref={ref}>
       {/* Gradient blob */}
       <div className="gradient-blob gradient-blob-blue absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] opacity-30" />
 
@@ -35,7 +35,7 @@ const ProductsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
+          className="mb-16 text-center"
         >
           <span className="text-sm font-medium text-muted-foreground">{t("products.label")}</span>
           <h2 className="mt-4 font-display text-4xl font-medium sm:text-5xl">

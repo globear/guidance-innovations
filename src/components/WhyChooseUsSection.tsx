@@ -25,9 +25,9 @@ const WhyChooseUsSection = () => {
   ];
 
   return (
-    <section id="about" className="relative px-6 py-16" ref={ref}>
+    <section id="about" className="relative px-6 py-24" ref={ref}>
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left - Visual */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
