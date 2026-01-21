@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSwitcher from "./LanguageSwitcher";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +15,9 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: t("nav.services") },
-    { href: "#products", label: t("nav.products") },
-    { href: "#about", label: t("nav.about") },
-    { href: "#contact", label: t("nav.contact") },
+    { href: "#features", label: "Features" },
+    { href: "#product", label: "Product" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -30,19 +26,14 @@ const Header = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
-        isScrolled ? "bg-background/90 backdrop-blur-xl shadow-sm" : ""
+        isScrolled ? "bg-background/95 backdrop-blur-xl shadow-sm" : ""
       }`}
     >
       <div className="mx-auto max-w-7xl">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground">
-              <span className="font-display text-lg font-bold text-background">G</span>
-            </div>
-            <span className="hidden font-body text-sm font-semibold tracking-tight sm:block">
-              Guidance Innovation
-            </span>
+          <a href="#" className="font-display text-xl font-medium text-foreground">
+            The Caseton
           </a>
 
           {/* Desktop Navigation */}
@@ -51,7 +42,7 @@ const Header = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {link.label}
                 </a>
@@ -59,15 +50,13 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* CTA Button & Language Switcher */}
-          <div className="hidden items-center gap-4 lg:flex">
-            <LanguageSwitcher />
+          {/* CTA Button */}
+          <div className="hidden lg:flex">
             <a
               href="#contact"
               className="btn-primary"
             >
-              {t("nav.getInTouch")}
-              <ArrowRight className="h-4 w-4" />
+              Subscribe
             </a>
           </div>
 
@@ -105,16 +94,12 @@ const Header = () => {
                   </li>
                 ))}
                 <li className="pt-4 border-t border-border">
-                  <LanguageSwitcher />
-                </li>
-                <li className="pt-2">
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(false)}
                     className="btn-primary w-full justify-center"
                   >
-                    {t("nav.getInTouch")}
-                    <ArrowRight className="h-4 w-4" />
+                    Subscribe
                   </a>
                 </li>
               </ul>

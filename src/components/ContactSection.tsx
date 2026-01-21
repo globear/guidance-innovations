@@ -1,133 +1,65 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useRef } from "react";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [emailError, setEmailError] = useState("");
-  const { t } = useLanguage();
-
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setEmailError("");
-
-    if (!validateEmail(email)) {
-      setEmailError(t("contact.invalidEmail"));
-      return;
-    }
-
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success(t("contact.success"));
-    setIsSubmitting(false);
-    setEmail("");
-  };
 
   return (
-    <section id="contact" className="relative px-6 py-20" ref={ref}>
-      {/* Gradient blob */}
-      <div className="gradient-blob gradient-blob-pink absolute bottom-0 left-1/4 h-[500px] w-[500px] opacity-40" />
-
-      <div className="relative mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-          {/* Left - CTA */}
+    <section id="contact" className="relative overflow-hidden" ref={ref}>
+      <div className="grid lg:grid-cols-2">
+        {/* Left - Orange gradient with contact info */}
+        <div className="bg-gradient-orange px-6 py-20 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
+            className="max-w-md"
           >
-            <h2 className="font-display text-5xl font-medium leading-[1.1] sm:text-6xl">
-              {t("contact.title1")}
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-medium text-primary-foreground italic leading-none">
+              Reach
               <br />
-              {t("contact.title2")}
+              out!
             </h2>
 
-            <form onSubmit={handleSubmit} className="mt-10">
-              <p className="text-sm text-muted-foreground mb-4">
-                {t("contact.subscribe")}
-              </p>
-              <div className="flex gap-3">
-                <div className="flex-1">
-                  <div className="relative">
-                    <Input
-                      type="email"
-                      placeholder={t("contact.placeholder")}
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                        if (emailError) setEmailError("");
-                      }}
-                      required
-                      aria-invalid={!!emailError}
-                      aria-describedby={emailError ? "email-error" : undefined}
-                      className={`rounded-full border-border bg-card px-5 py-6 ${
-                        emailError ? "border-destructive" : ""
-                      }`}
-                    />
-                  </div>
-                  {emailError && (
-                    <p id="email-error" className="mt-2 text-sm text-destructive">
-                      {emailError}
-                    </p>
-                  )}
-                </div>
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-primary rounded-full px-6 h-auto"
-                >
-                  {isSubmitting ? (
-                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-background border-t-transparent" />
-                  ) : (
-                    <ArrowRight className="h-4 w-4" />
-                  )}
-                </Button>
+            <div className="mt-12 space-y-4 text-primary-foreground">
+              <div>
+                <p className="font-medium">The Caseton</p>
+                <p className="text-primary-foreground/80 text-sm">123 Anywhere St.</p>
+                <p className="text-primary-foreground/80 text-sm">Any City, ST 12345</p>
               </div>
-            </form>
-          </motion.div>
 
-          {/* Right - Company Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col justify-center"
-          >
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">{t("contact.supportedBy")}</p>
-            <p className="font-display text-2xl font-medium">{t("contact.company")}</p>
-            <p className="text-muted-foreground mt-2">{t("contact.location")}</p>
-
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
-              <div className="info-card">
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{t("contact.email")}</p>
-                <a href="mailto:contact@guidanceinnovations.tech" className="text-sm text-foreground hover:text-primary mt-2 block">
-                  contact@guidanceinnovations.tech
-                </a>
+              <div className="pt-4">
+                <p className="text-primary-foreground/80 text-sm">Tel. 123-456-7890</p>
               </div>
-              <div className="info-card">
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{t("contact.website")}</p>
-                <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground hover:text-primary mt-2 block">
-                  guidancestream.com
-                </a>
+
+              <div>
+                <p className="text-primary-foreground/80 text-sm">
+                  Email: <a href="mailto:hello@reallygreatsite.com" className="underline">hello@reallygreatsite.com</a>
+                </p>
+              </div>
+
+              <div>
+                <p className="text-primary-foreground/80 text-sm">
+                  Socials: <a href="#" className="underline">@reallygreatsite</a>
+                </p>
               </div>
             </div>
           </motion.div>
         </div>
+
+        {/* Right - Image placeholder */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-[hsl(35_60%_80%)] min-h-[400px] lg:min-h-0 flex items-center justify-center"
+        >
+          {/* Placeholder for phone image */}
+          <div className="w-32 h-56 rounded-3xl bg-[hsl(25_100%_60%)] shadow-xl flex items-center justify-center">
+            <div className="w-24 h-48 rounded-2xl bg-[hsl(30_40%_95%)]" />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
