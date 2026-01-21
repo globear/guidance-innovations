@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/hover-card";
 import { useLanguage } from "@/contexts/LanguageContext";
 import founderAvatar from "@/assets/founder-avatar.svg";
+import alexAvatar from "@/assets/alex-avatar.svg";
 interface TeamMember {
   initial: string;
   name: string;
@@ -46,6 +47,7 @@ const FeedbackSection = () => {
         t("feedback.team.alex.skills.2" as any),
       ],
       gradient: "from-cyan-500 to-blue-500",
+      avatarImage: alexAvatar,
     },
     {
       initial: "M",
