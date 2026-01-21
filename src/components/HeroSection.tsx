@@ -1,10 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
-  const { t } = useLanguage();
-
   return (
     <section className="relative min-h-[600px] overflow-hidden">
       {/* Dark tech background with gradient */}
@@ -29,13 +26,13 @@ const HeroSection = () => {
         >
           {/* Company Name */}
           <p className="text-muted-foreground text-sm font-medium tracking-wider uppercase mb-4">
-            {t("hero.companyName")}
+            Guidance Innovation Co., Ltd.
           </p>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold text-foreground leading-tight tracking-tight">
-            {t("hero.title")}
+            Building Practical AI
           </h1>
           <p className="font-display text-3xl sm:text-4xl lg:text-5xl font-medium text-primary mt-2">
-            {t("hero.subtitle")}
+            for Real Businesses
           </p>
         </motion.div>
 
@@ -47,19 +44,19 @@ const HeroSection = () => {
           className="mt-12 max-w-xl"
         >
           <p className="text-muted-foreground text-base leading-relaxed">
-            {t("hero.description")}
+            We design and build AI-powered SaaS products, intelligent automation, and custom software systems that solve real operational problems.
           </p>
           <p className="text-muted-foreground/60 text-sm mt-4 font-mono">
-            {t("hero.tagline")}
+            // No hype. Just systems that work.
           </p>
           
           <div className="flex flex-wrap gap-4 mt-8">
             <a href="#contact" className="btn-primary">
-              {t("hero.contactUs")}
+              Contact Us
               <ArrowRight className="h-4 w-4" />
             </a>
             <a href="#products" className="btn-secondary">
-              {t("hero.viewProducts")}
+              View Products
             </a>
           </div>
         </motion.div>
@@ -72,12 +69,12 @@ const HeroSection = () => {
           className="mt-20 flex flex-wrap gap-12 text-sm"
         >
           <div>
-            <p className="text-xs font-mono tracking-wider uppercase text-muted-foreground/60 mb-1">{t("hero.productsLabel")}</p>
-            <p className="text-foreground">{t("hero.productsValue")}</p>
+            <p className="text-xs font-mono tracking-wider uppercase text-muted-foreground/60 mb-1">Products</p>
+            <p className="text-foreground">GuidanceStream • CareRouters</p>
           </div>
           <div>
-            <p className="text-xs font-mono tracking-wider uppercase text-muted-foreground/60 mb-1">{t("hero.basedInLabel")}</p>
-            <p className="text-foreground">{t("hero.basedInValue")}</p>
+            <p className="text-xs font-mono tracking-wider uppercase text-muted-foreground/60 mb-1">Based in</p>
+            <p className="text-foreground">Thailand, serving global clients</p>
           </div>
         </motion.div>
       </div>

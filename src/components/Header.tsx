@@ -2,13 +2,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
-import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,10 +16,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: t("header.services") },
-    { href: "#products", label: t("header.products") },
-    { href: "#about", label: t("header.about") },
-    { href: "#contact", label: t("header.contact") },
+    { href: "#services", label: "Services" },
+    { href: "#products", label: "Products" },
+    { href: "#about", label: "About" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -58,30 +55,26 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* CTA Button & Language Switcher */}
-          <div className="hidden lg:flex items-center gap-3">
-            <LanguageSwitcher variant="minimal" />
+          {/* CTA Button */}
+          <div className="hidden lg:flex">
             <a
               href="#contact"
               className="btn-primary"
             >
-              {t("header.getInTouch")}
+              Get in Touch
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <LanguageSwitcher variant="minimal" />
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-expanded={isMenuOpen}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border"
-            >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border lg:hidden"
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </nav>
 
         {/* Mobile Menu */}
@@ -112,7 +105,7 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className="btn-primary w-full justify-center"
                   >
-                    {t("header.getInTouch")}
+                    Get in Touch
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </li>
