@@ -1,9 +1,56 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+
+interface TeamMember {
+  initial: string;
+  name: string;
+  position: string;
+  skills: string[];
+  gradient: string;
+  isFounder?: boolean;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    initial: "T",
+    name: "Te",
+    position: "Founder & Lead Builder",
+    skills: ["AI Workflows", "System Architecture", "E-commerce Operations"],
+    gradient: "from-primary to-purple-500",
+    isFounder: true,
+  },
+  {
+    initial: "A",
+    name: "Alex",
+    position: "Backend Engineer",
+    skills: ["API Design", "Database Architecture", "Cloud Infrastructure"],
+    gradient: "from-cyan-500 to-blue-500",
+  },
+  {
+    initial: "M",
+    name: "Maya",
+    position: "AI Specialist",
+    skills: ["RAG Systems", "LLM Integration", "Prompt Engineering"],
+    gradient: "from-purple-500 to-pink-500",
+  },
+  {
+    initial: "S",
+    name: "Sam",
+    position: "Automation Engineer",
+    skills: ["n8n Workflows", "Integration APIs", "Process Automation"],
+    gradient: "from-emerald-500 to-teal-500",
+  },
+];
 
 const FeedbackSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedMember, setSelectedMember] = useState<TeamMember>(teamMembers[0]);
 
   const reasons = [
     {
@@ -53,31 +100,45 @@ const FeedbackSection = () => {
               <div className="relative">
                 <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-4">Our Team</p>
                 
-                {/* Avatars row */}
+                {/* Avatars row - clickable */}
                 <div className="flex items-center gap-3 mb-4">
-                  {/* Founder avatar - larger */}
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center text-lg font-bold text-primary-foreground shrink-0 ring-2 ring-primary/30">
-                    T
-                  </div>
-                  {/* Team member avatars - smaller */}
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-sm font-bold text-white shrink-0">
-                    A
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-sm font-bold text-white shrink-0">
-                    M
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-sm font-bold text-white shrink-0">
-                    S
-                  </div>
+                  {teamMembers.map((member) => (
+                    <HoverCard key={member.initial} openDelay={100} closeDelay={100}>
+                      <HoverCardTrigger asChild>
+                        <button
+                          onClick={() => setSelectedMember(member)}
+                          className={`${member.isFounder ? 'w-14 h-14 text-lg ring-2 ring-primary/30' : 'w-10 h-10 text-sm'} rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center font-bold text-white shrink-0 cursor-pointer transition-all hover:scale-110 hover:ring-2 hover:ring-white/30 ${selectedMember.initial === member.initial ? 'ring-2 ring-white/50' : ''}`}
+                        >
+                          {member.initial}
+                        </button>
+                      </HoverCardTrigger>
+                      <HoverCardContent className="w-64 bg-card border-border" side="top">
+                        <div className="space-y-2">
+                          <h4 className="font-semibold text-foreground">{member.name}</h4>
+                          <p className="text-xs text-muted-foreground">{member.position}</p>
+                          <div className="flex flex-wrap gap-1 pt-2">
+                            {member.skills.map((skill) => (
+                              <span key={skill} className="px-2 py-0.5 rounded-md bg-primary/10 text-primary text-xs font-mono">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </HoverCardContent>
+                    </HoverCard>
+                  ))}
                 </div>
                 
-                <h3 className="font-display text-2xl font-semibold text-foreground">Te</h3>
-                <p className="text-sm text-muted-foreground mt-1">Founder & Lead Builder</p>
-                <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
-                  Active e-commerce operator since 2017. Built automation systems for customer service, 
-                  logistics, and operations. Experienced in AI workflows, system architecture, and 
-                  cross-platform integration.
-                </p>
+                {/* Selected member info */}
+                <h3 className="font-display text-2xl font-semibold text-foreground">{selectedMember.name}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{selectedMember.position}</p>
+                <div className="flex flex-wrap gap-1 mt-4">
+                  {selectedMember.skills.map((skill) => (
+                    <span key={skill} className="px-2 py-1 rounded-md bg-primary/10 text-primary text-xs font-mono">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
