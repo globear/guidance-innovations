@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,8 +15,9 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#features", label: "Features" },
-    { href: "#product", label: "Product" },
+    { href: "#services", label: "Services" },
+    { href: "#products", label: "Products" },
+    { href: "#about", label: "About" },
     { href: "#contact", label: "Contact" },
   ];
 
@@ -32,8 +33,13 @@ const Header = () => {
       <div className="mx-auto max-w-7xl">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="font-display text-xl font-medium text-foreground">
-            The Caseton
+          <a href="#" className="flex items-center gap-2">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary">
+              <span className="font-display text-lg font-bold text-primary-foreground">G</span>
+            </div>
+            <span className="hidden sm:block font-display text-lg font-medium text-foreground">
+              Guidance
+            </span>
           </a>
 
           {/* Desktop Navigation */}
@@ -56,7 +62,8 @@ const Header = () => {
               href="#contact"
               className="btn-primary"
             >
-              Subscribe
+              Get in Touch
+              <ArrowRight className="h-4 w-4" />
             </a>
           </div>
 
@@ -99,7 +106,8 @@ const Header = () => {
                     onClick={() => setIsMenuOpen(false)}
                     className="btn-primary w-full justify-center"
                   >
-                    Subscribe
+                    Get in Touch
+                    <ArrowRight className="h-4 w-4" />
                   </a>
                 </li>
               </ul>

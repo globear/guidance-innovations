@@ -5,23 +5,23 @@ const FeaturesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const features = [
+  const capabilities = [
     {
-      title: "Enhanced security",
-      description: "Rest assured, we will keep your file overall, private, and with encryption. Follow our tips so your contacts can verify your identity.",
+      title: "AI Agents",
+      description: "AI agents for customer support and internal operations with context-aware responses aligned with your brand voice.",
     },
     {
-      title: "Customization options",
-      description: "Here are the changes tailored better to your overall point of view. This way you let your messages truly reflect your own personality.",
+      title: "Workflow Automation",
+      description: "Automated workflows using APIs, webhooks, and orchestration tools. Connect data sources, logic layers, and outputs.",
     },
     {
-      title: "Offline mode",
-      description: "With a spotty going wireless, you're ready to save time and stay connected. Rest your messages across a seamlessly send easily.",
+      title: "System Integration",
+      description: "CRM, ERP, and platform integrations. Knowledge base systems using structured data and vector search.",
     },
   ];
 
   return (
-    <section className="relative px-6 py-20 bg-muted" ref={ref}>
+    <section id="services" className="relative px-6 py-20 bg-muted" ref={ref}>
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <motion.div
@@ -31,48 +31,65 @@ const FeaturesSection = () => {
           className="text-center mb-12"
         >
           <h2 className="font-display text-3xl sm:text-4xl font-medium text-foreground">
-            Unlock these <span className="text-primary">3 features</span>
+            AI Automation <span className="text-primary">Solutions</span>
           </h2>
-          <p className="font-display text-2xl sm:text-3xl text-muted-foreground mt-2">
-            with a premium subscription
+          <p className="font-display text-xl sm:text-2xl text-muted-foreground mt-2">
+            for measurable operational improvement
           </p>
           <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Delivering newsletters through email is one of the best ways to build a 
-            strong relationship with your members and customers.
+            We design and implement custom AI and automation systems for businesses. 
+            Process optimization for speed, accuracy, and cost efficiency.
           </p>
         </motion.div>
 
-        {/* Feature buttons */}
+        {/* Capability buttons */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          {features.map((feature, index) => (
+          {capabilities.map((capability) => (
             <div
-              key={feature.title}
+              key={capability.title}
               className="feature-card feature-card-orange min-w-[180px]"
             >
-              {feature.title}
+              {capability.title}
             </div>
           ))}
         </motion.div>
 
-        {/* Feature descriptions */}
+        {/* Capability descriptions */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="grid gap-8 md:grid-cols-3"
         >
-          {features.map((feature, index) => (
-            <div key={feature.title} className="text-center">
+          {capabilities.map((capability) => (
+            <div key={capability.title} className="text-center">
               <p className="text-sm text-muted-foreground leading-relaxed">
-                {feature.description}
+                {capability.description}
               </p>
             </div>
           ))}
+        </motion.div>
+
+        {/* Additional capabilities list */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">Also includes</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Intelligent document processing", "Data pipelines", "Vector search", "API-driven design"].map((item) => (
+              <span key={item} className="px-4 py-2 rounded-full bg-card border border-border text-sm text-foreground">
+                {item}
+              </span>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
