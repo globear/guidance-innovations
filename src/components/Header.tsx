@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -9,6 +10,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +28,10 @@ const Header = () => {
     { href: "#contact", label: t("header.contact") },
   ];
 
+  const getNavHref = (hash: string) => {
+    return isHomePage ? hash : `/${hash}`;
+  };
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
@@ -37,19 +44,19 @@ const Header = () => {
       <div className="mx-auto max-w-7xl">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Guidance logo" className="h-9 w-9" />
             <span className="hidden sm:block font-display text-lg font-medium text-foreground">
               GUIDANCE INNOVATIONS
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
-                  href={link.href}
+                  href={getNavHref(link.href)}
                   className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {link.label}
@@ -62,7 +69,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher />
             <a
-              href="#contact"
+              href={getNavHref("#contact")}
               className="btn-primary"
             >
               {t("header.getInTouch")}
@@ -95,7 +102,7 @@ const Header = () => {
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <a
-                      href={link.href}
+                      href={getNavHref(link.href)}
                       onClick={() => setIsMenuOpen(false)}
                       className="block py-2 text-lg font-medium text-foreground"
                     >
@@ -110,7 +117,7 @@ const Header = () => {
                 </li>
                 <li>
                   <a
-                    href="#contact"
+                    href={getNavHref("#contact")}
                     onClick={() => setIsMenuOpen(false)}
                     className="btn-primary w-full justify-center"
                   >
