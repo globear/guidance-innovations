@@ -21,9 +21,11 @@ const Privacy = () => {
             Back to Home
           </Link>
           
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-8">
-            Privacy Policy
-          </h1>
+          <Link to="/">
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-8 hover:text-primary transition-colors cursor-pointer">
+              Privacy Policy
+            </h1>
+          </Link>
           
           <div className="prose prose-invert max-w-none">
             <p className="text-lg text-muted-foreground mb-8">
