@@ -106,10 +106,10 @@ const Terms = () => {
               <p className="text-muted-foreground leading-relaxed mb-4">
                 If you have any questions about these Terms, please contact us at{" "}
                 <a 
-                  href="mailto:legal@guidanceinnovation.com" 
+                  href="mailto:info@guidanceinnovations.tech" 
                   className="text-primary hover:text-primary/80 transition-colors"
                 >
-                  legal@guidanceinnovation.com
+                  info@guidanceinnovations.tech
                 </a>
               </p>
             </section>
