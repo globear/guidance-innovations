@@ -7,12 +7,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Bot, Workflow, Network } from "lucide-react";
+import aiAgentsChatImage from "@/assets/ai-agents-chat.webp";
 
 type Capability = {
   title: string;
   description: string;
   icon: React.ReactNode;
   gradient: string;
+  image?: string;
 };
 
 const FeaturesSection = () => {
@@ -26,6 +28,7 @@ const FeaturesSection = () => {
       description: "AI agents for customer support and internal operations with context-aware responses aligned with your brand voice.",
       icon: <Bot className="w-16 h-16 text-primary" />,
       gradient: "from-primary/20 via-primary/10 to-background",
+      image: aiAgentsChatImage,
     },
     {
       title: "Workflow Automation",
@@ -83,19 +86,32 @@ const FeaturesSection = () => {
 
         {/* Modal for capability example */}
         <Dialog open={!!selectedCapability} onOpenChange={() => setSelectedCapability(null)}>
-          <DialogContent className="sm:max-w-lg">
+          <DialogContent className="sm:max-w-2xl">
             <DialogHeader>
               <DialogTitle className="text-xl font-display">{selectedCapability?.title}</DialogTitle>
             </DialogHeader>
-            <div className={`flex flex-col items-center justify-center p-8 rounded-lg bg-gradient-to-br ${selectedCapability?.gradient}`}>
-              {selectedCapability?.icon}
-              <p className="mt-4 text-sm text-muted-foreground text-center max-w-sm">
-                {selectedCapability?.description}
-              </p>
-              <span className="mt-4 text-xs font-mono text-muted-foreground/60">
-                Click to view example implementation
-              </span>
-            </div>
+            {selectedCapability?.image ? (
+              <div className="space-y-4">
+                <img 
+                  src={selectedCapability.image} 
+                  alt={selectedCapability.title}
+                  className="w-full rounded-lg"
+                />
+                <p className="text-sm text-muted-foreground">
+                  {selectedCapability.description}
+                </p>
+              </div>
+            ) : (
+              <div className={`flex flex-col items-center justify-center p-8 rounded-lg bg-gradient-to-br ${selectedCapability?.gradient}`}>
+                {selectedCapability?.icon}
+                <p className="mt-4 text-sm text-muted-foreground text-center max-w-sm">
+                  {selectedCapability?.description}
+                </p>
+                <span className="mt-4 text-xs font-mono text-muted-foreground/60">
+                  Click to view example implementation
+                </span>
+              </div>
+            )}
           </DialogContent>
         </Dialog>
 
