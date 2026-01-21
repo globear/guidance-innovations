@@ -88,7 +88,7 @@ const FeaturesSection = () => {
 
         {/* Modal for capability example */}
         <Dialog open={!!selectedCapability} onOpenChange={() => setSelectedCapability(null)}>
-          <DialogContent className="sm:max-w-2xl">
+          <DialogContent className="sm:max-w-4xl">
             <DialogHeader>
               <DialogTitle className="text-xl font-display">{selectedCapability?.title}</DialogTitle>
             </DialogHeader>
