@@ -66,7 +66,7 @@ const ContactSection = () => {
       </div>
       
       {/* Single continuous grid pattern spanning entire section */}
-      <div className="absolute inset-0 grid-pattern opacity-15 pointer-events-none" />
+      <div className="absolute inset-0 grid-pattern-light pointer-events-none" />
       
       {/* Decorative blob */}
       <div className="gradient-blob gradient-blob-purple absolute left-1/2 -translate-x-full bottom-0 h-[300px] w-[300px]" />
