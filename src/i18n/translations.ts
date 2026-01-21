@@ -136,7 +136,7 @@ export const translations = {
       team: {
         te: { name: "Reed", position: "Founder & Lead Builder", skills: ["AI Workflows", "System Architecture", "E-commerce Operations"] },
         alex: { name: "Denis", position: "Backend Engineer", skills: ["API Design", "Database Architecture", "Cloud Infrastructure"] },
-        maya: { name: "Maya", position: "AI Specialist", skills: ["RAG Systems", "LLM Integration", "Prompt Engineering"] },
+        maya: { name: "Best", position: "AI Specialist", skills: ["RAG Systems", "LLM Integration", "Prompt Engineering"] },
         sam: { name: "Sam", position: "Automation Engineer", skills: ["n8n Workflows", "Integration APIs", "Process Automation"] },
       },
     },
@@ -323,7 +323,7 @@ export const translations = {
       team: {
         te: { name: "Reed", position: "ผู้ก่อตั้งและผู้สร้างหลัก", skills: ["AI Workflows", "สถาปัตยกรรมระบบ", "การดำเนินงาน E-commerce"] },
         alex: { name: "Denis", position: "วิศวกร Backend", skills: ["การออกแบบ API", "สถาปัตยกรรมฐานข้อมูล", "โครงสร้างพื้นฐาน Cloud"] },
-        maya: { name: "Maya", position: "ผู้เชี่ยวชาญ AI", skills: ["ระบบ RAG", "การเชื่อมต่อ LLM", "Prompt Engineering"] },
+        maya: { name: "Best", position: "ผู้เชี่ยวชาญ AI", skills: ["ระบบ RAG", "การเชื่อมต่อ LLM", "Prompt Engineering"] },
         sam: { name: "Sam", position: "วิศวกรอัตโนมัติ", skills: ["n8n Workflows", "Integration APIs", "Process Automation"] },
       },
     },
@@ -510,7 +510,7 @@ export const translations = {
       team: {
         te: { name: "Reed", position: "创始人和首席建造者", skills: ["AI工作流", "系统架构", "电子商务运营"] },
         alex: { name: "Denis", position: "后端工程师", skills: ["API设计", "数据库架构", "云基础设施"] },
-        maya: { name: "Maya", position: "AI专家", skills: ["RAG系统", "LLM集成", "提示工程"] },
+        maya: { name: "Best", position: "AI专家", skills: ["RAG系统", "LLM集成", "提示工程"] },
         sam: { name: "Sam", position: "自动化工程师", skills: ["n8n工作流", "集成API", "流程自动化"] },
       },
     },
