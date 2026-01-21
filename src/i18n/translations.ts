@@ -134,7 +134,7 @@ export const translations = {
       techFoundation: "Technical Foundation",
       skills: ["AI agents", "RAG systems", "API design", "Full-stack engineering", "Scalable infrastructure"],
       team: {
-        te: { name: "Te", position: "Founder & Lead Builder", skills: ["AI Workflows", "System Architecture", "E-commerce Operations"] },
+        te: { name: "Reed", position: "Founder & Lead Builder", skills: ["AI Workflows", "System Architecture", "E-commerce Operations"] },
         alex: { name: "Alex", position: "Backend Engineer", skills: ["API Design", "Database Architecture", "Cloud Infrastructure"] },
         maya: { name: "Maya", position: "AI Specialist", skills: ["RAG Systems", "LLM Integration", "Prompt Engineering"] },
         sam: { name: "Sam", position: "Automation Engineer", skills: ["n8n Workflows", "Integration APIs", "Process Automation"] },
@@ -321,7 +321,7 @@ export const translations = {
       techFoundation: "พื้นฐานเทคนิค",
       skills: ["AI agents", "ระบบ RAG", "การออกแบบ API", "วิศวกรรม Full-stack", "โครงสร้างพื้นฐานที่ขยายได้"],
       team: {
-        te: { name: "Te", position: "ผู้ก่อตั้งและผู้สร้างหลัก", skills: ["AI Workflows", "สถาปัตยกรรมระบบ", "การดำเนินงาน E-commerce"] },
+        te: { name: "Reed", position: "ผู้ก่อตั้งและผู้สร้างหลัก", skills: ["AI Workflows", "สถาปัตยกรรมระบบ", "การดำเนินงาน E-commerce"] },
         alex: { name: "Alex", position: "วิศวกร Backend", skills: ["การออกแบบ API", "สถาปัตยกรรมฐานข้อมูล", "โครงสร้างพื้นฐาน Cloud"] },
         maya: { name: "Maya", position: "ผู้เชี่ยวชาญ AI", skills: ["ระบบ RAG", "การเชื่อมต่อ LLM", "Prompt Engineering"] },
         sam: { name: "Sam", position: "วิศวกรอัตโนมัติ", skills: ["n8n Workflows", "Integration APIs", "Process Automation"] },
@@ -508,7 +508,7 @@ export const translations = {
       techFoundation: "技术基础",
       skills: ["AI代理", "RAG系统", "API设计", "全栈工程", "可扩展基础设施"],
       team: {
-        te: { name: "Te", position: "创始人和首席建造者", skills: ["AI工作流", "系统架构", "电子商务运营"] },
+        te: { name: "Reed", position: "创始人和首席建造者", skills: ["AI工作流", "系统架构", "电子商务运营"] },
         alex: { name: "Alex", position: "后端工程师", skills: ["API设计", "数据库架构", "云基础设施"] },
         maya: { name: "Maya", position: "AI专家", skills: ["RAG系统", "LLM集成", "提示工程"] },
         sam: { name: "Sam", position: "自动化工程师", skills: ["n8n工作流", "集成API", "流程自动化"] },
