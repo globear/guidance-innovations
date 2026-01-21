@@ -14,7 +14,7 @@ const ProductShowcase = () => {
       nameBold: "Stream",
       subtitle: "AI Customer Service Agent",
       badge: "Private Beta",
-      badgeStyle: "bg-primary/20 text-primary border border-primary/30",
+      badgeStyle: "bg-primary text-primary-foreground border border-primary",
       isBlue: true,
       description: "Businesses lose time, revenue, and reputation when customer communication is slow or inconsistent. GuidanceStream solves this by acting as a structured, intelligent customer service layer across your communication channels.",
       problems: [
