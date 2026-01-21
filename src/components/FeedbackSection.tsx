@@ -21,8 +21,14 @@ const FeedbackSection = () => {
   ];
 
   return (
-    <section id="about" className="relative px-6 py-16 bg-muted" ref={ref}>
-      <div className="mx-auto max-w-7xl">
+    <section id="about" className="relative px-6 py-16 bg-card overflow-hidden" ref={ref}>
+      {/* Subtle purple gradient accent - top left */}
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-gradient-to-br from-purple-500/10 via-transparent to-transparent pointer-events-none" />
+      
+      {/* Subtle accent bar on left edge */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-primary to-indigo-500 opacity-60" />
+      
+      <div className="mx-auto max-w-7xl relative">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left - Heading */}
           <motion.div
