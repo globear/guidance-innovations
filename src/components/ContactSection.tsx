@@ -101,7 +101,7 @@ const ContactSection = () => {
 
               <div className="pt-4">
                 <p className="text-primary-foreground/70 text-sm font-mono">
-                  {t("contact.emailLabel")} <a href="mailto:contact@guidanceinnovations.tech" className="text-primary-foreground hover:underline transition-all">contact@guidanceinnovations.tech</a>
+                  {t("contact.emailLabel")} <a href="mailto:info@guidanceinnovations.tech" className="text-primary-foreground hover:underline transition-all">info@guidanceinnovations.tech</a>
                 </p>
               </div>
 
