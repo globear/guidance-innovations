@@ -59,18 +59,17 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="relative overflow-hidden" ref={ref}>
-      {/* Full-bleed backgrounds */}
+      {/* Full-bleed background colors */}
       <div className="absolute inset-0 grid lg:grid-cols-2">
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-tech" />
-          <div className="absolute inset-0 grid-pattern opacity-20" />
-          <div className="gradient-blob gradient-blob-purple absolute right-0 bottom-0 h-[300px] w-[300px]" />
-        </div>
-        <div className="relative">
-          <div className="absolute inset-0 bg-card" />
-          <div className="absolute inset-0 grid-pattern opacity-10" />
-        </div>
+        <div className="bg-gradient-tech" />
+        <div className="bg-card" />
       </div>
+      
+      {/* Single continuous grid pattern spanning entire section */}
+      <div className="absolute inset-0 grid-pattern opacity-15 pointer-events-none" />
+      
+      {/* Decorative blob */}
+      <div className="gradient-blob gradient-blob-purple absolute left-1/2 -translate-x-full bottom-0 h-[300px] w-[300px]" />
       
       {/* Centered content container */}
       <div className="relative mx-auto max-w-7xl px-6">
