@@ -1,35 +1,37 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Bot, Workflow, Smartphone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CaseStudiesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   const caseStudies = [
     {
       icon: Bot,
-      title: "AI Customer Service System",
-      industry: "E-commerce Operations",
-      challenge: "High volume of repetitive inquiries, slow response time, inconsistent tone across support staff.",
-      solution: "AI agent connected to product data, policies, and order workflows with context-aware responses.",
-      outcome: "Faster response times, reduced manual workload, improved consistency across all channels.",
+      title: t("caseStudies.aiCustomerService.title"),
+      industry: t("caseStudies.aiCustomerService.industry"),
+      challenge: t("caseStudies.aiCustomerService.challenge"),
+      solution: t("caseStudies.aiCustomerService.solution"),
+      outcome: t("caseStudies.aiCustomerService.outcome"),
     },
     {
       icon: Workflow,
-      title: "Operational Automation",
-      industry: "Business Workflows",
-      challenge: "Manual document handling, fragmented processes, error-prone steps causing delays.",
-      solution: "Automated workflows connecting data sources, logic layers, and outputs with intelligent routing.",
-      outcome: "Reduced human error, improved efficiency, scalable operations ready for growth.",
+      title: t("caseStudies.operationalAutomation.title"),
+      industry: t("caseStudies.operationalAutomation.industry"),
+      challenge: t("caseStudies.operationalAutomation.challenge"),
+      solution: t("caseStudies.operationalAutomation.solution"),
+      outcome: t("caseStudies.operationalAutomation.outcome"),
     },
     {
       icon: Smartphone,
-      title: "CareRouters MVP",
-      industry: "Healthcare Platform",
-      challenge: "Designing a usable system around real hospital escort workflows for elderly users.",
-      solution: "UX-driven product design, mobile app prototype, real-world validation with target users.",
-      outcome: "Functional MVP aligned with actual user needs rather than assumptions.",
+      title: t("caseStudies.careRoutersMvp.title"),
+      industry: t("caseStudies.careRoutersMvp.industry"),
+      challenge: t("caseStudies.careRoutersMvp.challenge"),
+      solution: t("caseStudies.careRoutersMvp.solution"),
+      outcome: t("caseStudies.careRoutersMvp.outcome"),
     },
   ];
 
@@ -59,13 +61,13 @@ const CaseStudiesSection = () => {
           className="text-center mb-12"
         >
           <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-4">
-            Case Examples
+            {t("caseStudies.label")}
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-medium text-foreground">
-            Real Solutions for <span className="text-primary">Real Problems</span>
+            {t("caseStudies.heading")} <span className="text-primary">{t("caseStudies.headingHighlight")}</span>
           </h2>
           <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Examples of how we've helped businesses implement AI and automation systems that deliver measurable results.
+            {t("caseStudies.description")}
           </p>
         </motion.div>
 
@@ -98,15 +100,15 @@ const CaseStudiesSection = () => {
               {/* Content */}
               <div className="space-y-4 text-sm">
                 <div>
-                  <p className="font-medium text-foreground mb-1">Challenge</p>
+                  <p className="font-medium text-foreground mb-1">{t("caseStudies.challengeLabel")}</p>
                   <p className="text-muted-foreground leading-relaxed">{study.challenge}</p>
                 </div>
                 <div>
-                  <p className="font-medium text-foreground mb-1">Solution</p>
+                  <p className="font-medium text-foreground mb-1">{t("caseStudies.solutionLabel")}</p>
                   <p className="text-muted-foreground leading-relaxed">{study.solution}</p>
                 </div>
                 <div className="pt-3 border-t border-border">
-                  <p className="font-medium text-primary mb-1">Outcome</p>
+                  <p className="font-medium text-primary mb-1">{t("caseStudies.outcomeLabel")}</p>
                   <p className="text-muted-foreground leading-relaxed">{study.outcome}</p>
                 </div>
               </div>

@@ -1,9 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const WelcomeSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   return (
     <section className="relative px-6 py-16 bg-background" ref={ref}>
@@ -15,23 +17,23 @@ const WelcomeSection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">What We Do</p>
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
+              {t("welcome.label")}
+            </p>
             <h2 className="font-display text-4xl sm:text-5xl font-medium leading-tight text-foreground">
-              SaaS Products &
+              {t("welcome.heading1")}
               <br />
-              AI Solutions
+              {t("welcome.heading2")}
             </h2>
 
             {/* Tech gradient bar */}
             <div className="mt-8 h-1 w-full max-w-md rounded-full bg-gradient-tech" />
 
             <p className="mt-8 text-sm text-muted-foreground leading-relaxed max-w-lg">
-              Our work focuses on clarity, reliability, and long-term scalability. We build AI-powered SaaS products, 
-              intelligent automation, and custom software systems that solve real operational problems for service 
-              and product-based businesses.
+              {t("welcome.description1")}
             </p>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-lg">
-              Each solution is designed for production use and tailored to the business, not built from generic templates.
+              {t("welcome.description2")}
             </p>
           </motion.div>
 
@@ -43,25 +45,29 @@ const WelcomeSection = () => {
             className="space-y-6"
           >
             <div className="p-6 rounded-xl border border-border bg-card glow-hover">
-              <h3 className="font-display text-xl font-semibold text-foreground">SaaS Products</h3>
+              <h3 className="font-display text-xl font-semibold text-foreground">
+                {t("welcome.saasTitle")}
+              </h3>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                Production-ready AI products built for real business use: GuidanceStream for customer service, 
-                CareRouters for healthcare logistics.
+                {t("welcome.saasDescription")}
               </p>
             </div>
             
             <div className="p-6 rounded-xl border border-border bg-card glow-hover">
-              <h3 className="font-display text-xl font-semibold text-foreground">AI Automation</h3>
+              <h3 className="font-display text-xl font-semibold text-foreground">
+                {t("welcome.automationTitle")}
+              </h3>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                Custom AI and automation systems for businesses that want measurable operational improvement. 
-                Workflow automation, intelligent document processing, and system integrations.
+                {t("welcome.automationDescription")}
               </p>
             </div>
             
             <div className="p-6 rounded-xl border border-border bg-card glow-hover">
-              <h3 className="font-display text-xl font-semibold text-foreground">Full-Stack Development</h3>
+              <h3 className="font-display text-xl font-semibold text-foreground">
+                {t("welcome.devTitle")}
+              </h3>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                End-to-end product development for startups and growing businesses. From MVP to production-ready systems.
+                {t("welcome.devDescription")}
               </p>
             </div>
           </motion.div>

@@ -1,5 +1,8 @@
+import { useLanguage } from "@/contexts/LanguageContext";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="border-t border-border px-6 py-12 bg-background">
@@ -16,14 +19,13 @@ const Footer = () => {
               </span>
             </div>
             <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
-              Building practical AI products and automation systems for real businesses. 
-              Based in Thailand, serving global clients.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Products */}
           <div>
-            <h4 className="font-medium text-foreground text-sm mb-4">Products</h4>
+            <h4 className="font-medium text-foreground text-sm mb-4">{t("footer.productsHeading")}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#products" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
@@ -40,16 +42,16 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h4 className="font-medium text-foreground text-sm mb-4">Company</h4>
+            <h4 className="font-medium text-foreground text-sm mb-4">{t("footer.companyHeading")}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  About
+                  {t("footer.about")}
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Contact
+                  {t("footer.contact")}
                 </a>
               </li>
             </ul>
@@ -59,14 +61,14 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Guidance Innovation Co., Ltd. All rights reserved.
+            {t("footer.copyright").replace("{year}", String(currentYear))}
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Privacy
+              {t("footer.privacy")}
             </a>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Terms
+              {t("footer.terms")}
             </a>
           </div>
         </div>

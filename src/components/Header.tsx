@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,10 +19,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#services", label: "Services" },
-    { href: "#products", label: "Products" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { href: "#services", label: t("header.services") },
+    { href: "#products", label: t("header.products") },
+    { href: "#about", label: t("header.about") },
+    { href: "#contact", label: t("header.contact") },
   ];
 
   return (
@@ -55,13 +58,14 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* CTA Button */}
-          <div className="hidden lg:flex">
+          {/* Language Switcher & CTA Button */}
+          <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
             <a
               href="#contact"
               className="btn-primary"
             >
-              Get in Touch
+              {t("header.getInTouch")}
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -100,12 +104,17 @@ const Header = () => {
                   </li>
                 ))}
                 <li className="pt-4 border-t border-border">
+                  <div className="flex items-center justify-between">
+                    <LanguageSwitcher />
+                  </div>
+                </li>
+                <li>
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(false)}
                     className="btn-primary w-full justify-center"
                   >
-                    Get in Touch
+                    {t("header.getInTouch")}
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </li>
