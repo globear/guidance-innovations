@@ -9,6 +9,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import founderAvatar from "@/assets/founder-avatar.svg";
 import alexAvatar from "@/assets/alex-avatar.svg";
 import mayaAvatar from "@/assets/maya-avatar.svg";
+import samAvatar from "@/assets/sam-avatar.svg";
 interface TeamMember {
   initial: string;
   name: string;
@@ -72,6 +73,7 @@ const FeedbackSection = () => {
         t("feedback.team.sam.skills.2" as any),
       ],
       gradient: "from-emerald-500 to-teal-500",
+      avatarImage: samAvatar,
     },
   ];
 
