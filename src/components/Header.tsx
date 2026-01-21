@@ -37,7 +37,7 @@ const Header = () => {
           <a href="#" className="flex items-center gap-2">
             <img src={logo} alt="Guidance logo" className="h-9 w-9" />
             <span className="hidden sm:block font-display text-lg font-medium text-foreground">
-              Guidance
+              GUIDANCE INNOVATIONS
             </span>
           </a>
 
