@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Bot, Workflow, Network } from "lucide-react";
 import aiAgentsChatImage from "@/assets/ai-agents-chat.webp";
+import n8nWorkflowImage from "@/assets/n8n-workflow.webp";
 
 type Capability = {
   title: string;
@@ -35,6 +36,7 @@ const FeaturesSection = () => {
       description: "Automated workflows using APIs, webhooks, and orchestration tools. Connect data sources, logic layers, and outputs.",
       icon: <Workflow className="w-16 h-16 text-cyan-400" />,
       gradient: "from-cyan-500/20 via-cyan-500/10 to-background",
+      image: n8nWorkflowImage,
     },
     {
       title: "System Integration",
