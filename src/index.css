@@ -2,83 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 @layer base {
   :root {
-    /* Dark tech palette - deep navy with neon accents */
-    --background: 225 30% 8%;
-    --foreground: 210 20% 95%;
+    /* Caseton Light Theme - Warm orange/yellow palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
 
-    --card: 225 25% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 225 25% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 175 90% 50%;
-    --primary-foreground: 225 30% 8%;
+    --primary: 25 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 225 20% 16%;
-    --secondary-foreground: 210 15% 80%;
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 225 20% 14%;
-    --muted-foreground: 220 15% 55%;
+    --muted: 40 20% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 280 90% 65%;
-    --accent-foreground: 210 20% 95%;
+    --accent: 25 100% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 80% 55%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 225 20% 18%;
-    --input: 225 20% 18%;
-    --ring: 175 90% 50%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 25 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Neon gradient colors */
-    --gradient-blue: 200 100% 60%;
-    --gradient-purple: 280 90% 65%;
-    --gradient-pink: 320 90% 60%;
+    /* Caseton gradient colors */
     --gradient-orange: 25 100% 55%;
-    --gradient-mint: 175 90% 50%;
-    --gradient-cyan: 185 100% 50%;
+    --gradient-yellow: 40 100% 55%;
+    --gradient-coral: 15 100% 60%;
+    --gradient-peach: 30 100% 75%;
     
     /* Typography */
     --font-display: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 
-    --sidebar-background: 225 25% 12%;
-    --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 175 90% 50%;
-    --sidebar-primary-foreground: 225 30% 8%;
-    --sidebar-accent: 225 20% 16%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 225 20% 18%;
-    --sidebar-ring: 175 90% 50%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 25 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 20% 96%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 25 100% 50%;
   }
 
   .dark {
-    --background: 220 20% 4%;
+    --background: 0 0% 5%;
     --foreground: 0 0% 98%;
-    --card: 220 18% 8%;
+    --card: 0 0% 8%;
     --card-foreground: 0 0% 98%;
-    --popover: 220 18% 8%;
+    --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
-    --primary: 220 70% 50%;
+    --primary: 25 100% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 14%;
-    --secondary-foreground: 0 0% 85%;
-    --muted: 220 14% 12%;
-    --muted-foreground: 220 10% 55%;
-    --accent: 200 80% 55%;
+    --secondary: 45 80% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 25 100% 60%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 14% 16%;
-    --input: 220 14% 16%;
-    --ring: 220 70% 50%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 25 100% 55%;
   }
 }
 
@@ -94,10 +92,6 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
-    /* Tech grid pattern - subtle on dark */
-    background-image: 
-      radial-gradient(circle at 1px 1px, hsl(225 20% 15%) 1px, transparent 0);
-    background-size: 40px 40px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -106,35 +100,36 @@
 }
 
 @layer components {
-  /* Gradient blob backgrounds - neon glow effect */
+  /* Gradient blob backgrounds */
   .gradient-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(140px);
-    opacity: 0.4;
+    filter: blur(80px);
+    opacity: 0.7;
     pointer-events: none;
   }
 
-  .gradient-blob-blue {
-    background: linear-gradient(135deg, hsl(185 100% 50%), hsl(200 100% 55%));
-  }
-
-  .gradient-blob-pink {
-    background: linear-gradient(135deg, hsl(320 90% 55%), hsl(280 90% 60%));
-  }
-
   .gradient-blob-orange {
-    background: linear-gradient(135deg, hsl(25 100% 55%), hsl(15 100% 50%));
+    background: linear-gradient(135deg, hsl(25 100% 55%), hsl(40 100% 60%));
   }
 
-  .gradient-blob-mint {
-    background: linear-gradient(135deg, hsl(175 90% 45%), hsl(190 100% 50%));
+  .gradient-blob-yellow {
+    background: linear-gradient(135deg, hsl(40 100% 55%), hsl(50 100% 65%));
   }
 
-  /* Primary button - dark filled */
+  .gradient-blob-coral {
+    background: linear-gradient(135deg, hsl(15 100% 60%), hsl(25 100% 55%));
+  }
+
+  /* Primary orange gradient */
+  .bg-gradient-orange {
+    background: linear-gradient(135deg, hsl(25 100% 55%), hsl(40 100% 55%));
+  }
+
+  /* Primary button - orange filled */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 font-medium text-primary-foreground rounded-full;
-    background: hsl(var(--foreground));
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium text-primary-foreground rounded-full;
+    background: linear-gradient(135deg, hsl(25 100% 55%), hsl(35 100% 50%));
     transition: all 0.2s ease;
   }
 
@@ -145,54 +140,37 @@
 
   /* Secondary button - outlined */
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 font-medium rounded-full border border-border bg-card text-foreground;
+    @apply inline-flex items-center gap-2 px-6 py-3 font-medium rounded-full border-2 border-foreground bg-transparent text-foreground;
     transition: all 0.2s ease;
   }
 
   .btn-secondary:hover {
-    @apply bg-muted;
+    @apply bg-foreground text-background;
   }
 
-  /* Service cards with gradient backgrounds */
-  .service-card {
-    @apply relative overflow-hidden rounded-3xl p-8;
+  /* Feature cards for the 3 features section */
+  .feature-card {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 text-sm font-medium text-primary-foreground text-center;
     transition: all 0.3s ease;
   }
 
-  .service-card-blue {
-    background: linear-gradient(145deg, hsl(200 80% 25%), hsl(220 70% 20%));
+  .feature-card-orange {
+    background: linear-gradient(135deg, hsl(25 100% 55%), hsl(35 100% 50%));
   }
 
-  .service-card-purple {
-    background: linear-gradient(145deg, hsl(270 60% 25%), hsl(280 50% 20%));
-  }
-
-  .service-card-orange {
-    background: linear-gradient(145deg, hsl(25 80% 25%), hsl(15 70% 20%));
-  }
-
-  .service-card-mint {
-    background: linear-gradient(145deg, hsl(170 60% 92%), hsl(180 50% 88%));
-  }
-
-  /* Stat card */
-  .stat-card {
-    @apply p-6 rounded-2xl bg-card border border-border;
-  }
-
-  /* Accordion minimal style */
-  .accordion-minimal {
-    @apply border-b border-border py-5;
-  }
-
-  /* Info card - compact white cards */
+  /* Info card */
   .info-card {
     @apply rounded-2xl bg-card p-5 shadow-sm border border-border/50;
   }
 
-  /* Feature icon wrapper */
-  .feature-icon {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+  /* Grid gallery item */
+  .gallery-item {
+    @apply rounded-2xl overflow-hidden;
+  }
+
+  /* Orange gradient section */
+  .section-orange {
+    background: linear-gradient(145deg, hsl(25 100% 55%), hsl(35 100% 50%));
   }
 }
 
