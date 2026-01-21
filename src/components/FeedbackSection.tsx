@@ -6,7 +6,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { useLanguage } from "@/contexts/LanguageContext";
-
+import founderAvatar from "@/assets/founder-avatar.svg";
 interface TeamMember {
   initial: string;
   name: string;
@@ -14,6 +14,7 @@ interface TeamMember {
   skills: string[];
   gradient: string;
   isFounder?: boolean;
+  avatarImage?: string;
 }
 
 const FeedbackSection = () => {
@@ -33,6 +34,7 @@ const FeedbackSection = () => {
       ],
       gradient: "from-primary to-purple-500",
       isFounder: true,
+      avatarImage: founderAvatar,
     },
     {
       initial: "A",
@@ -135,9 +137,13 @@ const FeedbackSection = () => {
                       <HoverCardTrigger asChild>
                         <button
                           onClick={() => setSelectedMember(member)}
-                          className={`${member.isFounder ? 'w-14 h-14 text-lg ring-2 ring-primary/30' : 'w-10 h-10 text-sm'} rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center font-bold text-white shrink-0 cursor-pointer transition-all hover:scale-110 hover:ring-2 hover:ring-white/30 ${selectedMember.initial === member.initial ? 'ring-2 ring-white/50' : ''}`}
+                          className={`${member.isFounder ? 'w-14 h-14 text-lg ring-2 ring-primary/30' : 'w-10 h-10 text-sm'} rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center font-bold text-white shrink-0 cursor-pointer transition-all hover:scale-110 hover:ring-2 hover:ring-white/30 ${selectedMember.initial === member.initial ? 'ring-2 ring-white/50' : ''} overflow-hidden`}
                         >
-                          {member.initial}
+                          {member.avatarImage ? (
+                            <img src={member.avatarImage} alt={member.name} className="w-full h-full object-cover" />
+                          ) : (
+                            member.initial
+                          )}
                         </button>
                       </HoverCardTrigger>
                       <HoverCardContent className="w-64 bg-card border-border" side="top">
