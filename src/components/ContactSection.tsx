@@ -120,9 +120,12 @@ const ContactSection = () => {
           initial={{ opacity: 0, x: 30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-card px-6 py-16 lg:px-12 flex items-center"
+          className="bg-card px-6 py-16 lg:px-12 flex items-center relative overflow-hidden"
         >
-          <div className="w-full max-w-md">
+          {/* Grid pattern extending from left side */}
+          <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
+          
+          <div className="w-full max-w-md relative">
             <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
               Send us a message
             </p>
