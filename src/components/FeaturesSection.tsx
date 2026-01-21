@@ -1,22 +1,43 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Bot, Workflow, Network } from "lucide-react";
+
+type Capability = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  gradient: string;
+};
 
 const FeaturesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedCapability, setSelectedCapability] = useState<Capability | null>(null);
 
-  const capabilities = [
+  const capabilities: Capability[] = [
     {
       title: "AI Agents",
       description: "AI agents for customer support and internal operations with context-aware responses aligned with your brand voice.",
+      icon: <Bot className="w-16 h-16 text-primary" />,
+      gradient: "from-primary/20 via-primary/10 to-background",
     },
     {
       title: "Workflow Automation",
       description: "Automated workflows using APIs, webhooks, and orchestration tools. Connect data sources, logic layers, and outputs.",
+      icon: <Workflow className="w-16 h-16 text-cyan-400" />,
+      gradient: "from-cyan-500/20 via-cyan-500/10 to-background",
     },
     {
       title: "System Integration",
       description: "CRM, ERP, and platform integrations. Knowledge base systems using structured data and vector search.",
+      icon: <Network className="w-16 h-16 text-purple-400" />,
+      gradient: "from-purple-500/20 via-purple-500/10 to-background",
     },
   ];
 
@@ -52,12 +73,31 @@ const FeaturesSection = () => {
           {capabilities.map((capability) => (
             <div
               key={capability.title}
-              className="feature-card min-w-[180px]"
+              onClick={() => setSelectedCapability(capability)}
+              className="feature-card min-w-[180px] cursor-pointer hover:scale-105 transition-all duration-300"
             >
               {capability.title}
             </div>
           ))}
         </motion.div>
+
+        {/* Modal for capability example */}
+        <Dialog open={!!selectedCapability} onOpenChange={() => setSelectedCapability(null)}>
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle className="text-xl font-display">{selectedCapability?.title}</DialogTitle>
+            </DialogHeader>
+            <div className={`flex flex-col items-center justify-center p-8 rounded-lg bg-gradient-to-br ${selectedCapability?.gradient}`}>
+              {selectedCapability?.icon}
+              <p className="mt-4 text-sm text-muted-foreground text-center max-w-sm">
+                {selectedCapability?.description}
+              </p>
+              <span className="mt-4 text-xs font-mono text-muted-foreground/60">
+                Click to view example implementation
+              </span>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Capability descriptions */}
         <motion.div
