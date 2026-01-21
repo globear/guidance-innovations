@@ -52,7 +52,7 @@ const FeaturesSection = () => {
           {capabilities.map((capability) => (
             <div
               key={capability.title}
-              className="feature-card feature-card-orange min-w-[180px]"
+              className="feature-card min-w-[180px]"
             >
               {capability.title}
             </div>
@@ -82,10 +82,10 @@ const FeaturesSection = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">Also includes</p>
+          <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-4">Also includes</p>
           <div className="flex flex-wrap justify-center gap-3">
             {["Intelligent document processing", "Data pipelines", "Vector search", "API-driven design"].map((item) => (
-              <span key={item} className="px-4 py-2 rounded-full bg-card border border-border text-sm text-foreground">
+              <span key={item} className="px-4 py-2 rounded-lg bg-card border border-border text-sm text-foreground font-mono">
                 {item}
               </span>
             ))}

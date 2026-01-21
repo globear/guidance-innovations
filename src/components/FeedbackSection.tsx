@@ -41,9 +41,9 @@ const FeedbackSection = () => {
             </p>
 
             {/* Founder highlight */}
-            <div className="mt-12 p-6 rounded-2xl bg-card border border-border">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">Founder</p>
-              <h3 className="font-display text-2xl font-medium text-foreground">Te</h3>
+            <div className="mt-12 p-6 rounded-xl bg-card border border-border glow-hover">
+              <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">Founder</p>
+              <h3 className="font-display text-2xl font-semibold text-foreground">Te</h3>
               <p className="text-sm text-muted-foreground mt-1">Founder & Lead Builder</p>
               <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
                 Active e-commerce operator since 2017. Built automation systems for customer service, 
@@ -63,9 +63,9 @@ const FeedbackSection = () => {
             {reasons.map((reason, index) => (
               <div 
                 key={reason.title}
-                className="p-6 rounded-2xl border border-border bg-card"
+                className="p-6 rounded-xl border border-border bg-card glow-hover"
               >
-                <h3 className="font-medium text-foreground">{reason.title}</h3>
+                <h3 className="font-semibold text-foreground">{reason.title}</h3>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
                   {reason.description}
                 </p>
@@ -73,11 +73,11 @@ const FeedbackSection = () => {
             ))}
 
             {/* Technical capabilities */}
-            <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
-              <p className="text-xs font-medium text-primary uppercase tracking-wider mb-3">Technical Foundation</p>
+            <div className="p-6 rounded-xl bg-primary/5 border border-primary/20">
+              <p className="text-xs font-mono text-primary uppercase tracking-wider mb-3">Technical Foundation</p>
               <div className="flex flex-wrap gap-2">
                 {["AI agents", "RAG systems", "API design", "Full-stack engineering", "Scalable infrastructure"].map((skill) => (
-                  <span key={skill} className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs">
+                  <span key={skill} className="px-3 py-1 rounded-md bg-primary/10 text-primary text-xs font-mono">
                     {skill}
                   </span>
                 ))}
