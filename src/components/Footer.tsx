@@ -11,14 +11,9 @@ const Footer = () => {
         <div className="grid gap-8 md:grid-cols-4">
           {/* Logo & Description */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary">
-                <span className="font-display text-lg font-bold text-primary-foreground">G</span>
-              </div>
-              <span className="font-display text-lg font-medium text-foreground">
-                Guidance Innovation
-              </span>
-            </div>
+            <span className="font-display text-lg font-medium text-foreground">
+              Guidance Innovations Co., Ltd.
+            </span>
             <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
               {t("footer.description")}
             </p>
