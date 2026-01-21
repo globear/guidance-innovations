@@ -9,6 +9,7 @@ import {
 import { Bot, Workflow, Network } from "lucide-react";
 import aiAgentsChatImage from "@/assets/ai-agents-chat.webp";
 import n8nWorkflowImage from "@/assets/n8n-workflow.webp";
+import supabaseEdgeFunctionsImage from "@/assets/supabase-edge-functions.webp";
 
 type Capability = {
   title: string;
@@ -43,6 +44,7 @@ const FeaturesSection = () => {
       description: "CRM, ERP, and platform integrations. Knowledge base systems using structured data and vector search.",
       icon: <Network className="w-16 h-16 text-purple-400" />,
       gradient: "from-purple-500/20 via-purple-500/10 to-background",
+      image: supabaseEdgeFunctionsImage,
     },
   ];
 
