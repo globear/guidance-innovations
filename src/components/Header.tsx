@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,9 +35,7 @@ const Header = () => {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary">
-              <span className="font-display text-lg font-bold text-primary-foreground">G</span>
-            </div>
+            <img src={logo} alt="Guidance logo" className="h-9 w-9" />
             <span className="hidden sm:block font-display text-lg font-medium text-foreground">
               Guidance
             </span>
