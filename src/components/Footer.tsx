@@ -1,4 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -64,9 +65,9 @@ const Footer = () => {
             {t("footer.copyright").replace("{year}", String(currentYear))}
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               {t("footer.privacy")}
-            </a>
+            </Link>
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               {t("footer.terms")}
             </a>
