@@ -21,7 +21,7 @@ const FeedbackSection = () => {
   ];
 
   return (
-    <section id="about" className="relative px-6 py-20 bg-muted" ref={ref}>
+    <section id="about" className="relative px-6 py-16 bg-muted" ref={ref}>
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left - Heading */}

@@ -1,16 +1,58 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowRight, Send, Loader2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Please enter a valid email").max(255, "Email must be less than 255 characters"),
+  company: z.string().trim().max(100, "Company name must be less than 100 characters").optional(),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    
+    // Simulate form submission - replace with actual API call when backend is ready
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    
+    toast.success("Message sent successfully!", {
+      description: "We'll get back to you within 1-2 business days.",
+    });
+    
+    form.reset();
+    setIsSubmitting(false);
+  };
 
   return (
     <section id="contact" className="relative overflow-hidden" ref={ref}>
       <div className="grid lg:grid-cols-2">
         {/* Left - Orange gradient with contact info */}
-        <div className="bg-gradient-orange px-6 py-20 lg:px-12">
+        <div className="bg-gradient-orange px-6 py-16 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -36,56 +78,150 @@ const ContactSection = () => {
 
               <div className="pt-4">
                 <p className="text-primary-foreground/80 text-sm">
-                  Email: <a href="mailto:contact@guidanceinnovations.tech" className="underline">contact@guidanceinnovations.tech</a>
+                  Email: <a href="mailto:contact@guidanceinnovations.tech" className="underline hover:no-underline transition-all">contact@guidanceinnovations.tech</a>
                 </p>
               </div>
 
               <div>
                 <p className="text-primary-foreground/80 text-sm">
-                  Website: <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="underline">guidancestream.com</a>
+                  Website: <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline transition-all">guidancestream.com</a>
                 </p>
               </div>
             </div>
 
-            <div className="mt-8">
-              <a 
-                href="mailto:contact@guidanceinnovations.tech"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-foreground text-primary rounded-full font-medium hover:opacity-90 transition-opacity"
-              >
-                Schedule a Consultation
-                <ArrowRight className="h-4 w-4" />
-              </a>
+            {/* Contact reasons */}
+            <div className="mt-10 pt-8 border-t border-primary-foreground/20">
+              <p className="text-primary-foreground/80 text-xs uppercase tracking-wider mb-4">You may contact us for</p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Product partnerships",
+                  "AI automation",
+                  "Technical consulting",
+                  "Long-term collaboration",
+                ].map((item) => (
+                  <span 
+                    key={item}
+                    className="px-3 py-1.5 rounded-full bg-primary-foreground/10 text-primary-foreground text-xs"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Right - Contact reasons */}
+        {/* Right - Contact Form */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-muted px-6 py-20 lg:px-12 flex items-center"
+          className="bg-card px-6 py-16 lg:px-12 flex items-center"
         >
           <div className="w-full max-w-md">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-6">You may contact us for</p>
-            
-            <div className="space-y-4">
-              {[
-                "Product development partnerships",
-                "AI automation projects",
-                "Technical architecture discussions",
-                "Long-term collaboration opportunities",
-              ].map((item) => (
-                <div 
-                  key={item}
-                  className="p-4 rounded-xl bg-card border border-border text-foreground"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+              Send us a message
+            </p>
+            <h3 className="font-display text-2xl font-medium text-foreground mb-6">
+              Start a Conversation
+            </h3>
 
-            <p className="mt-8 text-sm text-muted-foreground leading-relaxed">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Name *</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your name" 
+                          {...field} 
+                          className="bg-background border-border"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Email *</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email" 
+                          placeholder="your@email.com" 
+                          {...field} 
+                          className="bg-background border-border"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Company</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your company (optional)" 
+                          {...field} 
+                          className="bg-background border-border"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-foreground">Message *</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Tell us about your project or how we can help..." 
+                          {...field} 
+                          className="bg-background border-border min-h-[120px] resize-none"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            </Form>
+
+            <p className="mt-6 text-xs text-muted-foreground leading-relaxed">
               This company is built with the mindset of a product builder, not an agency. 
               We focus on long-term product thinking rather than short-term experimentation.
             </p>

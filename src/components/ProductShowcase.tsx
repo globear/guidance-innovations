@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const ProductShowcase = () => {
@@ -49,11 +49,38 @@ const ProductShowcase = () => {
     }
   ];
 
-  const nextProduct = () => setActiveProduct((prev) => (prev + 1) % products.length);
-  const prevProduct = () => setActiveProduct((prev) => (prev - 1 + products.length) % products.length);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const nextProduct = useCallback(() => setActiveProduct((prev) => (prev + 1) % products.length), [products.length]);
+  const prevProduct = useCallback(() => setActiveProduct((prev) => (prev - 1 + products.length) % products.length), [products.length]);
+
+  // Auto-play carousel
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(nextProduct, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, nextProduct]);
+
+  // Handle swipe gestures
+  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const swipeThreshold = 50;
+    if (info.offset.x < -swipeThreshold) {
+      nextProduct();
+    } else if (info.offset.x > swipeThreshold) {
+      prevProduct();
+    }
+  };
 
   return (
-    <section id="products" className="relative overflow-hidden" ref={ref}>
+    <section 
+      id="products" 
+      className="relative overflow-hidden" 
+      ref={ref}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+    >
       {/* Navigation dots and arrows */}
       <div className="absolute top-1/2 -translate-y-1/2 left-4 z-20">
         <button 
@@ -90,8 +117,14 @@ const ProductShowcase = () => {
         ))}
       </div>
 
-      {/* Sliding container */}
-      <div className="relative min-h-[600px]">
+      {/* Sliding container with swipe support */}
+      <motion.div 
+        className="relative min-h-[600px] cursor-grab active:cursor-grabbing"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.1}
+        onDragEnd={handleDragEnd}
+      >
         <AnimatePresence mode="wait">
           {activeProduct === 0 ? (
             <motion.div
@@ -205,7 +238,7 @@ const ProductShowcase = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </section>
   );
 };

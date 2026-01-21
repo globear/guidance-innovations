@@ -6,7 +6,7 @@ const WelcomeSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative px-6 py-20 bg-background" ref={ref}>
+    <section className="relative px-6 py-16 bg-background" ref={ref}>
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-start">
           {/* Left - What We Do intro */}
