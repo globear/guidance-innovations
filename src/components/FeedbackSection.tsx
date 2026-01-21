@@ -8,6 +8,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import founderAvatar from "@/assets/founder-avatar.svg";
 import alexAvatar from "@/assets/alex-avatar.svg";
+import mayaAvatar from "@/assets/maya-avatar.svg";
 interface TeamMember {
   initial: string;
   name: string;
@@ -59,6 +60,7 @@ const FeedbackSection = () => {
         t("feedback.team.maya.skills.2" as any),
       ],
       gradient: "from-purple-500 to-pink-500",
+      avatarImage: mayaAvatar,
     },
     {
       initial: "S",
