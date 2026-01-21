@@ -14,8 +14,8 @@ const ProductShowcase = () => {
       nameBold: "Stream",
       subtitle: "AI Customer Service Agent",
       badge: "Private Beta",
-      badgeStyle: "bg-primary-foreground/20 text-primary-foreground",
-      isOrange: true,
+      badgeStyle: "bg-primary/20 text-primary border border-primary/30",
+      isBlue: true,
       description: "Businesses lose time, revenue, and reputation when customer communication is slow or inconsistent. GuidanceStream solves this by acting as a structured, intelligent customer service layer across your communication channels.",
       problems: [
         "High volume of repetitive inquiries",
@@ -37,14 +37,14 @@ const ProductShowcase = () => {
       nameBold: "Routers",
       subtitle: "Hospital Escort Platform for Elderly Care",
       badge: "MVP Stage",
-      badgeStyle: "bg-primary/10 text-primary",
-      isOrange: false,
+      badgeStyle: "bg-secondary text-secondary-foreground",
+      isBlue: false,
       description: "Navigating hospitals can be stressful for elderly individuals and their families. CareRouters provides a structured platform for finding reliable companions to assist with hospital visits.",
       coreFeatures: [
-        { title: "Elderly-friendly UX", desc: "Designed for accessibility", bg: "bg-[hsl(30_50%_95%)]" },
+        { title: "Elderly-friendly UX", desc: "Designed for accessibility", bg: "bg-secondary" },
         { title: "Real hospital workflows", desc: "Practical usability", bg: "bg-primary", light: true },
-        { title: "Trust & Safety", desc: "Accountability focused", bg: "bg-[hsl(45_60%_90%)]" },
-        { title: "Thailand & Malaysia", desc: "Regional coverage", bg: "bg-[hsl(35_40%_88%)]" }
+        { title: "Trust & Safety", desc: "Accountability focused", bg: "bg-muted" },
+        { title: "Thailand & Malaysia", desc: "Regional coverage", bg: "bg-card border border-border" }
       ]
     }
   ];
@@ -135,49 +135,53 @@ const ProductShowcase = () => {
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className="absolute inset-0"
             >
-              {/* GuidanceStream - Orange section */}
-              <div className="bg-gradient-orange px-6 py-16 min-h-[600px] flex items-center">
-                <div className="mx-auto max-w-7xl w-full">
+              {/* GuidanceStream - Tech gradient section */}
+              <div className="relative px-6 py-16 min-h-[600px] flex items-center overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-tech" />
+                <div className="absolute inset-0 grid-pattern opacity-20" />
+                <div className="gradient-blob gradient-blob-purple absolute right-0 top-0 h-[400px] w-[400px]" />
+                
+                <div className="relative mx-auto max-w-7xl w-full">
                   <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
                     {/* Left - Product name */}
                     <div>
-                      <p className="text-primary-foreground/80 text-sm uppercase tracking-wider mb-4">
+                      <p className="text-primary-foreground/70 text-sm uppercase tracking-wider mb-4 font-mono">
                         {products[0].label}
                       </p>
-                      <p className="text-primary-foreground text-4xl sm:text-5xl font-display font-medium leading-tight">
+                      <p className="text-primary-foreground text-4xl sm:text-5xl font-display font-semibold leading-tight tracking-tight">
                         {products[0].name}
                       </p>
-                      <p className="text-primary-foreground text-5xl sm:text-6xl font-display font-bold italic leading-none">
+                      <p className="text-primary-foreground text-5xl sm:text-6xl font-display font-bold leading-none">
                         {products[0].nameBold}
                       </p>
-                      <p className="text-primary-foreground/90 text-lg mt-6">
+                      <p className="text-primary-foreground/80 text-lg mt-6">
                         {products[0].subtitle}
                       </p>
-                      <span className={`inline-block mt-4 px-4 py-1 rounded-full text-sm ${products[0].badgeStyle}`}>
+                      <span className={`inline-block mt-4 px-4 py-1.5 rounded-md text-sm font-medium ${products[0].badgeStyle}`}>
                         {products[0].badge}
                       </span>
                     </div>
 
                     {/* Right - Product description */}
                     <div className="flex flex-col justify-center">
-                      <p className="text-primary-foreground/90 text-sm uppercase tracking-wider mb-4">
+                      <p className="text-primary-foreground/70 text-sm uppercase tracking-wider mb-4 font-mono">
                         The Problem It Solves
                       </p>
-                      <p className="text-primary-foreground text-sm leading-relaxed mb-6">
+                      <p className="text-primary-foreground/90 text-sm leading-relaxed mb-6">
                         {products[0].description}
                       </p>
                       
-                      <div className="space-y-3 text-primary-foreground/90 text-sm">
+                      <div className="space-y-2 text-primary-foreground/80 text-sm font-mono">
                         {products[0].problems?.map((p, i) => (
-                          <p key={i}>• {p}</p>
+                          <p key={i}>→ {p}</p>
                         ))}
                       </div>
 
-                      <div className="border-t border-primary-foreground/30 pt-6 mt-6">
-                        <p className="text-primary-foreground/90 text-sm uppercase tracking-wider mb-3">
+                      <div className="border-t border-primary-foreground/20 pt-6 mt-6">
+                        <p className="text-primary-foreground/70 text-sm uppercase tracking-wider mb-3 font-mono">
                           How It Works
                         </p>
-                        <div className="grid grid-cols-2 gap-3 text-sm text-primary-foreground/80">
+                        <div className="grid grid-cols-2 gap-2 text-sm text-primary-foreground/80 font-mono">
                           {products[0].features?.map((f, i) => (
                             <p key={i}>• {f}</p>
                           ))}

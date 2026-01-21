@@ -58,7 +58,7 @@ const CaseStudiesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
+          <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-4">
             Case Examples
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-medium text-foreground">
@@ -80,7 +80,7 @@ const CaseStudiesSection = () => {
             <motion.div
               key={study.title}
               variants={itemVariants}
-              className="group p-6 rounded-2xl border border-border bg-card hover:shadow-lg transition-shadow duration-300"
+              className="group p-6 rounded-xl border border-border bg-card glow-hover transition-all duration-300"
             >
               {/* Icon */}
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">

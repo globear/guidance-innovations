@@ -51,47 +51,51 @@ const ContactSection = () => {
   return (
     <section id="contact" className="relative overflow-hidden" ref={ref}>
       <div className="grid lg:grid-cols-2">
-        {/* Left - Orange gradient with contact info */}
-        <div className="bg-gradient-orange px-6 py-16 lg:px-12">
+        {/* Left - Tech gradient with contact info */}
+        <div className="relative px-6 py-16 lg:px-12 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-tech" />
+          <div className="absolute inset-0 grid-pattern opacity-20" />
+          <div className="gradient-blob gradient-blob-purple absolute right-0 bottom-0 h-[300px] w-[300px]" />
+          
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="max-w-md"
+            className="relative max-w-md"
           >
-            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-medium text-primary-foreground italic leading-none">
+            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold text-primary-foreground leading-none tracking-tight">
               Let's
               <br />
               Talk
             </h2>
 
-            <p className="mt-8 text-primary-foreground/90 leading-relaxed">
+            <p className="mt-8 text-primary-foreground/80 leading-relaxed">
               If you're looking to build a serious product, implement AI in real operations, 
               or explore a partnership, we welcome structured discussions.
             </p>
 
             <div className="mt-12 space-y-4 text-primary-foreground">
               <div>
-                <p className="font-medium">Guidance Innovation Co., Ltd.</p>
-                <p className="text-primary-foreground/80 text-sm">Thailand</p>
+                <p className="font-semibold">Guidance Innovation Co., Ltd.</p>
+                <p className="text-primary-foreground/70 text-sm font-mono">Thailand</p>
               </div>
 
               <div className="pt-4">
-                <p className="text-primary-foreground/80 text-sm">
-                  Email: <a href="mailto:contact@guidanceinnovations.tech" className="underline hover:no-underline transition-all">contact@guidanceinnovations.tech</a>
+                <p className="text-primary-foreground/70 text-sm font-mono">
+                  Email: <a href="mailto:contact@guidanceinnovations.tech" className="text-primary-foreground hover:underline transition-all">contact@guidanceinnovations.tech</a>
                 </p>
               </div>
 
               <div>
-                <p className="text-primary-foreground/80 text-sm">
-                  Website: <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline transition-all">guidancestream.com</a>
+                <p className="text-primary-foreground/70 text-sm font-mono">
+                  Website: <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="text-primary-foreground hover:underline transition-all">guidancestream.com</a>
                 </p>
               </div>
             </div>
 
             {/* Contact reasons */}
             <div className="mt-10 pt-8 border-t border-primary-foreground/20">
-              <p className="text-primary-foreground/80 text-xs uppercase tracking-wider mb-4">You may contact us for</p>
+              <p className="text-primary-foreground/70 text-xs uppercase tracking-wider mb-4 font-mono">You may contact us for</p>
               <div className="flex flex-wrap gap-2">
                 {[
                   "Product partnerships",
@@ -101,7 +105,7 @@ const ContactSection = () => {
                 ].map((item) => (
                   <span 
                     key={item}
-                    className="px-3 py-1.5 rounded-full bg-primary-foreground/10 text-primary-foreground text-xs"
+                    className="px-3 py-1.5 rounded-md bg-primary-foreground/10 text-primary-foreground text-xs font-mono border border-primary-foreground/20"
                   >
                     {item}
                   </span>
@@ -119,10 +123,10 @@ const ContactSection = () => {
           className="bg-card px-6 py-16 lg:px-12 flex items-center"
         >
           <div className="w-full max-w-md">
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
+            <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
               Send us a message
             </p>
-            <h3 className="font-display text-2xl font-medium text-foreground mb-6">
+            <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
               Start a Conversation
             </h3>
 
