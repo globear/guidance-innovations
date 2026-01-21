@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import HeroAnimation from "./HeroAnimation";
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -19,6 +20,9 @@ const HeroSection = () => {
         <div className="gradient-blob gradient-blob-purple absolute right-[15%] top-1/2 h-[400px] w-[400px]" />
         <div className="gradient-blob gradient-blob-cyan absolute left-[10%] bottom-0 h-[300px] w-[300px]" />
       </div>
+
+      {/* Tech Animation */}
+      <HeroAnimation />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-20">
         <motion.div
