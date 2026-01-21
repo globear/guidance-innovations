@@ -59,12 +59,24 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="relative overflow-hidden" ref={ref}>
-      <div className="grid lg:grid-cols-2">
-        {/* Left - Tech gradient with contact info */}
-        <div className="relative px-6 py-16 lg:px-12 overflow-hidden">
+      {/* Full-bleed backgrounds */}
+      <div className="absolute inset-0 grid lg:grid-cols-2">
+        <div className="relative">
           <div className="absolute inset-0 bg-gradient-tech" />
           <div className="absolute inset-0 grid-pattern opacity-20" />
           <div className="gradient-blob gradient-blob-purple absolute right-0 bottom-0 h-[300px] w-[300px]" />
+        </div>
+        <div className="relative">
+          <div className="absolute inset-0 bg-card" />
+          <div className="absolute inset-0 grid-pattern opacity-10" />
+        </div>
+      </div>
+      
+      {/* Centered content container */}
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 py-16">
+          {/* Left - Tech gradient with contact info */}
+          <div className="relative">
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -118,17 +130,15 @@ const ContactSection = () => {
               </div>
             </div>
           </motion.div>
-        </div>
+          </div>
 
-        {/* Right - Contact Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-card px-6 py-16 lg:px-12 flex items-center relative overflow-hidden"
-        >
-          {/* Grid pattern extending from left side */}
-          <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none" />
+          {/* Right - Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center"
+          >
           
           <div className="w-full max-w-md relative">
             <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
@@ -237,7 +247,8 @@ const ContactSection = () => {
               {t("contact.footerNote")}
             </p>
           </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
