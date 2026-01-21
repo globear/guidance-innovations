@@ -103,6 +103,21 @@
 }
 
 @layer components {
+  /* Responsive section container */
+  .section-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Responsive section padding */
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* Smaller section padding for tighter sections */
+  .section-padding-sm {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
   /* Gradient blob backgrounds - tech blue/purple glow */
   .gradient-blob {
     position: absolute;

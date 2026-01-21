@@ -6,11 +6,11 @@ const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="border-t border-border px-6 py-12 bg-background">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-4">
+    <footer className="border-t border-border bg-background">
+      <div className="section-container py-12 sm:py-16">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {/* Logo & Description */}
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2">
             <span className="font-display text-lg font-medium text-foreground">
               Guidance Innovations Co., Ltd.
             </span>
@@ -55,7 +55,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-10 sm:mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-sm text-muted-foreground">
             {t("footer.copyright").replace("{year}", String(currentYear))}
           </p>

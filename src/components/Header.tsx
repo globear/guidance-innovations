@@ -89,7 +89,7 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-4 right-4 top-20 rounded-2xl border border-border bg-card p-6 shadow-lg lg:hidden"
+              className="absolute left-4 right-4 sm:left-6 sm:right-6 top-20 rounded-2xl border border-border bg-card p-6 shadow-lg lg:hidden"
             >
               <ul className="flex flex-col gap-4">
                 {navLinks.map((link) => (

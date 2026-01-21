@@ -72,8 +72,8 @@ const ContactSection = () => {
       <div className="gradient-blob gradient-blob-purple absolute left-1/2 -translate-x-full bottom-0 h-[300px] w-[300px]" />
       
       {/* Centered content container */}
-      <div className="relative mx-auto max-w-7xl px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 py-16">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 py-16 sm:py-20 lg:py-24">
           {/* Left - Tech gradient with contact info */}
           <div className="relative">
           

@@ -58,8 +58,8 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="services" className="relative px-6 py-16 bg-muted" ref={ref}>
-      <div className="mx-auto max-w-7xl">
+    <section id="services" className="relative bg-muted section-padding" ref={ref}>
+      <div className="section-container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

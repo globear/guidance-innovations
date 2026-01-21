@@ -24,12 +24,12 @@ const HeroSection = () => {
       {/* Tech Animation */}
       <HeroAnimation />
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-20">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 lg:pb-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl"
+          className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left"
         >
           {/* Company Name */}
           <p className="text-muted-foreground text-sm font-medium tracking-wider uppercase mb-4">
@@ -48,7 +48,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 max-w-xl"
+          className="mt-10 sm:mt-12 max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
         >
           <p className="text-muted-foreground text-base leading-relaxed">
             {t("hero.description")}
@@ -57,7 +57,7 @@ const HeroSection = () => {
             {t("hero.tagline")}
           </p>
           
-          <div className="flex flex-wrap gap-4 mt-8">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
             <a href="#contact" className="btn-primary">
               {t("hero.contactUs")}
               <ArrowRight className="h-4 w-4" />
@@ -73,7 +73,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-20 flex flex-wrap gap-12 text-sm"
+          className="mt-16 sm:mt-20 flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-12 text-sm"
         >
           <div>
             <p className="text-xs font-mono tracking-wider uppercase text-muted-foreground/60 mb-1">

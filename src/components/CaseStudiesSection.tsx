@@ -51,8 +51,8 @@ const CaseStudiesSection = () => {
   };
 
   return (
-    <section id="case-studies" className="relative px-6 py-16 bg-background" ref={ref}>
-      <div className="mx-auto max-w-7xl">
+    <section id="case-studies" className="relative bg-background section-padding" ref={ref}>
+      <div className="section-container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

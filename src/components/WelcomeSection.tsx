@@ -8,9 +8,9 @@ const WelcomeSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative px-6 py-16 bg-background" ref={ref}>
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-start">
+    <section className="relative bg-background section-padding" ref={ref}>
+      <div className="section-container">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-20 items-start">
           {/* Left - What We Do intro */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

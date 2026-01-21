@@ -86,7 +86,7 @@ const ProductShowcase = () => {
       onTouchEnd={() => setIsPaused(false)}
     >
       {/* Navigation dots and arrows */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-4 z-20">
+      <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4 lg:left-8 z-20">
         <button 
           onClick={prevProduct}
           className="p-2 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
@@ -95,7 +95,7 @@ const ProductShowcase = () => {
           <ChevronLeft className="w-5 h-5 text-foreground" />
         </button>
       </div>
-      <div className="absolute top-1/2 -translate-y-1/2 right-4 z-20">
+      <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-4 lg:right-8 z-20">
         <button 
           onClick={nextProduct}
           className="p-2 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
@@ -140,13 +140,13 @@ const ProductShowcase = () => {
               className="absolute inset-0"
             >
               {/* GuidanceStream - Tech gradient section */}
-              <div className="relative px-6 py-16 min-h-[600px] flex items-center overflow-hidden">
+              <div className="relative px-4 sm:px-6 lg:px-8 py-16 sm:py-20 min-h-[600px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-tech" />
                 <div className="absolute inset-0 grid-pattern opacity-20" />
                 <div className="gradient-blob gradient-blob-purple absolute right-0 top-0 h-[400px] w-[400px]" />
                 
                 <div className="relative mx-auto max-w-7xl w-full">
-                  <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+                  <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 xl:gap-20">
                     {/* Left - Product name */}
                     <div>
                       <p className="text-primary-foreground/70 text-sm uppercase tracking-wider mb-4 font-mono">
@@ -206,9 +206,9 @@ const ProductShowcase = () => {
               className="absolute inset-0"
             >
               {/* CareRouters section */}
-              <div className="px-6 py-16 bg-background min-h-[600px] flex items-center">
+              <div className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 bg-background min-h-[600px] flex items-center">
                 <div className="mx-auto max-w-7xl w-full">
-                  <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+                  <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 xl:gap-20">
                     {/* Left - Description */}
                     <div>
                       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
