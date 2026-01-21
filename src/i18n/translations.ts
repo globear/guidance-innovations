@@ -525,7 +525,7 @@ export const translations = {
       contactReasonsLabel: "您可以联系我们咨询",
       contactReasons: ["产品合作", "AI自动化", "技术咨询", "长期合作"],
       formLabel: "给我们发消息",
-      formHeading: "开始对话",
+      formHeading: "开始我们的对话",
       nameLabel: "姓名 *",
       namePlaceholder: "您的姓名",
       emailFieldLabel: "邮箱 *",
