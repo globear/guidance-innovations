@@ -137,7 +137,7 @@ export const translations = {
         te: { name: "Reed", position: "Founder & Lead Builder", skills: ["AI Workflows", "System Architecture", "E-commerce Operations"] },
         alex: { name: "Denis", position: "Backend Engineer", skills: ["API Design", "Database Architecture", "Cloud Infrastructure"] },
         maya: { name: "Best", position: "Marketing & Growth", skills: ["RAG Systems", "LLM Integration", "Prompt Engineering"] },
-        sam: { name: "Ye", position: "Automation Engineer", skills: ["n8n Workflows", "Integration APIs", "Process Automation"] },
+        sam: { name: "Ye", position: "UX/UI Designer", skills: ["User Research", "Interface Design", "Design Systems"] },
       },
     },
     contact: {
@@ -324,7 +324,7 @@ export const translations = {
         te: { name: "Reed", position: "ผู้ก่อตั้งและผู้สร้างหลัก", skills: ["AI Workflows", "สถาปัตยกรรมระบบ", "การดำเนินงาน E-commerce"] },
         alex: { name: "Denis", position: "วิศวกร Backend", skills: ["การออกแบบ API", "สถาปัตยกรรมฐานข้อมูล", "โครงสร้างพื้นฐาน Cloud"] },
         maya: { name: "Best", position: "การตลาดและการเติบโต", skills: ["ระบบ RAG", "การเชื่อมต่อ LLM", "Prompt Engineering"] },
-        sam: { name: "Ye", position: "วิศวกรอัตโนมัติ", skills: ["n8n Workflows", "Integration APIs", "Process Automation"] },
+        sam: { name: "Ye", position: "นักออกแบบ UX/UI", skills: ["การวิจัยผู้ใช้", "การออกแบบอินเทอร์เฟซ", "ระบบการออกแบบ"] },
       },
     },
     contact: {
@@ -511,7 +511,7 @@ export const translations = {
         te: { name: "Reed", position: "创始人和首席建造者", skills: ["AI工作流", "系统架构", "电子商务运营"] },
         alex: { name: "Denis", position: "后端工程师", skills: ["API设计", "数据库架构", "云基础设施"] },
         maya: { name: "Best", position: "市场营销与增长", skills: ["RAG系统", "LLM集成", "提示工程"] },
-        sam: { name: "Ye", position: "自动化工程师", skills: ["n8n工作流", "集成API", "流程自动化"] },
+        sam: { name: "Ye", position: "UX/UI设计师", skills: ["用户研究", "界面设计", "设计系统"] },
       },
     },
     contact: {
