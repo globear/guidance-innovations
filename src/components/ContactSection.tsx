@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ArrowRight, Send, Loader2 } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,20 +9,22 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Please enter a valid email").max(255, "Email must be less than 255 characters"),
-  company: z.string().trim().max(100, "Company name must be less than 100 characters").optional(),
-  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useLanguage();
+
+  const contactSchema = z.object({
+    name: z.string().trim().min(1, t("contact.validation.nameRequired")).max(100, t("contact.validation.nameMax")),
+    email: z.string().trim().email(t("contact.validation.emailInvalid")).max(255, t("contact.validation.emailMax")),
+    company: z.string().trim().max(100, t("contact.validation.companyMax")).optional(),
+    message: z.string().trim().min(10, t("contact.validation.messageMin")).max(1000, t("contact.validation.messageMax")),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -40,13 +42,20 @@ const ContactSection = () => {
     // Simulate form submission - replace with actual API call when backend is ready
     await new Promise((resolve) => setTimeout(resolve, 1500));
     
-    toast.success("Message sent successfully!", {
-      description: "We'll get back to you within 1-2 business days.",
+    toast.success(t("contact.successMessage"), {
+      description: t("contact.successDescription"),
     });
     
     form.reset();
     setIsSubmitting(false);
   };
+
+  const contactReasons = [
+    t("contact.contactReasons.0" as any),
+    t("contact.contactReasons.1" as any),
+    t("contact.contactReasons.2" as any),
+    t("contact.contactReasons.3" as any),
+  ];
 
   return (
     <section id="contact" className="relative overflow-hidden" ref={ref}>
@@ -64,45 +73,41 @@ const ContactSection = () => {
             className="relative max-w-md"
           >
             <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold text-primary-foreground leading-none tracking-tight">
-              Let's
+              {t("contact.letsTalk")}
               <br />
-              Talk
+              {t("contact.letsTalkLine2")}
             </h2>
 
             <p className="mt-8 text-primary-foreground/80 leading-relaxed">
-              If you're looking to build a serious product, implement AI in real operations, 
-              or explore a partnership, we welcome structured discussions.
+              {t("contact.description")}
             </p>
 
             <div className="mt-12 space-y-4 text-primary-foreground">
               <div>
-                <p className="font-semibold">Guidance Innovation Co., Ltd.</p>
-                <p className="text-primary-foreground/70 text-sm font-mono">Thailand</p>
+                <p className="font-semibold">{t("contact.companyName")}</p>
+                <p className="text-primary-foreground/70 text-sm font-mono">{t("contact.location")}</p>
               </div>
 
               <div className="pt-4">
                 <p className="text-primary-foreground/70 text-sm font-mono">
-                  Email: <a href="mailto:contact@guidanceinnovations.tech" className="text-primary-foreground hover:underline transition-all">contact@guidanceinnovations.tech</a>
+                  {t("contact.emailLabel")} <a href="mailto:contact@guidanceinnovations.tech" className="text-primary-foreground hover:underline transition-all">contact@guidanceinnovations.tech</a>
                 </p>
               </div>
 
               <div>
                 <p className="text-primary-foreground/70 text-sm font-mono">
-                  Website: <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="text-primary-foreground hover:underline transition-all">guidancestream.com</a>
+                  {t("contact.websiteLabel")} <a href="https://guidancestream.com" target="_blank" rel="noopener noreferrer" className="text-primary-foreground hover:underline transition-all">guidancestream.com</a>
                 </p>
               </div>
             </div>
 
             {/* Contact reasons */}
             <div className="mt-10 pt-8 border-t border-primary-foreground/20">
-              <p className="text-primary-foreground/70 text-xs uppercase tracking-wider mb-4 font-mono">You may contact us for</p>
+              <p className="text-primary-foreground/70 text-xs uppercase tracking-wider mb-4 font-mono">
+                {t("contact.contactReasonsLabel")}
+              </p>
               <div className="flex flex-wrap gap-2">
-                {[
-                  "Product partnerships",
-                  "AI automation",
-                  "Technical consulting",
-                  "Long-term collaboration",
-                ].map((item) => (
+                {contactReasons.map((item) => (
                   <span 
                     key={item}
                     className="px-3 py-1.5 rounded-md bg-primary-foreground/10 text-primary-foreground text-xs font-mono border border-primary-foreground/20"
@@ -127,10 +132,10 @@ const ContactSection = () => {
           
           <div className="w-full max-w-md relative">
             <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
-              Send us a message
+              {t("contact.formLabel")}
             </p>
             <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
-              Start a Conversation
+              {t("contact.formHeading")}
             </h3>
 
             <Form {...form}>
@@ -140,10 +145,10 @@ const ContactSection = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Name *</FormLabel>
+                      <FormLabel className="text-foreground">{t("contact.nameLabel")}</FormLabel>
                       <FormControl>
                         <Input 
-                          placeholder="Your name" 
+                          placeholder={t("contact.namePlaceholder")} 
                           {...field} 
                           className="bg-background border-border"
                         />
@@ -158,11 +163,11 @@ const ContactSection = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Email *</FormLabel>
+                      <FormLabel className="text-foreground">{t("contact.emailFieldLabel")}</FormLabel>
                       <FormControl>
                         <Input 
                           type="email" 
-                          placeholder="your@email.com" 
+                          placeholder={t("contact.emailPlaceholder")} 
                           {...field} 
                           className="bg-background border-border"
                         />
@@ -177,10 +182,10 @@ const ContactSection = () => {
                   name="company"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Company</FormLabel>
+                      <FormLabel className="text-foreground">{t("contact.companyLabel")}</FormLabel>
                       <FormControl>
                         <Input 
-                          placeholder="Your company (optional)" 
+                          placeholder={t("contact.companyPlaceholder")} 
                           {...field} 
                           className="bg-background border-border"
                         />
@@ -195,10 +200,10 @@ const ContactSection = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-foreground">Message *</FormLabel>
+                      <FormLabel className="text-foreground">{t("contact.messageLabel")}</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Tell us about your project or how we can help..." 
+                          placeholder={t("contact.messagePlaceholder")} 
                           {...field} 
                           className="bg-background border-border min-h-[120px] resize-none"
                         />
@@ -216,12 +221,12 @@ const ContactSection = () => {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Sending...
+                      {t("contact.sendingButton")}
                     </>
                   ) : (
                     <>
                       <Send className="w-4 h-4 mr-2" />
-                      Send Message
+                      {t("contact.sendButton")}
                     </>
                   )}
                 </Button>
@@ -229,8 +234,7 @@ const ContactSection = () => {
             </Form>
 
             <p className="mt-6 text-xs text-muted-foreground leading-relaxed">
-              This company is built with the mindset of a product builder, not an agency. 
-              We focus on long-term product thinking rather than short-term experimentation.
+              {t("contact.footerNote")}
             </p>
           </div>
         </motion.div>

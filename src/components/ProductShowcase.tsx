@@ -1,51 +1,33 @@
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductShowcase = () => {
   const ref = useRef(null);
   const [activeProduct, setActiveProduct] = useState(0);
+  const { t } = useLanguage();
 
   const products = [
     {
       id: "guidancestream",
-      label: "Our Products",
-      name: "Guidance",
-      nameBold: "Stream",
-      subtitle: "AI Customer Service Agent",
-      badge: "Private Beta",
+      label: t("products.ourProducts"),
+      name: t("products.guidancestream.name"),
+      nameBold: t("products.guidancestream.nameBold"),
+      subtitle: t("products.guidancestream.subtitle"),
+      badge: t("products.privateBeta"),
       badgeStyle: "bg-primary text-primary-foreground border border-primary",
       isBlue: true,
-      description: "Businesses lose time, revenue, and reputation when customer communication is slow or inconsistent. GuidanceStream solves this by acting as a structured, intelligent customer service layer across your communication channels.",
-      problems: [
-        "High volume of repetitive inquiries",
-        "Inconsistent staff responses",
-        "Knowledge scattered across documents",
-        "Support teams that don't scale"
-      ],
-      features: [
-        "Central knowledge base",
-        "Context-aware AI responses",
-        "Automation workflows",
-        "Integration-ready"
-      ]
     },
     {
       id: "carerouters",
-      label: "Healthcare Platform",
-      name: "Care",
-      nameBold: "Routers",
-      subtitle: "Hospital Escort Platform for Elderly Care",
-      badge: "MVP Stage",
+      label: t("products.healthcarePlatform"),
+      name: t("products.carerouters.name"),
+      nameBold: t("products.carerouters.nameBold"),
+      subtitle: t("products.carerouters.subtitle"),
+      badge: t("products.mvpStage"),
       badgeStyle: "bg-secondary text-secondary-foreground",
       isBlue: false,
-      description: "Navigating hospitals can be stressful for elderly individuals and their families. CareRouters provides a structured platform for finding reliable companions to assist with hospital visits.",
-      coreFeatures: [
-        { title: "Elderly-friendly UX", desc: "Designed for accessibility", bg: "bg-secondary" },
-        { title: "Real hospital workflows", desc: "Practical usability", bg: "bg-primary", light: true },
-        { title: "Trust & Safety", desc: "Accountability focused", bg: "bg-muted" },
-        { title: "Thailand & Malaysia", desc: "Regional coverage", bg: "bg-card border border-border" }
-      ]
     }
   ];
 
@@ -70,6 +52,28 @@ const ProductShowcase = () => {
       prevProduct();
     }
   };
+
+  // Get translated arrays
+  const guidanceProblems = [
+    t("products.guidancestream.problems.0" as any),
+    t("products.guidancestream.problems.1" as any),
+    t("products.guidancestream.problems.2" as any),
+    t("products.guidancestream.problems.3" as any),
+  ];
+
+  const guidanceFeatures = [
+    t("products.guidancestream.features.0" as any),
+    t("products.guidancestream.features.1" as any),
+    t("products.guidancestream.features.2" as any),
+    t("products.guidancestream.features.3" as any),
+  ];
+
+  const coreFeatures = [
+    { title: t("products.carerouters.elderlyUx"), desc: t("products.carerouters.elderlyUxDesc"), bg: "bg-secondary" },
+    { title: t("products.carerouters.realWorkflows"), desc: t("products.carerouters.realWorkflowsDesc"), bg: "bg-primary", light: true },
+    { title: t("products.carerouters.trustSafety"), desc: t("products.carerouters.trustSafetyDesc"), bg: "bg-muted" },
+    { title: t("products.carerouters.regions"), desc: t("products.carerouters.regionsDesc"), bg: "bg-card border border-border" }
+  ];
 
   return (
     <section 
@@ -165,24 +169,24 @@ const ProductShowcase = () => {
                     {/* Right - Product description */}
                     <div className="flex flex-col justify-center">
                       <p className="text-primary-foreground/70 text-sm uppercase tracking-wider mb-4 font-mono">
-                        The Problem It Solves
+                        {t("products.guidancestream.problemLabel")}
                       </p>
                       <p className="text-primary-foreground/90 text-sm leading-relaxed mb-6">
-                        {products[0].description}
+                        {t("products.guidancestream.description")}
                       </p>
                       
                       <div className="space-y-2 text-primary-foreground/80 text-sm font-mono">
-                        {products[0].problems?.map((p, i) => (
+                        {guidanceProblems.map((p, i) => (
                           <p key={i}>→ {p}</p>
                         ))}
                       </div>
 
                       <div className="border-t border-primary-foreground/20 pt-6 mt-6">
                         <p className="text-primary-foreground/70 text-sm uppercase tracking-wider mb-3 font-mono">
-                          How It Works
+                          {t("products.guidancestream.howItWorks")}
                         </p>
                         <div className="grid grid-cols-2 gap-2 text-sm text-primary-foreground/80 font-mono">
-                          {products[0].features?.map((f, i) => (
+                          {guidanceFeatures.map((f, i) => (
                             <p key={i}>• {f}</p>
                           ))}
                         </div>
@@ -219,13 +223,13 @@ const ProductShowcase = () => {
                       </span>
                       
                       <p className="mt-8 text-sm text-muted-foreground leading-relaxed">
-                        {products[1].description}
+                        {t("products.carerouters.description")}
                       </p>
                     </div>
 
                     {/* Right - Features */}
                     <div className="grid grid-cols-2 gap-4">
-                      {products[1].coreFeatures?.map((feature, i) => (
+                      {coreFeatures.map((feature, i) => (
                         <div key={i} className={`p-4 rounded-xl ${feature.bg}`}>
                           <p className={`font-medium text-sm ${feature.light ? "text-primary-foreground" : "text-foreground"}`}>
                             {feature.title}
