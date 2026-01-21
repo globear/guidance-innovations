@@ -182,6 +182,14 @@
     background-size: 60px 60px;
   }
 
+  /* Light grid pattern for dark backgrounds - better visibility */
+  .grid-pattern-light {
+    background-image: 
+      linear-gradient(hsl(0 0% 100% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
   /* Glow effect for cards on hover */
   .glow-hover {
     transition: box-shadow 0.3s ease;
