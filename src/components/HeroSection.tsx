@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import HeroAnimation from "./HeroAnimation";
+import VoiceAgentModal from "./VoiceAgentModal";
 
 const HeroSection = () => {
   const { t } = useLanguage();
+  const [isVoiceModalOpen, setIsVoiceModalOpen] = useState(false);
 
   return (
     <section className="relative min-h-[600px] overflow-hidden">
@@ -58,11 +61,14 @@ const HeroSection = () => {
           </p>
           
           <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-8">
-            <a href="#contact" className="btn-primary">
+            <button 
+              onClick={() => setIsVoiceModalOpen(true)}
+              className="btn-primary"
+            >
               {t("hero.contactUs")}
               <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href="#products" className="btn-secondary">
+            </button>
+            <a href="#case-studies" className="btn-secondary">
               {t("hero.viewProducts")}
             </a>
           </div>
@@ -89,6 +95,12 @@ const HeroSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Voice Agent Modal */}
+      <VoiceAgentModal 
+        isOpen={isVoiceModalOpen} 
+        onClose={() => setIsVoiceModalOpen(false)} 
+      />
     </section>
   );
 };
