@@ -1,12 +1,6 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Bot, Workflow, Network } from "lucide-react";
+import { Bot, Workflow, Network, X } from "lucide-react";
 import aiAgentsChatImage from "@/assets/ai-agents-chat.webp";
 import n8nWorkflowImage from "@/assets/n8n-workflow.webp";
 import supabaseEdgeFunctionsImage from "@/assets/supabase-edge-functions.webp";
@@ -57,6 +51,14 @@ const FeaturesSection = () => {
     t("features.apiDesign"),
   ];
 
+  const handleCapabilityClick = (capability: Capability) => {
+    if (selectedCapability?.title === capability.title) {
+      setSelectedCapability(null);
+    } else {
+      setSelectedCapability(capability);
+    }
+  };
+
   return (
     <section id="services" className="relative bg-muted section-padding" ref={ref}>
       <div className="section-container">
@@ -83,46 +85,78 @@ const FeaturesSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-8"
         >
           {capabilities.map((capability) => (
             <div
               key={capability.title}
-              onClick={() => setSelectedCapability(capability)}
-              className="feature-card min-w-[180px] cursor-pointer hover:scale-105 transition-all duration-300"
+              onClick={() => handleCapabilityClick(capability)}
+              className={`feature-card min-w-[180px] cursor-pointer transition-all duration-300 ${
+                selectedCapability?.title === capability.title 
+                  ? 'scale-105 ring-2 ring-primary/50' 
+                  : 'hover:scale-105'
+              }`}
             >
               {capability.title}
             </div>
           ))}
         </motion.div>
 
-        {/* Modal for capability example */}
-        <Dialog open={!!selectedCapability} onOpenChange={() => setSelectedCapability(null)}>
-          <DialogContent className="sm:max-w-4xl">
-            <DialogHeader>
-              <DialogTitle className="text-xl font-display">{selectedCapability?.title}</DialogTitle>
-            </DialogHeader>
-            {selectedCapability?.image ? (
-              <div className="space-y-4">
-                <img 
-                  src={selectedCapability.image} 
-                  alt={selectedCapability.title}
-                  className="w-full rounded-lg"
-                />
-                <p className="text-sm text-muted-foreground">
+        {/* Expanded content area */}
+        <AnimatePresence mode="wait">
+          {selectedCapability && (
+            <motion.div
+              key={selectedCapability.title}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="overflow-hidden mb-12"
+            >
+              <div className="rounded-xl bg-card/80 border border-border backdrop-blur-sm p-6 sm:p-8 shadow-lg">
+                {/* Close button */}
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl sm:text-2xl font-display font-semibold text-foreground">
+                    {selectedCapability.title}
+                  </h3>
+                  <button
+                    onClick={() => setSelectedCapability(null)}
+                    className="rounded-md p-1.5 hover:bg-muted transition-colors"
+                    aria-label="Close"
+                  >
+                    <X className="h-5 w-5 text-muted-foreground hover:text-foreground" />
+                  </button>
+                </div>
+
+                {/* Image */}
+                {selectedCapability.image && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                    className="mb-6"
+                  >
+                    <img
+                      src={selectedCapability.image}
+                      alt={selectedCapability.title}
+                      className="w-full rounded-lg border border-border shadow-md"
+                    />
+                  </motion.div>
+                )}
+
+                {/* Description */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                  className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+                >
                   {selectedCapability.description}
-                </p>
+                </motion.p>
               </div>
-            ) : (
-              <div className={`flex flex-col items-center justify-center p-8 rounded-lg bg-gradient-to-br ${selectedCapability?.gradient}`}>
-                {selectedCapability?.icon}
-                <p className="mt-4 text-sm text-muted-foreground text-center max-w-sm">
-                  {selectedCapability?.description}
-                </p>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Capability descriptions */}
         <motion.div
