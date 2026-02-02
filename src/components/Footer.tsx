@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  
+  const isAppSubdomain = window.location.hostname.startsWith("app.");
+  const mainSiteUrl = "https://guidanceinnovations.tech";
+
+  const getLink = (hash: string) => {
+    return isAppSubdomain ? `${mainSiteUrl}/${hash}` : hash;
+  };
 
   return (
     <footer className="border-t border-border bg-background">
@@ -19,18 +26,23 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Products */}
+          {/* Projects & Services */}
           <div>
             <h4 className="font-medium text-foreground text-sm mb-4">{t("footer.productsHeading")}</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#products" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href="https://app.guidanceinnovations.tech" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   GuidanceStream
                 </a>
               </li>
               <li>
-                <a href="#products" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href="https://app.guidanceinnovations.tech" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   CareRouters
+                </a>
+              </li>
+              <li>
+                <a href="https://app.guidanceinnovations.tech/FixMyText" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  FixMyText
                 </a>
               </li>
             </ul>
@@ -41,12 +53,12 @@ const Footer = () => {
             <h4 className="font-medium text-foreground text-sm mb-4">{t("footer.companyHeading")}</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href={getLink("#about")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t("footer.about")}
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <a href={getLink("#contact")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t("footer.contact")}
                 </a>
               </li>

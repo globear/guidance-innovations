@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mic, MicOff, X, Phone } from "lucide-react";
 import { useConversation } from "@elevenlabs/react";
@@ -14,6 +14,14 @@ const VoiceAgentModal = ({ isOpen, onClose }: VoiceAgentModalProps) => {
   const { t } = useLanguage();
   const [hasPermission, setHasPermission] = useState(false);
   const [permissionError, setPermissionError] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const isStartingRef = useRef(false);
+  // #region agent log
+  const mountIdRef = useRef(Math.random().toString(36).slice(2, 8));
+  const renderCountRef = useRef(0);
+  renderCountRef.current++;
+  fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:RENDER',message:'Component render',data:{mountId:mountIdRef.current,renderCount:renderCountRef.current,isOpen,isStartingRef:isStartingRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'B,C'})}).catch(()=>{});
+  // #endregion
 
   // ElevenLabs Agent ID - Replace with your actual Agent ID from ElevenLabs dashboard
   const AGENT_ID = "agent_0601kfk3bw5ffwmbnq5xjzhgeeeb";
@@ -21,16 +29,31 @@ const VoiceAgentModal = ({ isOpen, onClose }: VoiceAgentModalProps) => {
   const conversation = useConversation({
     onConnect: () => {
       console.log("Connected to ElevenLabs agent");
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:onConnect',message:'ElevenLabs connected',data:{mountId:mountIdRef.current,isStartingRef:isStartingRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,D'})}).catch(()=>{});
+      // #endregion
     },
     onDisconnect: () => {
       console.log("Disconnected from ElevenLabs agent");
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:onDisconnect',message:'ElevenLabs disconnected - BEFORE reset',data:{mountId:mountIdRef.current,isStartingRefBefore:isStartingRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,D'})}).catch(()=>{});
+      // #endregion
+      isStartingRef.current = false;
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:onDisconnect',message:'ElevenLabs disconnected - AFTER reset',data:{mountId:mountIdRef.current,isStartingRefAfter:isStartingRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A'})}).catch(()=>{});
+      // #endregion
     },
     onError: (error) => {
       console.error("ElevenLabs error:", error);
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:onError',message:'ElevenLabs error',data:{mountId:mountIdRef.current,error:String(error)},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'D'})}).catch(()=>{});
+      // #endregion
+      isStartingRef.current = false;
     },
     onMessage: (message) => {
       console.log("Message:", message);
     },
+    micMuted: isMuted,
   });
 
   const { status, isSpeaking } = conversation;
@@ -38,7 +61,9 @@ const VoiceAgentModal = ({ isOpen, onClose }: VoiceAgentModalProps) => {
   // Request microphone permission
   const requestMicPermission = useCallback(async () => {
     try {
-      await navigator.mediaDevices.getUserMedia({ audio: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      // Important: Stop the tracks immediately to avoid keeping the mic open (ghost stream)
+      stream.getTracks().forEach((track) => track.stop());
       setHasPermission(true);
       setPermissionError(false);
       return true;
@@ -51,37 +76,66 @@ const VoiceAgentModal = ({ isOpen, onClose }: VoiceAgentModalProps) => {
 
   // Start conversation
   const startConversation = useCallback(async () => {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:startConversation',message:'startConversation called',data:{mountId:mountIdRef.current,isStartingRefBefore:isStartingRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,B'})}).catch(()=>{});
+    // #endregion
+    if (isStartingRef.current) {
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:startConversation',message:'BLOCKED - already starting',data:{mountId:mountIdRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,B'})}).catch(()=>{});
+      // #endregion
+      return;
+    }
+    isStartingRef.current = true;
+
     const permitted = await requestMicPermission();
     if (permitted) {
       try {
+        // #region agent log
+        fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:startConversation',message:'Calling startSession',data:{mountId:mountIdRef.current,agentId:AGENT_ID},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,D'})}).catch(()=>{});
+        // #endregion
         await conversation.startSession({
           agentId: AGENT_ID,
+          connectionType: "websocket",
         });
       } catch (error) {
         console.error("Failed to start conversation:", error);
+        isStartingRef.current = false;
       }
+    } else {
+      isStartingRef.current = false;
     }
   }, [conversation, requestMicPermission]);
 
   // End conversation
   const endConversation = useCallback(async () => {
+    isStartingRef.current = false;
     await conversation.endSession();
     onClose();
   }, [conversation, onClose]);
 
   // Auto-start when modal opens
   useEffect(() => {
-    if (isOpen && status === "disconnected") {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:useEffect-autostart',message:'Auto-start effect triggered',data:{mountId:mountIdRef.current,isOpen,status,isStartingRef:isStartingRef.current,willStart:isOpen && status === "disconnected" && !isStartingRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'A,E'})}).catch(()=>{});
+    // #endregion
+    if (isOpen && status === "disconnected" && !isStartingRef.current) {
       startConversation();
     }
   }, [isOpen, status, startConversation]);
 
   // Cleanup on unmount
   useEffect(() => {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:useEffect-cleanup',message:'Cleanup effect MOUNTED',data:{mountId:mountIdRef.current},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'E'})}).catch(()=>{});
+    // #endregion
     return () => {
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/d17e8854-0ca9-4ddd-8d5e-ef0849150967',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VoiceAgentModal.tsx:useEffect-cleanup',message:'Cleanup effect UNMOUNT running',data:{mountId:mountIdRef.current,status},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'E'})}).catch(()=>{});
+      // #endregion
       if (status === "connected") {
         conversation.endSession();
       }
+      isStartingRef.current = false;
     };
   }, []);
 
@@ -231,19 +285,15 @@ const VoiceAgentModal = ({ isOpen, onClose }: VoiceAgentModalProps) => {
                   variant="outline"
                   size="icon"
                   className={`h-14 w-14 rounded-full border-border bg-card hover:bg-muted transition-all ${
-                    conversation.isSpeaking ? "opacity-50" : ""
+                    isMuted ? "bg-muted text-destructive" : ""
                   }`}
-                  onClick={async () => {
-                    if (status === "disconnected") {
-                      await startConversation();
-                    }
-                  }}
-                  disabled={status === "connecting"}
+                  onClick={() => setIsMuted(!isMuted)}
+                  disabled={status !== "connected"}
                 >
-                  {status === "connected" ? (
-                    <Mic className="h-5 w-5 text-primary" />
+                  {isMuted ? (
+                    <MicOff className="h-5 w-5" />
                   ) : (
-                    <MicOff className="h-5 w-5 text-muted-foreground" />
+                    <Mic className="h-5 w-5 text-primary" />
                   )}
                 </Button>
 

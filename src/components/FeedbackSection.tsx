@@ -6,10 +6,10 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { useLanguage } from "@/contexts/LanguageContext";
-import founderAvatar from "@/assets/founder-avatar.svg";
-import alexAvatar from "@/assets/alex-avatar.svg";
-import mayaAvatar from "@/assets/maya-avatar.svg";
-import samAvatar from "@/assets/sam-avatar.svg";
+import founderAvatar from "@/assets/reed.svg";
+import alexAvatar from "@/assets/denis.svg";
+import mayaAvatar from "@/assets/best.svg";
+import samAvatar from "@/assets/ye.svg";
 interface TeamMember {
   initial: string;
   name: string;

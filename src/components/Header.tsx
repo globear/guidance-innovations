@@ -18,11 +18,18 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isAppSubdomain = window.location.hostname.startsWith("app.");
+  const mainSiteUrl = "https://guidanceinnovations.tech";
+
+  const getLink = (hash: string) => {
+    return isAppSubdomain ? `${mainSiteUrl}/${hash}` : hash;
+  };
+
   const navLinks = [
-    { href: "#services", label: t("header.services") },
-    { href: "#products", label: t("header.products") },
-    { href: "#about", label: t("header.about") },
-    { href: "#contact", label: t("header.contact") },
+    { href: getLink("#services"), label: t("header.services") },
+    { href: getLink("#products"), label: t("header.products") },
+    { href: getLink("#about"), label: t("header.about") },
+    { href: getLink("#contact"), label: t("header.contact") },
   ];
 
   return (
@@ -37,7 +44,7 @@ const Header = () => {
       <div className="mx-auto max-w-7xl">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <a href={mainSiteUrl} className="flex items-center gap-2">
             <img src={logo} alt="Guidance logo" className="h-9 w-9" />
             <span className="hidden sm:block font-display text-lg font-medium text-foreground">
               GUIDANCE INNOVATIONS
@@ -62,7 +69,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher />
             <a
-              href="#contact"
+              href={getLink("#contact")}
               className="btn-primary"
             >
               {t("header.getInTouch")}
@@ -110,7 +117,7 @@ const Header = () => {
                 </li>
                 <li>
                   <a
-                    href="#contact"
+                    href={getLink("#contact")}
                     onClick={() => setIsMenuOpen(false)}
                     className="btn-primary w-full justify-center"
                   >

@@ -1,6 +1,5 @@
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const ProductShowcase = () => {
@@ -85,26 +84,6 @@ const ProductShowcase = () => {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      {/* Navigation dots and arrows */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4 lg:left-8 z-20">
-        <button 
-          onClick={prevProduct}
-          className="p-2 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
-          aria-label="Previous product"
-        >
-          <ChevronLeft className="w-5 h-5 text-foreground" />
-        </button>
-      </div>
-      <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-4 lg:right-8 z-20">
-        <button 
-          onClick={nextProduct}
-          className="p-2 rounded-full bg-background/80 backdrop-blur-sm shadow-lg hover:bg-background transition-colors"
-          aria-label="Next product"
-        >
-          <ChevronRight className="w-5 h-5 text-foreground" />
-        </button>
-      </div>
-
       {/* Dots indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {products.map((_, idx) => (
