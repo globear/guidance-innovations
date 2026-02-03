@@ -16,7 +16,9 @@ import ConversationsDashboard from "./pages/bd/b604a733";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const isAppSubdomain = window.location.hostname.startsWith("app.");
+  const hostname = window.location.hostname;
+  const isAppSubdomain = hostname.startsWith("app.");
+  const isFixMyTextDomain = hostname.includes("fix-my-text.cv");
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -26,7 +28,13 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
             <Routes>
-              {isAppSubdomain ? (
+              {isFixMyTextDomain ? (
+                <>
+                  <Route path="/" element={<FixMyText />} />
+                  <Route path="/pricing" element={<Pricing />} />
+                  <Route path="*" element={<NotFound />} />
+                </>
+              ) : isAppSubdomain ? (
                 <>
                   <Route path="/" element={<AppHome />} />
                   <Route path="/FixMyText" element={<FixMyText />} />

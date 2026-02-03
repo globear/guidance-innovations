@@ -3,6 +3,18 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/FixMyText"
+  to = "https://fix-my-text.cv"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/FixMyText/*"
+  to = "https://fix-my-text.cv/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
