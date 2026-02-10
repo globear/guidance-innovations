@@ -17,7 +17,7 @@ interface GuestUsage {
 }
 
 const GUEST_USAGE_KEY = "fixmytext_guest_usage";
-const GUEST_LIMIT = 3;
+const GUEST_LIMIT = 100;
 
 export const useGuestUsage = () => {
   const [guestUsage, setGuestUsage] = useState<GuestUsage>(() => {

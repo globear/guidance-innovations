@@ -26,9 +26,10 @@ interface HistorySectionProps {
   isGuest: boolean;
   onRefresh?: () => void;
   onClearGuest?: () => void;
+  onClearUser?: () => void;
 }
 
-const HistorySection = ({ history, isGuest, onRefresh, onClearGuest }: HistorySectionProps) => {
+const HistorySection = ({ history, isGuest, onRefresh, onClearGuest, onClearUser }: HistorySectionProps) => {
   const { toast } = useToast();
 
   const handleCopy = async (text: string) => {
@@ -61,15 +62,46 @@ const HistorySection = ({ history, isGuest, onRefresh, onClearGuest }: HistorySe
     <div className="mt-12 max-w-5xl mx-auto">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-bold text-gray-900">Recent Rewrites</h3>
-        {isGuest && history.length > 0 && (
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={onClearGuest}
-            className="text-red-500 hover:text-red-600 hover:bg-red-50"
-          >
-            Clear All
-          </Button>
+        {history.length > 0 && (
+          isGuest ? (
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={onClearGuest}
+              className="text-red-500 hover:text-red-600 hover:bg-red-50"
+            >
+              Clear All
+            </Button>
+          ) : (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-red-500 hover:text-red-600 hover:bg-red-50"
+                >
+                  Clear All
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Clear all history?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This will permanently delete all your rewrite history. This action cannot be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction 
+                    onClick={onClearUser}
+                    className="bg-red-500 hover:bg-red-600"
+                  >
+                    Delete All
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )
         )}
       </div>
 

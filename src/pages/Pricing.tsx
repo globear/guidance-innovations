@@ -13,6 +13,10 @@ const Pricing = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
 
   useEffect(() => {
+    // Update document title
+    const originalTitle = document.title;
+    document.title = "Fix Your Text - Pricing";
+    
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
     });
@@ -21,7 +25,10 @@ const Pricing = () => {
       setUser(session?.user ?? null);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+      document.title = originalTitle;
+    };
   }, []);
 
   const handleSignOut = async () => {
@@ -85,7 +92,7 @@ const Pricing = () => {
           <div className="bg-white p-6 rounded-xl border border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 hover:border-gray-200 transition-colors">
             <div className="flex-1 text-center sm:text-left">
               <h3 className="text-base font-medium text-gray-900">Just passing through</h3>
-              <p className="text-gray-400 mt-1 text-sm">3 rewrites per session. No login.</p>
+              <p className="text-gray-400 mt-1 text-sm">100 rewrites per session. No login.</p>
             </div>
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <span className="text-xs font-medium text-gray-400 uppercase tracking-wide">Free</span>
@@ -106,7 +113,7 @@ const Pricing = () => {
                 <h3 className="text-base font-medium text-gray-900">Create an account</h3>
                 <span className="text-[10px] text-purple-600 font-medium">★</span>
               </div>
-              <p className="text-gray-400 text-sm">20 rewrites/month + History saved.</p>
+              <p className="text-gray-400 text-sm">500 rewrites/month + History saved.</p>
             </div>
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <span className="text-xs font-medium text-purple-600 uppercase tracking-wide">Free</span>

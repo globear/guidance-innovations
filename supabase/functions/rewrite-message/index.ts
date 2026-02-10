@@ -103,7 +103,7 @@ serve(async (req) => {
       }
 
       tier = usageData.subscription_tier;
-      limit = tier === "paid" ? 999999 : 20;
+      limit = tier === "paid" ? 999999 : 500;
       remainingRewrites = limit - usageData.monthly_rewrites;
 
       if (remainingRewrites <= 0) {

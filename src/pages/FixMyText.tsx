@@ -6,7 +6,7 @@ import type { User } from "@supabase/supabase-js";
 import type { RewriteHistory, UserUsage } from "@/types/database";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { LogIn, LogOut, User as UserIcon, Loader2, ArrowRightLeft } from "lucide-react";
+import { LogIn, LogOut, User as UserIcon, Loader2, ArrowRightLeft, RotateCcw, Clipboard } from "lucide-react";
 import RewriteInput from "@/components/RewriteInput";
 import ControlPanel from "@/components/ControlPanel";
 import RewriteOutput from "@/components/RewriteOutput";
@@ -43,9 +43,19 @@ const FixMyText = () => {
   const { toast } = useToast();
 
   const isGuest = !user;
-  const remaining = isGuest ? guestUsage.remaining : (userUsage ? (userUsage.subscription_tier === 'paid' ? 999999 : 20 - userUsage.monthly_rewrites) : 20);
-  const limit = isGuest ? guestUsage.limit : (userUsage?.subscription_tier === 'paid' ? 999999 : 20);
+  const remaining = isGuest ? guestUsage.remaining : (userUsage ? (userUsage.subscription_tier === 'paid' ? 999999 : 500 - userUsage.monthly_rewrites) : 500);
+  const limit = isGuest ? guestUsage.limit : (userUsage?.subscription_tier === 'paid' ? 999999 : 500);
   const canRewrite = isGuest ? guestUsage.canRewrite : remaining > 0;
+
+  // Update document title
+  useEffect(() => {
+    const originalTitle = document.title;
+    document.title = "Fix Your Text";
+    
+    return () => {
+      document.title = originalTitle;
+    };
+  }, []);
 
   useEffect(() => {
     // Check current session
@@ -101,6 +111,38 @@ const FixMyText = () => {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     toast({ title: "Signed out successfully" });
+  };
+
+  const handleClearUserHistory = async () => {
+    if (!user) return;
+    const { error } = await supabase
+      .from("rewrite_history")
+      .delete()
+      .eq("user_id", user.id);
+    
+    if (!error) {
+      toast({ title: "History cleared" });
+      loadHistory(user.id);
+    } else {
+      toast({ 
+        title: "Failed to clear history", 
+        variant: "destructive" 
+      });
+    }
+  };
+
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setOriginalText(text);
+      toast({ title: "Pasted from clipboard" });
+    } catch (error) {
+      toast({ 
+        title: "Failed to paste", 
+        description: "Please paste manually or check clipboard permissions",
+        variant: "destructive" 
+      });
+    }
   };
 
   const handleRewrite = async () => {
@@ -177,7 +219,7 @@ const FixMyText = () => {
           </div>
           <div className="flex items-center gap-6">
             <button 
-              onClick={() => navigate("/FixMyText/pricing")}
+              onClick={() => navigate("pricing")}
               className="text-gray-600 hover:text-purple-600 font-medium text-sm transition-colors"
             >
               Pricing
@@ -244,21 +286,21 @@ const FixMyText = () => {
         </div>
 
         {/* Editor Area */}
-        <div className="max-w-5xl mx-auto bg-white rounded-xl border border-gray-200 min-h-[500px] flex flex-col md:flex-row shadow-sm">
+        <div className="max-w-5xl mx-auto bg-white rounded-xl border border-gray-200 min-h-[400px] md:min-h-[500px] flex flex-col md:flex-row shadow-sm">
           
           {/* Left: Input */}
-          <div className="flex-1 p-6 md:p-8 flex flex-col relative">
+          <div className="flex-1 p-4 sm:p-6 md:p-8 flex flex-col relative min-h-[300px] md:min-h-0">
              <div className="flex-1">
               <RewriteInput
                 value={originalText}
                 onChange={setOriginalText}
               />
             </div>
-            <div className="mt-4">
+            <div className="mt-4 flex gap-2 mb-6">
               <Button
                 onClick={handleRewrite}
                 disabled={!originalText.trim() || rewriting || !canRewrite}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-1 sm:flex-initial"
               >
                 {rewriting ? (
                   <>
@@ -268,6 +310,24 @@ const FixMyText = () => {
                 ) : (
                   "Rewrite"
                 )}
+              </Button>
+              <Button
+                onClick={handlePaste}
+                variant="outline"
+                size="icon"
+                className="rounded-lg border-gray-200 text-gray-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-500 hover:border-gray-300 transition-colors"
+                title="Paste from clipboard"
+              >
+                <Clipboard className="h-4 w-4" />
+              </Button>
+              <Button
+                onClick={() => setOriginalText("")}
+                disabled={!originalText.trim()}
+                variant="outline"
+                className="px-4 py-2 rounded-lg border-gray-200 text-gray-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-500 hover:border-gray-300 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <RotateCcw className="mr-2 h-4 w-4" />
+                Reset
               </Button>
             </div>
           </div>
@@ -280,7 +340,7 @@ const FixMyText = () => {
           </div>
 
           {/* Right: Output */}
-          <div className="flex-1 p-6 md:p-8 bg-gray-50/50 rounded-b-xl md:rounded-r-xl md:rounded-bl-none">
+          <div className="flex-1 p-4 sm:p-6 md:p-8 bg-gray-50/50 rounded-b-xl md:rounded-r-xl md:rounded-bl-none min-h-[300px] md:min-h-0">
             {rewrittenText ? (
               <RewriteOutput
                 rewrittenText={rewrittenText}
@@ -312,6 +372,7 @@ const FixMyText = () => {
             isGuest={isGuest}
             onRefresh={() => user && loadHistory(user.id)}
             onClearGuest={guestUsage.clearHistory}
+            onClearUser={handleClearUserHistory}
           />
         </div>
 
