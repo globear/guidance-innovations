@@ -52,14 +52,14 @@ const ControlPanel = ({
   onLanguageChange,
 }: ControlPanelProps) => {
   return (
-    <div className="flex flex-wrap gap-2 sm:gap-6 mb-6 text-xs sm:text-base">
+    <div className="flex flex-wrap gap-2 sm:gap-6 mb-6 text-lg sm:text-base">
       {/* Tone Selector */}
       <div className="flex items-center gap-1 sm:gap-2">
         <span className="text-gray-500 font-medium">Tone:</span>
         <Select value={tone} onValueChange={onToneChange}>
           <SelectTrigger
             id="tone-select"
-            className="w-auto h-auto p-0 border-none shadow-none bg-transparent text-xs sm:text-base font-semibold text-purple-900 focus:ring-0 hover:text-purple-700 gap-0.5 sm:gap-1"
+            className="w-auto h-auto p-0 border-none shadow-none bg-transparent text-lg sm:text-base font-semibold text-purple-900 focus:ring-0 hover:text-purple-700 gap-0.5 sm:gap-1"
           >
             <SelectValue placeholder="Select tone" />
           </SelectTrigger>
@@ -79,7 +79,7 @@ const ControlPanel = ({
         <Select value={length} onValueChange={onLengthChange}>
           <SelectTrigger
             id="length-select"
-            className="w-auto h-auto p-0 border-none shadow-none bg-transparent text-xs sm:text-base font-semibold text-purple-900 focus:ring-0 hover:text-purple-700 gap-0.5 sm:gap-1"
+            className="w-auto h-auto p-0 border-none shadow-none bg-transparent text-lg sm:text-base font-semibold text-purple-900 focus:ring-0 hover:text-purple-700 gap-0.5 sm:gap-1"
           >
             <SelectValue placeholder="Select length" />
           </SelectTrigger>
@@ -99,7 +99,7 @@ const ControlPanel = ({
         <Select value={targetLanguage} onValueChange={onLanguageChange}>
           <SelectTrigger
             id="language-select"
-            className="w-auto h-auto p-0 border-none shadow-none bg-transparent text-xs sm:text-base font-semibold text-purple-900 focus:ring-0 hover:text-purple-700 gap-0.5 sm:gap-1"
+            className="w-auto h-auto p-0 border-none shadow-none bg-transparent text-lg sm:text-base font-semibold text-purple-900 focus:ring-0 hover:text-purple-700 gap-0.5 sm:gap-1"
           >
             <SelectValue placeholder="Select language" />
           </SelectTrigger>
