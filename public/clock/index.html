@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* Timer Display */
+    .timer-display {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .time-block {
+      text-align: center;
+    }
+
+    .time-value {
+      font-size: 5rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 0.3rem 1.2rem;
+      min-width: 130px;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.3s;
+    }
+
+    .time-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #888;
+      margin-top: 0.5rem;
+    }
+
+    .colon {
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #555;
+    }
+
+    /* Progress Ring */
+    .progress-container {
+      margin-bottom: 2rem;
+    }
+
+    .progress-ring-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 8;
+    }
+
+    .progress-ring-fill {
+      fill: none;
+      stroke: url(#gradient);
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1s linear;
+      transform: rotate(-90deg);
+      transform-origin: center;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .duration-picker {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .duration-picker label {
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    .duration-picker input[type="range"] {
+      width: 300px;
+      accent-color: #7f5af0;
+      cursor: pointer;
+    }
+
+    .duration-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      min-width: 50px;
+      color: #7f5af0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    button {
+      padding: 0.8rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-start {
+      background: linear-gradient(135deg, #7f5af0, #2cb67d);
+      color: #fff;
+    }
+
+    .btn-start:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(127, 90, 240, 0.4);
+    }
+
+    .btn-pause {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-pause:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .btn-reset {
+      background: rgba(255, 59, 48, 0.15);
+      color: #ff3b30;
+      border: 2px solid rgba(255, 59, 48, 0.3);
+    }
+
+    .btn-reset:hover {
+      background: rgba(255, 59, 48, 0.25);
+      transform: translateY(-2px);
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Finished state */
+    .finished .time-value {
+      color: #2cb67d;
+      border-color: rgba(44, 182, 125, 0.4);
+      animation: pulse 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 10px rgba(44, 182, 125, 0.2); }
+      to   { box-shadow: 0 0 30px rgba(44, 182, 125, 0.5); }
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      h1 { font-size: 1.6rem; }
+      .time-value { font-size: 2.8rem; min-width: 75px; padding: 0.3rem 0.6rem; }
+      .colon { font-size: 2.8rem; }
+      .duration-picker input[type="range"] { width: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Countdown Timer</h1>
+  <p class="subtitle">Set a duration and start the countdown</p>
+
+  <!-- Progress Ring -->
+  <div class="progress-container">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7f5af0" />
+          <stop offset="100%" stop-color="#2cb67d" />
+        </linearGradient>
+      </defs>
+      <circle class="progress-ring-bg" cx="100" cy="100" r="90" />
+      <circle class="progress-ring-fill" id="progressRing" cx="100" cy="100" r="90" />
+    </svg>
+  </div>
+
+  <!-- Timer Display -->
+  <div class="timer-display" id="timerDisplay">
+    <div class="time-block">
+      <div class="time-value" id="hours">00</div>
+      <div class="time-label">Hours</div>
+    </div>
+    <div class="colon">:</div>
+    <div class="time-block">
+      <div class="time-value" id="minutes">00</div>
+      <div class="time-label">Minutes</div>
+    </div>
+    <div class="colon">:</div>
+    <div class="time-block">
+      <div class="time-value" id="seconds">00</div>
+      <div class="time-label">Seconds</div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="duration-picker" id="durationPicker">
+      <label for="durationRange">Duration:</label>
+      <input type="range" id="durationRange" min="1" max="24" value="1" step="1">
+      <span class="duration-value" id="durationLabel">1 hr</span>
+    </div>
+
+    <div class="buttons">
+      <button class="btn-start" id="btnStart">Start</button>
+      <button class="btn-pause" id="btnPause" disabled>Pause</button>
+      <button class="btn-reset" id="btnReset" disabled>Reset</button>
+    </div>
+  </div>
+
+  <script>
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const btnStart = document.getElementById('btnStart');
+    const btnPause = document.getElementById('btnPause');
+    const btnReset = document.getElementById('btnReset');
+    const durationRange = document.getElementById('durationRange');
+    const durationLabel = document.getElementById('durationLabel');
+    const durationPicker = document.getElementById('durationPicker');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const progressRing = document.getElementById('progressRing');
+
+    // Progress ring setup
+    const radius = 90;
+    const circumference = 2 * Math.PI * radius;
+    progressRing.style.strokeDasharray = circumference;
+    progressRing.style.strokeDashoffset = 0;
+
+    let totalSeconds = 0;
+    let remainingSeconds = 0;
+    let intervalId = null;
+    let isRunning = false;
+
+    // Slider updates display in real-time
+    durationRange.addEventListener('input', () => {
+      const hrs = parseInt(durationRange.value);
+      durationLabel.textContent = hrs === 1 ? '1 hr' : `${hrs} hrs`;
+      totalSeconds = hrs * 3600;
+      remainingSeconds = totalSeconds;
+      updateDisplay(remainingSeconds);
+      updateProgress(1);
+    });
+
+    // Initialize display
+    updateDisplay(3600);
+    totalSeconds = 3600;
+    remainingSeconds = 3600;
+
+    function updateDisplay(secs) {
+      const h = Math.floor(secs / 3600);
+      const m = Math.floor((secs % 3600) / 60);
+      const s = secs % 60;
+      hoursEl.textContent = String(h).padStart(2, '0');
+      minutesEl.textContent = String(m).padStart(2, '0');
+      secondsEl.textContent = String(s).padStart(2, '0');
+    }
+
+    function updateProgress(fraction) {
+      const offset = circumference * (1 - fraction);
+      progressRing.style.strokeDashoffset = offset;
+    }
+
+    function start() {
+      if (remainingSeconds <= 0) return;
+
+      isRunning = true;
+      btnStart.disabled = true;
+      btnPause.disabled = false;
+      btnReset.disabled = false;
+      durationPicker.style.opacity = '0.3';
+      durationPicker.style.pointerEvents = 'none';
+      timerDisplay.classList.remove('finished');
+
+      intervalId = setInterval(() => {
+        remainingSeconds--;
+        updateDisplay(remainingSeconds);
+        updateProgress(remainingSeconds / totalSeconds);
+
+        if (remainingSeconds <= 0) {
+          clearInterval(intervalId);
+          intervalId = null;
+          isRunning = false;
+          btnStart.disabled = true;
+          btnPause.disabled = true;
+          timerDisplay.classList.add('finished');
+          playAlarm();
+        }
+      }, 1000);
+    }
+
+    function pause() {
+      if (!isRunning) return;
+      clearInterval(intervalId);
+      intervalId = null;
+      isRunning = false;
+      btnStart.disabled = false;
+      btnPause.disabled = true;
+      btnStart.textContent = 'Resume';
+    }
+
+    function reset() {
+      clearInterval(intervalId);
+      intervalId = null;
+      isRunning = false;
+
+      const hrs = parseInt(durationRange.value);
+      totalSeconds = hrs * 3600;
+      remainingSeconds = totalSeconds;
+
+      updateDisplay(remainingSeconds);
+      updateProgress(1);
+
+      btnStart.disabled = false;
+      btnStart.textContent = 'Start';
+      btnPause.disabled = true;
+      btnReset.disabled = true;
+      durationPicker.style.opacity = '1';
+      durationPicker.style.pointerEvents = 'auto';
+      timerDisplay.classList.remove('finished');
+    }
+
+    function playAlarm() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const notes = [523.25, 659.25, 783.99, 1046.5];
+        notes.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.2);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.2 + 0.4);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + i * 0.2);
+          osc.stop(ctx.currentTime + i * 0.2 + 0.4);
+        });
+      } catch (e) {
+        // Audio not supported — silent fallback
+      }
+    }
+
+    btnStart.addEventListener('click', start);
+    btnPause.addEventListener('click', pause);
+    btnReset.addEventListener('click', reset);
+  </script>
+
+</body>
+</html>
