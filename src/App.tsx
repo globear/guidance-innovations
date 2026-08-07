@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import AppHome from "./pages/AppHome";
 import FixMyText from "./pages/FixMyText";
 import Pricing from "./pages/Pricing";
+import Package from "./pages/Package";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -45,6 +47,8 @@ const App = () => {
               ) : (
                 <>
                   <Route path="/" element={<Index />} />
+                  <Route path="/package" element={<Package />} />
+                  <Route path="/admin" element={<Admin />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />
                   <Route path="/bd/b604a733" element={<ConversationsDashboard />} />

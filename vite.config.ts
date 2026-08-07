@@ -20,6 +20,10 @@ function clockPagePlugin(): import("vite").Plugin {
             return;
           }
         }
+        // Avoid Vite resolving /package to package.json
+        if (pathname === "/package" || pathname === "/package/") {
+          req.url = "/index.html";
+        }
         next();
       });
     },

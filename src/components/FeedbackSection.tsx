@@ -10,6 +10,7 @@ import founderAvatar from "@/assets/reed.svg";
 import alexAvatar from "@/assets/denis.svg";
 import mayaAvatar from "@/assets/best.svg";
 import samAvatar from "@/assets/ye.svg";
+import ExperienceGallery from "@/components/ExperienceGallery";
 interface TeamMember {
   initial: string;
   name: string;
@@ -217,6 +218,8 @@ const FeedbackSection = () => {
             </div>
           </motion.div>
         </div>
+
+        <ExperienceGallery isInView={isInView} />
       </div>
     </section>
   );

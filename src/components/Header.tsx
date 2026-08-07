@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -9,6 +10,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,17 +22,24 @@ const Header = () => {
 
   const isAppSubdomain = window.location.hostname.startsWith("app.");
   const mainSiteUrl = "https://guidanceinnovations.tech";
+  const isHome = location.pathname === "/";
+  const isPackagePage = location.pathname === "/package";
 
-  const getLink = (hash: string) => {
-    return isAppSubdomain ? `${mainSiteUrl}/${hash}` : hash;
+  const getHashLink = (hash: string) => {
+    if (isAppSubdomain) return `${mainSiteUrl}/${hash}`;
+    return isHome ? hash : `/${hash}`;
   };
 
+  const packagesHref = isAppSubdomain ? `${mainSiteUrl}/package` : "/package";
+
   const navLinks = [
-    { href: getLink("#services"), label: t("header.services") },
-    { href: getLink("#products"), label: t("header.products") },
-    { href: getLink("#about"), label: t("header.about") },
-    { href: getLink("#contact"), label: t("header.contact") },
+    { href: getHashLink("#services"), label: t("header.services"), external: isAppSubdomain },
+    { href: getHashLink("#products"), label: t("header.products"), external: isAppSubdomain },
+    { href: getHashLink("#about"), label: t("header.about"), external: isAppSubdomain },
+    { href: getHashLink("#contact"), label: t("header.contact"), external: isAppSubdomain },
   ];
+
+  const logoHref = isAppSubdomain ? mainSiteUrl : "/";
 
   return (
     <motion.header
@@ -44,17 +53,26 @@ const Header = () => {
       <div className="mx-auto max-w-7xl">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href={mainSiteUrl} className="flex items-center gap-2">
-            <img src={logo} alt="Guidance logo" className="h-9 w-9" />
-            <span className="hidden sm:block font-display text-lg font-medium text-foreground">
-              GUIDANCE INNOVATIONS
-            </span>
-          </a>
+          {isAppSubdomain ? (
+            <a href={logoHref} className="flex items-center gap-2">
+              <img src={logo} alt="Guidance logo" className="h-9 w-9" />
+              <span className="hidden sm:block font-display text-lg font-medium text-foreground">
+                GUIDANCE INNOVATIONS
+              </span>
+            </a>
+          ) : (
+            <Link to="/" className="flex items-center gap-2">
+              <img src={logo} alt="Guidance logo" className="h-9 w-9" />
+              <span className="hidden sm:block font-display text-lg font-medium text-foreground">
+                GUIDANCE INNOVATIONS
+              </span>
+            </Link>
+          )}
 
           {/* Desktop Navigation */}
           <ul className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (
-              <li key={link.href}>
+              <li key={link.href + link.label}>
                 <a
                   href={link.href}
                   className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -65,16 +83,20 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* Language Switcher & CTA Button */}
+          {/* Language Switcher & Packages CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <LanguageSwitcher />
-            <a
-              href={getLink("#contact")}
-              className="btn-primary"
-            >
-              {t("header.getInTouch")}
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            {isAppSubdomain ? (
+              <a href={packagesHref} className="btn-primary">
+                {t("header.packages")}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            ) : (
+              <Link to="/package" className="btn-primary">
+                {t("header.packages")}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -100,7 +122,7 @@ const Header = () => {
             >
               <ul className="flex flex-col gap-4">
                 {navLinks.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.href + link.label}>
                     <a
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
@@ -116,14 +138,27 @@ const Header = () => {
                   </div>
                 </li>
                 <li>
-                  <a
-                    href={getLink("#contact")}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="btn-primary w-full justify-center"
-                  >
-                    {t("header.getInTouch")}
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
+                  {isAppSubdomain ? (
+                    <a
+                      href={packagesHref}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="btn-primary w-full justify-center"
+                    >
+                      {t("header.packages")}
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  ) : (
+                    <Link
+                      to="/package"
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`btn-primary w-full justify-center ${
+                        isPackagePage ? "pointer-events-none opacity-80" : ""
+                      }`}
+                    >
+                      {t("header.packages")}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
                 </li>
               </ul>
             </motion.div>

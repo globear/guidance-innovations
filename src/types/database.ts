@@ -75,6 +75,31 @@ export interface ElevenLabsConversation {
 
 export type ElevenLabsConversationInsert = Omit<ElevenLabsConversation, 'id' | 'created_at' | 'updated_at'>;
 
+export type PackageLeadStatus = 'new' | 'contacted' | 'quoted' | 'won' | 'lost';
+
+export interface PackageLead {
+  id: string;
+  created_at: string;
+  package: string;
+  website_status: string;
+  add_ons: string[];
+  name: string;
+  business_name: string;
+  website_url: string | null;
+  phone: string;
+  line_id: string | null;
+  email: string;
+  preferred_contact: string | null;
+  message: string | null;
+  language: 'en' | 'th' | 'zh';
+  user_agent: string | null;
+  status: PackageLeadStatus;
+}
+
+export type PackageLeadInsert = Omit<PackageLead, 'id' | 'created_at' | 'status'> & {
+  status?: PackageLeadStatus;
+};
+
 export interface Database {
   public: {
     Tables: {
@@ -97,6 +122,11 @@ export interface Database {
         Row: ElevenLabsConversation;
         Insert: ElevenLabsConversationInsert;
         Update: Partial<ElevenLabsConversationInsert>;
+      };
+      package_leads: {
+        Row: PackageLead;
+        Insert: PackageLeadInsert;
+        Update: Partial<Pick<PackageLead, 'status'>>;
       };
     };
   };

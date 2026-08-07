@@ -1,15 +1,18 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  const location = useLocation();
   
   const isAppSubdomain = window.location.hostname.startsWith("app.");
   const mainSiteUrl = "https://guidanceinnovations.tech";
+  const isHome = location.pathname === "/";
 
   const getLink = (hash: string) => {
-    return isAppSubdomain ? `${mainSiteUrl}/${hash}` : hash;
+    if (isAppSubdomain) return `${mainSiteUrl}/${hash}`;
+    return isHome ? hash : `/${hash}`;
   };
 
   return (
@@ -56,6 +59,11 @@ const Footer = () => {
                 <a href={getLink("#about")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {t("footer.about")}
                 </a>
+              </li>
+              <li>
+                <Link to="/package" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  {t("footer.packages")}
+                </Link>
               </li>
               <li>
                 <a href={getLink("#contact")} className="text-sm text-muted-foreground hover:text-foreground transition-colors">

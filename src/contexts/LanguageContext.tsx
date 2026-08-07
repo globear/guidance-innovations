@@ -7,6 +7,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: TranslationKey) => string;
+  tList: (key: string) => string[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -56,8 +57,26 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return typeof value === 'string' ? value : key;
   }, [language]);
 
+  const tList = useCallback((key: string): string[] => {
+    const keys = key.split('.');
+    const lookup = (lang: Language): unknown => {
+      let value: unknown = translations[lang];
+      for (const k of keys) {
+        if (value && typeof value === 'object' && k in value) {
+          value = (value as Record<string, unknown>)[k];
+        } else {
+          return undefined;
+        }
+      }
+      return value;
+    };
+
+    const value = lookup(language) ?? lookup('en');
+    return Array.isArray(value) ? (value as string[]) : [];
+  }, [language]);
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, tList }}>
       {children}
     </LanguageContext.Provider>
   );

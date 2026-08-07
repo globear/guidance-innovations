@@ -1,3 +1,5 @@
 /clock    /clock/index.html    200
 /clock/   /clock/index.html    200
+/package  /index.html          200
+/package/ /index.html          200
 /*        /index.html          200
