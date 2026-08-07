@@ -1708,7 +1708,7 @@ PackPilot ลดความขัดแย้งในการส่งต่�
         },
         sales: {
           name: "AI 销售与预约助手",
-          price: "起价 ¥1,659/月",
+          price: "起价 ¥2,729/月",
           term: "最少 12 个月",
           features: [
             "包含 AI 商务助手的全部内容",
@@ -1812,7 +1812,7 @@ PackPilot ลดความขัดแย้งในการส่งต่�
           },
           website: { label: "AI 网站助手", price: "起价 ¥899/月" },
           business: { label: "AI 商务助手", price: "起价 ¥1,389/月" },
-          sales: { label: "AI 销售与预约助手", price: "起价 ¥1,659/月" },
+          sales: { label: "AI 销售与预约助手", price: "起价 ¥2,729/月" },
         },
         websiteStatuses: {
           have: "我已有网站",
