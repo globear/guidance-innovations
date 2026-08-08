@@ -83,10 +83,13 @@ export const translations = {
         recommended: "Recommended",
         excludesPrefix: "Excludes:",
         cta: "Choose this plan",
+        bestForLabel: "Best for",
         website: {
           name: "AI Website Assistant",
           price: "starting from $129/mo",
           term: "6-month minimum",
+          bestFor:
+            "Businesses that want a polished 24/7 website assistant—answering visitor questions from publicly available information on your site.",
           features: [
             "Installation on one existing website",
             "Knowledge base from publicly available business info",
@@ -108,6 +111,8 @@ export const translations = {
           name: "AI Business Assistant",
           price: "starting from $199/mo",
           term: "6-month minimum",
+          bestFor:
+            "Service businesses—spas, clinics, salons, and similar—that need private knowledge, branded chat, and reliable lead capture.",
           features: [
             "Everything in Website Assistant",
             "Private knowledge base from owner-provided documents",
@@ -124,6 +129,8 @@ export const translations = {
           name: "AI Sales and Booking Agent",
           price: "starting from $389/mo",
           term: "12-month minimum",
+          bestFor:
+            "Teams ready to convert conversations into bookings—with calendar sync, structured qualification, and clearer sales follow-through.",
           features: [
             "Everything in Business Assistant",
             "Structured lead capture and qualification, contact validation, service-interest identification, lead categorization",
@@ -131,6 +138,13 @@ export const translations = {
             "Conversation summaries, lead-management dashboard, conversion insights, human escalation",
           ],
           note: "Custom CRM integrations, telephone AI, SMS, voice, outbound follow-up, complex multi-channel systems require separate quotation.",
+        },
+        enterprise: {
+          label: "Enterprise",
+          title: "Custom Enterprise AI",
+          description:
+            "Built for large-scale operations that need dedicated infrastructure—separate AI models, databases, and servers—plus tailored workflows, stronger security controls, and priority support. We design the architecture with you and provide a custom quotation after a detailed requirements review.",
+          cta: "Discuss Enterprise",
         },
       },
       noWebsite: {
@@ -876,10 +890,13 @@ Built with React, Supabase, and DeepSeek V3.`,
         recommended: "แนะนำ",
         excludesPrefix: "ไม่รวม:",
         cta: "เลือกแพ็กเกจนี้",
+        bestForLabel: "เหมาะสำหรับ",
         website: {
           name: "ผู้ช่วย AI สำหรับเว็บไซต์",
           price: "เริ่มต้น ฿3,500/เดือน",
           term: "ขั้นต่ำ 6 เดือน",
+          bestFor:
+            "ธุรกิจที่ต้องการผู้ช่วยบนเว็บไซต์ตลอด 24 ชั่วโมง เพื่อตอบคำถามลูกค้าจากข้อมูลสาธารณะบนเว็บไซต์ของคุณ",
           features: [
             "ติดตั้งบนเว็บไซต์ที่มีอยู่ 1 เว็บไซต์",
             "ฐานความรู้จากข้อมูลธุรกิจที่เผยแพร่สาธารณะ",
@@ -901,6 +918,8 @@ Built with React, Supabase, and DeepSeek V3.`,
           name: "ผู้ช่วย AI สำหรับธุรกิจ",
           price: "เริ่มต้น ฿6,500/เดือน",
           term: "ขั้นต่ำ 6 เดือน",
+          bestFor:
+            "ธุรกิจบริการ เช่น สปา คลินิก ร้านเสริมสวย และธุรกิจขนาดเล็กที่ต้องการฐานความรู้ภายในและการเก็บลีดอย่างมั่นคง",
           features: [
             "ทุกอย่างในแพ็กเกจผู้ช่วย AI สำหรับเว็บไซต์",
             "ฐานความรู้ภายในจากเอกสารที่เจ้าของธุรกิจให้",
@@ -917,6 +936,8 @@ Built with React, Supabase, and DeepSeek V3.`,
           name: "ผู้ช่วย AI ด้านการขายและการจอง",
           price: "เริ่มต้น ฿11,900/เดือน",
           term: "ขั้นต่ำ 12 เดือน",
+          bestFor:
+            "ทีมที่พร้อมเปลี่ยนบทสนทนาเป็นการจองจริง ด้วยระบบปฏิทิน การคัดกรองลูกค้าอย่างเป็นระบบ และการติดตามการขายที่ชัดเจนขึ้น",
           features: [
             "ทุกอย่างในแพ็กเกจผู้ช่วย AI สำหรับธุรกิจ",
             "เก็บและคัดกรองข้อมูลลูกค้าอย่างเป็นระบบ ตรวจสอบข้อมูลติดต่อ ระบุบริการที่ลูกค้าสนใจ และจัดหมวดหมู่ลูกค้า",
@@ -924,6 +945,13 @@ Built with React, Supabase, and DeepSeek V3.`,
             "สรุปบทสนทนา แดชบอร์ดจัดการลูกค้า รายงานอัตราการปิดการขาย และการส่งต่อให้พนักงาน",
           ],
           note: "การเชื่อมต่อ CRM เฉพาะทาง AI รับสายโทรศัพท์ SMS ระบบเสียง การติดตามลูกค้าเชิงรุก และระบบหลายช่องทางที่ซับซ้อน ต้องเสนอราคาแยก",
+        },
+        enterprise: {
+          label: "องค์กรขนาดใหญ่",
+          title: "Custom Enterprise AI",
+          description:
+            "ออกแบบสำหรับองค์กรที่ต้องการโครงสร้างพื้นฐานเฉพาะ—โมเดล AI ฐานข้อมูล และเซิร์ฟเวอร์แยก—พร้อมเวิร์กโฟลว์ตามความต้องการ การควบคุมความปลอดภัยที่เข้มขึ้น และการสนับสนุนแบบลำดับความสำคัญ เราออกแบบสถาปัตยกรรมร่วมกับคุณ และเสนอราคาแบบกำหนดเองหลังตรวจสอบความต้องการอย่างละเอียด",
+          cta: "พูดคุยแพ็กเกจองค์กร",
         },
       },
       noWebsite: {
@@ -1669,10 +1697,13 @@ PackPilot ลดความขัดแย้งในการส่งต่�
         recommended: "推荐",
         excludesPrefix: "不含：",
         cta: "选择此套餐",
+        bestForLabel: "适合",
         website: {
           name: "AI 网站助手",
           price: "起价 ¥899/月",
           term: "最少 6 个月",
+          bestFor:
+            "希望在网站上提供全天候专业问答的企业——基于您网站上的公开信息，自动回应访客咨询。",
           features: [
             "在一个现有网站上安装部署",
             "基于公开业务资料建立知识库",
@@ -1694,6 +1725,8 @@ PackPilot ลดความขัดแย้งในการส่งต่�
           name: "AI 商务助手",
           price: "起价 ¥1,389/月",
           term: "最少 6 个月",
+          bestFor:
+            "服务型小微企业——如水疗、诊所、美业等——需要专属知识库、品牌化对话界面与稳定的线索收集。",
           features: [
             "包含 AI 网站助手的全部内容",
             "基于企业方提供文档的专属知识库",
@@ -1710,6 +1743,8 @@ PackPilot ลดความขัดแย้งในการส่งต่�
           name: "AI 销售与预约助手",
           price: "起价 ¥2,729/月",
           term: "最少 12 个月",
+          bestFor:
+            "希望将对话转化为预约的团队——支持日历同步、结构化线索筛选与更清晰的销售跟进。",
           features: [
             "包含 AI 商务助手的全部内容",
             "结构化线索收集与筛选、联系方式校验、服务意向识别、线索分类",
@@ -1717,6 +1752,13 @@ PackPilot ลดความขัดแย้งในการส่งต่�
             "对话摘要、线索管理看板、转化洞察与人工升级处理",
           ],
           note: "定制 CRM 集成、电话 AI、短信、语音、主动跟进以及复杂的多渠道系统需单独报价。",
+        },
+        enterprise: {
+          label: "企业定制",
+          title: "企业级定制 AI",
+          description:
+            "面向需要专属基础设施的大型运营场景——独立 AI 模型、数据库与服务器，以及定制工作流、更强的安全管控与优先支持。我们将与您共同设计架构，并在详细需求评估后提供定制报价。",
+          cta: "咨询企业方案",
         },
       },
       noWebsite: {

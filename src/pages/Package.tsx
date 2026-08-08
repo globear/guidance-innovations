@@ -237,7 +237,13 @@ const Package = () => {
                       {t(`package.packages.${pkg.id}.name` as any)}
                     </h3>
                   </div>
-                  <p className="text-3xl font-semibold text-foreground">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    <span className="font-medium text-primary">
+                      {t("package.packages.bestForLabel")}
+                    </span>{" "}
+                    {t(`package.packages.${pkg.id}.bestFor` as any)}
+                  </p>
+                  <p className="mt-4 text-3xl font-semibold text-foreground">
                     {t(`package.packages.${pkg.id}.price` as any)}
                   </p>
                   <p className="text-sm text-muted-foreground">
@@ -282,6 +288,30 @@ const Package = () => {
                   </button>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card/80 p-6 backdrop-blur-sm sm:p-8">
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-3xl">
+                  <p className="text-xs font-medium uppercase tracking-wider text-primary">
+                    {t("package.packages.enterprise.label")}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-semibold text-foreground">
+                    {t("package.packages.enterprise.title")}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    {t("package.packages.enterprise.description")}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => scrollToWizard()}
+                  className="btn-secondary w-full shrink-0 justify-center lg:w-auto"
+                >
+                  {t("package.packages.enterprise.cta")}
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
             </div>
           </div>
         </section>
