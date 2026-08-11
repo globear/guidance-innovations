@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <footer className="border-t border-border bg-background">
       <div className="section-container py-12 sm:py-16">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {/* Logo & Description */}
           <div className="sm:col-span-2">
             <span className="font-display text-lg font-medium text-foreground">
@@ -27,28 +27,6 @@ const Footer = () => {
             <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
               {t("footer.description")}
             </p>
-          </div>
-
-          {/* Projects & Services */}
-          <div>
-            <h4 className="font-medium text-foreground text-sm mb-4">{t("footer.productsHeading")}</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="https://app.guidanceinnovations.tech" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  GuidanceStream
-                </a>
-              </li>
-              <li>
-                <a href="https://app.guidanceinnovations.tech" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  CareRouters
-                </a>
-              </li>
-              <li>
-                <a href="https://app.guidanceinnovations.tech/FixMyText" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  FixMyText
-                </a>
-              </li>
-            </ul>
           </div>
 
           {/* Company */}
