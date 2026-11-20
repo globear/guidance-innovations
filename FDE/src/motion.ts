@@ -109,10 +109,12 @@ export function usePageMotion(key: string, lang: string) {
       });
 
       gsap.utils.toArray<HTMLElement>("[data-fade]").forEach((el) => {
+        // Anything already on the first screen plays right away instead of waiting for a scroll.
+        const onFirstScreen = el.getBoundingClientRect().top < window.innerHeight;
         gsap.from(el, {
           y: 40, autoAlpha: 0, duration: 1.1, ease: "power3.out",
           delay: Number(el.dataset.fade) || 0,
-          scrollTrigger: { trigger: el, start: "top 90%" },
+          scrollTrigger: onFirstScreen ? undefined : { trigger: el, start: "top 90%" },
         });
       });
 

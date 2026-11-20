@@ -3,17 +3,46 @@
 
 export const brand = { name: "Guidance Innovation", legal: "Guidance Innovation Co., Ltd." };
 
-// Drop real assets into /public and set these paths.
+// Founder media. With no video, the poster photo is shown on its own.
 export const media = {
-  headshot: "", // e.g. "/founder.jpg"
+  headshot: "/images/founder.webp",
   video: "", // e.g. "/founder.mp4"
-  poster: "",
+  poster: "/images/field/ai-summit.webp",
+};
+
+// Real photos from talks and community events (captions are in each language's ui.about.field).
+export const fieldPhotos = [
+  "/images/field/ai-summit.webp",
+  "/images/field/cursor-meetup.webp",
+  "/images/field/brew-build-emsphere.webp",
+  "/images/field/brew-build-tdp.webp",
+];
+
+// Background photos in /public/images. Each name has a full-size .webp and a "-1280" version.
+// Originals live in /assets/photos (not deployed).
+export const photos = {
+  hero: "hero-home",
+  heroMobile: "hero-home-mobile",
+  business: "page-business",
+  leaders: "page-leaders",
+  how: "page-how-we-work",
+  about: "page-about",
+  consult: "page-consultation",
+  industries: {
+    factories: "industry-factories",
+    logistics: "industry-logistics",
+    hotels: "industry-hotels",
+    travel: "industry-travel",
+    restaurants: "industry-restaurants",
+  } as Record<string, string>,
 };
 
 export const contact = {
-  line: "#", // LINE OA link
-  wechat: "#", // WeChat QR / ID
-  email: "#",
+  email: "info@guidanceinnovations.tech",
+  whatsapp: "https://wa.me/66984862094",
+  whatsappLabel: "+66 98 486 2094",
+  privacy: "https://guidanceinnovations.tech/privacy",
+  terms: "https://guidanceinnovations.tech/terms",
 };
 
 export const en = {
@@ -23,7 +52,7 @@ export const en = {
   },
 
   founder: {
-    name: "Founder name",
+    name: "Reed",
     role: "Founder & Forward-Deployed Engineer",
     message:
       "Most owners I meet don't need more software. They need to see their business clearly, today, not at the end of the month. I come into your operation, learn how it really runs, and build the AI systems around it myself.",
@@ -167,6 +196,10 @@ export const en = {
   ui: {
     nav: { business: "Business", leaders: "Leaders", industries: "Industries", how: "How we work", security: "Security", about: "About", book: "Book consultation", menu: "Menu", close: "Close" },
     footer: {
+      privacy: "Privacy policy",
+      terms: "Terms",
+      location: "Thailand",
+      email: "Email",
       blurb: "AI forward-deployed engineering for growing businesses and the people who lead them.",
       solutions: "Solutions", forBusiness: "For Business", forLeaders: "For Leaders", howWeWork: "How we work", securityPdpa: "Security & PDPA",
       industries: "Industries", contact: "Contact", about: "About", base: "Your data stays yours · PDPA aligned", language: "Language",
@@ -243,23 +276,77 @@ export const en = {
       modesEyebrow: "Deployment modes", modesTitle: "You choose where AI runs.",
       dataLives: "Data lives", aiProc: "AI processing", bestFor: "Best for",
       comEyebrow: "Our commitments", comTitle: "Written into every contract.",
+      flow: {
+        eyebrow: "How your data moves", title: "See exactly what leaves, and what never does.",
+        zones: { company: "Your company", cloud: "Guidance secure cloud", provider: "AI provider" },
+        nodes: {
+          sources: { title: "Your systems", sub: "ERP, Excel, LINE, POS, documents" },
+          server: { title: "Data store", sub: "Your databases and documents" },
+          mask: { title: "Masking", sub: "Personal data removed" },
+          aiLocal: { title: "AI model", sub: "Open-source, runs inside" },
+          aiApi: { title: "Enterprise AI API", sub: "No training on your data" },
+        },
+        notUsed: "Not used", legendData: "Your data", legendMasked: "Masked text only",
+      },
       pdpaEyebrow: "PDPA",
       pdpaText: "We act as your data processor under Thailand's Personal Data Protection Act (PDPA). Every project includes a data processing agreement, documented data flows, and controls for consent, access and deletion.",
     },
     about: {
+      proofEyebrow: "Proof of work",
+      proofTitle: "We build and run our own AI products.",
+      proofLead: "The same standards we apply to our own products go into client work.",
+      products: [
+        { name: "GuidanceStream", tag: "AI customer service", body: "A production-ready AI product for customer service." },
+        { name: "CareRouters", tag: "Healthcare logistics", body: "An MVP for hospital escort services for elderly patients, designed around real workflows and tested with real users." },
+      ],
+      fieldEyebrow: "In the field",
+      fieldTitle: "Part of Bangkok's AI and builder community.",
+      field: ["Speaking on AI automation and intelligent agents, AI Summit", "Building with the Cursor developer community", "Brew & Build, EmSphere, Bangkok", "Brew & Build #1, True Digital Park, Bangkok"],
+      companyEyebrow: "The company",
+      factCompany: "Company",
+      factBase: "Based in",
+      factBaseV: "Thailand",
+      factEmail: "Email",
       eyebrow: "About", title: "A small team that works like your own engineers.",
       lead: "Guidance Innovation is an AI forward-deployed engineering company. You work directly with the engineer who builds your system, from the first conversation to every update after.",
       bringEyebrow: "What we bring", bringTitle: "Hands-on, end to end.",
     },
     consult: {
+      phone: "Phone or LINE ID (optional)",
+      consent: "I agree that Guidance Innovation may use these details to contact me about this request, in line with the",
+      privacy: "privacy policy",
+      sending: "Sending…",
+      errorTitle: "That didn't go through.",
+      errorLead: "Your details weren't sent. Please try again, or email or WhatsApp us directly. We reply within one business day.",
+      emailBtn: "Email us",
+      whatsappBtn: "WhatsApp",
+      nextEyebrow: "What happens next",
+      nextTitle: "Three simple steps.",
+      next: [
+        { t: "We reply within one business day", b: "By email or WhatsApp, to agree a time that suits you." },
+        { t: "A free 45-minute session", b: "Online or at your office. We learn how your business runs and show where AI fits. No pressure, no slides." },
+        { t: "A clear proposal, if there's a fit", b: "A fixed-scope Discovery week with a clear price. You decide whether to go ahead." },
+      ],
       eyebrow: "Book a consultation", title: "Tell us one problem.",
       lead: "A free 45-minute AI Opportunity Session. We'll learn how your business runs and show you where AI can save time and money. Pricing is shared after we understand your scope.",
       direct: "Or reach us directly", thanks: "Thank you.", thanksLead: "We'll reply within one business day.",
-      name: "Name", company: "Company", contact: "Email or LINE ID", interest: "I'm interested in",
+      name: "Name", company: "Company", contact: "Email", interest: "I'm interested in",
       interestOpts: ["For Business", "For Leaders (personal agent)", "Not sure yet"],
       industry: "Industry", other: "Other", problem: "The one problem you'd solve first", submit: "Request session",
     },
-    notFound: { title: "This page doesn't exist.", lead: "Head back to the homepage." },
+    notFound: { title: "This page doesn't exist.", lead: "Head back to the homepage.", button: "Back to homepage" },
+    faq: {
+      eyebrow: "Questions",
+      title: "What owners usually ask.",
+      items: [
+        { q: "How much does it cost?", a: "The first consultation is free. After it, every engagement is quoted as a fixed scope with a clear price, based on what you need. No open-ended projects." },
+        { q: "How long before we see results?", a: "Discovery takes one week on site. A first working system is usually delivered in 2 to 6 weeks, depending on scope." },
+        { q: "Do we have to replace our current software?", a: "No. We connect what you already use, such as Excel, LINE, your ERP, accounting and POS, and build the AI on top." },
+        { q: "Do we need our own IT team?", a: "No. We build the system and, with Guardian Care, monitor and improve it every month. Your team just uses it." },
+        { q: "Is our data safe? Will it be used to train AI?", a: "Your data stays yours and is not used to train AI models. You choose Private, Hybrid or Managed deployment, and every project includes a PDPA-aligned data processing agreement." },
+        { q: "Which languages do you support?", a: "Our AI systems answer in Thai, English and Chinese, so your staff and customers can use the language they prefer." },
+      ],
+    },
   },
 };
 

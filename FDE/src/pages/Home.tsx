@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import NetworkCanvas from "../components/NetworkCanvas";
 import { Arrow, ChatDemo, CTA, Founder, IndustriesScroll, MethodPinned } from "../components/Blocks";
+import { Faq } from "./Pages";
+import { photos } from "../content";
 import { useLang } from "../i18n";
 
 export default function Home() {
@@ -13,6 +15,10 @@ export default function Home() {
   return (
     <>
       <section className="hero">
+        <picture className="hero-photo" aria-hidden>
+          <source media="(max-width: 759px)" srcSet={`/images/${photos.heroMobile}.webp`} />
+          <img src={`/images/${photos.hero}.webp`} srcSet={`/images/${photos.hero}-1280.webp 1280w, /images/${photos.hero}.webp 2560w`} sizes="100vw" alt="" />
+        </picture>
         <NetworkCanvas coreLabel={t.hero.core} />
         <div className="hero-shade" />
         <div className="hero-status">
@@ -113,6 +119,7 @@ export default function Home() {
         </div>
       </section>
 
+      <Faq light={false} />
       <CTA />
     </>
   );

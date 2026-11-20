@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guidance Innovation | AI Forward-Deployed Engineering</title>
     <meta name="description" content="We embed with your team, connect your operations data, and build private AI systems that help owners see clearly and decide faster." />
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Guidance Innovation" />
+    <meta property="og:title" content="Guidance Innovation | AI Forward-Deployed Engineering" />
+    <meta property="og:description" content="We embed with your team, connect your operations data, and build private AI systems that help owners see clearly and decide faster." />
+    <meta property="og:image" content="/og-share.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
+    <!-- Netlify Forms reads this at deploy time; the React form posts the same fields. -->
+    <form name="consultation" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" /><input name="name" /><input name="company" /><input name="email" /><input name="phone" />
+      <input name="interest" /><input name="industry" /><textarea name="problem"></textarea><input name="lang" />
+    </form>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

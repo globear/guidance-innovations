@@ -19,6 +19,7 @@ export default function NetworkCanvas({ coreLabel }: { coreLabel: string }) {
     let mouse: Pt = { x: 0.5, y: 0.5 };
     let src: Pt[] = [], out: Pt[] = [], core: Pt = { x: 0, y: 0 };
     let dust: { x: number; y: number; z: number }[] = [];
+    let ring = 1, fontPx = 10;
     const particles: Particle[] = [];
 
     const layout = () => {
@@ -27,9 +28,20 @@ export default function NetworkCanvas({ coreLabel }: { coreLabel: string }) {
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const mobile = w < 760;
-      const top = h * (mobile ? 0.17 : 0.17), bottom = h * (mobile ? 0.34 : 0.5);
-      const left = mobile ? w * 0.1 : w * 0.08;
-      const right = mobile ? w * 0.9 : w * 0.9;
+      let top = h * 0.17, bottom = h * 0.5;
+      if (mobile) {
+        // Fill the space between the status line and the headline, so there is no dead gap.
+        const hero = canvas.parentElement!;
+        const status = hero.querySelector<HTMLElement>(".hero-status");
+        const text = hero.querySelector<HTMLElement>(".wrap");
+        top = (status ? status.offsetTop + status.offsetHeight : 0) + 48;
+        // Never let the source labels run into the headline; squeeze them on short phones instead.
+        bottom = Math.max(top + 140, (text ? text.offsetTop : h * 0.5) - 32);
+      }
+      const left = w * (mobile ? 0.07 : 0.08);
+      const right = w * (mobile ? 0.93 : 0.9);
+      ring = mobile ? Math.min(1.6, Math.max(1, (bottom - top) / 320)) : 1;
+      fontPx = mobile && w > 420 ? 11 : 10;
       core = { x: mobile ? w * 0.5 : w * 0.56, y: (top + bottom) / 2 };
       src = SOURCES.map((_, i) => ({ x: left + (i % 2) * (mobile ? 0 : w * 0.06), y: top + (i / (SOURCES.length - 1)) * (bottom - top) }));
       out = OUTPUTS.map((_, i) => ({ x: right, y: core.y + (i - 1) * (bottom - top) * 0.32 }));
@@ -62,7 +74,7 @@ export default function NetworkCanvas({ coreLabel }: { coreLabel: string }) {
       });
 
       ctx.lineWidth = 1;
-      ctx.font = "500 10px 'IBM Plex Mono', 'IBM Plex Sans Thai', 'PingFang SC', 'Microsoft YaHei', monospace";
+      ctx.font = `500 ${fontPx}px 'IBM Plex Mono', 'IBM Plex Sans Thai', 'PingFang SC', 'Microsoft YaHei', monospace`;
       ctx.textBaseline = "middle";
 
       // input curves + labels
@@ -103,7 +115,7 @@ export default function NetworkCanvas({ coreLabel }: { coreLabel: string }) {
       for (let r = 0; r < 3; r++) {
         ctx.rotate(time * 0.002 * (r % 2 ? -1 : 1));
         ctx.strokeStyle = r === 0 ? accent : `rgba(239,238,233,${0.25 - r * 0.06})`;
-        const s = (22 + r * 18) * pulse;
+        const s = (22 + r * 18) * pulse * ring;
         ctx.strokeRect(-s, -s, s * 2, s * 2);
       }
       ctx.restore();
@@ -128,15 +140,19 @@ export default function NetworkCanvas({ coreLabel }: { coreLabel: string }) {
 
     const onMove = (e: PointerEvent) => { mouse = { x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight }; };
     const onResize = () => { layout(); if (still) draw(); };
+    // Re-layout when the canvas or the headline block changes size (fonts, language, rotation).
+    const ro = new ResizeObserver(onResize);
+    ro.observe(canvas);
+    const textBlock = canvas.parentElement?.querySelector(".wrap");
+    if (textBlock) ro.observe(textBlock);
 
     layout();
     if (still) for (let i = 0; i < 60; i++) spawn();
     draw();
-    window.addEventListener("resize", onResize);
     window.addEventListener("pointermove", onMove);
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener("resize", onResize);
+      ro.disconnect();
       window.removeEventListener("pointermove", onMove);
     };
   }, [coreLabel]);

@@ -1,15 +1,23 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { media, type Industry } from "../content";
+import { media, photos, type Industry } from "../content";
 import { useLang } from "../i18n";
 import { gsap, ScrollTrigger, reducedMotion } from "../motion";
 
 export const Arrow = () => <span className="arrow" aria-hidden>→</span>;
 
-export function PageHead({ eyebrow, title, lead }: { eyebrow: string; title: string; lead?: string }) {
+/** Decorative background photo from /public/images, with a 1280px version for smaller screens. */
+export function Photo({ name, className, eager }: { name: string; className?: string; eager?: boolean }) {
   return (
-    <section className="page-head">
-      <div className="grid-bg" />
+    <img className={className} src={`/images/${name}.webp`} srcSet={`/images/${name}-1280.webp 1280w, /images/${name}.webp 2560w`}
+      sizes="100vw" alt="" aria-hidden decoding="async" loading={eager ? "eager" : "lazy"} />
+  );
+}
+
+export function PageHead({ eyebrow, title, lead, photo }: { eyebrow: string; title: string; lead?: string; photo?: string }) {
+  return (
+    <section className={`page-head ${photo ? "has-photo" : ""}`}>
+      {photo ? <><Photo name={photo} className="page-head-photo" eager /><div className="page-head-shade" /></> : <div className="grid-bg" />}
       <div className="wrap">
         <span className="eyebrow" data-scramble>{eyebrow}</span>
         <h1 className="h1 page-title" style={{ marginTop: 28 }} data-split="now">{title}</h1>
@@ -128,12 +136,14 @@ function MethodViz({ step }: { step: number }) {
   );
 }
 
-/** Horizontal industry scroller: pinned + scrubbed on desktop, swipe on mobile. */
+/** Horizontal industry scroller: pinned + scrubbed on desktop; auto-advancing, swipeable carousel on mobile. */
 export function IndustriesScroll() {
   const { c } = useLang();
   const t = c.ui.industriesSection;
   const root = useRef<HTMLDivElement>(null);
+  const scroller = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
+  const dots = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (reducedMotion()) return;
     const mm = gsap.matchMedia();
@@ -144,6 +154,7 @@ export function IndustriesScroll() {
         scrollTrigger: { trigger: root.current, start: "top top", end: () => `+=${dist()}`, pin: true, scrub: 0.6, invalidateOnRefresh: true },
       });
     });
+    mm.add("(max-width: 900px)", () => autoCarousel(scroller.current!, track.current!, dots.current!, root.current!));
     return () => mm.revert();
   }, []);
   return (
@@ -155,18 +166,99 @@ export function IndustriesScroll() {
         </div>
         <p className="lead" style={{ maxWidth: 420 }}>{t.lead}</p>
       </div>
-      <div className="hscroll">
+      <div className="hscroll" ref={scroller}>
         <div className="hscroll-track" ref={track}>
           {c.industries.map((ind, i) => <IndustryCard key={ind.slug} ind={ind} i={i} view={t.view} />)}
         </div>
+      </div>
+      <div className="hscroll-dots wrap" ref={dots} aria-hidden>
+        {c.industries.map((ind) => <span key={ind.slug}><i /></span>)}
       </div>
     </div>
   );
 }
 
+const SLIDE_SECONDS = 3.6;
+
+/**
+ * Mobile carousel: glides to the next card every few seconds while the section is on screen,
+ * replays that card's chart, and backs off while the visitor swipes. Returns its cleanup.
+ */
+function autoCarousel(scroller: HTMLElement, track: HTMLElement, dotsEl: HTMLElement, section: HTMLElement) {
+  const cards = Array.from(track.children) as HTMLElement[];
+  const segs = Array.from(dotsEl.children) as HTMLElement[];
+  const pad = cards[0].offsetLeft;
+  let idx = -1, inView = false, holding = false;
+  let next: gsap.core.Tween | null = null, fill: gsap.core.Tween | null = null;
+
+  const stop = () => { next?.kill(); fill?.kill(); };
+  const schedule = (delay = SLIDE_SECONDS) => {
+    stop();
+    if (!inView || holding || idx < 0) return;
+    fill = gsap.fromTo(segs[idx].firstElementChild, { scaleX: 0 }, { scaleX: 1, duration: delay, ease: "none" });
+    next = gsap.delayedCall(delay, () => go((idx + 1) % cards.length));
+  };
+  const go = (i: number) => scroller.scrollTo({ left: cards[i].offsetLeft - pad, behavior: "smooth" });
+
+  const replay = (card: HTMLElement) => {
+    gsap.fromTo(card.querySelectorAll<HTMLElement>("[data-bar]"), { width: "0%" },
+      { width: (_: number, el: HTMLElement) => `${el.dataset.bar}%`, duration: 1.2, ease: "power3.out", stagger: 0.08, overwrite: true });
+    const line = card.querySelector<SVGPathElement>("[data-draw]");
+    if (line) {
+      const len = line.getTotalLength();
+      gsap.fromTo(line, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut", overwrite: true });
+    }
+  };
+
+  const nearest = () => {
+    let best = 0;
+    cards.forEach((card, i) => {
+      if (Math.abs(card.offsetLeft - pad - scroller.scrollLeft) < Math.abs(cards[best].offsetLeft - pad - scroller.scrollLeft)) best = i;
+    });
+    return best;
+  };
+  const onScroll = () => {
+    const i = nearest();
+    if (i === idx) return;
+    idx = i;
+    cards.forEach((card, k) => card.classList.toggle("is-active", k === i));
+    segs.forEach((s, k) => {
+      s.classList.toggle("on", k === i);
+      if (k !== i) gsap.set(s.firstElementChild, { scaleX: k < i ? 1 : 0 });
+    });
+    replay(cards[i]);
+    schedule();
+  };
+  const hold = () => { holding = true; stop(); };
+  const release = () => { holding = false; schedule(SLIDE_SECONDS + 2); };
+
+  scroller.addEventListener("scroll", onScroll, { passive: true });
+  scroller.addEventListener("touchstart", hold, { passive: true });
+  scroller.addEventListener("touchend", release);
+  scroller.addEventListener("pointerdown", hold);
+  scroller.addEventListener("pointerup", release);
+  segs.forEach((s, i) => s.addEventListener("click", () => go(i)));
+  const st = ScrollTrigger.create({
+    trigger: section, start: "top 75%", end: "bottom 25%",
+    onToggle: (self) => { inView = self.isActive; inView ? schedule() : stop(); },
+  });
+  onScroll();
+
+  return () => {
+    stop(); st.kill();
+    scroller.removeEventListener("scroll", onScroll);
+    scroller.removeEventListener("touchstart", hold);
+    scroller.removeEventListener("touchend", release);
+    scroller.removeEventListener("pointerdown", hold);
+    scroller.removeEventListener("pointerup", release);
+    cards.forEach((card) => card.classList.remove("is-active"));
+  };
+}
+
 function IndustryCard({ ind, i, view }: { ind: Industry; i: number; view: string }) {
   return (
     <Link to={`/industries/${ind.slug}`} className="ind-card">
+      {photos.industries[ind.slug] && <Photo name={photos.industries[ind.slug]} className="ind-photo" />}
       <div className="top"><span>{String(i + 1).padStart(2, "0")}</span><span>{view}</span></div>
       <h3 className="h2" style={{ fontSize: "clamp(30px,3vw,44px)" }}>{ind.name}</h3>
       <p className="muted">{ind.short}</p>
@@ -185,7 +277,8 @@ export function Founder({ light = false }: { light?: boolean }) {
       <div className="wrap founder">
         <div className="video-frame" data-fade onClick={() => { if (media.video && vid.current) { vid.current.play(); setPlaying(true); } }}>
           {media.video && <video ref={vid} src={media.video} poster={media.poster || undefined} controls={playing} playsInline />}
-          {!playing && (
+          {!media.video && media.poster && <><img className="founder-photo" src={media.poster} alt={c.ui.about.field[0]} loading="lazy" decoding="async" /><span className="frame-cap">{c.ui.about.field[0]}</span></>}
+          {!playing && media.video && (
             <div className="video-ph">
               <div>
                 <div className="play">▶</div>
@@ -251,7 +344,7 @@ export function ChatDemo() {
   );
 }
 
-export function CTA() {
+export function CTA({ to = "/consultation" }: { to?: string }) {
   const { c } = useLang();
   const t = c.ui.cta;
   return (
@@ -261,7 +354,7 @@ export function CTA() {
         <h2 className="h-display" style={{ margin: "28px 0 40px" }} data-split>{t.title}</h2>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", gap: 32, flexWrap: "wrap" }}>
           <p className="lead" data-fade>{t.lead}</p>
-          <Link to="/consultation" className="btn primary" data-fade="0.2">{t.button} <Arrow /></Link>
+          <Link to={to} className="btn primary" data-fade="0.2">{t.button} <Arrow /></Link>
         </div>
       </div>
     </section>

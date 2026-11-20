@@ -70,6 +70,7 @@ export default function Layout() {
       <div className={`mobile-menu ${open ? "open" : ""}`}>
         {links.map((l) => <Link key={l.to} to={l.to}>{l.label}</Link>)}
         <Link to="/consultation" className="accent">{t.nav.book} →</Link>
+        <button className="mobile-lang" onClick={() => { setOpen(false); openPicker(); }}>{t.footer.language} · {LANGS.find((l) => l.code === lang)!.label}</button>
       </div>
 
       {/* keyed so each route/language remounts fresh (split-text mutates the DOM) */}
@@ -99,15 +100,19 @@ export default function Layout() {
               <h4>{t.footer.contact}</h4>
               <ul>
                 <li><Link to="/consultation">{t.nav.book}</Link></li>
-                <li><a href={contact.line}>LINE OA</a></li>
-                <li><a href={contact.wechat}>WeChat</a></li>
+                <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+                <li><a href={contact.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp · {contact.whatsappLabel}</a></li>
                 <li><Link to="/about">{t.footer.about}</Link></li>
               </ul>
             </div>
           </div>
           <div className="footer-base">
-            <span>© {new Date().getFullYear()} {brand.legal}</span>
+            <span>© {new Date().getFullYear()} {brand.legal} · {t.footer.location}</span>
             <span>{t.footer.base}</span>
+            <span className="footer-legal">
+              <a href={contact.privacy} target="_blank" rel="noopener noreferrer">{t.footer.privacy}</a>
+              <a href={contact.terms} target="_blank" rel="noopener noreferrer">{t.footer.terms}</a>
+            </span>
             <button className="footer-lang" onClick={openPicker}>{t.footer.language} · {LANGS.find((l) => l.code === lang)!.label}</button>
           </div>
         </div>
