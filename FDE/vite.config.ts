@@ -4,4 +4,10 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: { port: 5180 },
+  // Split libraries from site code so repeat visits reuse the cached vendor files.
+  build: {
+    rollupOptions: {
+      output: { manualChunks: { react: ["react", "react-dom", "react-router-dom"], motion: ["gsap", "lenis"] } },
+    },
+  },
 });

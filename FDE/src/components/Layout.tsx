@@ -6,7 +6,7 @@ import LangPicker from "./LangPicker";
 import { gsap, lenis, reducedMotion, usePageMotion } from "../motion";
 
 export default function Layout() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const { lang, c, chosen, openPicker } = useLang();
   const t = c.ui;
   const [scrolled, setScrolled] = useState(false);
@@ -33,10 +33,24 @@ export default function Layout() {
   // Route change: jump to top and lift an accent curtain off the new page.
   useLayoutEffect(() => {
     setOpen(false);
+    lenis?.resize(); // the new page has a different height
     lenis ? lenis.scrollTo(0, { immediate: true }) : window.scrollTo(0, 0);
     if (first.current || reducedMotion()) { first.current = false; return; }
     gsap.fromTo(curtain.current, { scaleY: 1, transformOrigin: "top" }, { scaleY: 0, duration: 0.8, ease: "power4.inOut" });
   }, [pathname]);
+
+  // Links like /how-we-work#cases: once the new page has laid out (pinned sections included), scroll to the anchor.
+  useEffect(() => {
+    if (!hash) return;
+    const id = setTimeout(() => {
+      const el = document.getElementById(hash.slice(1));
+      if (!el) return;
+      // Jump rather than glide: the target can be thousands of pixels down. Refresh Lenis's
+      // page height first, or it clamps the target to the previous page's length.
+      if (lenis) { lenis.resize(); lenis.scrollTo(el, { offset: -80, immediate: true }); } else el.scrollIntoView();
+    }, 900);
+    return () => clearTimeout(id);
+  }, [pathname, hash]);
 
   // Remount once a language is picked so the intro animations play after the pop-up closes.
   const pageKey = `${lang}${chosen ? "" : "?"}${pathname}`;
