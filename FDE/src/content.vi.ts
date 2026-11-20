@@ -1,0 +1,248 @@
+// Vietnamese copy. Same shape as `en` in content.ts.
+import type { Content } from "./content";
+
+export const vi: Content = {
+  meta: {
+    title: "Guidance Innovation | Kỹ thuật AI triển khai tại chỗ",
+    description: "Chúng tôi làm việc cùng đội ngũ của bạn, kết nối dữ liệu vận hành và xây dựng hệ thống AI riêng tư giúp chủ doanh nghiệp nhìn rõ và ra quyết định nhanh hơn.",
+  },
+
+  founder: {
+    name: "Tên nhà sáng lập",
+    role: "Nhà sáng lập & Kỹ sư triển khai tại chỗ",
+    message:
+      "Hầu hết các chủ doanh nghiệp tôi gặp không cần thêm phần mềm. Họ cần nhìn rõ doanh nghiệp của mình ngay hôm nay, chứ không phải đến cuối tháng. Tôi đến tận nơi vận hành của bạn, tìm hiểu cách nó thực sự hoạt động, và tự tay xây dựng hệ thống AI xoay quanh nó.",
+  },
+
+  problems: [
+    { k: "01", title: "Dữ liệu nằm ở mười nơi", body: "File Excel, nhóm LINE, POS, kế toán, giấy tờ. Không ai thấy được toàn cảnh." },
+    { k: "02", title: "Báo cáo đến quá muộn", body: "Khi báo cáo tháng đến tay, vấn đề đã khiến bạn mất tiền." },
+    { k: "03", title: "Quyết định dựa vào cảm tính", body: "Chủ doanh nghiệp dành thời gian đi tìm số liệu thay vì hành động dựa trên chúng." },
+  ],
+
+  method: [
+    { k: "01", name: "Khám phá", time: "Tuần 1", body: "Chúng tôi làm việc cùng đội ngũ của bạn tại chỗ. Quan sát vận hành, phỏng vấn nhân viên, vẽ lại dòng chảy công việc và dữ liệu thực tế, tìm ra nơi thời gian và tiền bạc bị thất thoát." },
+    { k: "02", name: "Kết nối", time: "Tuần 2–3", body: "Chúng tôi kết nối các hệ thống bạn đang có: Excel, ERP, kế toán, POS, GPS, LINE OA, WeChat và API. Không cần đập bỏ làm lại." },
+    { k: "03", name: "Mô hình hóa", time: "Tuần 3–4", body: "Chúng tôi cấu trúc doanh nghiệp của bạn thành một mô hình thống nhất: đơn hàng, khách hàng, tài sản, nhân sự, tồn kho. Hệ thống cuối cùng đã hiểu cách bạn làm việc." },
+    { k: "04", name: "Quyết định", time: "Tuần 4–6", body: "Màn hình chỉ huy trực tiếp cho chủ doanh nghiệp, AI trả lời câu hỏi bằng ngôn ngữ thường ngày, bản tin hằng ngày và cảnh báo gửi qua LINE." },
+    { k: "05", name: "Bảo vệ", time: "Liên tục", body: "Chúng tôi ở lại. Giám sát, cải tiến và thêm ứng dụng mới mỗi tháng, để hệ thống lớn lên cùng doanh nghiệp." },
+  ],
+
+  industries: [
+    {
+      slug: "factories",
+      name: "Nhà máy",
+      forTitle: "Dành cho nhà máy.",
+      short: "Sản lượng, thời gian dừng máy và tồn kho trên một màn hình trực tiếp.",
+      headline: "Nhìn toàn bộ xưởng sản xuất từ một màn hình.",
+      pains: ["Số liệu sản xuất thu thập thủ công", "Dừng máy vài giờ sau mới phát hiện", "Tồn kho và đơn hàng không khớp"],
+      builds: [
+        { title: "Màn hình chỉ huy sản xuất", body: "Sản lượng, thời gian dừng và tỷ lệ đạt theo từng dây chuyền, cập nhật suốt ngày." },
+        { title: "Bản tin sản lượng hằng ngày", body: "Tóm tắt AI trên LINE mỗi sáng: sản xuất được gì, dừng ở đâu, vì sao." },
+        { title: "Cảnh báo tồn kho & đơn hàng", body: "Cảnh báo trước khi nguyên liệu cạn hoặc đơn hàng bị trễ." },
+      ],
+      metrics: ["Sản lượng / dây chuyền", "Thời gian dừng", "Tỷ lệ đạt", "Ngày tồn kho"],
+    },
+    {
+      slug: "logistics",
+      name: "Logistics",
+      forTitle: "Dành cho logistics.",
+      short: "Mọi xe tải, chuyến đi và đơn giao, đều được theo dõi và tính chi phí.",
+      headline: "Biết tình trạng mọi đơn giao, trước khi khách hàng gọi.",
+      pains: ["Cập nhật trạng thái rải rác trong các nhóm chat tài xế", "Phát hiện giao trễ quá muộn", "Không rõ chi phí mỗi chuyến"],
+      builds: [
+        { title: "Màn hình đội xe & giao hàng", body: "Trạng thái trực tiếp của xe, chuyến và đơn giao từ dữ liệu GPS và điều phối." },
+        { title: "Cảnh báo giao trễ", body: "AI đánh dấu các đơn có nguy cơ trễ và báo cho đúng người qua LINE." },
+        { title: "Chi phí mỗi chuyến", body: "Nhiên liệu, phí cầu đường và thời gian tổng hợp theo tuyến, khách hàng và tài xế." },
+      ],
+      metrics: ["% đúng giờ", "Chuyến hôm nay", "Chi phí / chuyến", "Nhiên liệu"],
+    },
+    {
+      slug: "hotels",
+      name: "Khách sạn",
+      forTitle: "Dành cho khách sạn.",
+      short: "Công suất phòng, doanh thu và AI hỗ trợ khách đa ngôn ngữ 24/7.",
+      headline: "Vận hành khách sạn bằng số liệu, và trả lời mọi khách ngay lập tức.",
+      pains: ["Nhân viên ngập trong câu hỏi của khách bằng ba ngôn ngữ", "Dữ liệu doanh thu phân tán qua nhiều kênh", "Phản ứng chậm với thay đổi công suất phòng"],
+      builds: [
+        { title: "Quầy AI cho khách", body: "Trả lời khách trên LINE, WeChat và web, bằng tiếng Thái, tiếng Anh và tiếng Trung, dựa trên chính sách của bạn." },
+        { title: "Màn hình doanh thu", body: "Công suất phòng, ADR và cơ cấu kênh ở cùng một nơi." },
+        { title: "Bản tin hằng ngày cho GM", body: "Khách đến, sự cố và doanh thu gửi mỗi sáng." },
+      ],
+      metrics: ["Công suất", "ADR", "RevPAR", "Tin nhắn khách"],
+    },
+    {
+      slug: "travel",
+      name: "Đại lý du lịch",
+      forTitle: "Dành cho đại lý du lịch.",
+      short: "AI trả lời yêu cầu và lập báo giá.",
+      headline: "Biến mọi yêu cầu thành câu trả lời nhanh và chính xác.",
+      pains: ["Trả lời cùng một câu hỏi cả ngày", "Lập báo giá mất hàng giờ", "Khách tiềm năng bị bỏ lỡ giữa các cuộc chat"],
+      builds: [
+        { title: "AI tư vấn", body: "Trả lời khách chính xác dựa trên gói tour, quy định và câu hỏi thường gặp của bạn, trên LINE và WeChat." },
+        { title: "Trợ lý báo giá", body: "Soạn báo giá từ bảng giá của bạn để nhân viên duyệt." },
+        { title: "Quy trình đặt chỗ", body: "Mọi khách tiềm năng và đặt chỗ được theo dõi từ tin nhắn đầu tiên đến thanh toán." },
+      ],
+      metrics: ["Yêu cầu", "Thời gian phản hồi", "Báo giá đã gửi", "Đặt chỗ"],
+    },
+    {
+      slug: "restaurants",
+      name: "Chuỗi nhà hàng nhượng quyền",
+      forTitle: "Dành cho chuỗi nhà hàng nhượng quyền.",
+      short: "Mọi chi nhánh được so sánh, mỗi sáng.",
+      headline: "Mọi chi nhánh, được so sánh và giải thích, mỗi sáng.",
+      pains: ["Báo cáo chi nhánh đến với nhiều định dạng khác nhau", "Chi phí nguyên liệu tăng mà không ai để ý", "Không có cách nhanh để so sánh chi nhánh"],
+      builds: [
+        { title: "Màn hình chỉ huy chi nhánh", body: "Doanh số, lượng khách và chi phí nguyên liệu từng chi nhánh, đặt cạnh nhau." },
+        { title: "Cảnh báo chi phí", body: "AI phát hiện chi phí nguyên liệu, hao hụt hoặc doanh số sụt giảm bất thường ở từng chi nhánh." },
+        { title: "Bản tin cho chủ", body: "Kết quả hôm qua của tất cả chi nhánh, trong một tin nhắn LINE." },
+      ],
+      metrics: ["Doanh số / chi nhánh", "% chi phí nguyên liệu", "Số hóa đơn", "Hóa đơn TB"],
+    },
+  ],
+
+  businessOffers: [
+    { title: "Quầy khách hàng AI", body: "Trợ lý AI riêng trên LINE OA, WeChat và web, trả lời khách chính xác dựa trên tài liệu, giá và chính sách của chính bạn." },
+    { title: "Màn hình chỉ huy doanh nghiệp", body: "Dữ liệu rời rạc của bạn được kết nối thành một bảng điều khiển trực tiếp cho chủ và quản lý." },
+    { title: "Bộ não tri thức", body: "SOP, hợp đồng và bảng giá của bạn có thể tra cứu được. Nhân viên hỏi bằng ngôn ngữ thường ngày và nhận câu trả lời đúng." },
+    { title: "Bản tin & Cảnh báo", body: "Tóm tắt AI hằng ngày về doanh nghiệp trên LINE, cùng cảnh báo ngay khi có sự cố." },
+  ],
+
+  leaderDay: [
+    { time: "07:00", title: "Bản tin buổi sáng", body: "Các cuộc họp hôm nay kèm bối cảnh về từng người, tin nhắn khẩn và các con số chính của mọi doanh nghiệp bạn sở hữu." },
+    { time: "10:30", title: "Chuẩn bị họp", body: "Bản tóm tắt một trang trước mỗi cuộc họp, lấy từ email, tài liệu và ghi chú trước đây của bạn." },
+    { time: "14:00", title: "Hỏi bất cứ điều gì", body: "“So sánh ba báo giá nhà cung cấp này với giá năm ngoái.” Có câu trả lời trong vài giây." },
+    { time: "18:00", title: "Việc cần theo dõi", body: "Bản nháp trả lời và đầu việc từ trong ngày, sẵn sàng để bạn duyệt." },
+    { time: "21:00", title: "Tóm tắt buổi tối", body: "Hôm nay có gì thay đổi, ngày mai việc gì cần đến bạn." },
+  ],
+
+  capabilities: [
+    "RAG & hệ thống tri thức riêng tư",
+    "Tích hợp LINE OA & WeChat",
+    "Tích hợp API & dữ liệu",
+    "Bảng điều khiển & trực quan hóa dữ liệu",
+    "AI agent & tự động hóa",
+    "Thái · Anh · Trung",
+  ],
+
+  deploymentModes: [
+    { name: "Private", tag: "", where: "Máy chủ hoặc đám mây riêng của bạn", ai: "Mô hình AI mã nguồn mở chạy trên hạ tầng của chính bạn. Không gì rời khỏi đó.", fit: "Dữ liệu tài chính hoặc cá nhân rất nhạy cảm" },
+    { name: "Hybrid", tag: "Khuyên dùng", where: "Máy chủ của bạn", ai: "Chỉ phần văn bản tối thiểu, đã được che giấu, cần cho từng tác vụ mới được xử lý qua API AI doanh nghiệp, theo điều khoản không dùng dữ liệu của bạn để huấn luyện.", fit: "Hầu hết doanh nghiệp đang phát triển" },
+    { name: "Managed", tag: "", where: "Đám mây bảo mật do Guidance quản lý", ai: "API AI doanh nghiệp theo điều khoản không dùng dữ liệu của bạn để huấn luyện.", fit: "Khởi đầu nhanh nhất, chi phí thấp nhất" },
+  ],
+
+  commitments: [
+    "Bạn sở hữu 100% dữ liệu của mình và các hệ thống chúng tôi xây dựng cho bạn",
+    "Dữ liệu doanh nghiệp của bạn không được dùng để huấn luyện mô hình AI",
+    "Mã hóa khi truyền tải và khi lưu trữ",
+    "Phân quyền theo vai trò: nhân viên chỉ thấy những gì họ cần",
+    "Nhật ký kiểm toán ghi lại ai đã truy cập gì, và khi nào",
+    "Dữ liệu cá nhân được giảm thiểu và che giấu trước khi AI xử lý",
+    "Thỏa thuận xử lý dữ liệu phù hợp với PDPA của Thái Lan",
+    "Hoàn trả hoặc xóa toàn bộ dữ liệu khi kết thúc hợp tác",
+  ],
+
+  demoChat: [
+    { q: "Hôm qua có những đơn giao nào bị trễ?", a: "7 trên 142 đơn bị trễ (4,9%). 5 đơn thuộc tuyến Rayong sau 15:00. Tình trạng này bắt đầu từ thứ Hai, khi hai xe tải chuyển sang ca sáng." },
+    { q: "Khách hàng nào chưa đặt hàng trong 30 ngày?", a: "12 tài khoản. 3 khách lớn nhất chiếm 8% doanh thu quý trước. Tôi đã soạn sẵn danh sách theo dõi cho đội bán hàng của bạn." },
+    { q: "Dữ liệu của tôi có bị gửi đến ChatGPT không?", a: "Dữ liệu gốc của bạn thì không. Cơ sở dữ liệu và tài liệu của bạn vẫn nằm trên máy chủ của bạn. Ở chế độ Hybrid, chỉ phần văn bản tối thiểu đã che giấu được xử lý qua API doanh nghiệp không huấn luyện trên dữ liệu đó, còn ở chế độ Private thì không có gì rời khỏi cả." },
+  ],
+
+  ui: {
+    nav: { business: "Doanh nghiệp", leaders: "Lãnh đạo", industries: "Ngành", how: "Cách làm việc", security: "Bảo mật", about: "Giới thiệu", book: "Đặt lịch tư vấn", menu: "Menu", close: "Đóng" },
+    footer: {
+      blurb: "Kỹ thuật AI triển khai tại chỗ cho các doanh nghiệp đang phát triển và những người lãnh đạo họ.",
+      solutions: "Giải pháp", forBusiness: "Cho Doanh nghiệp", forLeaders: "Cho Lãnh đạo", howWeWork: "Cách làm việc", securityPdpa: "Bảo mật & PDPA",
+      industries: "Ngành", contact: "Liên hệ", about: "Giới thiệu", base: "Dữ liệu của bạn vẫn là của bạn · Phù hợp PDPA", language: "Ngôn ngữ",
+    },
+    hero: {
+      status1: "Kỹ thuật AI triển khai tại chỗ",
+      status2: "Riêng tư từ thiết kế · Phù hợp PDPA",
+      title: "AI làm việc bên trong doanh nghiệp của bạn.",
+      lead: "Chúng tôi làm việc cùng đội ngũ của bạn, kết nối dữ liệu rời rạc và xây dựng hệ thống AI riêng tư giúp chủ doanh nghiệp nhìn rõ và ra quyết định nhanh hơn.",
+      book: "Đặt lịch tư vấn",
+      how: "Cách làm việc",
+      core: "MỘT MÔ HÌNH CHO DOANH NGHIỆP CỦA BẠN",
+    },
+    problem: { eyebrow: "Vấn đề", title: "Hầu hết doanh nghiệp đều có dữ liệu. Gần như không ai nhìn thấy nó." },
+    paths: {
+      business: { num: "01 / CHO DOANH NGHIỆP", title: "Một lớp vận hành AI cho công ty bạn.", items: ["Một màn hình vận hành trực tiếp", "Quầy khách hàng AI trên LINE & WeChat", "Bản tin hằng ngày và cảnh báo"], foot: "Cho doanh nghiệp vừa và nhỏ 10–200 người" },
+      leaders: { num: "02 / CHO LÃNH ĐẠO", title: "Một AI agent cá nhân xây dựng quanh bạn.", items: ["Bản tin buổi sáng cho mọi doanh nghiệp của bạn", "Chuẩn bị họp và theo dõi sau họp", "Hỗ trợ ra quyết định từ dữ liệu của chính bạn"], foot: "Cho chủ doanh nghiệp & lãnh đạo cấp cao" },
+    },
+    industriesSection: { eyebrow: "Ngành", title: "Xây dựng theo cách ngành của bạn vận hành.", lead: "Doanh nghiệp vừa và nhỏ có hoạt động vận hành thực tế, và những chủ doanh nghiệp cần nhìn rõ chúng.", view: "Xem →" },
+    method: { eyebrow: "Cách làm việc", title: "Từ xưởng sản xuất đến màn hình của chủ doanh nghiệp.", step: "BƯỚC" },
+    founderUi: { eyebrow: "Lời nhắn từ nhà sáng lập", watch: "Xem lời nhắn của nhà sáng lập", placeholder: "Video nhà sáng lập · đặt file vào /public", photo: "ẢNH" },
+    demo: {
+      eyebrow: "Dùng thử", title: "Hỏi doanh nghiệp của bạn một câu.",
+      lead: "Chủ doanh nghiệp không mở bảng điều khiển lúc 7 giờ sáng. Họ mở LINE. Các agent của chúng tôi trả lời bằng ngôn ngữ thường ngày, từ dữ liệu của chính bạn, ở bất cứ nơi nào bạn đang làm việc.",
+      buildWith: "Công nghệ chúng tôi dùng", head: "Hỏi doanh nghiệp của bạn", tag: "Demo · dữ liệu mẫu",
+      empty: "Chọn một câu hỏi bên dưới để xem chủ doanh nghiệp trò chuyện với doanh nghiệp của mình như thế nào.",
+    },
+    securityTeaser: {
+      eyebrow: "Bảo mật & PDPA", title: "Dữ liệu của bạn vẫn là của bạn.",
+      lead: "Cơ sở dữ liệu và tài liệu của bạn nằm trên máy chủ của bạn. Chọn triển khai Private, Hybrid hoặc Managed, với thỏa thuận xử lý dữ liệu phù hợp PDPA cho mọi dự án.",
+      link: "Bảo mật & quyền riêng tư",
+    },
+    cta: {
+      eyebrow: "Bắt đầu tại đây", title: "Hãy cho chúng tôi biết một vấn đề.",
+      lead: "Đặt một buổi Đánh giá Cơ hội AI miễn phí 45 phút. Chúng tôi sẽ chỉ ra AI phù hợp ở đâu trong doanh nghiệp của bạn và cần những gì. Không áp lực, không slide.",
+      button: "Đặt lịch tư vấn",
+    },
+    business: {
+      eyebrow: "Cho Doanh nghiệp", title: "Một lớp vận hành AI cho công ty bạn.",
+      lead: "Dành cho doanh nghiệp vừa và nhỏ có vận hành thực tế: nhà máy, logistics, khách sạn, đại lý du lịch và chuỗi nhà hàng. Chúng tôi kết nối những gì bạn đang dùng và xây AI trên nền đó.",
+      indEyebrow: "Ngành", indTitle: "Nơi chúng tôi làm việc.",
+    },
+    engagement: {
+      eyebrow: "Cách bắt đầu", title: "Bước nhỏ. Kết quả rõ ràng.",
+      lead: "Mọi dự án đều được báo giá sau buổi tư vấn, dựa trên phạm vi của bạn. Không có dự án không giới hạn.",
+      steps: [
+        { t: "Tư vấn", b: "Buổi miễn phí 45 phút. Chúng tôi tìm hiểu doanh nghiệp của bạn và chỉ ra nơi AI phù hợp." },
+        { t: "Khám phá", b: "Một tuần tại chỗ với phạm vi cố định. Bạn nhận được bản đồ rõ ràng về vấn đề, dữ liệu và cơ hội." },
+        { t: "Xây dựng", b: "Dự án phạm vi cố định, thường 2–6 tuần, bàn giao một hệ thống hoạt động được." },
+        { t: "Guardian Care", b: "Giám sát, hỗ trợ và cải tiến hằng tháng khi doanh nghiệp của bạn phát triển." },
+      ],
+    },
+    leaders: {
+      eyebrow: "Cho Lãnh đạo", title: "Một AI agent cá nhân, xây dựng quanh bạn.",
+      lead: "Dành cho chủ doanh nghiệp, lãnh đạo và nhà đầu tư. Agent của bạn kết nối email, lịch, tài liệu, tin nhắn và dữ liệu công ty, rồi làm việc cho bạn một cách riêng tư.",
+      dayEyebrow: "Một ngày cùng agent của bạn", dayTitle: "Nhiều tín hiệu hơn. Ít nhiễu hơn.",
+      confEyebrow: "Bảo mật mặc định", confTitle: "Xây cho một người. Chỉ một người xem.",
+      confLead: "Agent của bạn chạy trên hạ tầng do bạn kiểm soát, với quyền truy cập chỉ bạn phê duyệt. Không gì được chia sẻ, tái sử dụng hay dùng để huấn luyện mô hình AI.",
+      demoBtn: "Đặt lịch demo riêng", prevEyebrow: "Xem trước", prevTitle: "Hỏi bằng ngôn ngữ thường ngày.",
+    },
+    industry: { hear: "Những gì chúng tôi thường nghe", illus: "Minh họa màn hình chỉ huy", build: "Những gì chúng tôi xây dựng" },
+    how: {
+      eyebrow: "Cách làm việc", title: "Chúng tôi không bán phần mềm. Chúng tôi cử kỹ sư.",
+      lead: "Triển khai tại chỗ nghĩa là chúng tôi làm việc bên trong hoạt động của bạn, không phải từ xa. Chúng tôi tìm ra vấn đề thực sự trước, rồi xây hệ thống theo đúng cách doanh nghiệp bạn vận hành.",
+      principles: [
+        { t: "Tại hiện trường, không phải trên slide", b: "Chúng tôi ngồi cùng những người trực tiếp làm việc, vì đó là nơi có vấn đề thực sự." },
+        { t: "Dùng những gì bạn có", b: "Excel, LINE, ERP, POS của bạn. Chúng tôi kết nối chứ không thay thế." },
+        { t: "Chúng tôi ở lại", b: "Guardian Care giữ cho hệ thống vận hành và cải tiến mỗi tháng." },
+      ],
+    },
+    security: {
+      eyebrow: "Bảo mật & PDPA", title: "Dữ liệu của bạn vẫn là của bạn.",
+      lead: "Dữ liệu doanh nghiệp thuộc về bạn. Chúng tôi thiết kế mọi hệ thống để bạn chọn dữ liệu nằm ở đâu, ai được xem, và những gì được gửi đến mô hình AI.",
+      modesEyebrow: "Chế độ triển khai", modesTitle: "Bạn chọn nơi AI chạy.",
+      dataLives: "Dữ liệu nằm ở", aiProc: "Xử lý AI", bestFor: "Phù hợp cho",
+      comEyebrow: "Cam kết của chúng tôi", comTitle: "Được ghi vào mọi hợp đồng.",
+      pdpaEyebrow: "PDPA",
+      pdpaText: "Chúng tôi là bên xử lý dữ liệu của bạn theo Đạo luật Bảo vệ Dữ liệu Cá nhân (PDPA) của Thái Lan. Mọi dự án đều có thỏa thuận xử lý dữ liệu, luồng dữ liệu được ghi chép, và cơ chế kiểm soát về đồng ý, truy cập và xóa dữ liệu.",
+    },
+    about: {
+      eyebrow: "Giới thiệu", title: "Một đội nhỏ làm việc như kỹ sư của chính bạn.",
+      lead: "Guidance Innovation là công ty kỹ thuật AI triển khai tại chỗ. Bạn làm việc trực tiếp với kỹ sư xây dựng hệ thống của mình, từ cuộc trò chuyện đầu tiên đến mọi lần cập nhật sau đó.",
+      bringEyebrow: "Chúng tôi mang đến", bringTitle: "Bắt tay làm, từ đầu đến cuối.",
+    },
+    consult: {
+      eyebrow: "Đặt lịch tư vấn", title: "Hãy cho chúng tôi biết một vấn đề.",
+      lead: "Buổi Đánh giá Cơ hội AI miễn phí 45 phút. Chúng tôi sẽ tìm hiểu cách doanh nghiệp bạn vận hành và chỉ ra nơi AI có thể tiết kiệm thời gian và chi phí. Báo giá được gửi sau khi chúng tôi hiểu phạm vi của bạn.",
+      direct: "Hoặc liên hệ trực tiếp", thanks: "Cảm ơn bạn.", thanksLead: "Chúng tôi sẽ phản hồi trong vòng một ngày làm việc.",
+      name: "Họ tên", company: "Công ty", contact: "Email hoặc LINE ID", interest: "Tôi quan tâm đến",
+      interestOpts: ["Cho Doanh nghiệp", "Cho Lãnh đạo (agent cá nhân)", "Chưa chắc"],
+      industry: "Ngành", other: "Khác", problem: "Vấn đề đầu tiên bạn muốn giải quyết", submit: "Gửi yêu cầu",
+    },
+    notFound: { title: "Trang này không tồn tại.", lead: "Quay về trang chủ." },
+  },
+};

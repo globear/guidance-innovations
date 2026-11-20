@@ -1,0 +1,248 @@
+// Malay copy. Same shape as `en` in content.ts.
+import type { Content } from "./content";
+
+export const ms: Content = {
+  meta: {
+    title: "Guidance Innovation | Kejuruteraan AI Forward-Deployed",
+    description: "Kami bekerja bersama pasukan anda, menghubungkan data operasi anda, dan membina sistem AI peribadi yang membantu pemilik melihat dengan jelas dan membuat keputusan lebih pantas.",
+  },
+
+  founder: {
+    name: "Nama pengasas",
+    role: "Pengasas & Jurutera Forward-Deployed",
+    message:
+      "Kebanyakan pemilik perniagaan yang saya temui tidak memerlukan lebih banyak perisian. Mereka perlu melihat perniagaan mereka dengan jelas, hari ini, bukan pada hujung bulan. Saya masuk ke operasi anda, belajar bagaimana ia benar-benar berjalan, dan membina sistem AI di sekelilingnya sendiri.",
+  },
+
+  problems: [
+    { k: "01", title: "Data di sepuluh tempat", body: "Fail Excel, kumpulan LINE, POS, perakaunan, kertas. Tiada siapa nampak gambaran penuh." },
+    { k: "02", title: "Laporan tiba terlalu lewat", body: "Apabila laporan bulanan sampai, masalah itu sudah merugikan anda." },
+    { k: "03", title: "Keputusan berdasarkan gerak hati", body: "Pemilik menghabiskan masa mengejar angka, bukannya bertindak berdasarkannya." },
+  ],
+
+  method: [
+    { k: "01", name: "Teroka", time: "Minggu 1", body: "Kami duduk bersama pasukan anda di lokasi. Memerhati operasi, menemu bual kakitangan, memetakan aliran kerja dan data sebenar, dan mencari di mana masa serta wang bocor." },
+    { k: "02", name: "Hubung", time: "Minggu 2–3", body: "Kami menghubungkan sistem sedia ada anda: Excel, ERP, perakaunan, POS, GPS, LINE OA, WeChat dan API. Tidak perlu buang dan ganti." },
+    { k: "03", name: "Model", time: "Minggu 3–4", body: "Kami menyusun perniagaan anda ke dalam satu model: pesanan, pelanggan, aset, kakitangan, stok. Sistem akhirnya memahami cara anda bekerja." },
+    { k: "04", name: "Putus", time: "Minggu 4–6", body: "Paparan arahan langsung untuk pemilik, AI yang menjawab soalan dalam bahasa biasa, taklimat harian dan amaran dihantar ke LINE." },
+    { k: "05", name: "Jaga", time: "Berterusan", body: "Kami kekal. Pemantauan, penambahbaikan dan kegunaan baharu setiap bulan, supaya sistem berkembang bersama perniagaan." },
+  ],
+
+  industries: [
+    {
+      slug: "factories",
+      name: "Kilang",
+      forTitle: "Untuk kilang.",
+      short: "Pengeluaran, masa henti dan stok dalam satu paparan langsung.",
+      headline: "Lihat seluruh lantai kilang dari satu skrin.",
+      pains: ["Angka pengeluaran dikumpul secara manual", "Masa henti dikesan berjam-jam kemudian", "Stok dan pesanan tidak selaras"],
+      builds: [
+        { title: "Paparan arahan pengeluaran", body: "Pengeluaran, masa henti dan hasil setiap barisan, dikemas kini sepanjang hari." },
+        { title: "Taklimat pengeluaran harian", body: "Ringkasan AI dalam LINE setiap pagi: apa yang dihasilkan, apa yang terhenti, dan mengapa." },
+        { title: "Amaran stok & pesanan", body: "Amaran sebelum bahan habis atau pesanan tergelincir." },
+      ],
+      metrics: ["Hasil / barisan", "Masa henti", "Kadar hasil", "Hari stok"],
+    },
+    {
+      slug: "logistics",
+      name: "Logistik",
+      forTitle: "Untuk logistik.",
+      short: "Setiap lori, perjalanan dan penghantaran, dijejak dan dikira kosnya.",
+      headline: "Ketahui status setiap penghantaran, sebelum pelanggan menelefon.",
+      pains: ["Kemas kini status bertaburan dalam sembang pemandu", "Penghantaran lewat dikesan terlalu lambat", "Tiada kos jelas bagi setiap perjalanan"],
+      builds: [
+        { title: "Paparan armada & penghantaran", body: "Status langsung lori, perjalanan dan penghantaran daripada data GPS dan penghantaran." },
+        { title: "Amaran penghantaran lewat", body: "AI menandakan penghantaran berisiko dan memaklumkan orang yang betul dalam LINE." },
+        { title: "Kos setiap perjalanan", body: "Bahan api, tol dan masa dirumuskan mengikut laluan, pelanggan dan pemandu." },
+      ],
+      metrics: ["% tepat masa", "Perjalanan hari ini", "Kos / perjalanan", "Bahan api"],
+    },
+    {
+      slug: "hotels",
+      name: "Hotel",
+      forTitle: "Untuk hotel.",
+      short: "Penghunian, hasil dan AI tetamu pelbagai bahasa 24/7.",
+      headline: "Urus hotel berdasarkan angka, dan jawab setiap tetamu serta-merta.",
+      pains: ["Soalan tetamu dalam tiga bahasa membanjiri kakitangan", "Data hasil terpisah merentas saluran", "Lambat bertindak terhadap perubahan penghunian"],
+      builds: [
+        { title: "Meja AI tetamu", body: "Menjawab tetamu di LINE, WeChat dan web, dalam bahasa Thai, Inggeris dan Cina, berdasarkan polisi anda sendiri." },
+        { title: "Paparan hasil", body: "Penghunian, ADR dan campuran saluran di satu tempat." },
+        { title: "Taklimat harian GM", body: "Ketibaan, isu dan hasil dihantar setiap pagi." },
+      ],
+      metrics: ["Penghunian", "ADR", "RevPAR", "Mesej tetamu"],
+    },
+    {
+      slug: "travel",
+      name: "Agensi pelancongan",
+      forTitle: "Untuk agensi pelancongan.",
+      short: "AI yang menjawab pertanyaan dan menyediakan sebut harga.",
+      headline: "Jadikan setiap pertanyaan jawapan yang pantas dan tepat.",
+      pains: ["Soalan yang sama dijawab sepanjang hari", "Sebut harga mengambil masa berjam-jam", "Prospek hilang di antara sembang"],
+      builds: [
+        { title: "AI pertanyaan", body: "Menjawab pelanggan dengan betul berdasarkan pakej, peraturan dan FAQ anda, di LINE dan WeChat." },
+        { title: "Pembantu sebut harga", body: "Mendraf sebut harga daripada senarai harga anda untuk diluluskan kakitangan." },
+        { title: "Saluran tempahan", body: "Setiap prospek dan tempahan dijejak dari mesej pertama hingga pembayaran." },
+      ],
+      metrics: ["Pertanyaan", "Masa balas", "Sebut harga", "Tempahan"],
+    },
+    {
+      slug: "restaurants",
+      name: "Restoran francais",
+      forTitle: "Untuk restoran francais.",
+      short: "Setiap cawangan dibandingkan, setiap pagi.",
+      headline: "Setiap cawangan, dibandingkan dan dijelaskan, setiap pagi.",
+      pains: ["Laporan cawangan tiba dalam format berbeza", "Kos makanan meningkat tanpa disedari", "Tiada cara pantas membandingkan cawangan"],
+      builds: [
+        { title: "Paparan arahan cawangan", body: "Jualan, kunjungan dan kos makanan setiap cawangan, sebelah-menyebelah." },
+        { title: "Amaran kos", body: "AI mengesan kos makanan, pembaziran atau penurunan jualan yang luar biasa bagi setiap cawangan." },
+        { title: "Taklimat pemilik", body: "Keputusan semalam bagi semua cawangan, dalam satu mesej LINE." },
+      ],
+      metrics: ["Jualan / cawangan", "% kos makanan", "Tiket", "Purata bil"],
+    },
+  ],
+
+  businessOffers: [
+    { title: "Meja Pelanggan AI", body: "Pembantu AI peribadi di LINE OA, WeChat dan web yang menjawab pelanggan dengan tepat berdasarkan dokumen, harga dan polisi anda sendiri." },
+    { title: "Paparan Arahan Perniagaan", body: "Data anda yang bertaburan dihubungkan ke dalam satu papan pemuka langsung untuk pemilik dan pengurus." },
+    { title: "Otak Pengetahuan", body: "SOP, kontrak dan senarai harga anda boleh dicari. Kakitangan bertanya dalam bahasa biasa dan mendapat jawapan yang betul." },
+    { title: "Taklimat & Amaran", body: "Ringkasan AI harian perniagaan dalam LINE, serta amaran sebaik sahaja berlaku masalah." },
+  ],
+
+  leaderDay: [
+    { time: "07:00", title: "Taklimat pagi", body: "Mesyuarat hari ini dengan konteks setiap orang, mesej penting, dan angka utama merentas perniagaan anda." },
+    { time: "10:30", title: "Persediaan mesyuarat", body: "Taklimat satu muka surat sebelum setiap mesyuarat, daripada e-mel, dokumen dan nota lalu anda." },
+    { time: "14:00", title: "Tanya apa sahaja", body: "“Bandingkan tiga sebut harga pembekal ini dengan harga tahun lepas.” Dijawab dalam beberapa saat." },
+    { time: "18:00", title: "Tindakan susulan", body: "Draf balasan dan tindakan daripada hari ini, sedia untuk anda luluskan." },
+    { time: "21:00", title: "Ringkasan petang", body: "Apa yang bergerak hari ini, apa yang memerlukan anda esok." },
+  ],
+
+  capabilities: [
+    "RAG & sistem pengetahuan peribadi",
+    "Integrasi LINE OA & WeChat",
+    "Integrasi API & data",
+    "Papan pemuka & visualisasi data",
+    "Ejen AI & automasi",
+    "Thai · Inggeris · Cina",
+  ],
+
+  deploymentModes: [
+    { name: "Private", tag: "", where: "Pelayan atau awan peribadi anda", ai: "Model AI sumber terbuka berjalan pada infrastruktur anda sendiri. Tiada apa yang keluar.", fit: "Data kewangan atau peribadi yang sangat sensitif" },
+    { name: "Hybrid", tag: "Disyorkan", where: "Pelayan anda", ai: "Hanya teks minimum yang disamarkan untuk setiap tugas diproses melalui API AI perusahaan, di bawah terma yang mengecualikan latihan menggunakan data anda.", fit: "Kebanyakan perniagaan yang sedang berkembang" },
+    { name: "Managed", tag: "", where: "Awan selamat yang diurus oleh Guidance", ai: "API AI perusahaan di bawah terma yang mengecualikan latihan menggunakan data anda.", fit: "Permulaan paling pantas dan paling rendah kos" },
+  ],
+
+  commitments: [
+    "Anda memiliki 100% data anda dan sistem yang kami bina untuk anda",
+    "Data perniagaan anda tidak digunakan untuk melatih model AI",
+    "Penyulitan semasa penghantaran dan penyimpanan",
+    "Akses berasaskan peranan: kakitangan hanya melihat apa yang mereka perlukan",
+    "Log audit tentang siapa mengakses apa, dan bila",
+    "Data peribadi diminimumkan dan disamarkan sebelum pemprosesan AI",
+    "Perjanjian pemprosesan data yang selaras dengan PDPA Thailand",
+    "Pemulangan atau pemadaman data sepenuhnya apabila perkhidmatan tamat",
+  ],
+
+  demoChat: [
+    { q: "Penghantaran mana yang lewat semalam?", a: "7 daripada 142 penghantaran lewat (4.9%). 5 daripadanya di laluan Rayong selepas 15:00. Corak ini bermula pada hari Isnin, apabila dua lori beralih ke syif pagi." },
+    { q: "Pelanggan mana yang tidak membuat pesanan dalam 30 hari?", a: "12 akaun. 3 yang terbesar menyumbang 8% hasil suku lepas. Saya telah mendraf senarai susulan untuk pasukan jualan anda." },
+    { q: "Adakah data saya dihantar ke ChatGPT?", a: "Bukan data mentah anda. Pangkalan data dan dokumen anda kekal di pelayan anda. Dalam mod Hybrid, hanya teks minimum yang disamarkan diproses melalui API perusahaan yang tidak melatih menggunakannya, dan dalam mod Private tiada apa yang keluar langsung." },
+  ],
+
+  ui: {
+    nav: { business: "Perniagaan", leaders: "Pemimpin", industries: "Industri", how: "Cara kami bekerja", security: "Keselamatan", about: "Tentang", book: "Tempah konsultasi", menu: "Menu", close: "Tutup" },
+    footer: {
+      blurb: "Kejuruteraan AI forward-deployed untuk perniagaan yang sedang berkembang dan orang yang memimpinnya.",
+      solutions: "Penyelesaian", forBusiness: "Untuk Perniagaan", forLeaders: "Untuk Pemimpin", howWeWork: "Cara kami bekerja", securityPdpa: "Keselamatan & PDPA",
+      industries: "Industri", contact: "Hubungi", about: "Tentang", base: "Data anda kekal milik anda · Selaras PDPA", language: "Bahasa",
+    },
+    hero: {
+      status1: "Kejuruteraan AI forward-deployed",
+      status2: "Peribadi secara reka bentuk · Selaras PDPA",
+      title: "AI yang bekerja di dalam perniagaan anda.",
+      lead: "Kami bekerja bersama pasukan anda, menghubungkan data anda yang bertaburan, dan membina sistem AI peribadi yang membantu pemilik melihat dengan jelas dan membuat keputusan lebih pantas.",
+      book: "Tempah konsultasi",
+      how: "Cara kami bekerja",
+      core: "SATU MODEL PERNIAGAAN ANDA",
+    },
+    problem: { eyebrow: "Masalahnya", title: "Kebanyakan perniagaan ada data. Hampir tiada yang dapat melihatnya." },
+    paths: {
+      business: { num: "01 / UNTUK PERNIAGAAN", title: "Lapisan operasi AI untuk syarikat anda.", items: ["Satu paparan operasi langsung", "Meja pelanggan AI di LINE & WeChat", "Taklimat harian dan amaran"], foot: "Untuk PKS dengan 10–200 orang" },
+      leaders: { num: "02 / UNTUK PEMIMPIN", title: "Ejen AI peribadi yang dibina di sekeliling anda.", items: ["Taklimat pagi merentas semua perniagaan anda", "Persediaan mesyuarat dan susulan", "Sokongan keputusan berdasarkan data anda sendiri"], foot: "Untuk pemilik & eksekutif" },
+    },
+    industriesSection: { eyebrow: "Industri", title: "Dibina mengikut cara industri anda berjalan.", lead: "Perniagaan kecil dan sederhana dengan operasi sebenar, dan pemilik yang perlu melihatnya dengan jelas.", view: "Lihat →" },
+    method: { eyebrow: "Cara kami bekerja", title: "Dari lantai operasi ke skrin pemilik.", step: "LANGKAH" },
+    founderUi: { eyebrow: "Pesanan daripada pengasas", watch: "Tonton pesanan pengasas", placeholder: "Video pengasas · letakkan fail dalam /public", photo: "FOTO" },
+    demo: {
+      eyebrow: "Cuba", title: "Tanya perniagaan anda satu soalan.",
+      lead: "Pemilik tidak membuka papan pemuka pada pukul 7 pagi. Mereka membuka LINE. Ejen kami menjawab dalam bahasa biasa, daripada data anda sendiri, di mana sahaja anda sudah bekerja.",
+      buildWith: "Apa yang kami gunakan", head: "Tanya perniagaan anda", tag: "Demo · data contoh",
+      empty: "Pilih satu soalan di bawah untuk melihat bagaimana pemilik bercakap dengan perniagaannya.",
+    },
+    securityTeaser: {
+      eyebrow: "Keselamatan & PDPA", title: "Data anda kekal milik anda.",
+      lead: "Pangkalan data dan dokumen anda kekal di pelayan anda. Pilih penggunaan Private, Hybrid atau Managed, dengan perjanjian pemprosesan data selaras PDPA bagi setiap projek.",
+      link: "Keselamatan & privasi",
+    },
+    cta: {
+      eyebrow: "Mula di sini", title: "Beritahu kami satu masalah.",
+      lead: "Tempah Sesi Peluang AI percuma selama 45 minit. Kami akan memetakan di mana AI sesuai dalam perniagaan anda dan apa yang diperlukan. Tiada tekanan, tiada slaid.",
+      button: "Tempah konsultasi",
+    },
+    business: {
+      eyebrow: "Untuk Perniagaan", title: "Lapisan operasi AI untuk syarikat anda.",
+      lead: "Untuk perniagaan kecil dan sederhana dengan operasi sebenar: kilang, logistik, hotel, agensi pelancongan dan kumpulan restoran. Kami menghubungkan apa yang anda sudah guna dan membina AI di atasnya.",
+      indEyebrow: "Industri", indTitle: "Di mana kami bekerja.",
+    },
+    engagement: {
+      eyebrow: "Cara bermula", title: "Langkah kecil. Hasil yang jelas.",
+      lead: "Setiap projek disebut harga selepas konsultasi, berdasarkan skop anda. Tiada projek tanpa had.",
+      steps: [
+        { t: "Konsultasi", b: "Sesi percuma 45 minit. Kami memahami perniagaan anda dan menunjukkan di mana AI sesuai." },
+        { t: "Penemuan", b: "Seminggu di lokasi dengan skop tetap. Anda mendapat peta jelas tentang masalah, data dan peluang." },
+        { t: "Bina", b: "Projek skop tetap, biasanya 2–6 minggu, menghasilkan satu sistem yang berfungsi." },
+        { t: "Guardian Care", b: "Pemantauan, sokongan dan penambahbaikan bulanan seiring perniagaan anda berkembang." },
+      ],
+    },
+    leaders: {
+      eyebrow: "Untuk Pemimpin", title: "Ejen AI peribadi, dibina di sekeliling anda.",
+      lead: "Untuk pemilik, eksekutif dan pelabur. Ejen anda menghubungkan e-mel, kalendar, dokumen, sembang dan data syarikat anda, kemudian bekerja untuk anda, secara peribadi.",
+      dayEyebrow: "Sehari bersama ejen anda", dayTitle: "Lebih isyarat. Kurang bising.",
+      confEyebrow: "Sulit secara lalai", confTitle: "Dibina untuk seorang. Dilihat oleh seorang.",
+      confLead: "Ejen anda berjalan pada infrastruktur yang anda kawal, dengan akses yang hanya anda luluskan. Tiada apa yang dikongsi, digunakan semula atau digunakan untuk melatih model AI.",
+      demoBtn: "Tempah demo peribadi", prevEyebrow: "Pratonton", prevTitle: "Tanya dalam bahasa biasa.",
+    },
+    industry: { hear: "Apa yang kami dengar", illus: "Contoh paparan arahan", build: "Apa yang kami bina" },
+    how: {
+      eyebrow: "Cara kami bekerja", title: "Kami tidak menjual perisian. Kami menempatkan jurutera.",
+      lead: "Kejuruteraan forward-deployed bermaksud kami bekerja di dalam operasi anda, bukan dari jauh. Kami mencari masalah sebenar dahulu, kemudian membina sistem mengikut cara perniagaan anda benar-benar berjalan.",
+      principles: [
+        { t: "Di lokasi, bukan di slaid", b: "Kami duduk bersama orang yang melakukan kerja, kerana di situlah masalah sebenar berada." },
+        { t: "Guna apa yang anda ada", b: "Excel, LINE, ERP anda, POS anda. Kami menghubungkannya, bukan menggantikannya." },
+        { t: "Kami kekal", b: "Guardian Care memastikan sistem terus berjalan dan bertambah baik setiap bulan." },
+      ],
+    },
+    security: {
+      eyebrow: "Keselamatan & PDPA", title: "Data anda kekal milik anda.",
+      lead: "Data perniagaan anda milik anda. Kami mereka bentuk setiap sistem supaya anda memilih di mana data disimpan, siapa yang melihatnya, dan apa yang sampai kepada model AI.",
+      modesEyebrow: "Mod penggunaan", modesTitle: "Anda pilih di mana AI berjalan.",
+      dataLives: "Lokasi data", aiProc: "Pemprosesan AI", bestFor: "Sesuai untuk",
+      comEyebrow: "Komitmen kami", comTitle: "Ditulis dalam setiap kontrak.",
+      pdpaEyebrow: "PDPA",
+      pdpaText: "Kami bertindak sebagai pemproses data anda di bawah Akta Perlindungan Data Peribadi (PDPA) Thailand. Setiap projek termasuk perjanjian pemprosesan data, aliran data yang didokumenkan, dan kawalan untuk persetujuan, akses dan pemadaman.",
+    },
+    about: {
+      eyebrow: "Tentang", title: "Pasukan kecil yang bekerja seperti jurutera anda sendiri.",
+      lead: "Guidance Innovation ialah syarikat kejuruteraan AI forward-deployed. Anda bekerja terus dengan jurutera yang membina sistem anda, dari perbualan pertama hingga setiap kemas kini selepasnya.",
+      bringEyebrow: "Apa yang kami bawa", bringTitle: "Terlibat sepenuhnya, dari awal hingga akhir.",
+    },
+    consult: {
+      eyebrow: "Tempah konsultasi", title: "Beritahu kami satu masalah.",
+      lead: "Sesi Peluang AI percuma selama 45 minit. Kami akan memahami bagaimana perniagaan anda berjalan dan menunjukkan di mana AI boleh menjimatkan masa dan wang. Harga dikongsi selepas kami memahami skop anda.",
+      direct: "Atau hubungi kami terus", thanks: "Terima kasih.", thanksLead: "Kami akan membalas dalam satu hari bekerja.",
+      name: "Nama", company: "Syarikat", contact: "E-mel atau ID LINE", interest: "Saya berminat dengan",
+      interestOpts: ["Untuk Perniagaan", "Untuk Pemimpin (ejen peribadi)", "Belum pasti"],
+      industry: "Industri", other: "Lain-lain", problem: "Satu masalah yang anda mahu selesaikan dahulu", submit: "Minta sesi",
+    },
+    notFound: { title: "Halaman ini tidak wujud.", lead: "Kembali ke laman utama." },
+  },
+};

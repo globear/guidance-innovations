@@ -1,0 +1,119 @@
+import { Link } from "react-router-dom";
+import NetworkCanvas from "../components/NetworkCanvas";
+import { Arrow, ChatDemo, CTA, Founder, IndustriesScroll, MethodPinned } from "../components/Blocks";
+import { useLang } from "../i18n";
+
+export default function Home() {
+  const { c } = useLang();
+  const t = c.ui;
+  const paths = [
+    { to: "/business", ...t.paths.business },
+    { to: "/leaders", ...t.paths.leaders },
+  ];
+  return (
+    <>
+      <section className="hero">
+        <NetworkCanvas coreLabel={t.hero.core} />
+        <div className="hero-shade" />
+        <div className="hero-status">
+          <span><span className="dot-live" />{t.hero.status1}</span>
+          <span>{t.hero.status2}</span>
+        </div>
+        <div className="wrap">
+          <h1 className="h-display hero-title" data-split="now">{t.hero.title}</h1>
+          <div className="hero-meta">
+            <p className="lead" data-fade="0.6">{t.hero.lead}</p>
+            <div className="hero-actions" data-fade="0.8">
+              <Link to="/consultation" className="btn primary">{t.hero.book} <Arrow /></Link>
+              <Link to="/how-we-work" className="btn">{t.hero.how}</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="marquee" aria-hidden>
+        <div className="marquee-track">
+          {[...c.industries, ...c.industries].map((ind, i) => <span key={i}>{ind.name}</span>)}
+        </div>
+      </div>
+
+      {/* Problem */}
+      <section className="section">
+        <div className="wrap">
+          <div className="split" style={{ marginBottom: 72 }}>
+            <span className="eyebrow">{t.problem.eyebrow}</span>
+            <h2 className="h2" data-split>{t.problem.title}</h2>
+          </div>
+          <div className="cols-3" data-stagger>
+            {c.problems.map((p) => (
+              <div className="cell" key={p.k}><span className="k">{p.k}</span><h3 className="h3">{p.title}</h3><p>{p.body}</p></div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Two paths */}
+      <section className="section tight">
+        <div className="wrap">
+          <div className="paths" data-stagger>
+            {paths.map((p) => (
+              <Link to={p.to} className="path" key={p.to}>
+                <div>
+                  <span className="num">{p.num}</span>
+                  <h3 className="h2" style={{ marginTop: 24 }}>{p.title}</h3>
+                  <ul>{p.items.map((it) => <li key={it}>{it}</li>)}</ul>
+                </div>
+                <div className="go"><span>{p.foot}</span><span className="arrow">→</span></div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <IndustriesScroll />
+
+      <section className="light" style={{ padding: "40px 0" }}>
+        <MethodPinned />
+      </section>
+
+      <Founder />
+
+      {/* Demo */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap split">
+          <div>
+            <span className="eyebrow">{t.demo.eyebrow}</span>
+            <h2 className="h2" style={{ margin: "24px 0" }} data-split>{t.demo.title}</h2>
+            <p className="lead" data-fade>{t.demo.lead}</p>
+            <div style={{ marginTop: 40 }}>
+              <span className="mono muted">{t.demo.buildWith}</span>
+              <div className="cols-2" style={{ marginTop: 16 }} data-stagger>
+                {c.capabilities.map((cap) => <div className="cell" key={cap} style={{ padding: "16px 16px 16px 0" }}>{cap}</div>)}
+              </div>
+            </div>
+          </div>
+          <div data-fade><ChatDemo /></div>
+        </div>
+      </section>
+
+      {/* Security teaser */}
+      <section className="section light">
+        <div className="wrap">
+          <div className="split" style={{ marginBottom: 64 }}>
+            <span className="eyebrow">{t.securityTeaser.eyebrow}</span>
+            <div>
+              <h2 className="h2" data-split>{t.securityTeaser.title}</h2>
+              <p className="lead" style={{ marginTop: 24 }} data-fade>{t.securityTeaser.lead}</p>
+            </div>
+          </div>
+          <ul className="checks" data-stagger>
+            {c.commitments.slice(0, 6).map((cm) => <li key={cm}>{cm}</li>)}
+          </ul>
+          <Link to="/security" className="btn" style={{ marginTop: 48 }}>{t.securityTeaser.link} <Arrow /></Link>
+        </div>
+      </section>
+
+      <CTA />
+    </>
+  );
+}
