@@ -363,7 +363,7 @@ export function Consultation() {
               <div className="field full"><label htmlFor="p">{t.problem} *</label><textarea id="p" name="problem" rows={4} required maxLength={3000} /></div>
               <label className="consent full">
                 <input type="checkbox" name="consent" required />
-                <span>{t.consent} <a href={contact.privacy} target="_blank" rel="noopener noreferrer">{t.privacy}</a>.</span>
+                <span>{t.consent} <a href={contact.privacy} target="_blank" rel="noopener noreferrer">{t.privacy}</a>{t.consentEnd}</span>
               </label>
               {status === "error" && (
                 <div className="form-error full" role="alert">
