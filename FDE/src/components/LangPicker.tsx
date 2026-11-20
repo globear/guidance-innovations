@@ -11,9 +11,8 @@ const INVITE: Record<string, string> = {
   ms: "Teruskan dalam Bahasa Melayu",
   vi: "Tiếp tục bằng tiếng Việt",
 };
-const SHORT: Record<string, string> = { en: "EN", th: "TH", "zh-Hans": "简", "zh-Hant": "繁", ms: "MS", vi: "VI" };
 
-/** Full-screen language chooser: shown on the first visit, reopened from the footer. */
+/** Full-screen language chooser: shown on the first visit, reopened from the header or footer. */
 export default function LangPicker() {
   const { lang, chosen, pickerOpen, setLang } = useLang();
   const root = useRef<HTMLDivElement>(null);
@@ -50,7 +49,7 @@ export default function LangPicker() {
 
   return (
     <div className="lp" ref={root} role="dialog" aria-modal="true" aria-labelledby="lp-title">
-      <div className="lp-backdrop" />
+      <div className="lp-backdrop" onClick={() => chosen && setLang(lang)} />
       <div className="lp-panel">
         <div className="lp-head">
           <img src="/logo.png" alt="" className="lp-logo" />
@@ -66,7 +65,7 @@ export default function LangPicker() {
               className={`lp-opt ${l.code === lang ? "on" : ""}`}
               onClick={() => setLang(l.code)}
             >
-              <span className="lp-code">{SHORT[l.code]}</span>
+              <span className="lp-code">{l.short}</span>
               <span className="lp-name">{l.label}</span>
               <span className="lp-invite">{INVITE[l.code]} <span className="arrow">→</span></span>
             </button>

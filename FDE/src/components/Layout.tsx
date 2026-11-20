@@ -58,6 +58,10 @@ export default function Layout() {
             ))}
           </nav>
           <div className="nav-right">
+            <button className="nav-lang" onClick={openPicker} aria-label={t.footer.language} aria-haspopup="dialog">
+              <svg viewBox="0 0 16 16" aria-hidden><circle cx="8" cy="8" r="6.5" /><path d="M1.5 8h13M8 1.5c2 2 2.6 4.2 2.6 6.5S10 12.5 8 14.5M8 1.5C6 3.5 5.4 5.7 5.4 8S6 12.5 8 14.5" /></svg>
+              {LANGS.find((l) => l.code === lang)!.short}
+            </button>
             <Link to="/consultation" className="btn primary nav-cta">{t.nav.book}</Link>
             <button className="menu-btn" onClick={() => setOpen((o) => !o)} aria-expanded={open}>{open ? t.nav.close : t.nav.menu}</button>
           </div>

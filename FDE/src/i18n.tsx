@@ -8,12 +8,12 @@ import { vi } from "./content.vi";
 
 // Codes double as the <html lang> value, which the CSS uses for per-script typography.
 export const LANGS = [
-  { code: "en", label: "English" },
-  { code: "th", label: "ไทย" },
-  { code: "zh-Hans", label: "简体中文" },
-  { code: "zh-Hant", label: "繁體中文" },
-  { code: "ms", label: "Bahasa Melayu" },
-  { code: "vi", label: "Tiếng Việt" },
+  { code: "en", label: "English", short: "EN" },
+  { code: "th", label: "ไทย", short: "TH" },
+  { code: "zh-Hans", label: "简体中文", short: "简" },
+  { code: "zh-Hant", label: "繁體中文", short: "繁" },
+  { code: "ms", label: "Bahasa Melayu", short: "MS" },
+  { code: "vi", label: "Tiếng Việt", short: "VI" },
 ] as const;
 export type Lang = (typeof LANGS)[number]["code"];
 
@@ -62,6 +62,12 @@ export function LangProvider({ children }: { children: ReactNode }) {
     setChosen(true);
     setPickerOpen(false);
     try { localStorage.setItem("lang", l); } catch { /* ignore */ }
+    // Drop a stale "?lang=" so a reload keeps the new pick.
+    const url = new URL(location.href);
+    if (url.searchParams.has("lang")) {
+      url.searchParams.delete("lang");
+      history.replaceState(history.state, "", url);
+    }
   };
 
   return (
