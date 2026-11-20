@@ -314,6 +314,7 @@ export const en = {
     consult: {
       phone: "Phone or LINE ID (optional)",
       consent: "I agree that Guidance Innovation may use these details to contact me about this request, in line with the",
+      consentEnd: ".",
       privacy: "privacy policy",
       sending: "Sending…",
       errorTitle: "That didn't go through.",

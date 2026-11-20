@@ -82,7 +82,7 @@ export default function Home() {
         <MethodPinned />
       </section>
 
-      <Founder />
+      <Founder more />
 
       {/* Demo */}
       <section className="section" style={{ paddingTop: 0 }}>

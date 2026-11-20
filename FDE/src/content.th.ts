@@ -232,7 +232,7 @@ export const th: Content = {
       dataLives: "ข้อมูลอยู่ที่", aiProc: "การประมวลผล AI", bestFor: "เหมาะกับ",
       comEyebrow: "พันธสัญญาของเรา", comTitle: "ระบุไว้ในทุกสัญญา",
       flow: {
-        eyebrow: "ข้อมูลของคุณเดินทางอย่างไร", title: "เห็นชัดว่าอะไรออกไป และอะไรไม่เคยออกไป",
+        eyebrow: "เส้นทางของข้อมูล", title: "เห็นชัดว่าข้อมูลใดถูกส่งออกไป และข้อมูลใดไม่เคยออกไปไหน",
         zones: { company: "บริษัทของคุณ", cloud: "คลาวด์ปลอดภัยของ Guidance", provider: "ผู้ให้บริการ AI" },
         nodes: {
           sources: { title: "ระบบของคุณ", sub: "ERP, Excel, LINE, POS, เอกสาร" },
@@ -254,7 +254,7 @@ export const th: Content = {
         { name: "GuidanceStream", tag: "AI บริการลูกค้า", body: "ผลิตภัณฑ์ AI สำหรับงานบริการลูกค้า พร้อมใช้งานจริงในธุรกิจ" },
         { name: "CareRouters", tag: "โลจิสติกส์ด้านสุขภาพ", body: "MVP สำหรับบริการพาผู้สูงอายุไปโรงพยาบาล ออกแบบจากขั้นตอนการทำงานจริงและทดสอบกับผู้ใช้จริง" },
       ],
-      fieldEyebrow: "นอกสำนักงาน",
+      fieldEyebrow: "บนเวทีและในชุมชน",
       fieldTitle: "ส่วนหนึ่งของชุมชน AI และนักพัฒนาในกรุงเทพฯ",
       field: ["บรรยายเรื่อง AI Automation และ Intelligent Agents งาน AI Summit", "ลงมือสร้างร่วมกับชุมชนนักพัฒนา Cursor", "Brew & Build ที่ EmSphere กรุงเทพฯ", "Brew & Build #1 ที่ True Digital Park กรุงเทพฯ"],
       companyEyebrow: "บริษัท",
@@ -269,6 +269,7 @@ export const th: Content = {
     consult: {
       phone: "เบอร์โทรหรือ LINE ID (ไม่บังคับ)",
       consent: "ฉันยินยอมให้ Guidance Innovation ใช้ข้อมูลนี้เพื่อติดต่อกลับเกี่ยวกับคำขอนี้ ตาม",
+      consentEnd: "",
       privacy: "นโยบายความเป็นส่วนตัว",
       sending: "กำลังส่ง…",
       errorTitle: "ส่งไม่สำเร็จ",

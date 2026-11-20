@@ -267,7 +267,7 @@ function IndustryCard({ ind, i, view }: { ind: Industry; i: number; view: string
   );
 }
 
-export function Founder({ light = false }: { light?: boolean }) {
+export function Founder({ light = false, more = false }: { light?: boolean; more?: boolean }) {
   const { c } = useLang();
   const t = c.ui.founderUi;
   const [playing, setPlaying] = useState(false);
@@ -294,6 +294,7 @@ export function Founder({ light = false }: { light?: boolean }) {
             <div className="headshot">{media.headshot ? <img src={media.headshot} alt={c.founder.name} /> : t.photo}</div>
             <div><div style={{ fontWeight: 500 }}>{c.founder.name}</div><div className="mono muted">{c.founder.role}</div></div>
           </div>
+          {more && <Link to="/about" className="btn" style={{ marginTop: 28 }} data-fade>{c.ui.about.proofEyebrow} <Arrow /></Link>}
         </div>
       </div>
     </section>

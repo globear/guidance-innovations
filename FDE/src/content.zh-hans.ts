@@ -269,6 +269,7 @@ export const zhHans: Content = {
     consult: {
       phone: "电话或 LINE ID（选填）",
       consent: "我同意 Guidance Innovation 使用以上信息就本次咨询与我联系，详见",
+      consentEnd: "。",
       privacy: "隐私政策",
       sending: "发送中…",
       errorTitle: "提交未成功。",
@@ -279,7 +280,7 @@ export const zhHans: Content = {
       nextTitle: "简单三步。",
       next: [
         { t: "一个工作日内回复", b: "通过邮件或 WhatsApp，约一个您方便的时间。" },
-        { t: "免费 45 分钟咨询", b: "线上或在您的办公室。我们了解您的业务如何运作，并指出 AI 能帮上忙的地方。没有压力，不讲幻灯片。" },
+        { t: "免费 45 分钟咨询", b: "线上或在您的办公室。我们了解您的业务如何运作，并指出 AI 能帮上忙的地方。没有推销压力，也不讲 PPT。" },
         { t: "合适的话，给出清晰方案", b: "范围明确、价格清楚的一周 Discovery。是否继续，由您决定。" },
       ],
       eyebrow: "预约咨询", title: "告诉我们一个问题。",

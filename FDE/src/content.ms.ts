@@ -269,6 +269,7 @@ export const ms: Content = {
     consult: {
       phone: "Telefon atau LINE ID (pilihan)",
       consent: "Saya bersetuju Guidance Innovation menggunakan butiran ini untuk menghubungi saya tentang permintaan ini, selaras dengan",
+      consentEnd: ".",
       privacy: "dasar privasi",
       sending: "Menghantar…",
       errorTitle: "Permintaan tidak berjaya dihantar.",

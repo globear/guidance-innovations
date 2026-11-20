@@ -189,7 +189,7 @@ export const vi: Content = {
     },
     cta: {
       eyebrow: "Bắt đầu tại đây", title: "Hãy cho chúng tôi biết một vấn đề.",
-      lead: "Đặt một buổi Đánh giá Cơ hội AI miễn phí 45 phút. Chúng tôi sẽ chỉ ra AI phù hợp ở đâu trong doanh nghiệp của bạn và cần những gì. Không áp lực, không slide.",
+      lead: "Đặt một buổi Đánh giá Cơ hội AI miễn phí 45 phút. Chúng tôi sẽ chỉ ra AI phù hợp ở đâu trong doanh nghiệp của bạn và cần những gì. Không áp lực, không trình chiếu.",
       button: "Đặt lịch tư vấn",
     },
     business: {
@@ -232,7 +232,7 @@ export const vi: Content = {
       dataLives: "Dữ liệu nằm ở", aiProc: "Xử lý AI", bestFor: "Phù hợp cho",
       comEyebrow: "Cam kết của chúng tôi", comTitle: "Được ghi vào mọi hợp đồng.",
       flow: {
-        eyebrow: "Dữ liệu của bạn di chuyển thế nào", title: "Thấy rõ những gì rời đi, và những gì không bao giờ rời đi.",
+        eyebrow: "Dữ liệu của bạn đi đâu", title: "Thấy rõ những gì rời đi, và những gì không bao giờ rời đi.",
         zones: { company: "Công ty của bạn", cloud: "Đám mây bảo mật Guidance", provider: "Nhà cung cấp AI" },
         nodes: {
           sources: { title: "Hệ thống của bạn", sub: "ERP, Excel, LINE, POS, tài liệu" },
@@ -254,7 +254,7 @@ export const vi: Content = {
         { name: "GuidanceStream", tag: "AI chăm sóc khách hàng", body: "Sản phẩm AI chăm sóc khách hàng sẵn sàng cho vận hành thực tế." },
         { name: "CareRouters", tag: "Hậu cần y tế", body: "MVP cho dịch vụ đưa người cao tuổi đi bệnh viện, thiết kế dựa trên quy trình thực tế và được kiểm chứng với người dùng thật." },
       ],
-      fieldEyebrow: "Ngoài thực tế",
+      fieldEyebrow: "Hoạt động cộng đồng",
       fieldTitle: "Một phần của cộng đồng AI và nhà phát triển tại Bangkok.",
       field: ["Diễn giả về tự động hóa AI và tác tử thông minh, AI Summit", "Cùng xây dựng với cộng đồng nhà phát triển Cursor", "Brew & Build, EmSphere, Bangkok", "Brew & Build #1, True Digital Park, Bangkok"],
       companyEyebrow: "Công ty",
@@ -269,6 +269,7 @@ export const vi: Content = {
     consult: {
       phone: "Số điện thoại hoặc LINE ID (không bắt buộc)",
       consent: "Tôi đồng ý để Guidance Innovation sử dụng các thông tin này để liên hệ với tôi về yêu cầu này, theo",
+      consentEnd: ".",
       privacy: "chính sách bảo mật",
       sending: "Đang gửi…",
       errorTitle: "Chưa gửi được.",
@@ -279,7 +280,7 @@ export const vi: Content = {
       nextTitle: "Ba bước đơn giản.",
       next: [
         { t: "Phản hồi trong một ngày làm việc", b: "Qua email hoặc WhatsApp, để hẹn thời gian phù hợp với bạn." },
-        { t: "Buổi trao đổi miễn phí 45 phút", b: "Trực tuyến hoặc tại văn phòng của bạn. Chúng tôi tìm hiểu cách doanh nghiệp vận hành và chỉ ra nơi AI có thể giúp. Không áp lực, không slide." },
+        { t: "Buổi trao đổi miễn phí 45 phút", b: "Trực tuyến hoặc tại văn phòng của bạn. Chúng tôi tìm hiểu cách doanh nghiệp vận hành và chỉ ra nơi AI có thể giúp. Không áp lực, không trình chiếu." },
         { t: "Đề xuất rõ ràng, nếu phù hợp", b: "Một tuần Discovery với phạm vi cố định và mức giá rõ ràng. Bạn quyết định có tiếp tục hay không." },
       ],
       eyebrow: "Đặt lịch tư vấn", title: "Hãy cho chúng tôi biết một vấn đề.",

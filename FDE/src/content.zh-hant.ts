@@ -269,6 +269,7 @@ export const zhHant: Content = {
     consult: {
       phone: "電話或 LINE ID（選填）",
       consent: "我同意 Guidance Innovation 使用以上資料就本次諮詢與我聯繫，詳見",
+      consentEnd: "。",
       privacy: "隱私權政策",
       sending: "傳送中…",
       errorTitle: "送出未成功。",
@@ -279,7 +280,7 @@ export const zhHant: Content = {
       nextTitle: "簡單三步。",
       next: [
         { t: "一個工作天內回覆", b: "透過電子郵件或 WhatsApp，約一個您方便的時間。" },
-        { t: "免費 45 分鐘諮詢", b: "線上或在您的辦公室。我們了解您的業務如何運作，並指出 AI 能幫上忙的地方。沒有壓力，不講簡報。" },
+        { t: "免費 45 分鐘諮詢", b: "線上或在您的辦公室。我們了解您的業務如何運作，並指出 AI 能幫上忙的地方。沒有推銷壓力，也不講簡報。" },
         { t: "合適的話，提出清楚方案", b: "範圍明確、價格清楚的一週 Discovery。是否繼續，由您決定。" },
       ],
       eyebrow: "預約諮詢", title: "告訴我們一個問題。",
