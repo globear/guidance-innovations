@@ -6,7 +6,8 @@ The site is a static Vite + React app. It is set up for **Netlify**, the same ho
 
 - Live: https://guidance-fde-1120-28992.netlify.app (Netlify site `guidance-fde-1120-28992`, a separate site from guidanceinnovations.tech)
 - Form detection is on. The `consultation` form was tested end to end on 2026-11-20: one test submission ("TEST – please ignore") arrived in Netlify → Forms with every field.
-- Still to do: add an email notification to info@guidanceinnovations.tech (Forms → Form notifications), and connect your own domain.
+- Email notification: every new submission is emailed to info@guidanceinnovations.tech (added 2026-11-20, after the test submission, so the next request is the first one emailed).
+- Domain: staying on netlify.app for now. When you add your own domain, also update `og:url` and `og:image` in `index.html`.
 - To redeploy from this folder: `npx vite build && netlify deploy --dir=dist --site=04639917-734e-4ec9-9094-e1d624de54c0 --prod`
 
 ## 1. Create the Netlify site
