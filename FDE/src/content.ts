@@ -10,6 +10,14 @@ export const media = {
   poster: "/images/field/ai-summit.webp",
 };
 
+// Team, in the same order as ui.about.team (roles and skills are translated there).
+export const teamMembers = [
+  { name: "Reed", photo: "/images/team/reed.webp" },
+  { name: "Denis", photo: "/images/team/denis.webp" },
+  { name: "Best", photo: "/images/team/best.webp" },
+  { name: "Ye", photo: "/images/team/ye.webp" },
+];
+
 // Real photos from talks and community events (captions are in each language's ui.about.field).
 export const fieldPhotos = [
   "/images/field/ai-summit.webp",
@@ -220,7 +228,7 @@ export const en = {
     },
     industriesSection: { eyebrow: "Industries", title: "Built for how your industry runs.", lead: "Small and mid-sized businesses with real operations, and owners who need to see them clearly.", view: "View →" },
     method: { eyebrow: "How we work", title: "From the shop floor to the owner's screen.", step: "STEP" },
-    founderUi: { eyebrow: "A message from the founder", watch: "Watch the founder's message", placeholder: "Founder video · drop file in /public", photo: "PHOTO" },
+    founderUi: { eyebrow: "A message from the founder", watch: "Watch the founder's message", placeholder: "Founder message · video coming soon", photo: "PHOTO" },
     demo: {
       eyebrow: "Try it", title: "Ask your business a question.",
       lead: "Owners don't open dashboards at 7am. They open LINE. Our agents answer in plain language, from your own data, wherever you already work.",
@@ -292,6 +300,13 @@ export const en = {
       pdpaText: "We act as your data processor under Thailand's Personal Data Protection Act (PDPA). Every project includes a data processing agreement, documented data flows, and controls for consent, access and deletion.",
     },
     about: {
+      teamEyebrow: "The team", teamTitle: "The people who build your system.",
+      team: [
+        { role: "Founder & Lead Builder", skills: ["AI workflows", "System architecture", "E-commerce operations"] },
+        { role: "Backend Engineer", skills: ["API design", "Database architecture", "Cloud infrastructure"] },
+        { role: "Marketing & Growth", skills: ["Content strategy", "SEO & analytics", "Brand development"] },
+        { role: "UX/UI Designer", skills: ["User research", "Interface design", "Design systems"] },
+      ],
       proofEyebrow: "Proof of work",
       proofTitle: "We build and run our own AI products.",
       proofLead: "The same standards we apply to our own products go into client work.",

@@ -175,7 +175,7 @@ export const ms: Content = {
     },
     industriesSection: { eyebrow: "Industri", title: "Dibina mengikut cara industri anda berjalan.", lead: "Perniagaan kecil dan sederhana dengan operasi sebenar, dan pemilik yang perlu melihatnya dengan jelas.", view: "Lihat →" },
     method: { eyebrow: "Cara kami bekerja", title: "Dari lantai operasi ke skrin pemilik.", step: "LANGKAH" },
-    founderUi: { eyebrow: "Pesanan daripada pengasas", watch: "Tonton pesanan pengasas", placeholder: "Video pengasas · letakkan fail dalam /public", photo: "FOTO" },
+    founderUi: { eyebrow: "Pesanan daripada pengasas", watch: "Tonton pesanan pengasas", placeholder: "Pesanan pengasas · video akan datang", photo: "FOTO" },
     demo: {
       eyebrow: "Cuba", title: "Tanya perniagaan anda satu soalan.",
       lead: "Pemilik tidak membuka papan pemuka pada pukul 7 pagi. Mereka membuka LINE. Ejen kami menjawab dalam bahasa biasa, daripada data anda sendiri, di mana sahaja anda sudah bekerja.",
@@ -247,6 +247,13 @@ export const ms: Content = {
       pdpaText: "Kami bertindak sebagai pemproses data anda di bawah Akta Perlindungan Data Peribadi (PDPA) Thailand. Setiap projek termasuk perjanjian pemprosesan data, aliran data yang didokumenkan, dan kawalan untuk persetujuan, akses dan pemadaman.",
     },
     about: {
+      teamEyebrow: "Pasukan", teamTitle: "Orang yang membina sistem anda.",
+      team: [
+        { role: "Pengasas & Ketua Pembina", skills: ["Aliran kerja AI", "Seni bina sistem", "Operasi e-dagang"] },
+        { role: "Jurutera Backend", skills: ["Reka bentuk API", "Seni bina pangkalan data", "Infrastruktur awan"] },
+        { role: "Pemasaran & Pertumbuhan", skills: ["Strategi kandungan", "SEO & analitik", "Pembangunan jenama"] },
+        { role: "Pereka UX/UI", skills: ["Kajian pengguna", "Reka bentuk antara muka", "Sistem reka bentuk"] },
+      ],
       proofEyebrow: "Bukti kerja",
       proofTitle: "Kami membina dan mengendalikan produk AI kami sendiri.",
       proofLead: "Standard yang sama untuk produk kami sendiri digunakan dalam kerja pelanggan.",

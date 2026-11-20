@@ -267,7 +267,8 @@ function IndustryCard({ ind, i, view }: { ind: Industry; i: number; view: string
   );
 }
 
-export function Founder({ light = false, more = false }: { light?: boolean; more?: boolean }) {
+/** Founder block. Home shows the video frame (placeholder until media.video is set); About passes `photo` to show the stage photo instead. */
+export function Founder({ light = false, more = false, photo = false }: { light?: boolean; more?: boolean; photo?: boolean }) {
   const { c } = useLang();
   const t = c.ui.founderUi;
   const [playing, setPlaying] = useState(false);
@@ -277,8 +278,8 @@ export function Founder({ light = false, more = false }: { light?: boolean; more
       <div className="wrap founder">
         <div className="video-frame" data-fade onClick={() => { if (media.video && vid.current) { vid.current.play(); setPlaying(true); } }}>
           {media.video && <video ref={vid} src={media.video} poster={media.poster || undefined} controls={playing} playsInline />}
-          {!media.video && media.poster && <><img className="founder-photo" src={media.poster} alt={c.ui.about.field[0]} loading="lazy" decoding="async" /><span className="frame-cap">{c.ui.about.field[0]}</span></>}
-          {!playing && media.video && (
+          {!media.video && photo && media.poster && <><img className="founder-photo" src={media.poster} alt={c.ui.about.field[0]} loading="lazy" decoding="async" /><span className="frame-cap">{c.ui.about.field[0]}</span></>}
+          {!playing && (media.video || !photo) && (
             <div className="video-ph">
               <div>
                 <div className="play">▶</div>

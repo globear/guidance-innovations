@@ -2,7 +2,10 @@ import { useState, type FormEvent } from "react";
 import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { Arrow, ChatDemo, CTA, Founder, MethodPinned, MiniDash, PageHead } from "../components/Blocks";
 import DataFlow from "../components/DataFlow";
-import { brand, contact, en, fieldPhotos, photos } from "../content";
+import AgentStack from "../components/AgentStack";
+import { CaseIndex } from "./Case";
+import { caseContent } from "../cases";
+import { brand, contact, en, fieldPhotos, photos, teamMembers } from "../content";
 import { sendBooking, summary, type Booking } from "../booking";
 import { useLang } from "../i18n";
 
@@ -83,6 +86,7 @@ export function Leaders() {
           </ol>
         </div>
       </section>
+      <AgentStack />
       <section className="section light">
         <div className="wrap split">
           <div>
@@ -107,7 +111,7 @@ export function Leaders() {
 }
 
 export function IndustryPage() {
-  const { c } = useLang();
+  const { c, lang } = useLang();
   const t = c.ui.industry;
   const { slug } = useParams();
   const idx = c.industries.findIndex((i) => i.slug === slug);
@@ -139,6 +143,9 @@ export function IndustryPage() {
           <div className="cols-3" data-stagger>
             {ind.builds.map((b, i) => <div className="cell" key={b.title}><span className="k">0{i + 1}</span><h3 className="h3">{b.title}</h3><p>{b.body}</p></div>)}
           </div>
+          {caseContent(lang).cases.some((x) => x.slug === ind.slug) && (
+            <Link to={`/cases/${ind.slug}`} className="btn" style={{ marginTop: 40 }}>{caseContent(lang).ui.read} <Arrow /></Link>
+          )}
         </div>
       </section>
       <section className="section tight">
@@ -160,6 +167,7 @@ export function HowWeWork() {
     <>
       <PageHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} photo={photos.how} />
       <section style={{ padding: "40px 0" }}><MethodPinned /></section>
+      <CaseIndex />
       <section className="section light">
         <div className="wrap">
           <div className="cols-3" data-stagger>
@@ -237,8 +245,28 @@ export function About() {
   return (
     <>
       <PageHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} photo={photos.about} />
-      <Founder />
+      <Founder photo />
       <section className="section tight" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="split" style={{ marginBottom: 48 }}>
+            <span className="eyebrow">{t.teamEyebrow}</span>
+            <h2 className="h2" data-split>{t.teamTitle}</h2>
+          </div>
+          <div className="team" data-stagger>
+            {teamMembers.map((m, i) => (
+              <figure className="member" key={m.name}>
+                <img src={m.photo} alt={m.name} loading="lazy" decoding="async" />
+                <figcaption>
+                  <b>{m.name}</b>
+                  <span className="role">{i === 0 ? c.founder.role : t.team[i].role}</span>
+                  <ul>{t.team[i].skills.map((sk) => <li key={sk}>{sk}</li>)}</ul>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section tight">
         <div className="wrap">
           <div className="split" style={{ marginBottom: 56 }}>
             <span className="eyebrow">{t.proofEyebrow}</span>

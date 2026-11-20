@@ -175,7 +175,7 @@ export const zhHant: Content = {
     },
     industriesSection: { eyebrow: "產業", title: "依您產業的運作方式打造。", lead: "服務有實際營運的中小企業，以及需要看清營運狀況的企業主。", view: "查看 →" },
     method: { eyebrow: "合作方式", title: "從生產第一線，到老闆的螢幕。", step: "步驟" },
-    founderUi: { eyebrow: "創辦人的話", watch: "觀看創辦人影片", placeholder: "創辦人影片 · 請將檔案放入 /public", photo: "照片" },
+    founderUi: { eyebrow: "創辦人的話", watch: "觀看創辦人影片", placeholder: "創辦人的話 · 影片即將上線", photo: "照片" },
     demo: {
       eyebrow: "試試看", title: "向您的企業提一個問題。",
       lead: "老闆早上 7 點不會打開儀表板，他們會打開 LINE。我們的代理以日常語言、根據您自己的資料，在您慣用的地方回答。",
@@ -247,6 +247,13 @@ export const zhHant: Content = {
       pdpaText: "依據泰國《個人資料保護法》（PDPA），我們擔任您的資料處理者。每個專案都包含資料處理協議、有紀錄的資料流程，以及針對同意、存取和刪除的控管。",
     },
     about: {
+      teamEyebrow: "團隊", teamTitle: "為您打造系統的人。",
+      team: [
+        { role: "創辦人兼首席建造者", skills: ["AI 工作流程", "系統架構", "電商營運"] },
+        { role: "後端工程師", skills: ["API 設計", "資料庫架構", "雲端基礎設施"] },
+        { role: "行銷與成長", skills: ["內容策略", "SEO 與分析", "品牌發展"] },
+        { role: "UX/UI 設計師", skills: ["使用者研究", "介面設計", "設計系統"] },
+      ],
       proofEyebrow: "實際成果",
       proofTitle: "我們打造並營運自己的 AI 產品。",
       proofLead: "我們用於自有產品的標準，同樣用於客戶專案。",

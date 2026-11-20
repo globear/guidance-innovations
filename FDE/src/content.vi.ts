@@ -175,7 +175,7 @@ export const vi: Content = {
     },
     industriesSection: { eyebrow: "Ngành", title: "Xây dựng theo cách ngành của bạn vận hành.", lead: "Doanh nghiệp vừa và nhỏ có hoạt động vận hành thực tế, và những chủ doanh nghiệp cần nhìn rõ chúng.", view: "Xem →" },
     method: { eyebrow: "Cách làm việc", title: "Từ xưởng sản xuất đến màn hình của chủ doanh nghiệp.", step: "BƯỚC" },
-    founderUi: { eyebrow: "Lời nhắn từ nhà sáng lập", watch: "Xem lời nhắn của nhà sáng lập", placeholder: "Video nhà sáng lập · đặt file vào /public", photo: "ẢNH" },
+    founderUi: { eyebrow: "Lời nhắn từ nhà sáng lập", watch: "Xem lời nhắn của nhà sáng lập", placeholder: "Thông điệp nhà sáng lập · video sắp ra mắt", photo: "ẢNH" },
     demo: {
       eyebrow: "Dùng thử", title: "Hỏi doanh nghiệp của bạn một câu.",
       lead: "Chủ doanh nghiệp không mở bảng điều khiển lúc 7 giờ sáng. Họ mở LINE. Các agent của chúng tôi trả lời bằng ngôn ngữ thường ngày, từ dữ liệu của chính bạn, ở bất cứ nơi nào bạn đang làm việc.",
@@ -247,6 +247,13 @@ export const vi: Content = {
       pdpaText: "Chúng tôi là bên xử lý dữ liệu của bạn theo Đạo luật Bảo vệ Dữ liệu Cá nhân (PDPA) của Thái Lan. Mọi dự án đều có thỏa thuận xử lý dữ liệu, luồng dữ liệu được ghi chép, và cơ chế kiểm soát về đồng ý, truy cập và xóa dữ liệu.",
     },
     about: {
+      teamEyebrow: "Đội ngũ", teamTitle: "Những người trực tiếp xây hệ thống cho bạn.",
+      team: [
+        { role: "Nhà sáng lập & Kỹ sư trưởng", skills: ["Quy trình AI", "Kiến trúc hệ thống", "Vận hành thương mại điện tử"] },
+        { role: "Kỹ sư Backend", skills: ["Thiết kế API", "Kiến trúc cơ sở dữ liệu", "Hạ tầng đám mây"] },
+        { role: "Marketing & Tăng trưởng", skills: ["Chiến lược nội dung", "SEO & phân tích", "Phát triển thương hiệu"] },
+        { role: "Nhà thiết kế UX/UI", skills: ["Nghiên cứu người dùng", "Thiết kế giao diện", "Hệ thống thiết kế"] },
+      ],
       proofEyebrow: "Minh chứng",
       proofTitle: "Chúng tôi tự xây dựng và vận hành sản phẩm AI của mình.",
       proofLead: "Những tiêu chuẩn chúng tôi áp dụng cho sản phẩm của mình cũng được áp dụng cho dự án khách hàng.",

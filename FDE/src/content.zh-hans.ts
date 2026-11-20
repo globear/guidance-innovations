@@ -175,7 +175,7 @@ export const zhHans: Content = {
     },
     industriesSection: { eyebrow: "行业", title: "按您所在行业的运作方式打造。", lead: "面向有真实运营的中小企业，以及需要看清业务的企业主。", view: "查看 →" },
     method: { eyebrow: "工作方式", title: "从生产一线，到老板的屏幕。", step: "步骤" },
-    founderUi: { eyebrow: "创始人寄语", watch: "观看创始人视频", placeholder: "创始人视频 · 请将文件放入 /public", photo: "照片" },
+    founderUi: { eyebrow: "创始人寄语", watch: "观看创始人视频", placeholder: "创始人寄语 · 视频即将上线", photo: "照片" },
     demo: {
       eyebrow: "体验一下", title: "向您的企业提一个问题。",
       lead: "老板早上 7 点不会打开看板，他们会打开 LINE。我们的智能体用日常语言、基于您自己的数据，在您常用的地方作答。",
@@ -247,6 +247,13 @@ export const zhHans: Content = {
       pdpaText: "根据泰国《个人数据保护法》（PDPA），我们作为您的数据处理者。每个项目都包含数据处理协议、有记录的数据流，以及对同意、访问和删除的控制。",
     },
     about: {
+      teamEyebrow: "团队", teamTitle: "为您打造系统的人。",
+      team: [
+        { role: "创始人兼首席建造者", skills: ["AI 工作流", "系统架构", "电商运营"] },
+        { role: "后端工程师", skills: ["API 设计", "数据库架构", "云基础设施"] },
+        { role: "市场营销与增长", skills: ["内容策略", "SEO 与分析", "品牌发展"] },
+        { role: "UX/UI 设计师", skills: ["用户研究", "界面设计", "设计系统"] },
+      ],
       proofEyebrow: "实际成果",
       proofTitle: "我们打造并运营自己的 AI 产品。",
       proofLead: "我们用于自有产品的标准，同样用于客户项目。",
