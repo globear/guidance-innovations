@@ -3,7 +3,7 @@ import type { Content } from "./content";
 
 export const th: Content = {
   meta: {
-    title: "Guidance Innovation | AI Forward-Deployed Engineering",
+    title: "Guidance Innovation | วิศวกรรม AI แบบ Forward-Deployed",
     description: "เราเข้าไปทำงานร่วมกับทีมของคุณ เชื่อมข้อมูลการดำเนินงาน และสร้างระบบ AI ส่วนตัว ที่ช่วยให้เจ้าของมองเห็นธุรกิจชัดขึ้นและตัดสินใจได้เร็วขึ้น",
   },
 
