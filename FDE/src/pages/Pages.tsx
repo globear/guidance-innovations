@@ -3,6 +3,7 @@ import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { Arrow, ChatDemo, CTA, Founder, MethodPinned, MiniDash, PageHead } from "../components/Blocks";
 import DataFlow from "../components/DataFlow";
 import AgentStack from "../components/AgentStack";
+import Select from "../components/Select";
 import { CaseIndex } from "./Case";
 import { caseContent, casePath } from "../cases";
 import { brand, contact, en, fieldPhotos, photos, teamMembers } from "../content";
@@ -320,7 +321,7 @@ export function Consultation() {
       name: v("name"), company: v("company"), email: v("email"), phone: v("phone"),
       interest: en.ui.consult.interestOpts[Number(v("interest"))] ?? v("interest"),
       industry: ind ? ind.name : en.ui.consult.other,
-      problem: v("problem"), lang,
+      business: v("business"), problem: v("problem"), lang,
     };
     setDraft(booking);
     setStatus("sending");
@@ -365,14 +366,15 @@ export function Consultation() {
               <div className="field"><label htmlFor="n">{t.name} *</label><input id="n" name="name" autoComplete="name" required maxLength={120} /></div>
               <div className="field"><label htmlFor="c">{t.company}</label><input id="c" name="company" autoComplete="organization" maxLength={160} /></div>
               <div className="field"><label htmlFor="e">{t.contact} *</label><input id="e" name="email" type="email" autoComplete="email" required maxLength={160} /></div>
-              <div className="field"><label htmlFor="ph">{t.phone}</label><input id="ph" name="phone" autoComplete="tel" maxLength={60} /></div>
+              <div className="field"><label htmlFor="ph">{t.phone} *</label><input id="ph" name="phone" autoComplete="tel" required maxLength={60} /></div>
               <div className="field"><label htmlFor="t">{t.interest}</label>
-                <select id="t" name="interest" defaultValue={preInterest}>{t.interestOpts.map((o, i) => <option key={o} value={i}>{o}</option>)}</select>
+                <Select id="t" name="interest" defaultValue={preInterest} options={t.interestOpts.map((o, i) => ({ value: String(i), label: o }))} />
               </div>
               <div className="field"><label htmlFor="i">{t.industry}</label>
-                <select id="i" name="industry" defaultValue={preIndustry}>{c.industries.map((i) => <option key={i.slug} value={i.slug}>{i.name}</option>)}<option value="other">{t.other}</option></select>
+                <Select id="i" name="industry" defaultValue={preIndustry} options={[...c.industries.map((i) => ({ value: i.slug, label: i.name })), { value: "other", label: t.other }]} />
               </div>
-              <div className="field full"><label htmlFor="p">{t.problem} *</label><textarea id="p" name="problem" rows={4} required maxLength={3000} /></div>
+              <div className="field full"><label htmlFor="b">{t.business} *</label><textarea id="b" name="business" rows={3} required maxLength={3000} placeholder={t.businessHint} /></div>
+              <div className="field full"><label htmlFor="p">{t.problem} *</label><textarea id="p" name="problem" rows={4} required maxLength={3000} placeholder={t.problemHint} /></div>
               <label className="consent full">
                 <input type="checkbox" name="consent" required />
                 <span>{t.consent} <a href={contact.privacy} target="_blank" rel="noopener noreferrer">{t.privacy}</a>{t.consentEnd}</span>

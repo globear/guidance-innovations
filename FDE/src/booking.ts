@@ -10,6 +10,7 @@ export type Booking = {
   phone: string;
   interest: string;
   industry: string;
+  business: string;
   problem: string;
   lang: string;
 };
@@ -17,8 +18,7 @@ export type Booking = {
 /** Plain-text summary used for the email fallback. */
 export function summary(b: Booking) {
   const lines = ["Consultation request (FDE site)", `Interest: ${b.interest}`, `Industry: ${b.industry}`];
-  if (b.phone) lines.push(`Phone / LINE: ${b.phone}`);
-  lines.push(`Site language: ${b.lang}`, "", "First problem to solve:", b.problem);
+  lines.push(`Phone / LINE: ${b.phone}`, `Site language: ${b.lang}`, "", "About the business:", b.business, "", "Area to improve:", b.problem);
   return lines.join("\n");
 }
 

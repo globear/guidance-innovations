@@ -30,7 +30,7 @@ The **Book a consultation** form sends requests through **Netlify Forms**. It ne
    - it shows under **Forms → consultation**, and
    - the notification email arrives.
 
-Each request includes: name, company, email, phone or LINE ID, interest, industry, the problem to solve first, and the site language. Interest and industry are always sent in English.
+Each request includes: name, company, email, phone or LINE ID (required), interest, industry, a description of the business, the business area to improve, and the site language. Interest and industry are always sent in English.
 
 If a request can't be sent (for example the site is opened somewhere other than Netlify), the page tells the visitor and offers **Email us** (pre-filled with what they typed) and **WhatsApp** instead. No request is silently lost.
 

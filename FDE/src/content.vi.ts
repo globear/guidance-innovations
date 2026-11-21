@@ -267,7 +267,7 @@ export const vi: Content = {
       bringEyebrow: "Chúng tôi mang đến", bringTitle: "Bắt tay làm, từ đầu đến cuối.",
     },
     consult: {
-      phone: "Số điện thoại hoặc LINE ID (không bắt buộc)",
+      phone: "Số điện thoại hoặc LINE ID",
       consent: "Tôi đồng ý để Guidance Innovation sử dụng các thông tin này để liên hệ với tôi về yêu cầu này, theo",
       consentEnd: ".",
       privacy: "chính sách bảo mật",
@@ -277,10 +277,11 @@ export const vi: Content = {
       emailBtn: "Gửi email cho chúng tôi",
       whatsappBtn: "WhatsApp",
       nextEyebrow: "Tiếp theo là gì",
-      nextTitle: "Ba bước đơn giản.",
+      nextTitle: "Bốn bước đơn giản.",
       next: [
         { t: "Phản hồi trong một ngày làm việc", b: "Qua email hoặc WhatsApp, để hẹn thời gian phù hợp với bạn." },
         { t: "Buổi trao đổi miễn phí 45 phút", b: "Trực tuyến hoặc tại văn phòng của bạn. Chúng tôi tìm hiểu cách doanh nghiệp vận hành và chỉ ra nơi AI có thể giúp. Không áp lực, không trình chiếu." },
+        { t: "Xem trước dữ liệu của bạn", b: "Chúng tôi chạy dữ liệu bạn có thể chia sẻ trong môi trường phát triển của mình và gửi bạn báo cáo đánh giá ban đầu: tổng quan và những điểm cần cải thiện." },
         { t: "Đề xuất rõ ràng, nếu phù hợp", b: "Một tuần Discovery với phạm vi cố định và mức giá rõ ràng. Bạn quyết định có tiếp tục hay không." },
       ],
       eyebrow: "Đặt lịch tư vấn", title: "Hãy cho chúng tôi biết một vấn đề.",
@@ -288,7 +289,7 @@ export const vi: Content = {
       direct: "Hoặc liên hệ trực tiếp", thanks: "Cảm ơn bạn.", thanksLead: "Chúng tôi sẽ phản hồi trong vòng một ngày làm việc.",
       name: "Họ tên", company: "Công ty", contact: "Email", interest: "Tôi quan tâm đến",
       interestOpts: ["Cho Doanh nghiệp", "Cho Lãnh đạo (agent cá nhân)", "Chưa chắc"],
-      industry: "Ngành", other: "Khác", problem: "Vấn đề đầu tiên bạn muốn giải quyết", submit: "Gửi yêu cầu",
+      industry: "Ngành", other: "Khác", problem: "Mảng kinh doanh bạn muốn cải thiện nhất", problemHint: "vd: kiểm kho, theo dõi giao hàng, trả lời khách, báo cáo chi nhánh", business: "Giới thiệu về doanh nghiệp của bạn", businessHint: "Bạn kinh doanh gì, quy mô đội ngũ, số chi nhánh và các hệ thống đang dùng.", submit: "Gửi yêu cầu",
     },
     notFound: { title: "Trang này không tồn tại.", lead: "Quay về trang chủ.", button: "Về trang chủ" },
     faq: {

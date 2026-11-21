@@ -267,7 +267,7 @@ export const ms: Content = {
       bringEyebrow: "Apa yang kami bawa", bringTitle: "Terlibat sepenuhnya, dari awal hingga akhir.",
     },
     consult: {
-      phone: "Telefon atau LINE ID (pilihan)",
+      phone: "Telefon atau LINE ID",
       consent: "Saya bersetuju Guidance Innovation menggunakan butiran ini untuk menghubungi saya tentang permintaan ini, selaras dengan",
       consentEnd: ".",
       privacy: "dasar privasi",
@@ -277,10 +277,11 @@ export const ms: Content = {
       emailBtn: "E-mel kami",
       whatsappBtn: "WhatsApp",
       nextEyebrow: "Apa seterusnya",
-      nextTitle: "Tiga langkah mudah.",
+      nextTitle: "Empat langkah mudah.",
       next: [
         { t: "Kami membalas dalam satu hari bekerja", b: "Melalui e-mel atau WhatsApp, untuk menetapkan masa yang sesuai untuk anda." },
         { t: "Sesi percuma 45 minit", b: "Dalam talian atau di pejabat anda. Kami fahami cara perniagaan anda berjalan dan tunjukkan di mana AI boleh membantu. Tiada tekanan, tiada slaid." },
+        { t: "Tinjauan awal data anda", b: "Kami jalankan data yang boleh anda kongsi dalam persekitaran pembangunan kami dan hantar laporan tinjauan awal: ringkasan keseluruhan dan bahagian yang perlu diperbaiki." },
         { t: "Cadangan yang jelas, jika sesuai", b: "Minggu Discovery dengan skop tetap dan harga yang jelas. Anda tentukan sama ada mahu teruskan." },
       ],
       eyebrow: "Tempah konsultasi", title: "Beritahu kami satu masalah.",
@@ -288,7 +289,7 @@ export const ms: Content = {
       direct: "Atau hubungi kami terus", thanks: "Terima kasih.", thanksLead: "Kami akan membalas dalam satu hari bekerja.",
       name: "Nama", company: "Syarikat", contact: "E-mel", interest: "Saya berminat dengan",
       interestOpts: ["Untuk Perniagaan", "Untuk Pemimpin (ejen peribadi)", "Belum pasti"],
-      industry: "Industri", other: "Lain-lain", problem: "Satu masalah yang anda mahu selesaikan dahulu", submit: "Minta sesi",
+      industry: "Industri", other: "Lain-lain", problem: "Bahagian perniagaan yang paling ingin anda perbaiki", problemHint: "cth. kiraan stok, jejak penghantaran, balasan tetamu, laporan cawangan", business: "Ceritakan tentang perniagaan anda", businessHint: "Apa yang anda jalankan, saiz pasukan, cawangan dan sistem yang anda guna sekarang.", submit: "Minta sesi",
     },
     notFound: { title: "Halaman ini tidak wujud.", lead: "Kembali ke laman utama.", button: "Kembali ke laman utama" },
     faq: {

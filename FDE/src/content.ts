@@ -320,7 +320,7 @@ export const en = {
       bringEyebrow: "What we bring", bringTitle: "Hands-on, end to end.",
     },
     consult: {
-      phone: "Phone or LINE ID (optional)",
+      phone: "Phone or LINE ID",
       consent: "I agree that Guidance Innovation may use these details to contact me about this request, in line with the",
       consentEnd: ".",
       privacy: "privacy policy",
@@ -330,10 +330,11 @@ export const en = {
       emailBtn: "Email us",
       whatsappBtn: "WhatsApp",
       nextEyebrow: "What happens next",
-      nextTitle: "Three simple steps.",
+      nextTitle: "Four simple steps.",
       next: [
         { t: "We reply within one business day", b: "By email or WhatsApp, to agree a time that suits you." },
         { t: "A free 45-minute session", b: "Online or at your office. We learn how your business runs and show where AI fits. No pressure, no slides." },
+        { t: "A first look at your data", b: "We run the data you can share through our development environment and send you a first-impression report: an overall summary and the areas to improve." },
         { t: "A clear proposal, if there's a fit", b: "A fixed-scope Discovery week with a clear price. You decide whether to go ahead." },
       ],
       eyebrow: "Book a consultation", title: "Tell us one problem.",
@@ -341,7 +342,7 @@ export const en = {
       direct: "Or reach us directly", thanks: "Thank you.", thanksLead: "We'll reply within one business day.",
       name: "Name", company: "Company", contact: "Email", interest: "I'm interested in",
       interestOpts: ["For Business", "For Leaders (personal agent)", "Not sure yet"],
-      industry: "Industry", other: "Other", problem: "The one problem you'd solve first", submit: "Request session",
+      industry: "Industry", other: "Other", problem: "The business area you'd most like to improve", problemHint: "e.g. stock counts, delivery tracking, guest replies, branch reporting", business: "Tell us about your business", businessHint: "What you do, team size, branches, and the systems you use today.", submit: "Request session",
     },
     notFound: { title: "This page doesn't exist.", lead: "Head back to the homepage.", button: "Back to homepage" },
     faq: {

@@ -267,7 +267,7 @@ export const zhHant: Content = {
       bringEyebrow: "我們帶來什麼", bringTitle: "親自動手，從頭到尾。",
     },
     consult: {
-      phone: "電話或 LINE ID（選填）",
+      phone: "電話或 LINE ID",
       consent: "我同意 Guidance Innovation 使用以上資料就本次諮詢與我聯繫，詳見",
       consentEnd: "。",
       privacy: "隱私權政策",
@@ -277,10 +277,11 @@ export const zhHant: Content = {
       emailBtn: "寄信給我們",
       whatsappBtn: "WhatsApp",
       nextEyebrow: "接下來",
-      nextTitle: "簡單三步。",
+      nextTitle: "簡單四步。",
       next: [
         { t: "一個工作天內回覆", b: "透過電子郵件或 WhatsApp，約一個您方便的時間。" },
         { t: "免費 45 分鐘諮詢", b: "線上或在您的辦公室。我們了解您的業務如何運作，並指出 AI 能幫上忙的地方。沒有推銷壓力，也不講簡報。" },
+        { t: "先看看您的資料", b: "我們把您可以分享的資料放進我們的開發環境中試跑，並寄給您一份初步報告：整體概況，以及需要改進的地方。" },
         { t: "合適的話，提出清楚方案", b: "範圍明確、價格清楚的一週 Discovery。是否繼續，由您決定。" },
       ],
       eyebrow: "預約諮詢", title: "告訴我們一個問題。",
@@ -288,7 +289,7 @@ export const zhHant: Content = {
       direct: "或直接聯絡我們", thanks: "謝謝您。", thanksLead: "我們會在一個工作天內回覆。",
       name: "姓名", company: "公司", contact: "電子郵件", interest: "我有興趣的是",
       interestOpts: ["企業方案", "領導者方案（個人助理）", "還不確定"],
-      industry: "產業", other: "其他", problem: "您最想先解決的一個問題", submit: "申請諮詢",
+      industry: "產業", other: "其他", problem: "您最想改進的業務環節", problemHint: "例如：庫存盤點、配送追蹤、回覆客人、門市報表", business: "介紹一下您的業務", businessHint: "您做什麼業務、團隊規模、門市或分店數量，以及目前使用的系統。", submit: "申請諮詢",
     },
     notFound: { title: "這個頁面不存在。", lead: "回到首頁。", button: "回到首頁" },
     faq: {

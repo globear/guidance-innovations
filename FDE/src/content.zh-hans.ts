@@ -267,7 +267,7 @@ export const zhHans: Content = {
       bringEyebrow: "我们带来什么", bringTitle: "亲力亲为，端到端交付。",
     },
     consult: {
-      phone: "电话或 LINE ID（选填）",
+      phone: "电话或 LINE ID",
       consent: "我同意 Guidance Innovation 使用以上信息就本次咨询与我联系，详见",
       consentEnd: "。",
       privacy: "隐私政策",
@@ -277,10 +277,11 @@ export const zhHans: Content = {
       emailBtn: "发送邮件",
       whatsappBtn: "WhatsApp",
       nextEyebrow: "接下来",
-      nextTitle: "简单三步。",
+      nextTitle: "简单四步。",
       next: [
         { t: "一个工作日内回复", b: "通过邮件或 WhatsApp，约一个您方便的时间。" },
         { t: "免费 45 分钟咨询", b: "线上或在您的办公室。我们了解您的业务如何运作，并指出 AI 能帮上忙的地方。没有推销压力，也不讲 PPT。" },
+        { t: "先看看您的数据", b: "我们把您可以分享的数据放进我们的开发环境中试运行，并发给您一份初步报告：整体概况，以及需要改进的地方。" },
         { t: "合适的话，给出清晰方案", b: "范围明确、价格清楚的一周 Discovery。是否继续，由您决定。" },
       ],
       eyebrow: "预约咨询", title: "告诉我们一个问题。",
@@ -288,7 +289,7 @@ export const zhHans: Content = {
       direct: "或直接联系我们", thanks: "谢谢。", thanksLead: "我们会在一个工作日内回复。",
       name: "姓名", company: "公司", contact: "邮箱", interest: "我感兴趣的是",
       interestOpts: ["企业方案", "领导者方案（个人助理）", "还不确定"],
-      industry: "行业", other: "其他", problem: "您最想先解决的一个问题", submit: "申请咨询",
+      industry: "行业", other: "其他", problem: "您最想改进的业务环节", problemHint: "例如：库存盘点、配送跟踪、客人回复、门店报表", business: "介绍一下您的业务", businessHint: "您做什么业务、团队规模、门店或分支数量，以及目前使用的系统。", submit: "申请咨询",
     },
     notFound: { title: "该页面不存在。", lead: "返回首页。", button: "返回首页" },
     faq: {
