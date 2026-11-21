@@ -245,7 +245,7 @@ export function About() {
   return (
     <>
       <PageHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} photo={photos.about} />
-      <Founder photo />
+      <Founder quote />
       <section className="section tight" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="split" style={{ marginBottom: 48 }}>

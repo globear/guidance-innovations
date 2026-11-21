@@ -267,19 +267,38 @@ function IndustryCard({ ind, i, view }: { ind: Industry; i: number; view: string
   );
 }
 
-/** Founder block. Home shows the video frame (placeholder until media.video is set); About passes `photo` to show the stage photo instead. */
-export function Founder({ light = false, more = false, photo = false }: { light?: boolean; more?: boolean; photo?: boolean }) {
+/** Founder block. Home shows the video frame (placeholder until media.video is set); About passes `quote` for the message alone. */
+export function Founder({ light = false, more = false, quote = false }: { light?: boolean; more?: boolean; quote?: boolean }) {
   const { c } = useLang();
   const t = c.ui.founderUi;
   const [playing, setPlaying] = useState(false);
   const vid = useRef<HTMLVideoElement>(null);
+  const byline = (
+    <div className="founder-by" data-fade>
+      <div className="headshot">{media.headshot ? <img src={media.headshot} alt={c.founder.name} /> : t.photo}</div>
+      <div><div style={{ fontWeight: 500 }}>{c.founder.name}</div><div className="mono muted">{c.founder.role}</div></div>
+    </div>
+  );
+  if (quote) {
+    return (
+      <section className={`section ${light ? "light" : ""}`}>
+        <div className="wrap split founder-quote">
+          <span className="eyebrow">{t.eyebrow}</span>
+          <figure>
+            <span className="fq-mark" aria-hidden>“</span>
+            <blockquote data-split>{c.founder.message}</blockquote>
+            <figcaption>{byline}</figcaption>
+          </figure>
+        </div>
+      </section>
+    );
+  }
   return (
     <section className={`section ${light ? "light" : ""}`}>
       <div className="wrap founder">
         <div className="video-frame" data-fade onClick={() => { if (media.video && vid.current) { vid.current.play(); setPlaying(true); } }}>
           {media.video && <video ref={vid} src={media.video} poster={media.poster || undefined} controls={playing} playsInline />}
-          {!media.video && photo && media.poster && <><img className="founder-photo" src={media.poster} alt={c.ui.about.field[0]} loading="lazy" decoding="async" /><span className="frame-cap">{c.ui.about.field[0]}</span></>}
-          {!playing && (media.video || !photo) && (
+          {!playing && (
             <div className="video-ph">
               <div>
                 <div className="play">▶</div>
@@ -291,10 +310,7 @@ export function Founder({ light = false, more = false, photo = false }: { light?
         <div>
           <span className="eyebrow">{t.eyebrow}</span>
           <blockquote data-split>{c.founder.message}</blockquote>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }} data-fade>
-            <div className="headshot">{media.headshot ? <img src={media.headshot} alt={c.founder.name} /> : t.photo}</div>
-            <div><div style={{ fontWeight: 500 }}>{c.founder.name}</div><div className="mono muted">{c.founder.role}</div></div>
-          </div>
+          {byline}
           {more && <Link to="/about" className="btn" style={{ marginTop: 28 }} data-fade>{c.ui.about.proofEyebrow} <Arrow /></Link>}
         </div>
       </div>
