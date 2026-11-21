@@ -290,7 +290,7 @@ export const msAgent: AgentContent = {
   brain: {
     eyebrow: "Otak kedua anda",
     title: "Semua yang anda lalui, disimpan dan dihubungkan.",
-    lead: "Ejen anda menulis apa yang dipelajarinya ke dalam vault Obsidian: nota biasa di komputer anda sendiri, dihubungkan seperti peta kerja anda. Semakin lama ia berjalan, semakin ia faham cara anda berfikir dan membuat keputusan.",
+    lead: "Ejen anda menulis apa yang dipelajarinya ke dalam vault Obsidian: nota biasa di pelayan peribadi anda sendiri, dihubungkan seperti peta kerja anda. Semakin lama ia berjalan, semakin ia faham cara anda berfikir dan membuat keputusan.",
     steps: [
       { t: "Simpan", b: "Mesyuarat, panggilan, e-mel, dokumen dan keputusan menjadi nota dengan sendirinya. Begitu juga kemahiran dan kepakaran yang anda kongsi." },
       { t: "Hubung", b: "Setiap nota dipautkan kepada orang, syarikat dan projek yang disebut. Peta 3D menunjukkan bagaimana semuanya berkait." },
@@ -303,13 +303,13 @@ export const msAgent: AgentContent = {
     drag: "Seret untuk memutar peta",
   },
   eyebrow: "Bagaimana ejen anda dibina",
-  title: "Alat terbuka. Perkakasan anda. Ingatan anda.",
-  lead: "Satu contoh: pemilik yang mengendalikan tiga syarikat. Ejen berada pada komputer kecil di pejabat mereka, menyimpan ingatannya sebagai nota yang boleh mereka baca, dan menjawab dalam aplikasi sembang yang sudah mereka gunakan.",
+  title: "Alat terbuka. Pelayan anda. Ingatan anda.",
+  lead: "Satu contoh: pemilik yang mengendalikan tiga syarikat. Ejen berjalan pada pelayan awan peribadi (VPS) atas nama mereka. Mereka memegang kuncinya, ingatannya ialah nota yang boleh mereka baca, dan ia menjawab dalam aplikasi sembang yang sudah mereka gunakan.",
   label: "Contoh persediaan · alat dipilih mengikut setiap pelanggan",
   layers: [
     { key: "phone", title: "Telefon anda", sub: "WhatsApp · Telegram · LINE*" },
     { key: "gateway", title: "Gerbang ejen", sub: "OpenClaw atau Hermes Agent · sumber terbuka (MIT)" },
-    { key: "box", title: "Mac mini di pejabat anda", sub: "Berjalan sepanjang masa · anda memegang kuncinya" },
+    { key: "box", title: "Pelayan peribadi anda (VPS)", sub: "Atas nama anda · berjalan sepanjang masa · anda memegang kuncinya" },
     { key: "vault", title: "Otak kedua", sub: "Obsidian vault · nota Markdown biasa" },
     { key: "tools", title: "Alat anda", sub: "E-mel · kalendar* · dokumen · data syarikat" },
     { key: "model", title: "Model AI", sub: "Tempatan, atau API perusahaan yang tidak dilatih dengan data anda" },
@@ -330,7 +330,8 @@ export const msAgent: AgentContent = {
   noteLinks: ["Meetings/2026-11-12 Pricing", "Companies/Supplier Group"],
   guardTitle: "Dibina untuk kekal peribadi",
   guards: [
-    "Berjalan pada perkakasan milik anda. Anda boleh mencabut palamnya.",
+    "Berjalan pada pelayan peribadi atas nama anda. Anda memegang kuncinya.",
+    "Data, ingatan dan rekod anda milik anda. Ambil salinan penuh atau padam semuanya, bila-bila masa.",
     "Ingatan ialah nota biasa yang boleh anda baca, sunting atau padam.",
     "Hanya telefon yang dipasangkan boleh bercakap dengannya.",
     "Alat berjalan dalam sandbox dengan akses paling minimum yang diperlukan.",

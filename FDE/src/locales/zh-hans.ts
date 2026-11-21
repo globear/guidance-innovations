@@ -290,7 +290,7 @@ export const zhHansAgent: AgentContent = {
   brain: {
     eyebrow: "您的第二大脑",
     title: "您经历的一切，都被保存并连接起来。",
-    lead: "Agent 把学到的内容写进 Obsidian 笔记库：存在您自己电脑上的纯文本笔记，像一张工作地图一样互相连接。用得越久，它越懂您如何思考和决策。",
+    lead: "Agent 把学到的内容写进 Obsidian 笔记库：存在您自己私有服务器上的纯文本笔记，像一张工作地图一样互相连接。用得越久，它越懂您如何思考和决策。",
     steps: [
       { t: "保存", b: "会议、电话、邮件、文件和决定会自动变成笔记，您教给它的技能和经验也一样。" },
       { t: "连接", b: "每条笔记都链接到相关的人、公司和项目。3D 地图展示一切如何相连。" },
@@ -303,13 +303,13 @@ export const zhHansAgent: AgentContent = {
     drag: "拖动可旋转地图",
   },
   eyebrow: "您的 Agent 是如何搭建的",
-  title: "开放工具。您的硬件。您的记忆。",
-  lead: "一个示例：一位同时经营三家公司的老板。Agent 运行在他办公室的一台小电脑上，以他可以直接阅读的笔记形式保存记忆，并在他已经在用的聊天软件里回复。",
+  title: "开放工具。您的服务器。您的记忆。",
+  lead: "一个示例：一位同时经营三家公司的老板。Agent 运行在以他名义开设的私有云服务器（VPS）上，钥匙在他手里；记忆以他可以直接阅读的笔记形式保存，并在他已经在用的聊天软件里回复。",
   label: "示例配置 · 工具按每位客户的需要选择",
   layers: [
     { key: "phone", title: "您的手机", sub: "WhatsApp · Telegram · LINE*" },
     { key: "gateway", title: "Agent 网关", sub: "OpenClaw 或 Hermes Agent · 开源（MIT）" },
-    { key: "box", title: "您办公室里的 Mac mini", sub: "全天候运行 · 钥匙在您手里" },
+    { key: "box", title: "您的私有服务器（VPS）", sub: "以您的名义开设 · 全天候运行 · 钥匙在您手里" },
     { key: "vault", title: "第二大脑", sub: "Obsidian 笔记库 · 纯 Markdown 笔记" },
     { key: "tools", title: "您的工具", sub: "邮件 · 日历* · 文档 · 公司数据" },
     { key: "model", title: "AI 模型", sub: "本地运行，或使用不以您的数据训练的企业级 API" },
@@ -330,7 +330,8 @@ export const zhHansAgent: AgentContent = {
   noteLinks: ["Meetings/2026-11-12 Pricing", "Companies/Supplier Group"],
   guardTitle: "为隐私而设计",
   guards: [
-    "运行在您自己的硬件上，随时可以拔掉电源。",
+    "运行在以您名义开设的私有服务器上，钥匙在您手里。",
+    "您的数据、记忆和记录都属于您，随时可以完整导出或全部删除。",
     "记忆是普通笔记，您可以阅读、修改或删除。",
     "只有配对过的手机才能与它对话。",
     "工具在沙箱中运行，只拥有必需的最小权限。",

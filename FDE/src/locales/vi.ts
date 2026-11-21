@@ -290,7 +290,7 @@ export const viAgent: AgentContent = {
   brain: {
     eyebrow: "Bộ não thứ hai của bạn",
     title: "Mọi điều bạn trải qua, được lưu và kết nối.",
-    lead: "Agent ghi những gì học được vào một kho Obsidian: các ghi chú văn bản trên máy tính của chính bạn, liên kết với nhau như bản đồ công việc. Chạy càng lâu, nó càng hiểu cách bạn suy nghĩ và quyết định.",
+    lead: "Agent ghi những gì học được vào một kho Obsidian: các ghi chú văn bản trên máy chủ riêng của chính bạn, liên kết với nhau như bản đồ công việc. Chạy càng lâu, nó càng hiểu cách bạn suy nghĩ và quyết định.",
     steps: [
       { t: "Lưu", b: "Cuộc họp, cuộc gọi, email, tài liệu và quyết định tự trở thành ghi chú. Kỹ năng và kinh nghiệm bạn chia sẻ với nó cũng vậy." },
       { t: "Kết nối", b: "Mỗi ghi chú liên kết với người, công ty và dự án được nhắc đến. Bản đồ 3D cho thấy mọi thứ khớp với nhau thế nào." },
@@ -303,13 +303,13 @@ export const viAgent: AgentContent = {
     drag: "Kéo để xoay bản đồ",
   },
   eyebrow: "Tác tử của bạn được xây dựng thế nào",
-  title: "Công cụ mở. Phần cứng của bạn. Bộ nhớ của bạn.",
-  lead: "Một ví dụ: chủ doanh nghiệp điều hành ba công ty. Tác tử chạy trên một máy tính nhỏ trong văn phòng của họ, lưu bộ nhớ dưới dạng ghi chú họ có thể tự đọc, và trả lời trên các ứng dụng chat họ đang dùng.",
+  title: "Công cụ mở. Máy chủ của bạn. Bộ nhớ của bạn.",
+  lead: "Một ví dụ: chủ doanh nghiệp điều hành ba công ty. Tác tử chạy trên một máy chủ đám mây riêng (VPS) đứng tên họ. Họ giữ chìa khóa, bộ nhớ là các ghi chú họ có thể tự đọc, và nó trả lời trên các ứng dụng chat họ đang dùng.",
   label: "Cấu hình minh họa · công cụ được chọn theo từng khách hàng",
   layers: [
     { key: "phone", title: "Điện thoại của bạn", sub: "WhatsApp · Telegram · LINE*" },
     { key: "gateway", title: "Cổng tác tử", sub: "OpenClaw hoặc Hermes Agent · mã nguồn mở (MIT)" },
-    { key: "box", title: "Mac mini trong văn phòng bạn", sub: "Chạy suốt ngày đêm · bạn giữ chìa khóa" },
+    { key: "box", title: "Máy chủ riêng của bạn (VPS)", sub: "Đứng tên bạn · chạy suốt ngày đêm · bạn giữ chìa khóa" },
     { key: "vault", title: "Bộ não thứ hai", sub: "Kho Obsidian · ghi chú Markdown thuần" },
     { key: "tools", title: "Công cụ của bạn", sub: "Email · lịch* · tài liệu · dữ liệu công ty" },
     { key: "model", title: "Mô hình AI", sub: "Chạy cục bộ, hoặc API doanh nghiệp không huấn luyện bằng dữ liệu của bạn" },
@@ -330,7 +330,8 @@ export const viAgent: AgentContent = {
   noteLinks: ["Meetings/2026-11-12 Pricing", "Companies/Supplier Group"],
   guardTitle: "Thiết kế để luôn riêng tư",
   guards: [
-    "Chạy trên phần cứng bạn sở hữu. Bạn có thể rút điện bất cứ lúc nào.",
+    "Chạy trên máy chủ riêng đứng tên bạn. Bạn giữ chìa khóa.",
+    "Dữ liệu, bộ nhớ và hồ sơ là của bạn. Lấy bản sao đầy đủ hoặc xóa toàn bộ bất cứ lúc nào.",
     "Bộ nhớ là ghi chú thuần mà bạn có thể đọc, sửa hoặc xóa.",
     "Chỉ điện thoại đã ghép nối mới trò chuyện được với nó.",
     "Công cụ chạy trong sandbox với quyền truy cập tối thiểu cần thiết.",

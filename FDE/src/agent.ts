@@ -55,7 +55,7 @@ const en: AgentContent = {
   brain: {
     eyebrow: "Your second brain",
     title: "Everything you go through, saved and connected.",
-    lead: "Your agent writes what it learns into an Obsidian vault: plain notes on your own computer, linked like a map of your work. The longer it runs, the better it knows how you think and decide.",
+    lead: "Your agent writes what it learns into an Obsidian vault: plain notes on your own private server, linked like a map of your work. The longer it runs, the better it knows how you think and decide.",
     steps: [
       { t: "Save", b: "Meetings, calls, emails, documents and decisions become notes on their own. So do the skills and know-how you share with it." },
       { t: "Connect", b: "Each note links to the people, companies and projects it mentions. The 3D map shows how it all fits together." },
@@ -68,13 +68,13 @@ const en: AgentContent = {
     drag: "Drag to turn the map",
   },
   eyebrow: "How your agent is built",
-  title: "Open tools. Your hardware. Your memory.",
-  lead: "One example: an owner who runs three companies. The agent lives on a small computer in their office, keeps its memory as notes they can read, and answers on the chat apps they already use.",
+  title: "Open tools. Your server. Your memory.",
+  lead: "One example: an owner who runs three companies. The agent runs on a private cloud server (VPS) set up in their name. They hold the keys, its memory is notes they can read, and it answers on the chat apps they already use.",
   label: "Example setup · tools are chosen to fit each client",
   layers: [
     { key: "phone", title: "Your phone", sub: "WhatsApp · Telegram · LINE*" },
     { key: "gateway", title: "Agent gateway", sub: "OpenClaw or Hermes Agent · open source (MIT)" },
-    { key: "box", title: "Mac mini in your office", sub: "Runs around the clock · you hold the keys" },
+    { key: "box", title: "Your private server (VPS)", sub: "In your name · runs around the clock · you hold the keys" },
     { key: "vault", title: "Second brain", sub: "Obsidian vault · plain Markdown notes" },
     { key: "tools", title: "Your tools", sub: "Email · calendar* · documents · company data" },
     { key: "model", title: "AI model", sub: "Local, or an enterprise API that doesn't train on your data" },
@@ -95,7 +95,8 @@ const en: AgentContent = {
   noteLinks: ["Meetings/2026-11-12 Pricing", "Companies/Supplier Group"],
   guardTitle: "Built to stay private",
   guards: [
-    "Runs on hardware you own. You can unplug it.",
+    "Runs on a private server in your name. You hold the keys.",
+    "Your data, memory and records belong to you. Take a full copy or delete it all, any time.",
     "Memory is plain notes you can read, edit or delete.",
     "Only your paired phone can talk to it.",
     "Tools run in a sandbox with the least access they need.",
