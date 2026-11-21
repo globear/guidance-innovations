@@ -4,11 +4,13 @@ The site is a static Vite + React app. It is set up for **Netlify**, the same ho
 
 ## Current deployment
 
-- Live: https://guidance-fde-1120-28992.netlify.app (Netlify site `guidance-fde-1120-28992`, a separate site from guidanceinnovations.tech)
-- Form detection is on. The `consultation` form was tested end to end on 2026-11-20: one test submission ("TEST – please ignore") arrived in Netlify → Forms with every field.
-- Email notification: every new submission is emailed to info@guidanceinnovations.tech (added 2026-11-20, after the test submission, so the next request is the first one emailed).
+- Live: https://guidance-fde.netlify.app (Netlify site `guidance-fde`, id `4f6f96f1-37a5-49c7-8584-c740f603273e`)
+- Netlify account: **Richard Lee** (globeareed@gmail.com), team **aireplay**, the same team as the guidanceinnovations.tech sites. (Moved 2026-11-21: it was first created by mistake in the TukTuk Visa account, team GI-Reed, where it was later deleted.)
+- This folder is linked to that site in `FDE/.netlify/state.json`. The parent folder is linked to app.guidanceinnovations.tech, so always deploy from inside `FDE`, or pass `--site`.
+- Form detection is on; Netlify registered the `consultation` form with all 10 fields (2026-11-21).
+- Email notification: every new submission is emailed to info@guidanceinnovations.tech (set up on the new site 2026-11-21). No submission has been sent to the new site yet, so the first real request is also the first test of the email.
 - Domain: staying on netlify.app for now. When you add your own domain, also update `og:url` and `og:image` in `index.html`.
-- To redeploy from this folder: `npx vite build && netlify deploy --dir=dist --site=04639917-734e-4ec9-9094-e1d624de54c0 --prod`
+- To redeploy from this folder: `npx vite build && netlify deploy --dir=dist --site=4f6f96f1-37a5-49c7-8584-c740f603273e --prod`
 
 ## 1. Create the Netlify site
 
@@ -38,7 +40,7 @@ Spam protection: the form has a hidden honeypot field (`bot-field`). You can als
 
 ## 3. After launch
 
-- **Social sharing image:** `index.html` points `og:url` and `og:image` at the current live address. When you add your own domain, replace `https://guidance-fde-1120-28992.netlify.app` in those two tags.
+- **Social sharing image:** `index.html` points `og:url` and `og:image` at the current live address. When you add your own domain, replace `https://guidance-fde.netlify.app` in those two tags.
 - **Founder video:** to replace the photo with a video, put the file in `public/` and set `media.video` in `src/content.ts`.
 
 ## Note about the main site
