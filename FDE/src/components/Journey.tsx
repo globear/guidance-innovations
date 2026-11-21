@@ -156,6 +156,10 @@ const Report = memo(function Report({ t, on, onOpen }: { t: JourneyText; on: boo
           <span className="mono muted">{r.processedIn} <b>{TOOL}</b></span>
           <ol>{r.stages.map((s, i) => <li key={s} className={stage > i ? "in" : ""}><i />{s}</li>)}</ol>
         </div>
+        <div className="jy-keyfind">
+          <span className="jy-sub">{r.findingsTitle}</span>
+          <ol>{r.findings.slice(0, 3).map((f, i) => <li key={f.t} className={stage > i + 1 ? "in" : ""}><span className="k">0{i + 1}</span>{f.t}</li>)}</ol>
+        </div>
         <button type="button" className="btn primary jy-open" onClick={onOpen}>{r.open} <span aria-hidden>↗</span></button>
       </div>
       <div className="jy-rep-b">
@@ -169,10 +173,14 @@ const Report = memo(function Report({ t, on, onOpen }: { t: JourneyText; on: boo
         </div>
         <div className="jy-spark-box">
           <span className="jy-sub">{r.otdTitle}</span>
-          <svg viewBox="0 0 300 70" className="jy-spark" aria-hidden>
-            <line x1="0" x2="300" y1={otdY(95, 70, 6)} y2={otdY(95, 70, 6)} className="jy-target" />
-            <path d={otdPath(300, 70)} pathLength={1} className="jy-line" />
+          <svg viewBox="0 0 300 130" className="jy-spark" aria-hidden>
+            {[85, 90].map((v) => <line key={v} x1="0" x2="300" y1={otdY(v, 130, 8)} y2={otdY(v, 130, 8)} className="jy-grid" />)}
+            <line x1="0" x2="300" y1={otdY(95, 130, 8)} y2={otdY(95, 130, 8)} className="jy-target" />
+            <text x="300" y={otdY(95, 130, 8) - 5} textAnchor="end" className="jy-axis">{r.target} 95%</text>
+            <path d={otdPath(300, 130, 8)} pathLength={1} className="jy-line" />
+            {jData.otd.map((v, i) => <circle key={i} cx={8 + (i / (jData.otd.length - 1)) * 284} cy={otdY(v, 130, 8)} r="2.4" className="jy-sdot" />)}
           </svg>
+          <span className="jy-legend">{r.weeks}</span>
         </div>
       </div>
     </div>
@@ -185,12 +193,12 @@ const Proposal = memo(function Proposal({ t, on }: { t: JourneyText; on: boolean
   const rows = useSeq(on, 4, 450, 900);
   return (
     <div className={`jy-doc jy-prop ${on ? "in" : ""}`}>
-      <div className="jy-prop-a">
-        <div className="jy-doc-head">
-          <span className="jy-logo">G</span>
-          <div><b>{p.title}</b><span className="mono muted"><Redact /> {t.report.clientSuffix}</span></div>
-          <span className="jy-tag accent">{p.scope}</span>
-        </div>
+      <div className="jy-doc-head">
+        <span className="jy-logo">G</span>
+        <div><b>{p.title}</b><span className="mono muted"><Redact /> {t.report.clientSuffix}</span></div>
+        <span className="jy-tag accent">{p.scope}</span>
+      </div>
+      <div className="jy-prop-top">
         <div className="jy-gantt">
           <span className="jy-sub">{p.phasesTitle}</span>
           <div className="jy-weeks"><span /><div>{[1, 2, 3, 4, 5, 6].map((w) => <span key={w}>W{w}</span>)}</div></div>
@@ -204,22 +212,25 @@ const Proposal = memo(function Proposal({ t, on }: { t: JourneyText; on: boolean
             );
           })}
         </div>
-        <div className="jy-mods">
-          <div><span className="jy-sub">{p.inputs}</span>{p.inputItems.map((x) => <span className="chip" key={x}>{x}</span>)}</div>
-          <span className="jy-hub" aria-hidden>G</span>
-          <div><span className="jy-sub">{p.outputs}</span>{p.outputItems.map((x) => <span className="chip acc" key={x}>{x}</span>)}</div>
+        <div className="jy-flow">
+          <span className="jy-sub">{p.inputs}</span><span /><span className="jy-sub">{p.outputs}</span>
+          <ul className="jy-io in-list">{p.inputItems.map((x, i) => <li key={x} style={{ transitionDelay: `${0.3 + i * 0.08}s` }}>{x}</li>)}</ul>
+          <div className="jy-bus" aria-hidden><span className="jy-hub">G</span></div>
+          <ul className="jy-io out-list">{p.outputItems.map((x, i) => <li key={x} style={{ transitionDelay: `${0.8 + i * 0.08}s` }}>{x}</li>)}</ul>
         </div>
       </div>
-      <div className="jy-prop-b">
+      <div className="jy-pricing">
         <span className="jy-sub">{p.pricingTitle}</span>
-        <div className={`jy-price-row free ${rows >= 1 ? "in" : ""}`}>
-          <span className="k">01</span><div><b>{p.freeTitle}</b><span>{p.freeNote}</span></div><strong>{p.free}</strong>
-        </div>
-        <div className={`jy-price-row ${rows >= 2 ? "in" : ""}`}>
-          <span className="k">02</span><div><b>{p.buildTitle}</b><span>{p.buildNote}</span></div><strong className="jy-blur" aria-label="price withheld">฿000,000</strong>
-        </div>
-        <div className={`jy-price-row ${rows >= 3 ? "in" : ""}`}>
-          <span className="k">03</span><div><b>{p.careTitle}</b><span>{p.careNote}</span></div><strong><span className="jy-blur" aria-label="price withheld">฿00,000</span><small>{p.perMonth}</small></strong>
+        <div className="jy-price-cards">
+          <div className={`jy-price free ${rows >= 1 ? "in" : ""}`}>
+            <span className="k">01</span><b>{p.freeTitle}</b><span className="note">{p.freeNote}</span><strong>{p.free}</strong>
+          </div>
+          <div className={`jy-price ${rows >= 2 ? "in" : ""}`}>
+            <span className="k">02</span><b>{p.buildTitle}</b><span className="note">{p.buildNote}</span><strong className="jy-blur" aria-label="price withheld">฿000,000</strong>
+          </div>
+          <div className={`jy-price ${rows >= 3 ? "in" : ""}`}>
+            <span className="k">03</span><b>{p.careTitle}</b><span className="note">{p.careNote}</span><strong><span className="jy-blur" aria-label="price withheld">฿00,000</span><small>{p.perMonth}</small></strong>
+          </div>
         </div>
         <div className={`jy-terms ${rows >= 4 ? "in" : ""}`}>
           <span>{p.deposit}</span>
@@ -519,13 +530,18 @@ export default function Journey() {
                 </button>
               ))}
             </div>
-            <div className="jy-panels">
-              {steps.map((_, i) => <div key={i} className={`jy-panel ${i === step ? "on" : ""}`} aria-hidden={i !== step}>{panel(i)}</div>)}
-            </div>
-            <div className="jy-caption" key={step}>
-              <h3 className="h3">{steps[step].t}</h3>
-              <p>{steps[step].b}</p>
-              <span className="artifact">→ {t.artifacts[step]}</span>
+            <div className="jy-frame">
+              <div className="jy-panels">
+                {steps.map((_, i) => <div key={i} className={`jy-panel ${i === step ? "on" : ""}`} aria-hidden={i !== step}>{panel(i)}</div>)}
+              </div>
+              <div className="jy-caption" key={step}>
+                <span className="k">0{step + 1}</span>
+                <div>
+                  <h3 className="h3">{steps[step].t}</h3>
+                  <p>{steps[step].b}</p>
+                </div>
+                <span className="artifact">→ {t.artifacts[step]}</span>
+              </div>
             </div>
           </div>
         </div>
