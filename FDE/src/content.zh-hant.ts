@@ -167,6 +167,7 @@ export const zhHant: Content = {
       book: "預約諮詢",
       how: "合作方式",
       core: "您企業的統一模型",
+      registered: "泰國註冊公司",
     },
     problem: { eyebrow: "問題所在", title: "大多數企業都有資料，卻幾乎沒有人看得清楚。" },
     paths: {

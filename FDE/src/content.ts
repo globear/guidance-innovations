@@ -220,6 +220,7 @@ export const en = {
       book: "Book a consultation",
       how: "How we work",
       core: "ONE MODEL OF YOUR BUSINESS",
+      registered: "Registered company in Thailand",
     },
     problem: { eyebrow: "The problem", title: "Most businesses have the data. Almost none can see it." },
     paths: {

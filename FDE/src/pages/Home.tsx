@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import NetworkCanvas from "../components/NetworkCanvas";
 import { Arrow, ChatDemo, CTA, Founder, IndustriesScroll, MethodPinned } from "../components/Blocks";
 import { Faq } from "./Pages";
-import { photos } from "../content";
+import { brand, photos } from "../content";
 import { useLang } from "../i18n";
 
 export default function Home() {
@@ -34,6 +34,10 @@ export default function Home() {
               <Link to="/how-we-work" className="btn">{t.hero.how}</Link>
             </div>
           </div>
+          <p className="hero-legal" data-fade="1">
+            <svg viewBox="0 0 16 16" aria-hidden><path d="M8 1.5 13.5 4v4c0 3.2-2.3 5.6-5.5 6.5C4.8 13.6 2.5 11.2 2.5 8V4L8 1.5Z" /><path d="m5.6 8.1 1.7 1.7 3.2-3.4" /></svg>
+            <b>{brand.legal}</b><span>{t.hero.registered}</span>
+          </p>
         </div>
       </section>
 

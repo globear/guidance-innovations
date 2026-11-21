@@ -167,6 +167,7 @@ export const vi: Content = {
       book: "Đặt lịch tư vấn",
       how: "Cách làm việc",
       core: "MỘT MÔ HÌNH CHO DOANH NGHIỆP CỦA BẠN",
+      registered: "Công ty đăng ký tại Thái Lan",
     },
     problem: { eyebrow: "Vấn đề", title: "Hầu hết doanh nghiệp đều có dữ liệu. Gần như không ai nhìn thấy nó." },
     paths: {

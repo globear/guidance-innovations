@@ -167,6 +167,7 @@ export const zhHans: Content = {
       book: "预约咨询",
       how: "工作方式",
       core: "您企业的统一模型",
+      registered: "泰国注册公司",
     },
     problem: { eyebrow: "问题所在", title: "大多数企业都有数据，却几乎没人能看清它。" },
     paths: {

@@ -167,6 +167,7 @@ export const ms: Content = {
       book: "Tempah konsultasi",
       how: "Cara kami bekerja",
       core: "SATU MODEL PERNIAGAAN ANDA",
+      registered: "Syarikat berdaftar di Thailand",
     },
     problem: { eyebrow: "Masalahnya", title: "Kebanyakan perniagaan ada data. Hampir tiada yang dapat melihatnya." },
     paths: {
