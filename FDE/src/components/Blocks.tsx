@@ -282,14 +282,12 @@ export function Founder({ light = false, more = false, quote = false }: { light?
   if (quote) {
     return (
       <section className={`section ${light ? "light" : ""}`}>
-        <div className="wrap split founder-quote">
+        <figure className="wrap founder-quote">
           <span className="eyebrow">{t.eyebrow}</span>
-          <figure>
-            <span className="fq-mark" aria-hidden>“</span>
-            <blockquote data-split>{c.founder.message}</blockquote>
-            <figcaption>{byline}</figcaption>
-          </figure>
-        </div>
+          <span className="fq-mark" aria-hidden>“</span>
+          <blockquote data-split>{c.founder.message}</blockquote>
+          <figcaption data-fade><b>{c.founder.name}</b><span className="mono muted">{c.founder.role}</span></figcaption>
+        </figure>
       </section>
     );
   }
