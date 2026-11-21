@@ -254,13 +254,6 @@ export const vi: Content = {
         { role: "Marketing & Tăng trưởng", skills: ["Chiến lược nội dung", "SEO & phân tích", "Phát triển thương hiệu"] },
         { role: "Nhà thiết kế UX/UI", skills: ["Nghiên cứu người dùng", "Thiết kế giao diện", "Hệ thống thiết kế"] },
       ],
-      proofEyebrow: "Minh chứng",
-      proofTitle: "Chúng tôi tự xây dựng và vận hành sản phẩm AI của mình.",
-      proofLead: "Những tiêu chuẩn chúng tôi áp dụng cho sản phẩm của mình cũng được áp dụng cho dự án khách hàng.",
-      products: [
-        { name: "GuidanceStream", tag: "AI chăm sóc khách hàng", body: "Sản phẩm AI chăm sóc khách hàng sẵn sàng cho vận hành thực tế." },
-        { name: "CareRouters", tag: "Hậu cần y tế", body: "MVP cho dịch vụ đưa người cao tuổi đi bệnh viện, thiết kế dựa trên quy trình thực tế và được kiểm chứng với người dùng thật." },
-      ],
       fieldEyebrow: "Hoạt động cộng đồng",
       fieldTitle: "Một phần của cộng đồng AI và nhà phát triển tại Bangkok.",
       field: ["Diễn giả về tự động hóa AI và tác tử thông minh, AI Summit", "Cùng xây dựng với cộng đồng nhà phát triển Cursor", "Brew & Build, EmSphere, Bangkok", "Brew & Build #1, True Digital Park, Bangkok"],

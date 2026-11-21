@@ -254,13 +254,6 @@ export const ms: Content = {
         { role: "Pemasaran & Pertumbuhan", skills: ["Strategi kandungan", "SEO & analitik", "Pembangunan jenama"] },
         { role: "Pereka UX/UI", skills: ["Kajian pengguna", "Reka bentuk antara muka", "Sistem reka bentuk"] },
       ],
-      proofEyebrow: "Bukti kerja",
-      proofTitle: "Kami membina dan mengendalikan produk AI kami sendiri.",
-      proofLead: "Standard yang sama untuk produk kami sendiri digunakan dalam kerja pelanggan.",
-      products: [
-        { name: "GuidanceStream", tag: "Khidmat pelanggan AI", body: "Produk AI khidmat pelanggan yang sedia untuk kegunaan sebenar." },
-        { name: "CareRouters", tag: "Logistik penjagaan kesihatan", body: "MVP untuk perkhidmatan pengiring hospital bagi warga emas, direka berdasarkan aliran kerja sebenar dan diuji bersama pengguna sebenar." },
-      ],
       fieldEyebrow: "Di lapangan",
       fieldTitle: "Sebahagian daripada komuniti AI dan pembina di Bangkok.",
       field: ["Berucap tentang automasi AI dan ejen pintar, AI Summit", "Membina bersama komuniti pembangun Cursor", "Brew & Build, EmSphere, Bangkok", "Brew & Build #1, True Digital Park, Bangkok"],

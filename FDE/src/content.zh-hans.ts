@@ -254,13 +254,6 @@ export const zhHans: Content = {
         { role: "市场营销与增长", skills: ["内容策略", "SEO 与分析", "品牌发展"] },
         { role: "UX/UI 设计师", skills: ["用户研究", "界面设计", "设计系统"] },
       ],
-      proofEyebrow: "实际成果",
-      proofTitle: "我们打造并运营自己的 AI 产品。",
-      proofLead: "我们用于自有产品的标准，同样用于客户项目。",
-      products: [
-        { name: "GuidanceStream", tag: "AI 客户服务", body: "已投入实际使用的 AI 客户服务产品。" },
-        { name: "CareRouters", tag: "医疗陪护物流", body: "面向老年人就医陪护服务的 MVP，基于真实工作流程设计，并经真实用户验证。" },
-      ],
       fieldEyebrow: "活跃在一线",
       fieldTitle: "曼谷 AI 与开发者社区的一员。",
       field: ["在 AI Summit 演讲：AI 自动化与智能体", "与 Cursor 开发者社区一起动手构建", "Brew & Build，EmSphere，曼谷", "Brew & Build #1，True Digital Park，曼谷"],

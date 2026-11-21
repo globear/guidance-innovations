@@ -254,13 +254,6 @@ export const zhHant: Content = {
         { role: "行銷與成長", skills: ["內容策略", "SEO 與分析", "品牌發展"] },
         { role: "UX/UI 設計師", skills: ["使用者研究", "介面設計", "設計系統"] },
       ],
-      proofEyebrow: "實際成果",
-      proofTitle: "我們打造並營運自己的 AI 產品。",
-      proofLead: "我們用於自有產品的標準，同樣用於客戶專案。",
-      products: [
-        { name: "GuidanceStream", tag: "AI 客戶服務", body: "已投入實際使用的 AI 客戶服務產品。" },
-        { name: "CareRouters", tag: "醫療陪同物流", body: "針對長者就醫陪同服務的 MVP，依真實工作流程設計，並經真實使用者驗證。" },
-      ],
       fieldEyebrow: "走進第一線",
       fieldTitle: "曼谷 AI 與開發者社群的一員。",
       field: ["於 AI Summit 演講：AI 自動化與智慧代理", "與 Cursor 開發者社群一起動手打造", "Brew & Build，EmSphere，曼谷", "Brew & Build #1，True Digital Park，曼谷"],

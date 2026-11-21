@@ -45,7 +45,6 @@ All of these agree in the English copy and in all five translations. If one chan
 | Security | Data-flow diagram | Shows exactly what stays inside and what masked text leaves, for each deployment mode | ✓ |
 | Security | Modes, commitments, PDPA | Where data lives and AI runs; eight written commitments; data processor role under PDPA | ✓ |
 | About | Founder | Real headshot and stage photo | ✓ |
-| About | Proof of work | GuidanceStream and CareRouters, as described on guidanceinnovations.tech | ✓ |
 | About | In the field | Four real event photos (AI Summit, Cursor meetup, two Brew & Build sessions) | ✓ |
 | About | Capabilities, company | Legal name, Thailand, email, WhatsApp | ✓ |
 | Consultation | Form | Working form (tested live on Netlify), consent box with a privacy link, honeypot | ✓ |

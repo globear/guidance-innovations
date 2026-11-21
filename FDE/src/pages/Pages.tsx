@@ -268,22 +268,6 @@ export function About() {
       </section>
       <section className="section tight">
         <div className="wrap">
-          <div className="split" style={{ marginBottom: 56 }}>
-            <span className="eyebrow">{t.proofEyebrow}</span>
-            <div>
-              <h2 className="h2" data-split>{t.proofTitle}</h2>
-              <p className="lead" style={{ marginTop: 24 }} data-fade>{t.proofLead}</p>
-            </div>
-          </div>
-          <div className="cols-2" data-stagger>
-            {t.products.map((p) => (
-              <div className="cell product" key={p.name}><span className="k">{p.tag}</span><h3 className="h2" style={{ fontSize: "clamp(28px,3vw,40px)" }}>{p.name}</h3><p>{p.body}</p></div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="section tight">
-        <div className="wrap">
           <div className="split" style={{ marginBottom: 48 }}>
             <span className="eyebrow">{t.fieldEyebrow}</span>
             <h2 className="h2" data-split>{t.fieldTitle}</h2>

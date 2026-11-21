@@ -307,13 +307,6 @@ export const en = {
         { role: "Marketing & Growth", skills: ["Content strategy", "SEO & analytics", "Brand development"] },
         { role: "UX/UI Designer", skills: ["User research", "Interface design", "Design systems"] },
       ],
-      proofEyebrow: "Proof of work",
-      proofTitle: "We build and run our own AI products.",
-      proofLead: "The same standards we apply to our own products go into client work.",
-      products: [
-        { name: "GuidanceStream", tag: "AI customer service", body: "A production-ready AI product for customer service." },
-        { name: "CareRouters", tag: "Healthcare logistics", body: "An MVP for hospital escort services for elderly patients, designed around real workflows and tested with real users." },
-      ],
       fieldEyebrow: "In the field",
       fieldTitle: "Part of Bangkok's AI and builder community.",
       field: ["Speaking on AI automation and intelligent agents, AI Summit", "Building with the Cursor developer community", "Brew & Build, EmSphere, Bangkok", "Brew & Build #1, True Digital Park, Bangkok"],

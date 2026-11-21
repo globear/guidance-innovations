@@ -497,7 +497,6 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
 .faq details p { color: var(--muted); padding: 0 40px 28px 0; max-width: 680px; }
 
 /* ---------- about: proof, field, facts ---------- */
-.product .k { margin-bottom: 28px; text-transform: uppercase; letter-spacing: .1em; }
 .field-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: auto auto; gap: 12px; }
 .field-grid figure { position: relative; overflow: hidden; background: var(--ink-3); }
 .field-grid figure:first-child { grid-row: span 2; }

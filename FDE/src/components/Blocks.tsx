@@ -309,7 +309,7 @@ export function Founder({ light = false, more = false, quote = false }: { light?
           <span className="eyebrow">{t.eyebrow}</span>
           <blockquote data-split>{c.founder.message}</blockquote>
           {byline}
-          {more && <Link to="/about" className="btn" style={{ marginTop: 28 }} data-fade>{c.ui.about.proofEyebrow} <Arrow /></Link>}
+          {more && <Link to="/about" className="btn" style={{ marginTop: 28 }} data-fade>{c.ui.about.teamEyebrow} <Arrow /></Link>}
         </div>
       </div>
     </section>
