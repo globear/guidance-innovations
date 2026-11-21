@@ -52,7 +52,6 @@ export function LangProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = dict[lang].meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute("content", dict[lang].meta.description);
   }, [lang]);
 

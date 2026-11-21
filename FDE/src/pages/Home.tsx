@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import NetworkCanvas from "../components/NetworkCanvas";
-import { Arrow, ChatDemo, CTA, Founder, IndustriesScroll, MethodPinned } from "../components/Blocks";
+import { Arrow, ChatDemo, CTA, Founder, IndustriesScroll, MethodPinned, useTitle } from "../components/Blocks";
 import { Faq } from "./Pages";
 import { brand, photos } from "../content";
 import { useLang } from "../i18n";
@@ -8,6 +8,7 @@ import { useLang } from "../i18n";
 export default function Home() {
   const { c } = useLang();
   const t = c.ui;
+  useTitle(c.meta.title);
   const paths = [
     { to: "/business", ...t.paths.business },
     { to: "/leaders", ...t.paths.leaders },

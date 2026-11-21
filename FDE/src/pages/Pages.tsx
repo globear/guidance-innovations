@@ -128,7 +128,7 @@ export function IndustryPage() {
   };
   return (
     <>
-      <PageHead eyebrow={`${c.ui.nav.industries} / ${ind.name}`} title={ind.headline} photo={photos.industries[ind.slug]} />
+      <PageHead eyebrow={`${c.ui.nav.industries} / ${ind.name}`} tab={ind.name} title={ind.headline} photo={photos.industries[ind.slug]} />
       <section className="section tight">
         <div className="wrap split">
           <div>
@@ -429,7 +429,7 @@ export function NotFound() {
   const { c } = useLang();
   return (
     <>
-      <PageHead eyebrow="404" title={c.ui.notFound.title} lead={c.ui.notFound.lead} />
+      <PageHead eyebrow="404" tab={c.ui.notFound.title} title={c.ui.notFound.title} lead={c.ui.notFound.lead} />
       <section className="section tight" style={{ paddingTop: 0 }}><div className="wrap"><Link to="/" className="btn primary">{c.ui.notFound.button} <Arrow /></Link></div></section>
     </>
   );
@@ -442,7 +442,7 @@ export function Legal({ doc }: { doc: "privacy" | "terms" }) {
   const d = l[doc];
   return (
     <>
-      <PageHead eyebrow={brand.legal} title={d.title} lead={d.lead} />
+      <PageHead eyebrow={brand.legal} title={d.title} tab={d.title} lead={d.lead} />
       <section className="section tight" style={{ paddingTop: 0 }}>
         <div className="wrap legal">
           <p className="mono muted legal-date">{l.updated}</p>

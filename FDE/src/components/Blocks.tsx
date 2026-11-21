@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { media, photos, type Industry } from "../content";
+import { brand, media, photos, type Industry } from "../content";
 import { useLang } from "../i18n";
 import { gsap, ScrollTrigger, reducedMotion } from "../motion";
 
@@ -14,7 +14,13 @@ export function Photo({ name, className, eager }: { name: string; className?: st
   );
 }
 
-export function PageHead({ eyebrow, title, lead, photo }: { eyebrow: string; title: string; lead?: string; photo?: string }) {
+/** Sets the browser-tab title; pages call it with their own translated name. */
+export function useTitle(title: string) {
+  useEffect(() => { document.title = title; }, [title]);
+}
+
+export function PageHead({ eyebrow, title, lead, photo, tab }: { eyebrow: string; title: string; lead?: string; photo?: string; tab?: string }) {
+  useTitle(`${tab ?? eyebrow} | ${brand.name}`);
   return (
     <section className={`page-head ${photo ? "has-photo" : ""}`}>
       {photo ? <><Photo name={photo} className="page-head-photo" eager /><div className="page-head-shade" /></> : <div className="grid-bg" />}
