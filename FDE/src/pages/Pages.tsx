@@ -4,7 +4,7 @@ import { Arrow, ChatDemo, CTA, Founder, MethodPinned, MiniDash, PageHead } from 
 import DataFlow from "../components/DataFlow";
 import AgentStack from "../components/AgentStack";
 import { CaseIndex } from "./Case";
-import { caseContent } from "../cases";
+import { caseContent, casePath } from "../cases";
 import { brand, contact, en, fieldPhotos, photos, teamMembers } from "../content";
 import { sendBooking, summary, type Booking } from "../booking";
 import { useLang } from "../i18n";
@@ -144,7 +144,7 @@ export function IndustryPage() {
             {ind.builds.map((b, i) => <div className="cell" key={b.title}><span className="k">0{i + 1}</span><h3 className="h3">{b.title}</h3><p>{b.body}</p></div>)}
           </div>
           {caseContent(lang).cases.some((x) => x.slug === ind.slug) && (
-            <Link to={`/cases/${ind.slug}`} className="btn" style={{ marginTop: 40 }}>{caseContent(lang).ui.read} <Arrow /></Link>
+            <Link to={casePath(ind.slug)} className="btn" style={{ marginTop: 40 }}>{caseContent(lang).ui.read} <Arrow /></Link>
           )}
         </div>
       </section>

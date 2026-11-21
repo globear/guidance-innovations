@@ -1,1 +1,3 @@
+# Case studies moved under How we work
+/cases/*  /how-we-work/cases/:splat  301
 /*    /index.html   200

@@ -388,6 +388,9 @@ const merge = (b: CaseStudy, t?: CaseText): CaseStudy => !t ? b : {
 
 const dict: Partial<Record<string, CaseLang>> = { th: thCases, "zh-Hans": zhHansCases, "zh-Hant": zhHantCases, ms: msCases, vi: viCases };
 
+/** Case studies live under How we work, so the nav keeps "How we work" highlighted. */
+export const casePath = (slug: string) => `/how-we-work/cases/${slug}`;
+
 /** Case content for a language; anything not yet translated falls back to English. */
 export const caseContent = (lang: string): CaseContent => {
   const tr = dict[lang];

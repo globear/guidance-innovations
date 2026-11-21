@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { Arrow, CTA, Photo } from "../components/Blocks";
-import { caseContent, type CaseStudy, type CaseUi } from "../cases";
+import { caseContent, casePath, type CaseStudy, type CaseUi } from "../cases";
 import { photos } from "../content";
 import { useLang } from "../i18n";
 import { reducedMotion } from "../motion";
@@ -243,7 +243,7 @@ export function CasePage() {
         <Photo name={photos.industries[cs.slug]} className="page-head-photo" eager />
         <div className="page-head-shade" />
         <div className="wrap">
-          <span className="eyebrow" data-scramble>{`${ui.eyebrow} / ${ind?.name ?? cs.slug}`}</span>
+          <span className="eyebrow" data-scramble>{`${c.ui.nav.how} / ${ui.eyebrow} / ${ind?.name ?? cs.slug}`}</span>
           <p className="case-client" data-fade="0.2">{cs.client} <span>+ Guidance</span></p>
           <h1 className="h1 page-title" style={{ marginTop: 20 }} data-split="now">{cs.title}</h1>
           <span className="case-label" data-fade="0.6">{ui.label}</span>
@@ -312,8 +312,11 @@ export function CasePage() {
       {cases.length > 1 && (
         <section className="section tight">
           <div className="wrap" style={{ display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-            <Link to="/how-we-work#cases" className="btn">{ui.all}</Link>
-            <Link to={`/cases/${next.slug}`} className="btn">{ui.next}: {c.industries.find((i) => i.slug === next.slug)?.name} <Arrow /></Link>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <Link to="/how-we-work#cases" className="btn">{ui.all}</Link>
+              {ind && <Link to={`/industries/${cs.slug}`} className="btn">{ind.name} <Arrow /></Link>}
+            </div>
+            <Link to={casePath(next.slug)} className="btn">{ui.next}: {c.industries.find((i) => i.slug === next.slug)?.name} <Arrow /></Link>
           </div>
         </section>
       )}
@@ -338,7 +341,7 @@ export function CaseIndex() {
         </div>
         <div className="case-cards" data-stagger>
           {cases.map((cs) => (
-            <Link to={`/cases/${cs.slug}`} className="case-card" key={cs.slug}>
+            <Link to={casePath(cs.slug)} className="case-card" key={cs.slug}>
               <Photo name={photos.industries[cs.slug]} className="case-card-photo" eager />
               <div className="case-card-body">
                 <span className="k">{c.industries.find((i) => i.slug === cs.slug)?.name}</span>
@@ -354,4 +357,10 @@ export function CaseIndex() {
       </div>
     </section>
   );
+}
+
+/** Old /cases/:slug links (shared before case studies moved under How we work) keep working. */
+export function OldCaseRedirect() {
+  const { slug = "" } = useParams();
+  return <Navigate to={casePath(slug)} replace />;
 }
