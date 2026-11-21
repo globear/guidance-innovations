@@ -263,11 +263,11 @@ export const en = {
     },
     leaders: {
       eyebrow: "For Leaders", title: "A personal AI agent, built around you.",
-      lead: "For owners, executives and investors. Your agent connects to your email, calendar, documents, chats and company data, then works for you, privately.",
+      lead: "For CEOs, owners and investors. One AI agent that organises your day, handles your communication, reads your numbers, and remembers everything in a second brain you own.",
       dayEyebrow: "A day with your agent", dayTitle: "More signal. Less noise.",
       confEyebrow: "Confidential by default", confTitle: "Built for one person. Seen by one person.",
       confLead: "Your agent runs on infrastructure you control, with access only you approve. Nothing is shared, reused or used to train AI models.",
-      demoBtn: "Book a private demo", prevEyebrow: "Preview", prevTitle: "Ask in plain language.",
+      demoBtn: "Book a private demo",
     },
     industry: { hear: "What we hear", illus: "Illustrative command view", build: "What we build" },
     how: {

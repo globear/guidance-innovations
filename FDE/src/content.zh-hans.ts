@@ -210,11 +210,11 @@ export const zhHans: Content = {
     },
     leaders: {
       eyebrow: "领导者方案", title: "围绕您本人打造的个人 AI 助理。",
-      lead: "面向企业主、高管和投资人。您的助理连接您的邮件、日历、文件、聊天和公司数据，私密地为您工作。",
+      lead: "为 CEO、企业主和投资人打造。一个 AI Agent：安排您的一天，处理您的沟通，读懂您的数字，并把一切记在属于您的第二大脑里。",
       dayEyebrow: "与助理共度的一天", dayTitle: "更多有效信息，更少干扰。",
       confEyebrow: "默认保密", confTitle: "为一个人打造，只给一个人看。",
       confLead: "您的助理运行在您掌控的基础设施上，访问权限只由您批准。任何内容都不会被共享、复用或用于训练 AI 模型。",
-      demoBtn: "预约私人演示", prevEyebrow: "预览", prevTitle: "用日常语言提问。",
+      demoBtn: "预约私人演示",
     },
     industry: { hear: "我们常听到的", illus: "指挥视图示意", build: "我们为您构建" },
     how: {

@@ -210,11 +210,11 @@ export const ms: Content = {
     },
     leaders: {
       eyebrow: "Untuk Pemimpin", title: "Ejen AI peribadi, dibina di sekeliling anda.",
-      lead: "Untuk pemilik, eksekutif dan pelabur. Ejen anda menghubungkan e-mel, kalendar, dokumen, sembang dan data syarikat anda, kemudian bekerja untuk anda, secara peribadi.",
+      lead: "Untuk CEO, pemilik dan pelabur. Satu ejen AI yang menyusun hari anda, mengurus komunikasi anda, membaca angka anda, dan mengingati segalanya dalam otak kedua milik anda.",
       dayEyebrow: "Sehari bersama ejen anda", dayTitle: "Lebih isyarat. Kurang bising.",
       confEyebrow: "Sulit secara lalai", confTitle: "Dibina untuk seorang. Dilihat oleh seorang.",
       confLead: "Ejen anda berjalan pada infrastruktur yang anda kawal, dengan akses yang hanya anda luluskan. Tiada apa yang dikongsi, digunakan semula atau digunakan untuk melatih model AI.",
-      demoBtn: "Tempah demo peribadi", prevEyebrow: "Pratonton", prevTitle: "Tanya dalam bahasa biasa.",
+      demoBtn: "Tempah demo peribadi",
     },
     industry: { hear: "Apa yang kami dengar", illus: "Contoh paparan arahan", build: "Apa yang kami bina" },
     how: {

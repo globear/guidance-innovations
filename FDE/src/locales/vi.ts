@@ -274,6 +274,34 @@ export const viCases: CaseLang = {
 };
 
 export const viAgent: AgentContent = {
+  map: {
+    eyebrow: "Agent của bạn làm gì",
+    title: "Một agent bên cạnh bạn. Bốn việc, lo trọn.",
+    lead: "Bạn nói chuyện với nó như với chánh văn phòng, qua chat hoặc giọng nói. Nó làm việc trên email, lịch, cuộc gọi và dữ liệu công ty của bạn, và lưu mọi điều học được vào bộ não thứ hai của bạn.",
+    you: "Bạn", youSub: "CEO · chủ doanh nghiệp · nhà đầu tư", agent: "Agent của bạn", channels: "WhatsApp · LINE · Telegram · giọng nói",
+    jobs: [
+      { t: "Sắp xếp", promise: "Một ngày được sắp xếp trước khi bạn hỏi.", items: ["Phân loại hộp thư: việc nào cần bạn, việc nào chờ được", "Quản lý lịch, đặt và dời cuộc họp", "Thời gian di chuyển và địa điểm giữa các cuộc họp", "Theo dõi lời hứa và việc cần làm đến khi xong"] },
+      { t: "Giao tiếp", promise: "Những trao đổi qua lại, được lo thay bạn.", items: ["Soạn trả lời theo giọng văn của bạn, tiếng Việt hoặc tiếng Anh", "Cuộc gọi thường lệ: xác nhận, đặt chỗ, nhắc việc", "Hẹn lịch với khách hàng, đối tác và nhà cung cấp", "Tóm tắt ngắn mỗi cuộc gọi và cuộc trao đổi"] },
+      { t: "Phân tích", promise: "Những con số quan trọng, được giải thích.", items: ["Chỉ số chính của mọi công ty, mỗi sáng", "Đọc và tóm tắt báo cáo, hợp đồng", "So sánh các phương án trước khi bạn quyết định", "Cảnh báo khi có gì đi chệch hướng"] },
+      { t: "Ghi nhớ", promise: "Không điều gì bạn học được bị mất.", items: ["Lưu mọi cuộc họp, cuộc gọi và quyết định", "Liên kết con người, công ty và thương vụ", "Lưu kinh nghiệm và cách làm việc của bạn thành ghi chú", "Tìm lại mọi thứ bạn từng thấy trong vài giây"] },
+    ],
+    control: "Bạn luôn là người quyết định. Không gì được gửi, đặt hay đồng ý khi chưa có sự cho phép của bạn.",
+  },
+  brain: {
+    eyebrow: "Bộ não thứ hai của bạn",
+    title: "Mọi điều bạn trải qua, được lưu và kết nối.",
+    lead: "Agent ghi những gì học được vào một kho Obsidian: các ghi chú văn bản trên máy tính của chính bạn, liên kết với nhau như bản đồ công việc. Chạy càng lâu, nó càng hiểu cách bạn suy nghĩ và quyết định.",
+    steps: [
+      { t: "Lưu", b: "Cuộc họp, cuộc gọi, email, tài liệu và quyết định tự trở thành ghi chú. Kỹ năng và kinh nghiệm bạn chia sẻ với nó cũng vậy." },
+      { t: "Kết nối", b: "Mỗi ghi chú liên kết với người, công ty và dự án được nhắc đến. Bản đồ 3D cho thấy mọi thứ khớp với nhau thế nào." },
+      { t: "Gọi lại", b: "Hỏi bằng ngôn ngữ thường ngày và nhận câu trả lời kèm ghi chú nguồn, kể cả nhiều năm sau." },
+    ],
+    askLabel: "Hỏi bộ não thứ hai",
+    ask: "Chúng ta đã thống nhất gì với ông Somchai về giá?",
+    answer: "Ngày 12/11 bạn đồng ý giữ giá năm 2026 nếu sản lượng vẫn trên 40.000 đơn vị. Bạn vẫn còn nợ ông ấy bản dự báo quý 1.",
+    source: "Meetings/2026-11-12 Pricing",
+    drag: "Kéo để xoay bản đồ",
+  },
   eyebrow: "Tác tử của bạn được xây dựng thế nào",
   title: "Công cụ mở. Phần cứng của bạn. Bộ nhớ của bạn.",
   lead: "Một ví dụ: chủ doanh nghiệp điều hành ba công ty. Tác tử chạy trên một máy tính nhỏ trong văn phòng của họ, lưu bộ nhớ dưới dạng ghi chú họ có thể tự đọc, và trả lời trên các ứng dụng chat họ đang dùng.",

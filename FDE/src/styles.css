@@ -646,6 +646,7 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
 .phone-head { display: flex; align-items: center; gap: 10px; padding: 6px 6px 14px; border-bottom: 1px solid var(--line); }
 .phone-head b { display: block; font-weight: 500; font-size: 14px; }
 .phone-head span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.phone-head .phone-avatar { color: var(--ink); }
 .phone-avatar { width: 32px; height: 32px; display: grid; place-items: center; background: var(--accent); color: var(--ink); font-weight: 600; border-radius: 50%; font-family: var(--sans) !important; font-size: 14px !important; }
 .phone-body { display: grid; gap: 10px; padding-top: 14px; align-content: start; }
 .bubble { background: #1d1e21; border-radius: 4px 16px 16px 16px; padding: 10px 13px; font-size: 14px; line-height: 1.45; max-width: 92%; animation: bubble-in .4s ease both; }
@@ -665,7 +666,6 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
 /* case index cards */
 
 /* ---------- personal agent (Leaders) ---------- */
-.ag { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 20px; align-items: stretch; margin-top: 40px; }
 .ag-chat { min-height: 520px; }
 .bubble .bt { display: block; font-family: var(--mono); font-size: 10px; color: var(--muted); margin-bottom: 4px; }
 .bubble.me { justify-self: end; background: var(--accent); color: var(--ink); border-radius: 16px 4px 16px 16px; }
@@ -692,9 +692,83 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
 .ag-note-card p { color: var(--muted); }
 .ag-links { display: flex; flex-wrap: wrap; gap: 8px; }
 .ag-links span { font-family: var(--mono); font-size: 11px; color: #a78bfa; }
-.ag-guards { margin-top: 56px; display: grid; gap: 24px; }
-@media (max-width: 1100px) { .ag { grid-template-columns: 1fr 1fr; } .ag-vault { grid-column: 1 / -1; } }
-@media (max-width: 700px) { .ag { grid-template-columns: 1fr; } .ag-chat { min-height: 0; } .ag-vault-body { grid-template-columns: 1fr; } .ag-folders { border-right: 0; border-bottom: 1px solid var(--line); grid-auto-flow: column; overflow-x: auto; } }
+@media (max-width: 700px) { .ag-chat { min-height: 0; } .ag-vault-body { grid-template-columns: 1fr; } .ag-folders { border-right: 0; border-bottom: 1px solid var(--line); grid-auto-flow: column; overflow-x: auto; } }
+
+/* ---------- Leaders: the map (you, your agent, four jobs) ---------- */
+.lm { display: grid; grid-template-columns: 1fr minmax(260px, 380px) 1fr; grid-template-areas: "j0 hub j1" "j2 hub j3" "ctl ctl ctl"; gap: 24px 48px; }
+.lm-j0 { grid-area: j0; } .lm-j1 { grid-area: j1; } .lm-j2 { grid-area: j2; } .lm-j3 { grid-area: j3; }
+.lm-hub { grid-area: hub; align-self: center; display: grid; justify-items: center; gap: 18px; position: relative; }
+.lm-rings { width: 100%; aspect-ratio: 1; overflow: visible; }
+.lm-ring-out { fill: none; stroke: var(--line-strong); stroke-dasharray: 2 6; transform-origin: 150px 150px; animation: lm-spin 60s linear infinite; }
+.lm-ring { fill: rgba(255,90,31,.05); stroke: rgba(255,90,31,.45); }
+.lm-arc-text { font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; fill: var(--accent); }
+.lm-dot { fill: var(--ink); stroke: var(--line-strong); transition: r .35s, fill .35s, stroke .35s; }
+.lm-dot.on { fill: var(--accent); stroke: var(--accent); }
+@keyframes lm-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .lm-ring-out { animation: none; } }
+.lm-core { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 1; display: grid; place-content: center; text-align: center; gap: 6px; pointer-events: none; }
+.lm-core b { width: 104px; height: 104px; margin: 0 auto; border-radius: 50%; background: var(--accent); color: var(--ink); display: grid; place-items: center; font-size: 24px; font-weight: 500; box-shadow: 0 0 0 10px rgba(255,90,31,.12); }
+.lm-core span { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: var(--muted); max-width: 150px; margin: 4px auto 0; }
+.lm-channels { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; color: var(--muted); text-align: left; }
+.lm-channels .phone-avatar { flex: none; }
+.lm-job { position: relative; border: 1px solid var(--line); background: var(--ink-2); padding: 26px 26px 28px; transition: border-color .35s, background .35s; }
+.lm-job.on { border-color: var(--accent); background: rgba(255,90,31,.05); }
+.lm-job .k { font-family: var(--mono); font-size: 12px; color: var(--accent); display: block; margin-bottom: 18px; }
+.lm-promise { color: var(--fg); margin-top: 8px; font-size: 17px; }
+.lm-job ul { list-style: none; margin-top: 18px; display: grid; gap: 10px; }
+.lm-job li { position: relative; padding-left: 20px; color: var(--muted); font-size: 15px; line-height: 1.45; }
+.lm-job li::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; border: 1px solid var(--accent); }
+/* connector from each card to the hub */
+.lm-job::after { content: ""; position: absolute; top: 50%; width: 48px; height: 1px; background: var(--line-strong); transition: background .35s; }
+.lm-j0::after, .lm-j2::after { left: 100%; }
+.lm-j1::after, .lm-j3::after { right: 100%; }
+.lm-job.on::after { background: var(--accent); }
+.lm-control { grid-area: ctl; display: flex; align-items: center; gap: 14px; margin-top: 16px; padding: 18px 22px; border: 1px solid var(--line-strong); font-size: 16px; }
+.lm-control svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--accent); stroke-width: 1.4; }
+@media (max-width: 1000px) {
+  .lm { grid-template-columns: 1fr 1fr; grid-template-areas: "hub hub" "j0 j1" "j2 j3" "ctl ctl"; gap: 20px; }
+  .lm-hub { width: min(300px, 80%); justify-self: center; margin-bottom: 16px; }
+  .lm-job::after { display: none; }
+}
+@media (max-width: 640px) {
+  .lm { grid-template-columns: 1fr; grid-template-areas: "hub" "j0" "j1" "j2" "j3" "ctl"; }
+  .lm-job { padding: 22px 20px 24px; }
+}
+
+/* ---------- Leaders: a day with your agent ---------- */
+.ld { display: grid; grid-template-columns: minmax(300px, .8fr) 1.2fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.ld .ag-chat { position: sticky; top: 96px; }
+.timeline.compact li { grid-template-columns: 72px 1fr; row-gap: 6px; padding: 22px 0; }
+.timeline.compact p { grid-column: 2; }
+.light .phone { color: #efeee9; --fg: #efeee9; --muted: #8b8b86; --line: rgba(239,238,233,.12); --line-strong: rgba(239,238,233,.24); }
+@media (max-width: 900px) { .ld { grid-template-columns: 1fr; } .ld .ag-chat { position: static; } }
+
+/* ---------- Leaders: second brain ---------- */
+.sb { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.sb .ag-graph { max-height: 440px; }
+.sb-drag { float: right; color: var(--muted); letter-spacing: .04em; text-transform: none; }
+.sb-side { display: grid; gap: 32px; }
+.sb-steps { list-style: none; border-top: 1px solid var(--line); }
+.sb-steps li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.sb-steps .k { font-family: var(--mono); font-size: 12px; color: var(--accent); padding-top: 8px; }
+.sb-steps p { color: var(--muted); margin-top: 8px; }
+.sb-ask { display: grid; gap: 10px; border: 1px solid var(--line); background: var(--ink-2); padding: 18px; }
+.sb-ask-label { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.sb-ask .bubble { animation: none; }
+.sb-src { display: block; margin-top: 8px; font-family: var(--mono); font-size: 11px; color: #a78bfa; }
+@media (max-width: 900px) { .sb { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .sb-drag { display: none; } }
+
+/* ---------- Leaders: how it is built ---------- */
+.ab { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.ab-side { display: grid; gap: 24px; }
+.checks.one { columns: 1; }
+.ab-conf { margin-top: 16px; padding: 28px; border: 1px solid var(--line-strong); display: grid; gap: 12px; justify-items: start; }
+.ab-conf .k { font-family: var(--mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+.ab-conf p { color: var(--muted); margin-bottom: 12px; }
+.light .ag-stack li { background: var(--paper-2); }
+.light .ag-stack li::before { background: var(--paper); }
+@media (max-width: 900px) { .ab { grid-template-columns: 1fr; } }
 
 /* 3D note graph: drag sideways to spin; vertical swipes still scroll the page */
 .ag-graph { cursor: grab; touch-action: pan-y; user-select: none; }

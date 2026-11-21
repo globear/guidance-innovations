@@ -210,11 +210,11 @@ export const vi: Content = {
     },
     leaders: {
       eyebrow: "Cho Lãnh đạo", title: "Một AI agent cá nhân, xây dựng quanh bạn.",
-      lead: "Dành cho chủ doanh nghiệp, lãnh đạo và nhà đầu tư. Agent của bạn kết nối email, lịch, tài liệu, tin nhắn và dữ liệu công ty, rồi làm việc cho bạn một cách riêng tư.",
+      lead: "Dành cho CEO, chủ doanh nghiệp và nhà đầu tư. Một AI agent sắp xếp ngày của bạn, lo việc giao tiếp, đọc các con số và ghi nhớ mọi thứ trong bộ não thứ hai thuộc về bạn.",
       dayEyebrow: "Một ngày cùng agent của bạn", dayTitle: "Nhiều tín hiệu hơn. Ít nhiễu hơn.",
       confEyebrow: "Bảo mật mặc định", confTitle: "Xây cho một người. Chỉ một người xem.",
       confLead: "Agent của bạn chạy trên hạ tầng do bạn kiểm soát, với quyền truy cập chỉ bạn phê duyệt. Không gì được chia sẻ, tái sử dụng hay dùng để huấn luyện mô hình AI.",
-      demoBtn: "Đặt lịch demo riêng", prevEyebrow: "Xem trước", prevTitle: "Hỏi bằng ngôn ngữ thường ngày.",
+      demoBtn: "Đặt lịch demo riêng",
     },
     industry: { hear: "Những gì chúng tôi thường nghe", illus: "Minh họa màn hình chỉ huy", build: "Những gì chúng tôi xây dựng" },
     how: {

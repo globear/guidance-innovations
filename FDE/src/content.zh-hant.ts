@@ -210,11 +210,11 @@ export const zhHant: Content = {
     },
     leaders: {
       eyebrow: "領導者方案", title: "圍繞您本人打造的個人 AI 助理。",
-      lead: "服務企業主、高階主管和投資人。您的助理串接您的郵件、行事曆、文件、聊天和公司資料，私密地為您工作。",
+      lead: "為 CEO、企業主和投資人打造。一個 AI Agent：安排您的一天，處理您的溝通，讀懂您的數字，並把一切記在屬於您的第二大腦裡。",
       dayEyebrow: "與助理共度的一天", dayTitle: "更多重點，更少雜訊。",
       confEyebrow: "預設保密", confTitle: "為一個人打造，只給一個人看。",
       confLead: "您的助理運行在您掌控的基礎設施上，存取權限只由您核准。任何內容都不會被分享、重複使用或用於訓練 AI 模型。",
-      demoBtn: "預約私人示範", prevEyebrow: "預覽", prevTitle: "用日常語言提問。",
+      demoBtn: "預約私人示範",
     },
     industry: { hear: "我們常聽到的", illus: "指揮視圖示意", build: "我們為您打造" },
     how: {

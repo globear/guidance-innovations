@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
-import { Arrow, ChatDemo, CTA, Founder, MethodPinned, MiniDash, PageHead, SecurityTeaser } from "../components/Blocks";
+import { Arrow, CTA, Founder, MethodPinned, MiniDash, PageHead, SecurityTeaser } from "../components/Blocks";
 import DataFlow from "../components/DataFlow";
-import AgentStack from "../components/AgentStack";
+import { AgentBuild, AgentDay, LeaderMap, SecondBrain } from "../components/AgentStack";
 import Select from "../components/Select";
 import Journey from "../components/Journey";
 import { CaseStory } from "./Case";
@@ -78,38 +78,10 @@ export function Leaders() {
   return (
     <>
       <PageHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} photo={photos.leaders} />
-      <section className="section tight">
-        <div className="wrap">
-          <div className="split" style={{ marginBottom: 56 }}>
-            <span className="eyebrow">{t.dayEyebrow}</span>
-            <h2 className="h2" data-split>{t.dayTitle}</h2>
-          </div>
-          <ol className="timeline" data-stagger>
-            {c.leaderDay.map((d) => (
-              <li key={d.time}><span className="tm">{d.time}</span><h3 className="h3">{d.title}</h3><p>{d.body}</p></li>
-            ))}
-          </ol>
-        </div>
-      </section>
-      <AgentStack />
-      <section className="section light">
-        <div className="wrap split">
-          <div>
-            <span className="eyebrow">{t.confEyebrow}</span>
-            <h2 className="h2" style={{ marginTop: 24 }} data-split>{t.confTitle}</h2>
-          </div>
-          <div>
-            <p className="lead" data-fade>{t.confLead}</p>
-            <Link to="/consultation?for=leaders" className="btn" style={{ marginTop: 32 }} data-fade>{t.demoBtn} <Arrow /></Link>
-          </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="wrap split">
-          <div><span className="eyebrow">{t.prevEyebrow}</span><h2 className="h2" style={{ marginTop: 24 }}>{t.prevTitle}</h2></div>
-          <div data-fade><ChatDemo /></div>
-        </div>
-      </section>
+      <LeaderMap />
+      <AgentDay />
+      <SecondBrain />
+      <AgentBuild />
       <CTA />
     </>
   );

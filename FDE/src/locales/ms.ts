@@ -274,6 +274,34 @@ export const msCases: CaseLang = {
 };
 
 export const msAgent: AgentContent = {
+  map: {
+    eyebrow: "Apa yang ejen anda lakukan",
+    title: "Satu ejen di sekeliling anda. Empat tugas, diuruskan.",
+    lead: "Bercakap dengannya seperti ketua staf anda, melalui sembang atau suara. Ia bekerja merentas e-mel, kalendar, panggilan dan data syarikat anda, dan menyimpan semua yang dipelajarinya dalam otak kedua anda.",
+    you: "Anda", youSub: "CEO · pemilik · pelabur", agent: "Ejen anda", channels: "WhatsApp · LINE · Telegram · suara",
+    jobs: [
+      { t: "Susun", promise: "Hari anda tersusun sebelum anda bertanya.", items: ["Peti masuk disusun: apa perlukan anda, apa boleh tunggu", "Kalendar diurus, mesyuarat ditempah dan dialih", "Masa perjalanan dan lokasi antara mesyuarat", "Janji dan tugasan dijejak sehingga selesai"] },
+      { t: "Berkomunikasi", promise: "Urusan berbalas-balas, diuruskan untuk anda.", items: ["Balasan dirangka mengikut gaya anda, dalam BM atau Inggeris", "Panggilan rutin: sahkan, tempah, susulan", "Penjadualan dengan pelanggan, rakan dan pembekal", "Ringkasan pendek setiap panggilan dan perbualan"] },
+      { t: "Analisis", promise: "Angka yang penting, diterangkan.", items: ["Angka utama semua syarikat anda, setiap pagi", "Laporan dan kontrak dibaca dan diringkaskan", "Pilihan dibandingkan sebelum anda memutuskan", "Amaran apabila sesuatu terpesong"] },
+      { t: "Ingat", promise: "Tiada apa yang anda pelajari hilang.", items: ["Setiap mesyuarat, panggilan dan keputusan disimpan", "Orang, syarikat dan urus niaga dihubungkan", "Kepakaran dan cara kerja anda disimpan sebagai nota", "Apa sahaja yang pernah anda lihat, dijumpai dalam saat"] },
+    ],
+    control: "Anda tetap berkuasa. Tiada apa dihantar, ditempah atau dipersetujui tanpa kebenaran anda.",
+  },
+  brain: {
+    eyebrow: "Otak kedua anda",
+    title: "Semua yang anda lalui, disimpan dan dihubungkan.",
+    lead: "Ejen anda menulis apa yang dipelajarinya ke dalam vault Obsidian: nota biasa di komputer anda sendiri, dihubungkan seperti peta kerja anda. Semakin lama ia berjalan, semakin ia faham cara anda berfikir dan membuat keputusan.",
+    steps: [
+      { t: "Simpan", b: "Mesyuarat, panggilan, e-mel, dokumen dan keputusan menjadi nota dengan sendirinya. Begitu juga kemahiran dan kepakaran yang anda kongsi." },
+      { t: "Hubung", b: "Setiap nota dipautkan kepada orang, syarikat dan projek yang disebut. Peta 3D menunjukkan bagaimana semuanya berkait." },
+      { t: "Panggil semula", b: "Tanya dalam bahasa biasa dan dapat jawapan bersama nota asalnya, walaupun bertahun kemudian." },
+    ],
+    askLabel: "Tanya otak kedua anda",
+    ask: "Apa yang kita setuju dengan Khun Somchai tentang harga?",
+    answer: "Pada 12 Nov anda setuju mengekalkan harga 2026 jika jumlah kekal melebihi 40,000 unit. Anda masih perlu hantar ramalan S1 kepadanya.",
+    source: "Meetings/2026-11-12 Pricing",
+    drag: "Seret untuk memutar peta",
+  },
   eyebrow: "Bagaimana ejen anda dibina",
   title: "Alat terbuka. Perkakasan anda. Ingatan anda.",
   lead: "Satu contoh: pemilik yang mengendalikan tiga syarikat. Ejen berada pada komputer kecil di pejabat mereka, menyimpan ingatannya sebagai nota yang boleh mereka baca, dan menjawab dalam aplikasi sembang yang sudah mereka gunakan.",
