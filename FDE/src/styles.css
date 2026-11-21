@@ -678,7 +678,7 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
 .ag-vault-body { display: grid; grid-template-columns: 110px 1fr; border-bottom: 1px solid var(--line); }
 .ag-folders { list-style: none; padding: 12px; border-right: 1px solid var(--line); display: grid; gap: 6px; align-content: start; font-family: var(--mono); font-size: 11px; color: var(--muted); }
 .ag-folders li:first-child { color: var(--fg); }
-.ag-graph { width: 100%; height: auto; max-height: 260px; padding: 10px; color: var(--fg); }
+.ag-graph { width: 100%; height: auto; max-height: 340px; padding: 10px; color: var(--fg); }
 .ag-note-card { padding: 16px; display: grid; gap: 6px; font-size: 14px; }
 .ag-file { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-bottom: 4px; }
 .ag-note-card p { color: var(--muted); }
@@ -687,3 +687,8 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
 .ag-guards { margin-top: 56px; display: grid; gap: 24px; }
 @media (max-width: 1100px) { .ag { grid-template-columns: 1fr 1fr; } .ag-vault { grid-column: 1 / -1; } }
 @media (max-width: 700px) { .ag { grid-template-columns: 1fr; } .ag-chat { min-height: 0; } .ag-vault-body { grid-template-columns: 1fr; } .ag-folders { border-right: 0; border-bottom: 1px solid var(--line); grid-auto-flow: column; overflow-x: auto; } }
+
+/* 3D note graph: drag sideways to spin; vertical swipes still scroll the page */
+.ag-graph { cursor: grab; touch-action: pan-y; user-select: none; }
+.ag-graph:active { cursor: grabbing; }
+.ag-node-label { font-family: var(--mono); letter-spacing: .02em; pointer-events: none; }

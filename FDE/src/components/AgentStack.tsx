@@ -16,25 +16,95 @@ function useSeen<T extends Element>() {
   return [ref, seen] as const;
 }
 
-// An Obsidian-style note graph: node 0 is the person note, the rest are linked notes.
-const NODES = [[150, 100], [80, 50], [225, 45], [250, 120], [205, 175], [95, 165], [40, 110], [150, 25], [285, 70], [290, 170], [140, 200], [30, 175], [60, 15], [250, 15]];
-const EDGES = [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [1, 6], [1, 7], [2, 8], [3, 9], [4, 10], [5, 11], [6, 12], [2, 13], [7, 2], [5, 6]];
+// An Obsidian-style note graph in 3D: node 0 is the person note, the rest are linked notes.
+// Coordinates sit roughly inside a unit sphere; the graph slowly turns and can be dragged.
+const NODES: [number, number, number][] = [
+  [0, 0, 0],
+  [0.62, -0.42, 0.25], [-0.6, -0.4, 0.3], [0.2, 0.62, 0.42], [-0.3, 0.5, -0.6], [0.58, 0.16, -0.62], [-0.72, 0.22, -0.12],
+  [0.9, -0.5, 0.1], [0.75, 0.2, 0.6], [-0.8, -0.65, 0.3], [-0.95, 0.1, 0.5], [0.3, 0.85, 0.2], [-0.35, 0.8, -0.6],
+  [0.85, 0.45, -0.55], [0.15, -0.8, -0.55], [-0.75, 0.55, -0.6], [0.6, -0.75, -0.4], [-0.15, -0.95, 0.35], [0.95, -0.05, -0.15],
+  [-0.6, -0.35, -0.75], [0.25, 0.3, 0.95], [-0.45, 0.95, 0.25],
+];
+const EDGES = [
+  [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
+  [1, 7], [1, 8], [2, 9], [2, 10], [3, 11], [4, 12], [5, 13], [5, 16], [4, 15], [6, 10], [6, 19],
+  [1, 18], [2, 17], [3, 20], [3, 21], [7, 16], [9, 17], [11, 21], [12, 15], [14, 16], [14, 19], [8, 20], [13, 18], [1, 3],
+];
+// Note names, as they would appear in the vault (file names stay as written).
+const LABELS: Record<number, string> = { 0: "Khun Somchai", 1: "Q1 forecast", 2: "Pricing review", 3: "Supplier Group", 4: "Daily · 21 Nov", 5: "Packaging quotes", 6: "Follow-ups" };
 
 function Graph({ on }: { on: boolean }) {
-  const [n, setN] = useState(reducedMotion() ? NODES.length : 1);
+  const still = reducedMotion();
+  const [n, setN] = useState(still ? NODES.length : 1);
+  const [, setFrame] = useState(0);
+  const rot = useRef({ yaw: 0.6, pitch: -0.25, drag: null as null | { x: number; y: number } });
+  const svg = useRef<SVGSVGElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  // Nodes appear one by one the first time the vault is on screen.
   useEffect(() => {
     if (!on || n >= NODES.length) return;
-    const id = setTimeout(() => setN((k) => k + 1), 260);
+    const id = setTimeout(() => setN((k) => k + 1), 140);
     return () => clearTimeout(id);
   }, [on, n]);
+
+  // Only animate while the graph is actually visible.
+  useEffect(() => {
+    if (!svg.current) return;
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting));
+    io.observe(svg.current);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (still || !visible) return;
+    let raf = 0;
+    const tick = () => {
+      if (!rot.current.drag) rot.current.yaw += 0.0035;
+      setFrame((f) => f + 1);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [still, visible]);
+
+  const { yaw, pitch } = rot.current;
+  const cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+  const pts = NODES.map(([x, y, z]) => {
+    const x1 = x * cy + z * sy, z1 = -x * sy + z * cy; // turn around the vertical axis
+    const y2 = y * cp - z1 * sp, z2 = y * sp + z1 * cp; // tilt toward the viewer
+    const s = 2.8 / (2.8 - z2); // perspective
+    return { x: 210 + x1 * s * 125, y: 120 + y2 * s * 88, s, d: (z2 + 1) / 2 }; // d: 0 = far, 1 = near
+  });
+  const order = pts.map((_, i) => i).filter((i) => i < n).sort((a, b) => pts[a].d - pts[b].d);
+
+  const onDown = (e: React.PointerEvent) => { rot.current.drag = { x: e.clientX, y: e.clientY }; (e.target as Element).setPointerCapture?.(e.pointerId); };
+  const onMove = (e: React.PointerEvent) => {
+    const dr = rot.current.drag;
+    if (!dr) return;
+    rot.current.yaw += (e.clientX - dr.x) * 0.01;
+    rot.current.pitch = Math.max(-0.9, Math.min(0.9, rot.current.pitch + (e.clientY - dr.y) * 0.008));
+    rot.current.drag = { x: e.clientX, y: e.clientY };
+    if (still) setFrame((f) => f + 1);
+  };
+  const onUp = () => { rot.current.drag = null; };
+
   return (
-    <svg viewBox="0 0 320 220" className="ag-graph" aria-hidden>
-      {EDGES.filter(([a, b]) => a < n && b < n).map(([a, b]) => (
-        <line key={`${a}-${b}`} className="fv-fade" x1={NODES[a][0]} y1={NODES[a][1]} x2={NODES[b][0]} y2={NODES[b][1]} stroke="currentColor" strokeOpacity=".25" />
-      ))}
-      {NODES.slice(0, n).map(([x, y], i) => (
-        <circle key={i} className="fv-fade" cx={x} cy={y} r={i === 0 ? 7 : 3.5} fill={i === 0 ? "var(--accent)" : "currentColor"} fillOpacity={i === 0 ? 1 : 0.7} />
-      ))}
+    <svg ref={svg} viewBox="0 0 420 240" className="ag-graph" aria-hidden onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp}>
+      {EDGES.filter(([a, b]) => a < n && b < n).map(([a, b]) => {
+        const d = (pts[a].d + pts[b].d) / 2;
+        return <line key={`${a}-${b}`} x1={pts[a].x} y1={pts[a].y} x2={pts[b].x} y2={pts[b].y} stroke={a === 0 ? "var(--accent)" : "currentColor"} strokeOpacity={(a === 0 ? 0.35 : 0.12) + d * 0.25} />;
+      })}
+      {order.map((i) => {
+        const p = pts[i];
+        const label = LABELS[i];
+        return (
+          <g key={i}>
+            <circle cx={p.x} cy={p.y} r={(i === 0 ? 6 : i <= 6 ? 3.6 : 2.6) * p.s} fill={i === 0 ? "var(--accent)" : "currentColor"} fillOpacity={i === 0 ? 1 : 0.35 + p.d * 0.6} />
+            {label && (i === 0 || p.d > 0.42) && <text x={p.x + 8 * p.s} y={p.y + 3} className="ag-node-label" fill={i === 0 ? "var(--accent)" : "currentColor"} fillOpacity={0.25 + p.d * 0.75} fontSize={7.5 * p.s}>{label}</text>}
+          </g>
+        );
+      })}
     </svg>
   );
 }
