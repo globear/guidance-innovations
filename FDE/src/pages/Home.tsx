@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import NetworkCanvas from "../components/NetworkCanvas";
-import { Arrow, ChatDemo, CTA, Founder, IndustriesScroll, MethodPinned, useTitle } from "../components/Blocks";
+import { Arrow, ChatDemo, CTA, Founder, IndustriesScroll, MethodPinned, SecurityTeaser, useTitle } from "../components/Blocks";
 import { Faq } from "./Pages";
 import { brand, photos } from "../content";
 import { useLang } from "../i18n";
@@ -107,22 +107,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Security teaser */}
-      <section className="section light">
-        <div className="wrap">
-          <div className="split" style={{ marginBottom: 64 }}>
-            <span className="eyebrow">{t.securityTeaser.eyebrow}</span>
-            <div>
-              <h2 className="h2" data-split>{t.securityTeaser.title}</h2>
-              <p className="lead" style={{ marginTop: 24 }} data-fade>{t.securityTeaser.lead}</p>
-            </div>
-          </div>
-          <ul className="checks" data-stagger>
-            {c.commitments.slice(0, 6).map((cm) => <li key={cm}>{cm}</li>)}
-          </ul>
-          <Link to="/security" className="btn" style={{ marginTop: 48 }}>{t.securityTeaser.link} <Arrow /></Link>
-        </div>
-      </section>
+      <SecurityTeaser />
 
       <Faq light={false} />
       <CTA />

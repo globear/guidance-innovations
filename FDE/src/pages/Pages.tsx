@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
-import { Arrow, ChatDemo, CTA, Founder, MethodPinned, MiniDash, PageHead } from "../components/Blocks";
+import { Arrow, ChatDemo, CTA, Founder, MethodPinned, MiniDash, PageHead, SecurityTeaser } from "../components/Blocks";
 import DataFlow from "../components/DataFlow";
 import AgentStack from "../components/AgentStack";
 import Select from "../components/Select";
@@ -44,7 +44,8 @@ export function Business() {
         </div>
       </section>
       <Engagement />
-      <Faq />
+      <SecurityTeaser />
+      <Faq light={false} />
       <CTA />
     </>
   );

@@ -372,3 +372,26 @@ export function CTA({ to = "/consultation" }: { to?: string }) {
     </section>
   );
 }
+
+/** "Your data stays yours": six commitments and a link to the Security page (Home, Business). */
+export function SecurityTeaser() {
+  const { c } = useLang();
+  const t = c.ui.securityTeaser;
+  return (
+    <section className="section light">
+      <div className="wrap">
+        <div className="split" style={{ marginBottom: 64 }}>
+          <span className="eyebrow">{t.eyebrow}</span>
+          <div>
+            <h2 className="h2" data-split>{t.title}</h2>
+            <p className="lead" style={{ marginTop: 24 }} data-fade>{t.lead}</p>
+          </div>
+        </div>
+        <ul className="checks" data-stagger>
+          {c.commitments.slice(0, 6).map((cm) => <li key={cm}>{cm}</li>)}
+        </ul>
+        <Link to="/security" className="btn" style={{ marginTop: 48 }}>{t.link} <Arrow /></Link>
+      </div>
+    </section>
+  );
+}
