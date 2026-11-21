@@ -335,7 +335,7 @@ export const en = {
         { t: "We reply within one business day", b: "By email or WhatsApp, to agree a time that suits you." },
         { t: "A free 45-minute session", b: "Online or at your office. We learn how your business runs and show where AI fits. No pressure, no slides." },
         { t: "A first look at your data", b: "We run the data you can share through our development environment and send you a first-impression report: an overall summary and the areas to improve." },
-        { t: "A clear proposal, if there's a fit", b: "A fixed-scope Discovery week with a clear price. You decide whether to go ahead." },
+        { t: "A clear proposal, if there's a fit", b: "A fixed scope and timeline for building your system, with a one-time build price and a monthly Guardian Care price. You decide whether to go ahead." },
       ],
       eyebrow: "Book a consultation", title: "Tell us one problem.",
       lead: "A free 45-minute AI Opportunity Session. We'll learn how your business runs and show you where AI can save time and money. Pricing is shared after we understand your scope.",

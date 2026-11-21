@@ -282,7 +282,7 @@ export const vi: Content = {
         { t: "Phản hồi trong một ngày làm việc", b: "Qua email hoặc WhatsApp, để hẹn thời gian phù hợp với bạn." },
         { t: "Buổi trao đổi miễn phí 45 phút", b: "Trực tuyến hoặc tại văn phòng của bạn. Chúng tôi tìm hiểu cách doanh nghiệp vận hành và chỉ ra nơi AI có thể giúp. Không áp lực, không trình chiếu." },
         { t: "Xem trước dữ liệu của bạn", b: "Chúng tôi chạy dữ liệu bạn có thể chia sẻ trong môi trường phát triển của mình và gửi bạn báo cáo đánh giá ban đầu: tổng quan và những điểm cần cải thiện." },
-        { t: "Đề xuất rõ ràng, nếu phù hợp", b: "Một tuần Discovery với phạm vi cố định và mức giá rõ ràng. Bạn quyết định có tiếp tục hay không." },
+        { t: "Đề xuất rõ ràng, nếu phù hợp", b: "Phạm vi và tiến độ cố định để xây dựng hệ thống của bạn, với giá phát triển một lần và phí Guardian Care hằng tháng. Bạn quyết định có tiếp tục hay không." },
       ],
       eyebrow: "Đặt lịch tư vấn", title: "Hãy cho chúng tôi biết một vấn đề.",
       lead: "Buổi Đánh giá Cơ hội AI miễn phí 45 phút. Chúng tôi sẽ tìm hiểu cách doanh nghiệp bạn vận hành và chỉ ra nơi AI có thể tiết kiệm thời gian và chi phí. Báo giá được gửi sau khi chúng tôi hiểu phạm vi của bạn.",

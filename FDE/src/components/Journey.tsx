@@ -1,9 +1,13 @@
-import { useEffect, useRef, useState } from "react";
-import { jData, journeyContent, phaseWeeks, type JourneyText } from "../journey";
+import { memo, useEffect, useRef, useState, type CSSProperties } from "react";
+import { TOOL, jData, journeyContent, phaseWeeks, type JourneyText } from "../journey";
 import { teamMembers } from "../content";
 import { useLang } from "../i18n";
 import { lenis, reducedMotion } from "../motion";
 import { CountUp } from "../pages/Case";
+
+const NAV = 68; // fixed header height
+/** Desktop with enough height: the section pins and scrolling moves through the steps. Otherwise: tabs. */
+const PIN_QUERY = "(min-width: 1024px) and (min-height: 760px)";
 
 /** Reveals items one by one once `on` turns true (all at once with reduced motion). */
 function useSeq(on: boolean, count: number, gap = 700, first = 300) {
@@ -19,54 +23,60 @@ function useSeq(on: boolean, count: number, gap = 700, first = 300) {
 const Redact = ({ w = 7 }: { w?: number }) => <span className="redact" style={{ width: `${w}ch` }} aria-label="name withheld" />;
 
 /* ---------- 01 · booking ---------- */
-function Book({ t, on }: { t: JourneyText; on: boolean }) {
+const Book = memo(function Book({ t, on }: { t: JourneyText; on: boolean }) {
   const b = t.book;
-  const n = useSeq(on, 4, 900);
+  const n = useSeq(on, 4, 850);
   return (
     <div className="jy-book">
-      <div className={`jy-card ${n >= 1 ? "in" : ""}`}>
-        <div className="jy-card-head"><span className="dot-live" />{b.request}<span className="mono muted">14:12</span></div>
-        <dl>
-          <dt>{b.company}</dt><dd><Redact /> {t.report.clientSuffix}</dd>
-          <dt>{b.industry}</dt><dd>{b.industryV}</dd>
-          <dt>{b.area}</dt><dd>{b.areaV}</dd>
-        </dl>
-      </div>
-      <div className={`jy-reply ${n >= 2 ? "in" : ""}`}>
-        <span className="jy-reply-meta">{b.reply} · 15:40 · {b.replyIn}</span>
-        <p className="bubble me">{b.replyText}</p>
-      </div>
-      <div className={`jy-card jy-invite ${n >= 3 ? "in" : ""}`}>
-        <div className="jy-cal"><span>TUE</span><b>25</b></div>
-        <div>
-          <b>{b.invite}</b>
-          <span className="mono muted">{b.when}</span>
-          <span className="mono muted">{b.where}</span>
+      <ol className="jy-times">
+        <li className={n >= 1 ? "in" : ""}><b>14:12</b>{b.request}</li>
+        <li className={n >= 2 ? "in" : ""}><b>15:40</b>{b.reply} · {b.replyIn}</li>
+        <li className={n >= 4 ? "in" : ""}><b>✓</b>{b.accepted}</li>
+      </ol>
+      <div className="jy-book-row">
+        <div className={`jy-card ${n >= 1 ? "in" : ""}`}>
+          <div className="jy-card-head"><span className="dot-live" />{b.request}</div>
+          <dl>
+            <dt>{b.company}</dt><dd><Redact /> {t.report.clientSuffix}</dd>
+            <dt>{b.industry}</dt><dd>{b.industryV}</dd>
+            <dt>{b.area}</dt><dd>{b.areaV}</dd>
+          </dl>
         </div>
-        <span className={`jy-accepted ${n >= 4 ? "in" : ""}`}>✓ {b.accepted}</span>
+        <div className={`jy-reply ${n >= 2 ? "in" : ""}`}>
+          <p className="bubble me">{b.replyText}</p>
+        </div>
+        <div className={`jy-card jy-invite ${n >= 3 ? "in" : ""}`}>
+          <div className="jy-cal"><span>TUE</span><b>25</b></div>
+          <div>
+            <b>{b.invite}</b>
+            <span className="mono muted">{b.when}</span>
+            <span className="mono muted">{b.where}</span>
+          </div>
+          <span className={`jy-accepted ${n >= 4 ? "in" : ""}`}>✓ {b.accepted}</span>
+        </div>
       </div>
     </div>
   );
-}
+});
 
 /* ---------- 02 · the 45-minute call ---------- */
 const NODE_POS: [number, number][] = [[0, 10], [205, 10], [410, 10], [410, 132], [205, 132], [0, 132]];
 const NW = 170, NH = 44;
-const FLAG_ON = [1, 2, 4, 5]; // nodes that get a pain flag
+const FLAG_ON = [1, 2, 4, 5]; // nodes that carry a pain flag
 
-function Call({ t, on }: { t: JourneyText; on: boolean }) {
+const Call = memo(function Call({ t, on, live }: { t: JourneyText; on: boolean; live: boolean }) {
   const k = t.call;
-  const nodes = useSeq(on, 6, 450);
-  const flags = useSeq(on && nodes >= 6, 4, 500);
-  const notes = useSeq(on, 4, 1600, 1200);
+  const nodes = useSeq(on, 6, 420);
+  const flags = useSeq(on && nodes >= 6, 4, 450);
+  const notes = useSeq(on, 4, 1500, 1100);
   const [sec, setSec] = useState(12 * 60 + 5);
   const [speaker, setSpeaker] = useState(0);
   useEffect(() => {
-    if (!on || reducedMotion()) return;
+    if (!live || reducedMotion()) return;
     const a = setInterval(() => setSec((s) => s + 1), 1000);
     const b = setInterval(() => setSpeaker((s) => (s + 1) % 3), 2600);
     return () => { clearInterval(a); clearInterval(b); };
-  }, [on]);
+  }, [live]);
   const mm = String(Math.floor(sec / 60)).padStart(2, "0"), ss = String(sec % 60).padStart(2, "0");
   const people = [
     { name: "Reed · Guidance", photo: teamMembers[0].photo },
@@ -80,136 +90,167 @@ function Call({ t, on }: { t: JourneyText; on: boolean }) {
         <b>{k.title}</b>
         <span className="mono">00:{mm}:{ss} / 00:45:00</span>
       </div>
-      <div className="jy-call-main">
-        <div className="jy-share">
-          <span className="jy-share-cap">{k.share}</span>
-          <svg viewBox="0 0 580 210" aria-hidden>
-            {NODE_POS.slice(0, -1).map(([x, y], i) => {
-              const [x2, y2] = NODE_POS[i + 1];
-              const sameRow = y === y2;
-              const d = sameRow ? `M${x + (x2 > x ? NW : 0)},${y + NH / 2} L${x2 + (x2 > x ? 0 : NW)},${y2 + NH / 2}` : `M${x + NW / 2},${y + NH + 30} L${x2 + NW / 2},${y2}`;
-              return <path key={i} d={d} className={`jy-edge ${nodes > i + 1 ? "in" : ""}`} pathLength={1} />;
-            })}
-            {NODE_POS.map(([x, y], i) => {
-              const f = FLAG_ON.indexOf(i);
-              return (
-                <g key={i} className={`jy-node ${nodes > i ? "in" : ""}`}>
-                  <rect x={x} y={y} width={NW} height={NH} />
-                  <text x={x + NW / 2} y={y + 28} textAnchor="middle">{k.nodes[i]}</text>
-                  {f >= 0 && (
-                    <g className={`jy-flag ${flags > f ? "in" : ""}`}>
-                      <rect x={x + 10} y={y + NH + 4} width={NW - 20} height="22" />
-                      <text x={x + NW / 2} y={y + NH + 19} textAnchor="middle">{k.flags[f]}</text>
-                    </g>
-                  )}
-                </g>
-              );
-            })}
-          </svg>
-        </div>
-        <div className="jy-people">
-          {people.map((p, i) => (
-            <div key={p.name} className={`jy-tile ${speaker === i ? "talk" : ""}`}>
-              {p.photo ? <img src={p.photo} alt="" loading="lazy" /> : <span className="jy-initial">{p.initial}</span>}
-              <span className="jy-tile-name">{p.name}</span>
-            </div>
-          ))}
-        </div>
+      <div className="jy-share">
+        <span className="jy-share-cap">{k.share}</span>
+        <svg viewBox="0 0 580 210" aria-hidden>
+          {NODE_POS.slice(0, -1).map(([x, y], i) => {
+            const [x2, y2] = NODE_POS[i + 1];
+            const d = y === y2 ? `M${x + (x2 > x ? NW : 0)},${y + NH / 2} L${x2 + (x2 > x ? 0 : NW)},${y2 + NH / 2}` : `M${x + NW / 2},${y + NH + 30} L${x2 + NW / 2},${y2}`;
+            return <path key={i} d={d} className={`jy-edge ${nodes > i + 1 ? "in" : ""}`} pathLength={1} />;
+          })}
+          {NODE_POS.map(([x, y], i) => {
+            const f = FLAG_ON.indexOf(i);
+            return (
+              <g key={i} className={`jy-node ${nodes > i ? "in" : ""}`}>
+                <rect x={x} y={y} width={NW} height={NH} />
+                <text x={x + NW / 2} y={y + 28} textAnchor="middle">{k.nodes[i]}</text>
+                {f >= 0 && (
+                  <g className={`jy-flag ${flags > f ? "in" : ""}`}>
+                    <rect x={x + 10} y={y + NH + 4} width={NW - 20} height="22" />
+                    <text x={x + NW / 2} y={y + NH + 19} textAnchor="middle">{k.flags[f]}</text>
+                  </g>
+                )}
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+      <div className="jy-people">
+        {people.map((p, i) => (
+          <div key={p.name} className={`jy-tile ${speaker === i ? "talk" : ""}`}>
+            {p.photo ? <img src={p.photo} alt="" loading="lazy" /> : <span className="jy-initial">{p.initial}</span>}
+            <span className="jy-tile-name">{p.name}</span>
+          </div>
+        ))}
       </div>
       <div className="jy-notes">
         <span className="jy-notes-head">{k.notesTitle}</span>
         <ul>{k.notes.map((x, i) => <li key={x} className={notes > i ? "in" : ""}>{x}</li>)}</ul>
       </div>
-      <div className="jy-call-bar" aria-hidden>
-        <i /><i /><i /><i className="end" />
-      </div>
+      <div className="jy-call-bar" aria-hidden><i /><i /><i /><i className="end" /></div>
     </div>
   );
-}
+});
 
 /* ---------- 03 · first-impression report (summary card) ---------- */
-function otdPath(w: number, h: number, pad = 6) {
-  const v = jData.otd;
-  return v.map((x, i) => `${i ? "L" : "M"}${pad + (i / (v.length - 1)) * (w - pad * 2)},${h - pad - ((x - 80) / 20) * (h - pad * 2)}`).join(" ");
-}
+const otdY = (v: number, h: number, pad: number) => h - pad - ((v - 80) / 20) * (h - pad * 2);
+const otdPath = (w: number, h: number, pad = 6) => jData.otd.map((v, i) => `${i ? "L" : "M"}${pad + (i / (jData.otd.length - 1)) * (w - pad * 2)},${otdY(v, h, pad)}`).join(" ");
 
-function Report({ t, on, onOpen }: { t: JourneyText; on: boolean; onOpen: () => void }) {
+const Report = memo(function Report({ t, on, onOpen }: { t: JourneyText; on: boolean; onOpen: () => void }) {
   const r = t.report;
+  const stage = useSeq(on, r.stages.length, 650, 500);
   return (
-    <div className={`jy-doc ${on ? "in" : ""}`}>
-      <div className="jy-doc-head">
-        <span className="jy-logo">G</span>
-        <div><b>{r.title}</b><span className="mono muted"><Redact /> {r.clientSuffix}</span></div>
-        <span className="jy-tag">{r.confidential}</span>
+    <div className={`jy-doc jy-rep ${on ? "in" : ""}`}>
+      <div className="jy-rep-a">
+        <div className="jy-doc-head">
+          <span className="jy-logo">G</span>
+          <div><b>{r.title}</b><span className="mono muted"><Redact /> {r.clientSuffix}</span></div>
+          <span className="jy-tag">{r.confidential}</span>
+        </div>
+        <p className="jy-meta mono muted">{r.meta}</p>
+        <div className="jy-processed">
+          <div><b><CountUp to={jData.rows} start={on} /></b><span>{r.rows}</span></div>
+          <div><b>{jData.sources}</b><span>{r.sources}</span></div>
+        </div>
+        <div className="jy-tool">
+          <span className="mono muted">{r.processedIn} <b>{TOOL}</b></span>
+          <ol>{r.stages.map((s, i) => <li key={s} className={stage > i ? "in" : ""}><i />{s}</li>)}</ol>
+        </div>
+        <button type="button" className="btn primary jy-open" onClick={onOpen}>{r.open} <span aria-hidden>↗</span></button>
       </div>
-      <p className="jy-meta mono muted">{r.meta}</p>
-      <div className="jy-processed">
-        <div><b><CountUp to={jData.rows} start={on} /></b><span>{r.rows}</span></div>
-        <div><b>{jData.sources}</b><span>{r.sources}</span></div>
+      <div className="jy-rep-b">
+        <div className="jy-kpis">
+          {r.kpis.map((k, i) => (
+            <div key={k.label}>
+              <b><CountUp to={jData.kpis[i].value} decimals={jData.kpis[i].decimals} start={on} /><small>{jData.kpis[i].unit}</small></b>
+              <span>{k.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="jy-spark-box">
+          <span className="jy-sub">{r.otdTitle}</span>
+          <svg viewBox="0 0 300 70" className="jy-spark" aria-hidden>
+            <line x1="0" x2="300" y1={otdY(95, 70, 6)} y2={otdY(95, 70, 6)} className="jy-target" />
+            <path d={otdPath(300, 70)} pathLength={1} className="jy-line" />
+          </svg>
+        </div>
       </div>
-      <div className="jy-kpis">
-        {r.kpis.map((k, i) => (
-          <div key={k.label}>
-            <b><CountUp to={jData.kpis[i].value} decimals={jData.kpis[i].decimals} start={on} /><small>{jData.kpis[i].unit}</small></b>
-            <span>{k.label}</span>
-          </div>
-        ))}
-      </div>
-      <svg viewBox="0 0 300 60" className="jy-spark" aria-hidden>
-        <line x1="0" x2="300" y1={60 - 6 - (15 / 20) * 48} y2={60 - 6 - (15 / 20) * 48} className="jy-target" />
-        <path d={otdPath(300, 60)} pathLength={1} className="jy-line" />
-      </svg>
-      <button type="button" className="btn primary jy-open" onClick={onOpen}>{r.open} <span aria-hidden>↗</span></button>
     </div>
   );
-}
+});
 
 /* ---------- 04 · proposal ---------- */
-function Proposal({ t, on }: { t: JourneyText; on: boolean }) {
+const Proposal = memo(function Proposal({ t, on }: { t: JourneyText; on: boolean }) {
   const p = t.proposal;
-  const ticks = useSeq(on, p.items.length, 350, 900);
+  const rows = useSeq(on, 4, 450, 900);
   return (
     <div className={`jy-doc jy-prop ${on ? "in" : ""}`}>
-      <div className="jy-doc-head">
-        <span className="jy-logo">G</span>
-        <div><b>{p.title}</b><span className="mono muted"><Redact /> {t.report.clientSuffix}</span></div>
-        <span className="jy-tag accent">{p.scope}</span>
-      </div>
-      <div className="jy-gantt">
-        <span className="jy-sub">{p.phasesTitle}</span>
-        <div className="jy-weeks">{[1, 2, 3, 4, 5, 6].map((w) => <span key={w}>W{w}</span>)}</div>
-        {p.phases.map((name, i) => {
-          const [a, b] = phaseWeeks[i];
-          return (
-            <div className="jy-phase" key={name}>
-              <span>{name}</span>
-              <em><i style={{ left: `${((a - 1) / 6) * 100}%`, width: `${((b - a + 1) / 6) * 100}%`, transitionDelay: `${0.2 + i * 0.15}s` }} /></em>
-            </div>
-          );
-        })}
-      </div>
-      <div className="jy-prop-foot">
-        <div>
-          <span className="jy-sub">{p.packageTitle}</span>
-          <ul className="jy-items">{p.items.map((x, i) => <li key={x} className={ticks > i ? "in" : ""}>{x}</li>)}</ul>
+      <div className="jy-prop-a">
+        <div className="jy-doc-head">
+          <span className="jy-logo">G</span>
+          <div><b>{p.title}</b><span className="mono muted"><Redact /> {t.report.clientSuffix}</span></div>
+          <span className="jy-tag accent">{p.scope}</span>
         </div>
-        <div className="jy-price">
-          <span className="jy-sub">{p.price}</span>
-          <b className="jy-blur" aria-label="price withheld">฿ 000,000</b>
-          <span className="muted">{p.priceNote}</span>
-          <div className="jy-pair"><span>{p.impact}</span><b>{p.impactV}</b></div>
-          <div className="jy-pair"><span>{p.golive}</span><b>{p.goliveV}</b></div>
+        <div className="jy-gantt">
+          <span className="jy-sub">{p.phasesTitle}</span>
+          <div className="jy-weeks"><span /><div>{[1, 2, 3, 4, 5, 6].map((w) => <span key={w}>W{w}</span>)}</div></div>
+          {p.phases.map((name, i) => {
+            const [a, b] = phaseWeeks[i];
+            return (
+              <div className="jy-phase" key={name}>
+                <span>{name}</span>
+                <em><i style={{ left: `${((a - 1) / 6) * 100}%`, width: `${((b - a + 1) / 6) * 100}%`, transitionDelay: `${0.2 + i * 0.15}s` }} /></em>
+              </div>
+            );
+          })}
+        </div>
+        <div className="jy-mods">
+          <div><span className="jy-sub">{p.inputs}</span>{p.inputItems.map((x) => <span className="chip" key={x}>{x}</span>)}</div>
+          <span className="jy-hub" aria-hidden>G</span>
+          <div><span className="jy-sub">{p.outputs}</span>{p.outputItems.map((x) => <span className="chip acc" key={x}>{x}</span>)}</div>
+        </div>
+      </div>
+      <div className="jy-prop-b">
+        <span className="jy-sub">{p.pricingTitle}</span>
+        <div className={`jy-price-row free ${rows >= 1 ? "in" : ""}`}>
+          <span className="k">01</span><div><b>{p.freeTitle}</b><span>{p.freeNote}</span></div><strong>{p.free}</strong>
+        </div>
+        <div className={`jy-price-row ${rows >= 2 ? "in" : ""}`}>
+          <span className="k">02</span><div><b>{p.buildTitle}</b><span>{p.buildNote}</span></div><strong className="jy-blur" aria-label="price withheld">฿000,000</strong>
+        </div>
+        <div className={`jy-price-row ${rows >= 3 ? "in" : ""}`}>
+          <span className="k">03</span><div><b>{p.careTitle}</b><span>{p.careNote}</span></div><strong><span className="jy-blur" aria-label="price withheld">฿00,000</span><small>{p.perMonth}</small></strong>
+        </div>
+        <div className={`jy-terms ${rows >= 4 ? "in" : ""}`}>
+          <span>{p.deposit}</span>
+          <span>{p.golive} · <b>{p.goliveV}</b></span>
         </div>
       </div>
     </div>
   );
-}
+});
 
 /* ---------- the full report, in a dialog ---------- */
+const LOG: [string, string][] = [
+  ["$", "gii ingest ./client-data --mask-pii"],
+  ["✓", "dispatch_jul-sep.xlsx          3,512 rows"],
+  ["✓", "gps_export.csv             2,991,204 points"],
+  ["✓", "fuel_card_q3.pdf               2,618 fill-ups (ocr)"],
+  ["✓", "line_export/                  26,930 messages · 9,812 photos"],
+  ["✓", "invoices_q3.csv                1,940 rows"],
+  ["$", "gii match --geofence 150m --tz Asia/Bangkok"],
+  ["✓", "28,205 drops matched · 2,284 arrival times recovered from GPS"],
+  ["$", "gii analyse --kpi otd,empty-km,dwell,fuel-per-drop --causes local-llm"],
+  ["✓", "13 KPIs · 8 charts · 4 findings"],
+  ["$", "gii report --review"],
+  ["✓", "report ready in 6 m 42 s · 0 bytes sent off this machine"],
+];
+
 function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClose: () => void }) {
   const r = t.report;
   const ref = useRef<HTMLDialogElement>(null);
   const [drawn, setDrawn] = useState(false);
+  const logN = useSeq(drawn, LOG.length, 260, 600);
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
@@ -220,9 +261,19 @@ function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClo
     } else if (!open && d.open) d.close();
     if (!open) lenis?.start();
   }, [open]);
+
   const maxCause = Math.max(...jData.causes);
+  const maxDelay = Math.max(...jData.delay.counts);
+  const heat = jData.heatDays.map((d) => jData.heatHours.map((h) => h * d));
+  const maxHeat = Math.max(...heat.flat());
   const C = 2 * Math.PI * 52;
   let acc = 0;
+  // scatter scales and a least-squares trend line
+  const sx = (v: number) => 40 + ((v - 15) / 37) * 350, sy = (v: number) => 150 - ((v - 105) / 45) * 140;
+  const n = jData.trucks.length, mx = jData.trucks.reduce((a, b) => a + b) / n, my = jData.perDrop.reduce((a, b) => a + b) / n;
+  const slope = jData.trucks.reduce((a, x, i) => a + (x - mx) * (jData.perDrop[i] - my), 0) / jData.trucks.reduce((a, x) => a + (x - mx) ** 2, 0);
+  const maxMonth = Math.max(...jData.months);
+
   return (
     <dialog ref={ref} className={`jy-dialog ${drawn ? "drawn" : ""}`} onClose={onClose} onClick={(e) => e.target === ref.current && onClose()}>
       <div className="jy-report" data-lenis-prevent>
@@ -250,9 +301,21 @@ function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClo
         </div>
 
         <section className="jy-r-sec">
+          <span className="jy-sub">{r.pipeTitle}</span>
+          <p className="jy-r-lead">{r.pipeLead}</p>
+          <ol className="jy-pipe">{r.pipe.map((s, i) => <li key={s.t}><span className="k">0{i + 1}</span><b>{s.t}</b><p>{s.b}</p></li>)}</ol>
+          <div className="jy-env"><span className="chip acc">{TOOL}</span>{r.env.map((e) => <span className="chip" key={e}>{e}</span>)}</div>
+          <div className="jy-term">
+            <div className="jy-term-bar"><i /><i /><i /><span>{TOOL} · {r.logTitle}</span></div>
+            <pre>{LOG.slice(0, logN).map(([p, l], i) => <span key={i} className={p === "$" ? "cmd" : "ok"}>{p} {l}{"\n"}</span>)}{logN < LOG.length && <span className="caret">▍</span>}</pre>
+          </div>
+        </section>
+
+        <section className="jy-r-sec">
           <span className="jy-sub">{r.dataTitle}</span>
           <table className="jy-table">
-            <tbody>{r.data.map((d, i) => <tr key={d.name}><td>{d.name}</td><td className="num">{jData.data[i]}</td><td className="muted">{d.detail}</td></tr>)}</tbody>
+            <thead><tr>{r.dataHead.map((h) => <th key={h}>{h}</th>)}</tr></thead>
+            <tbody>{r.data.map((d, i) => <tr key={d.name}><td>{d.name}</td><td className="muted">{d.format}</td><td className="num">{jData.data[i]} <span className="muted">{d.detail}</span></td></tr>)}</tbody>
           </table>
           <p className="mono muted jy-note">{r.quality}</p>
         </section>
@@ -268,7 +331,7 @@ function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClo
               <path d={jData.otd.map((x, i) => `${i ? "L" : "M"}${34 + (i / 12) * 360},${164 - ((x - 80) / 20) * 158}`).join(" ")} pathLength={1} className="jy-line" />
               {jData.otd.map((x, i) => <circle key={i} cx={34 + (i / 12) * 360} cy={164 - ((x - 80) / 20) * 158} r="2.6" className="jy-dot" style={{ transitionDelay: `${0.6 + i * 0.06}s` }} />)}
             </svg>
-            <span className="jy-legend"><i className="acc" />{r.weeks} <i className="tgt" />{r.target} 95%</span>
+            <span className="jy-legend"><i />{r.weeks} <i className="tgt" />{r.target} 95%</span>
           </figure>
           <figure>
             <figcaption>{r.causesTitle}</figcaption>
@@ -279,6 +342,26 @@ function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClo
             </ul>
           </figure>
           <figure>
+            <figcaption>{r.delayTitle}</figcaption>
+            <div className="jy-hist">
+              {jData.delay.counts.map((v, i) => (
+                <div key={i}><em><i style={{ height: drawn ? `${(v / maxDelay) * 100}%` : 0, transitionDelay: `${i * 0.06}s` }} className={i >= 4 ? "acc" : ""} /></em><span>{jData.delay.labels[i]}</span></div>
+              ))}
+            </div>
+            <span className="jy-legend">{r.delayNote}</span>
+          </figure>
+          <figure>
+            <figcaption>{r.heatTitle}</figcaption>
+            <div className="jy-heat">
+              <span />{jData.heatHours.map((_, h) => <span key={h} className="jy-heat-h">{h % 3 === 0 ? `${String(7 + h).padStart(2, "0")}` : ""}</span>)}
+              {heat.map((row, d) => [
+                <span key={`d${d}`} className="jy-heat-d">{r.days[d]}</span>,
+                ...row.map((v, h) => <i key={`${d}-${h}`} style={{ opacity: drawn ? 0.08 + (v / maxHeat) * 0.92 : 0, transitionDelay: `${(d + h) * 0.025}s` }} />),
+              ])}
+            </div>
+            <span className="jy-legend">{r.heatNote}</span>
+          </figure>
+          <figure>
             <figcaption>{r.trucksTitle}</figcaption>
             <svg viewBox="0 0 400 150" aria-hidden>
               <line x1="0" x2="400" y1={140 - (24 / 50) * 130} y2={140 - (24 / 50) * 130} className="jy-target" />
@@ -287,6 +370,16 @@ function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClo
               ))}
             </svg>
             <span className="jy-legend">{r.trucksNote}</span>
+          </figure>
+          <figure>
+            <figcaption>{r.scatterTitle}</figcaption>
+            <svg viewBox="0 0 400 175" aria-hidden>
+              {[110, 125, 140].map((v) => <g key={v}><line x1="40" x2="400" y1={sy(v)} y2={sy(v)} className="jy-grid" /><text x="0" y={sy(v) + 4} className="jy-axis">฿{v}</text></g>)}
+              {[20, 30, 40, 50].map((v) => <text key={v} x={sx(v)} y="172" textAnchor="middle" className="jy-axis">{v}%</text>)}
+              <line x1={sx(18)} y1={sy(my + slope * (18 - mx))} x2={sx(50)} y2={sy(my + slope * (50 - mx))} className="jy-trend" />
+              {jData.trucks.map((x, i) => <circle key={i} cx={sx(x)} cy={sy(jData.perDrop[i])} r="4" className={`jy-dot ${x >= 40 ? "hot" : ""}`} style={{ transitionDelay: `${0.2 + i * 0.03}s` }} />)}
+            </svg>
+            <span className="jy-legend">{r.scatterX} → · {r.scatterY} ↑ · {r.scatterNote}</span>
           </figure>
           <figure>
             <figcaption>{r.costTitle}</figcaption>
@@ -303,6 +396,15 @@ function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClo
               </svg>
               <ul>{r.costs.map((c, i) => <li key={c}><i className={`s${i}`} />{c}<b>{jData.costs[i]}%</b></li>)}</ul>
             </div>
+          </figure>
+          <figure>
+            <figcaption>{r.monthTitle}</figcaption>
+            <div className="jy-months">
+              {jData.months.map((v, i) => (
+                <div key={i}><b>฿{v}</b><em><i style={{ height: drawn ? `${(v / maxMonth) * 100}%` : 0, transitionDelay: `${i * 0.15}s` }} className={i === 2 ? "acc" : ""} /></em><span>{r.months[i]}</span></div>
+              ))}
+            </div>
+            <span className="jy-legend">{r.monthNote}</span>
           </figure>
         </div>
 
@@ -332,36 +434,73 @@ export default function Journey() {
   const { c, lang } = useLang();
   const t = journeyContent(lang);
   const steps = c.ui.consult.next;
+  const [pinned, setPinned] = useState(() => !reducedMotion() && window.matchMedia(PIN_QUERY).matches);
   const [step, setStep] = useState(0);
-  const [reached, setReached] = useState(reducedMotion() ? steps.length - 1 : 0);
+  const [inView, setInView] = useState(false);
+  const [visited, setVisited] = useState<boolean[]>(() => steps.map(() => reducedMotion()));
   const [open, setOpen] = useState(false);
-  const refs = useRef<(HTMLLIElement | null)[]>([]);
+  const track = useRef<HTMLDivElement>(null);
+  const tabs = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        const i = Number((e.target as HTMLElement).dataset.i);
-        setStep(i);
-        setReached((r) => Math.max(r, i));
-      });
-    }, { rootMargin: "-45% 0px -45% 0px" });
-    refs.current.forEach((el) => el && io.observe(el));
+    if (reducedMotion()) return;
+    const mq = window.matchMedia(PIN_QUERY);
+    const on = () => setPinned(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+
+  useEffect(() => {
+    if (!track.current) return;
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { rootMargin: "-20% 0px -20% 0px" });
+    io.observe(track.current);
     return () => io.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (inView && !visited[step]) setVisited((v) => v.map((x, i) => x || i === step));
+  }, [inView, step, visited]);
+
+  // Pinned: the scroll position inside the tall track picks the step and fills the tab bars.
+  useEffect(() => {
+    if (!pinned) { tabs.current?.style.setProperty("--p", String(step + 1)); return; }
+    const onScroll = () => {
+      const el = track.current;
+      if (!el) return;
+      const total = el.offsetHeight - (window.innerHeight - NAV);
+      const p = Math.min(1, Math.max(0, (NAV - el.getBoundingClientRect().top) / total)) * steps.length;
+      tabs.current?.style.setProperty("--p", p.toFixed(3));
+      setStep(Math.min(steps.length - 1, Math.floor(p)));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); };
+  }, [pinned, steps.length, step]);
+
+  const go = (i: number) => {
+    const el = track.current;
+    if (!pinned || !el) { setStep(i); return; }
+    const total = el.offsetHeight - (window.innerHeight - NAV);
+    const y = el.getBoundingClientRect().top + window.scrollY - NAV + ((i + 0.5) / steps.length) * total;
+    if (lenis) lenis.scrollTo(y, { duration: 1 }); else window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const openReport = () => setOpen(true);
   const panel = (i: number) => {
-    const on = reached >= i;
+    const on = visited[i];
     if (i === 0) return <Book t={t} on={on} />;
-    if (i === 1) return <Call t={t} on={on} />;
-    if (i === 2) return <Report t={t} on={on} onOpen={() => setOpen(true)} />;
+    if (i === 1) return <Call t={t} on={on} live={inView && step === 1} />;
+    if (i === 2) return <Report t={t} on={on} onOpen={openReport} />;
     return <Proposal t={t} on={on} />;
   };
 
+  const trackStyle: CSSProperties | undefined = pinned ? { height: `calc(${steps.length * 75}vh + 100vh - ${NAV}px)` } : undefined;
+
   return (
-    <section className="section" id="journey">
+    <section className="section jy-section" id="journey">
       <div className="wrap">
-        <div className="split" style={{ marginBottom: 48 }}>
+        <div className="split" style={{ marginBottom: 40 }}>
           <span className="eyebrow">{t.eyebrow}</span>
           <div>
             <h2 className="h2" data-split>{t.title}</h2>
@@ -369,24 +508,26 @@ export default function Journey() {
             <span className="case-label">{t.label}</span>
           </div>
         </div>
-        <div className="flow jy">
-          <div className="flow-stage jy-stage">
-            <div className="jy-progress" aria-hidden>{steps.map((_, i) => <span key={i} className={i === step ? "on" : i < step ? "done" : ""}>0{i + 1}</span>)}</div>
+      </div>
+      <div className={`jy-track ${pinned ? "pinned" : ""}`} ref={track} style={trackStyle}>
+        <div className="jy-sticky">
+          <div className="wrap jy-inner">
+            <div className="jy-tabs" role="tablist" ref={tabs}>
+              {steps.map((s, i) => (
+                <button key={s.t} type="button" role="tab" aria-selected={i === step} className={i === step ? "on" : ""} onClick={() => go(i)} style={{ "--i": i } as CSSProperties}>
+                  <span className="k">0{i + 1}</span><span className="t">{s.t}</span><i aria-hidden />
+                </button>
+              ))}
+            </div>
             <div className="jy-panels">
               {steps.map((_, i) => <div key={i} className={`jy-panel ${i === step ? "on" : ""}`} aria-hidden={i !== step}>{panel(i)}</div>)}
             </div>
+            <div className="jy-caption" key={step}>
+              <h3 className="h3">{steps[step].t}</h3>
+              <p>{steps[step].b}</p>
+              <span className="artifact">→ {t.artifacts[step]}</span>
+            </div>
           </div>
-          <ol className="flow-steps jy-steps">
-            {steps.map((s, i) => (
-              <li key={s.t} data-i={i} ref={(el) => (refs.current[i] = el)} className={i === step ? "on" : ""}>
-                <span className="k">0{i + 1}</span>
-                <h3 className="h2">{s.t}</h3>
-                <p>{s.b}</p>
-                <span className="artifact">→ {t.artifacts[i]}</span>
-                <div className="jy-inline">{panel(i)}</div>
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
       <FullReport t={t} open={open} onClose={() => setOpen(false)} />

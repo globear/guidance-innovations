@@ -282,7 +282,7 @@ export const ms: Content = {
         { t: "Kami membalas dalam satu hari bekerja", b: "Melalui e-mel atau WhatsApp, untuk menetapkan masa yang sesuai untuk anda." },
         { t: "Sesi percuma 45 minit", b: "Dalam talian atau di pejabat anda. Kami fahami cara perniagaan anda berjalan dan tunjukkan di mana AI boleh membantu. Tiada tekanan, tiada slaid." },
         { t: "Tinjauan awal data anda", b: "Kami jalankan data yang boleh anda kongsi dalam persekitaran pembangunan kami dan hantar laporan tinjauan awal: ringkasan keseluruhan dan bahagian yang perlu diperbaiki." },
-        { t: "Cadangan yang jelas, jika sesuai", b: "Minggu Discovery dengan skop tetap dan harga yang jelas. Anda tentukan sama ada mahu teruskan." },
+        { t: "Cadangan yang jelas, jika sesuai", b: "Skop dan garis masa yang tetap untuk membina sistem anda, dengan harga pembangunan sekali bayar dan harga Guardian Care bulanan. Anda tentukan sama ada mahu teruskan." },
       ],
       eyebrow: "Tempah konsultasi", title: "Beritahu kami satu masalah.",
       lead: "Sesi Peluang AI percuma selama 45 minit. Kami akan memahami bagaimana perniagaan anda berjalan dan menunjukkan di mana AI boleh menjimatkan masa dan wang. Harga dikongsi selepas kami memahami skop anda.",
