@@ -36,8 +36,8 @@ export type CaseStudy = {
 export type CaseUi = {
   eyebrow: string; label: string; impact: string; beforeTitle: string; pains: string; how: string;
   built: string; live: string; today: string; week: string; alerts: string; brief: string; briefFrom: string;
-  after: string; beforeCol: string; afterCol: string; indexEyebrow: string; indexTitle: string; indexLead: string;
-  read: string; all: string; next: string; oneModel: string; guard: string;
+  after: string; beforeCol: string; afterCol: string;
+  read: string; oneModel: string; guard: string;
 };
 
 const ui: CaseUi = {
@@ -57,12 +57,7 @@ const ui: CaseUi = {
   after: "Before and after",
   beforeCol: "Before",
   afterCol: "After",
-  indexEyebrow: "Case studies",
-  indexTitle: "How a deployment actually runs.",
-  indexLead: "One example per industry, from the first day on site to the owner's daily brief. Client names are withheld.",
   read: "Read the case",
-  all: "All case studies",
-  next: "Next case",
   oneModel: "ONE MODEL",
   guard: "GUARDIAN CARE",
 };
@@ -387,9 +382,6 @@ const merge = (b: CaseStudy, t?: CaseText): CaseStudy => !t ? b : {
 };
 
 const dict: Partial<Record<string, CaseLang>> = { th: thCases, "zh-Hans": zhHansCases, "zh-Hant": zhHantCases, ms: msCases, vi: viCases };
-
-/** Case studies live under How we work, so the nav keeps "How we work" highlighted. */
-export const casePath = (slug: string) => `/how-we-work/cases/${slug}`;
 
 /** Case content for a language; anything not yet translated falls back to English. */
 export const caseContent = (lang: string): CaseContent => {

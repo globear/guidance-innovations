@@ -39,7 +39,7 @@ export default function Layout() {
     gsap.fromTo(curtain.current, { scaleY: 1, transformOrigin: "top" }, { scaleY: 0, duration: 0.8, ease: "power4.inOut" });
   }, [pathname]);
 
-  // Links like /how-we-work#cases: once the new page has laid out (pinned sections included), scroll to the anchor.
+  // Links like /industries/hotels#case: once the new page has laid out (pinned sections included), scroll to the anchor.
   useEffect(() => {
     if (!hash) return;
     const id = setTimeout(() => {

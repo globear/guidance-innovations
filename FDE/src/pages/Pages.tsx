@@ -4,11 +4,13 @@ import { Arrow, ChatDemo, CTA, Founder, MethodPinned, MiniDash, PageHead } from 
 import DataFlow from "../components/DataFlow";
 import AgentStack from "../components/AgentStack";
 import Select from "../components/Select";
-import { CaseIndex } from "./Case";
-import { caseContent, casePath } from "../cases";
+import Journey from "../components/Journey";
+import { CaseStory } from "./Case";
+import { caseContent } from "../cases";
 import { brand, contact, en, fieldPhotos, photos, teamMembers } from "../content";
 import { sendBooking, summary, type Booking } from "../booking";
 import { useLang } from "../i18n";
+import { lenis } from "../motion";
 
 export function Business() {
   const { c } = useLang();
@@ -118,6 +120,11 @@ export function IndustryPage() {
   const idx = c.industries.findIndex((i) => i.slug === slug);
   if (idx < 0) return <Navigate to="/" replace />;
   const ind = c.industries[idx];
+  const toCase = () => {
+    const el = document.getElementById("case");
+    if (!el) return;
+    if (lenis) lenis.scrollTo(el, { offset: -80 }); else el.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
       <PageHead eyebrow={`${c.ui.nav.industries} / ${ind.name}`} title={ind.headline} photo={photos.industries[ind.slug]} />
@@ -145,10 +152,11 @@ export function IndustryPage() {
             {ind.builds.map((b, i) => <div className="cell" key={b.title}><span className="k">0{i + 1}</span><h3 className="h3">{b.title}</h3><p>{b.body}</p></div>)}
           </div>
           {caseContent(lang).cases.some((x) => x.slug === ind.slug) && (
-            <Link to={casePath(ind.slug)} className="btn" style={{ marginTop: 40 }}>{caseContent(lang).ui.read} <Arrow /></Link>
+            <button type="button" className="btn" style={{ marginTop: 40 }} onClick={() => toCase()}>{caseContent(lang).ui.read} <Arrow /></button>
           )}
         </div>
       </section>
+      <CaseStory slug={ind.slug} />
       <section className="section tight">
         <div className="wrap" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
           {c.industries.filter((i) => i.slug !== slug).map((i) => (
@@ -168,7 +176,7 @@ export function HowWeWork() {
     <>
       <PageHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} photo={photos.how} />
       <section style={{ padding: "40px 0" }}><MethodPinned /></section>
-      <CaseIndex />
+      <Journey />
       <section className="section light">
         <div className="wrap">
           <div className="cols-3" data-stagger>

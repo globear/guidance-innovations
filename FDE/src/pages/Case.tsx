@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
-import { Arrow, CTA, Photo } from "../components/Blocks";
-import { caseContent, casePath, type CaseStudy, type CaseUi } from "../cases";
-import { photos } from "../content";
+import { Navigate, useParams } from "react-router-dom";
+import { caseContent, type CaseStudy, type CaseUi } from "../cases";
 import { useLang } from "../i18n";
 import { reducedMotion } from "../motion";
 
 /** True once the element has scrolled into view (stays true). */
-function useInView<T extends Element>(ref: RefObject<T>, margin = "0px 0px -15% 0px") {
+export function useInView<T extends Element>(ref: RefObject<T>, margin = "0px 0px -15% 0px") {
   const [seen, setSeen] = useState(false);
   useEffect(() => {
     if (!ref.current || seen) return;
@@ -20,7 +18,7 @@ function useInView<T extends Element>(ref: RefObject<T>, margin = "0px 0px -15% 
 
 const fmt = (n: number, d = 0) => n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
 
-function CountUp({ to, decimals = 0, start }: { to: number; decimals?: number; start: boolean }) {
+export function CountUp({ to, decimals = 0, start }: { to: number; decimals?: number; start: boolean }) {
   const [v, setV] = useState(reducedMotion() ? to : 0);
   useEffect(() => {
     if (!start || reducedMotion()) { if (start) setV(to); return; }
@@ -228,33 +226,24 @@ function Brief({ cs, ui }: { cs: CaseStudy; ui: CaseUi }) {
   );
 }
 
-export function CasePage() {
-  const { lang, c } = useLang();
-  const { slug } = useParams();
+/** The full case study for one industry, shown at the bottom of that industry's page (#case). */
+export function CaseStory({ slug }: { slug: string }) {
+  const { lang } = useLang();
   const { ui, cases } = caseContent(lang);
-  const idx = cases.findIndex((x) => x.slug === slug);
-  if (idx < 0) return <Navigate to="/how-we-work" replace />;
-  const cs = cases[idx];
-  const ind = c.industries.find((i) => i.slug === cs.slug);
-  const next = cases[(idx + 1) % cases.length];
+  const cs = cases.find((x) => x.slug === slug);
+  if (!cs) return null;
   return (
-    <>
-      <section className="page-head has-photo case-hero">
-        <Photo name={photos.industries[cs.slug]} className="page-head-photo" eager />
-        <div className="page-head-shade" />
-        <div className="wrap">
-          <span className="eyebrow" data-scramble>{`${c.ui.nav.how} / ${ui.eyebrow} / ${ind?.name ?? cs.slug}`}</span>
-          <p className="case-client" data-fade="0.2">{cs.client} <span>+ Guidance</span></p>
-          <h1 className="h1 page-title" style={{ marginTop: 20 }} data-split="now">{cs.title}</h1>
-          <span className="case-label" data-fade="0.6">{ui.label}</span>
-        </div>
-      </section>
-
-      <section className="section tight" style={{ paddingTop: 0 }}>
+    <div id="case">
+      <section className="section">
         <div className="wrap">
           <div className="split" style={{ marginBottom: 48 }}>
-            <span className="eyebrow">{ui.impact}</span>
-            <p className="lead" style={{ maxWidth: 720 }} data-fade>{cs.intro}</p>
+            <span className="eyebrow">{ui.eyebrow}</span>
+            <div>
+              <p className="case-client" style={{ marginTop: 0 }} data-fade>{cs.client} <span>+ Guidance</span></p>
+              <h2 className="h2" style={{ marginTop: 20 }} data-split>{cs.title}</h2>
+              <span className="case-label" data-fade>{ui.label}</span>
+              <p className="lead" style={{ marginTop: 32, maxWidth: 720 }} data-fade>{cs.intro}</p>
+            </div>
           </div>
           <Stats cs={cs} />
         </div>
@@ -308,59 +297,12 @@ export function CasePage() {
           </div>
         </div>
       </section>
-
-      {cases.length > 1 && (
-        <section className="section tight">
-          <div className="wrap" style={{ display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link to="/how-we-work#cases" className="btn">{ui.all}</Link>
-              {ind && <Link to={`/industries/${cs.slug}`} className="btn">{ind.name} <Arrow /></Link>}
-            </div>
-            <Link to={casePath(next.slug)} className="btn">{ui.next}: {c.industries.find((i) => i.slug === next.slug)?.name} <Arrow /></Link>
-          </div>
-        </section>
-      )}
-      <CTA to={`/consultation?industry=${cs.slug}`} />
-    </>
+    </div>
   );
 }
 
-/** Case-study cards for How we work (and anywhere else that wants them). */
-export function CaseIndex() {
-  const { lang, c } = useLang();
-  const { ui, cases } = caseContent(lang);
-  return (
-    <section className="section" id="cases">
-      <div className="wrap">
-        <div className="split" style={{ marginBottom: 48 }}>
-          <span className="eyebrow">{ui.indexEyebrow}</span>
-          <div>
-            <h2 className="h2" data-split>{ui.indexTitle}</h2>
-            <p className="lead" style={{ marginTop: 24 }} data-fade>{ui.indexLead}</p>
-          </div>
-        </div>
-        <div className="case-cards" data-stagger>
-          {cases.map((cs) => (
-            <Link to={casePath(cs.slug)} className="case-card" key={cs.slug}>
-              <Photo name={photos.industries[cs.slug]} className="case-card-photo" eager />
-              <div className="case-card-body">
-                <span className="k">{c.industries.find((i) => i.slug === cs.slug)?.name}</span>
-                <h3 className="h3">{cs.title}</h3>
-                <p>{cs.client}</p>
-                <div className="case-card-stat"><b>{cs.stats[1].value}{cs.stats[1].suffix}</b><span>{cs.stats[1].label}</span></div>
-                <span className="go">{ui.read} <Arrow /></span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <p className="mono muted case-note">{ui.label}</p>
-      </div>
-    </section>
-  );
-}
-
-/** Old /cases/:slug links (shared before case studies moved under How we work) keep working. */
+/** Old case links (/cases/:slug, /how-we-work/cases/:slug) open the case on its industry page. */
 export function OldCaseRedirect() {
   const { slug = "" } = useParams();
-  return <Navigate to={casePath(slug)} replace />;
+  return <Navigate to={{ pathname: `/industries/${slug}`, hash: "#case" }} replace />;
 }
