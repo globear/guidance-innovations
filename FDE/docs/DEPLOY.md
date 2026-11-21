@@ -8,7 +8,8 @@ The site is a static Vite + React app. It is set up for **Netlify**, the same ho
 - Netlify account: **Richard Lee** (globeareed@gmail.com), team **aireplay**, the same team as the guidanceinnovations.tech sites. (Moved 2026-11-21: it was first created by mistake in the TukTuk Visa account, team GI-Reed, where it was later deleted.)
 - This folder is linked to that site in `FDE/.netlify/state.json`. The parent folder is linked to app.guidanceinnovations.tech, so always deploy from inside `FDE`, or pass `--site`.
 - Form detection is on; Netlify registered the `consultation` form with all 10 fields (2026-11-21).
-- Email notification: every new submission is emailed to info@guidanceinnovations.tech (set up on the new site 2026-11-21). No submission has been sent to the new site yet, so the first real request is also the first test of the email.
+- Email notification: every new submission is emailed to info@guidanceinnovations.tech (set up on the new site 2026-11-21).
+- Tested 2026-11-21: one submission named "TEST – please ignore" was sent from the live page and arrived in Netlify → Forms with all fields. Check the info@ inbox (and spam) for its email to confirm the alert.
 - Domain: staying on netlify.app for now. When you add your own domain, also update `og:url` and `og:image` in `index.html`.
 - To redeploy from this folder: `npx vite build && netlify deploy --dir=dist --site=4f6f96f1-37a5-49c7-8584-c740f603273e --prod`
 
