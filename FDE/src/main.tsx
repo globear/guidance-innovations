@@ -6,7 +6,7 @@ import { initSmoothScroll } from "./motion";
 import Layout from "./components/Layout";
 import { LangProvider } from "./i18n";
 import Home from "./pages/Home";
-import { About, Business, Consultation, HowWeWork, IndustryPage, Leaders, NotFound, Security } from "./pages/Pages";
+import { About, Business, Consultation, HowWeWork, IndustryPage, Leaders, Legal, NotFound, Security } from "./pages/Pages";
 import { OldCaseRedirect } from "./pages/Case";
 
 initSmoothScroll();
@@ -27,6 +27,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/security" element={<Security />} />
           <Route path="/about" element={<About />} />
           <Route path="/consultation" element={<Consultation />} />
+          <Route path="/privacy" element={<Legal doc="privacy" />} />
+          <Route path="/terms" element={<Legal doc="terms" />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

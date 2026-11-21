@@ -1049,3 +1049,13 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
   .jy-phase i { transform: none; }
   .jy-dialog[open], .jy-caption { animation: none; }
 }
+
+/* ---------- privacy policy and terms ---------- */
+.legal { max-width: 980px; }
+.legal-date { font-size: 12px; margin-bottom: 24px; }
+.legal-sec { display: grid; grid-template-columns: minmax(200px, 1fr) 2fr; gap: 12px 48px; padding: 28px 0; border-top: 1px solid var(--line); }
+.legal-sec .h3 { font-size: 20px; }
+.legal-sec p { color: var(--muted); line-height: 1.7; }
+.legal-sec p + p { margin-top: 12px; }
+.legal-contact { font-size: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+@media (max-width: 700px) { .legal-sec { grid-template-columns: 1fr; padding: 22px 0; } }

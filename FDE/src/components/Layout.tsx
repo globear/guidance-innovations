@@ -124,8 +124,8 @@ export default function Layout() {
             <span>© {new Date().getFullYear()} {brand.legal} · {t.footer.location}</span>
             <span>{t.footer.base}</span>
             <span className="footer-legal">
-              <a href={contact.privacy} target="_blank" rel="noopener noreferrer">{t.footer.privacy}</a>
-              <a href={contact.terms} target="_blank" rel="noopener noreferrer">{t.footer.terms}</a>
+              <Link to={contact.privacy}>{t.footer.privacy}</Link>
+              <Link to={contact.terms}>{t.footer.terms}</Link>
             </span>
             <button className="footer-lang" onClick={openPicker}>{t.footer.language} · {LANGS.find((l) => l.code === lang)!.label}</button>
           </div>

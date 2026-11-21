@@ -49,8 +49,8 @@ export const contact = {
   email: "info@guidanceinnovations.tech",
   whatsapp: "https://wa.me/66984862094",
   whatsappLabel: "+66 98 486 2094",
-  privacy: "https://guidanceinnovations.tech/privacy",
-  terms: "https://guidanceinnovations.tech/terms",
+  privacy: "/privacy",
+  terms: "/terms",
 };
 
 export const en = {

@@ -10,7 +10,8 @@ The site is a static Vite + React app. It is set up for **Netlify**, the same ho
 - Form detection is on; Netlify registered the `consultation` form with all 10 fields (2026-11-21).
 - Email notification: every new submission is emailed to info@guidanceinnovations.tech (set up on the new site 2026-11-21).
 - Tested 2026-11-21: one submission named "TEST – please ignore" was sent from the live page and arrived in Netlify → Forms with all fields. Check the info@ inbox (and spam) for its email to confirm the alert.
-- Domain: staying on netlify.app for now. When you add your own domain, also update `og:url` and `og:image` in `index.html`.
+- Domain: **guidanceinnovations.tech** is set on this site (seen 2026-11-21); guidance-fde.netlify.app also works. `og:url` and `og:image` in `index.html` point at guidanceinnovations.tech.
+- Privacy policy and terms live on this site at /privacy and /terms (text in `src/legal.ts`, six languages). They replace the old main-site pages; the text is a draft for legal review.
 - To redeploy from this folder: `npx vite build && netlify deploy --dir=dist --site=4f6f96f1-37a5-49c7-8584-c740f603273e --prod`
 
 ## 1. Create the Netlify site

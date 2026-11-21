@@ -11,6 +11,7 @@ import { brand, contact, en, fieldPhotos, photos, teamMembers } from "../content
 import { sendBooking, summary, type Booking } from "../booking";
 import { useLang } from "../i18n";
 import { lenis } from "../motion";
+import { legalContent } from "../legal";
 
 export function Business() {
   const { c } = useLang();
@@ -430,6 +431,30 @@ export function NotFound() {
     <>
       <PageHead eyebrow="404" title={c.ui.notFound.title} lead={c.ui.notFound.lead} />
       <section className="section tight" style={{ paddingTop: 0 }}><div className="wrap"><Link to="/" className="btn primary">{c.ui.notFound.button} <Arrow /></Link></div></section>
+    </>
+  );
+}
+
+/** Privacy policy and terms of use, in the visitor's language. */
+export function Legal({ doc }: { doc: "privacy" | "terms" }) {
+  const { lang } = useLang();
+  const l = legalContent(lang);
+  const d = l[doc];
+  return (
+    <>
+      <PageHead eyebrow={brand.legal} title={d.title} lead={d.lead} />
+      <section className="section tight" style={{ paddingTop: 0 }}>
+        <div className="wrap legal">
+          <p className="mono muted legal-date">{l.updated}</p>
+          {d.sections.map((s) => (
+            <div className="legal-sec" key={s.h}>
+              <h2 className="h3">{s.h}</h2>
+              <div>{s.p.map((x) => <p key={x}>{x}</p>)}</div>
+            </div>
+          ))}
+          <p className="mono muted legal-contact">{l.contactLine}</p>
+        </div>
+      </section>
     </>
   );
 }
