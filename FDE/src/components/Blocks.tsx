@@ -267,18 +267,12 @@ function IndustryCard({ ind, i, view }: { ind: Industry; i: number; view: string
   );
 }
 
-/** Founder block. Home shows the video frame (placeholder until media.video is set); About passes `quote` for the message alone. */
+/** Founder block. Home shows the video full width (placeholder until media.video is set) with a link to the team; About passes `quote` for the message alone. */
 export function Founder({ light = false, more = false, quote = false }: { light?: boolean; more?: boolean; quote?: boolean }) {
   const { c } = useLang();
   const t = c.ui.founderUi;
   const [playing, setPlaying] = useState(false);
   const vid = useRef<HTMLVideoElement>(null);
-  const byline = (
-    <div className="founder-by" data-fade>
-      <div className="headshot">{media.headshot ? <img src={media.headshot} alt={c.founder.name} /> : t.photo}</div>
-      <div><div style={{ fontWeight: 500 }}>{c.founder.name}</div><div className="mono muted">{c.founder.role}</div></div>
-    </div>
-  );
   if (quote) {
     return (
       <section className={`section ${light ? "light" : ""}`}>
@@ -294,6 +288,8 @@ export function Founder({ light = false, more = false, quote = false }: { light?
   return (
     <section className={`section ${light ? "light" : ""}`}>
       <div className="wrap founder">
+        <span className="eyebrow">{t.eyebrow}</span>
+        {more && <Link to="/about" className="btn founder-more" data-fade>{c.ui.about.teamEyebrow} <Arrow /></Link>}
         <div className="video-frame" data-fade onClick={() => { if (media.video && vid.current) { vid.current.play(); setPlaying(true); } }}>
           {media.video && <video ref={vid} src={media.video} poster={media.poster || undefined} controls={playing} playsInline />}
           {!playing && (
@@ -304,12 +300,6 @@ export function Founder({ light = false, more = false, quote = false }: { light?
               </div>
             </div>
           )}
-        </div>
-        <div>
-          <span className="eyebrow">{t.eyebrow}</span>
-          <blockquote data-split>{c.founder.message}</blockquote>
-          {byline}
-          {more && <Link to="/about" className="btn" style={{ marginTop: 28 }} data-fade>{c.ui.about.teamEyebrow} <Arrow /></Link>}
         </div>
       </div>
     </section>
