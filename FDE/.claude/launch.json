@@ -2,6 +2,18 @@
   "version": "0.0.1",
   "configurations": [
     { "name": "fde-site", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 5180 },
-    { "name": "fde-preview", "runtimeExecutable": "npm", "runtimeArgs": ["run", "preview", "--", "--port", "4180"], "port": 4180 }
+    { "name": "fde-preview", "runtimeExecutable": "npm", "runtimeArgs": ["run", "preview", "--", "--port", "4180"], "port": 4180 },
+    {
+      "name": "nexus-service",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd '../Guidance Nexus/guidance-nexus/services/analysis' && NEXUS_TOKEN=dev-token-not-a-secret-01 PYTHONPATH=src uv run python -m nexus_analysis --port 8765 --data-dir .devdata"],
+      "port": 8765
+    },
+    {
+      "name": "nexus-ui",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "export PATH=$HOME/.nvm/versions/node/v22.23.5/bin:$PATH && cd '../Guidance Nexus/guidance-nexus/apps/desktop' && VITE_NEXUS_URL=http://127.0.0.1:8765 VITE_NEXUS_TOKEN=dev-token-not-a-secret-01 npm run dev"],
+      "port": 1420
+    }
   ]
 }
