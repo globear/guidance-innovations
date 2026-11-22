@@ -4,11 +4,15 @@
 export const brand = { name: "Guidance Innovation", legal: "Guidance Innovation Co., Ltd." };
 
 // Home video: the 1-minute Guidance Nexus overview. Thai visitors get the Thai-subtitled cut.
+// Screens up to 900px wide get the lighter 720p files and poster.
 export const media = {
   headshot: "/images/founder.webp",
   video: "/videos/nexus-overview.mp4",
   videoTh: "/videos/nexus-overview-th.mp4",
-  poster: "/images/nexus-overview-poster.jpg",
+  videoPhone: "/videos/nexus-overview-720.mp4",
+  videoThPhone: "/videos/nexus-overview-th-720.mp4",
+  poster: "/images/nexus-overview-poster.webp",
+  posterPhone: "/images/nexus-overview-poster-1280.webp",
 };
 
 // Team, in the same order as ui.about.team (roles and skills are translated there).

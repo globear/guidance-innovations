@@ -277,7 +277,9 @@ function IndustryCard({ ind, i, view }: { ind: Industry; i: number; view: string
 export function Founder({ light = false, more = false, quote = false }: { light?: boolean; more?: boolean; quote?: boolean }) {
   const { c, lang } = useLang();
   const t = c.ui.founderUi;
-  const src = (lang === "th" && media.videoTh) || media.video;
+  const [phone] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 900px)").matches);
+  const src = phone ? (lang === "th" && media.videoThPhone) || media.videoPhone : (lang === "th" && media.videoTh) || media.video;
+  const poster = (phone && media.posterPhone) || media.poster;
   const [playing, setPlaying] = useState(false);
   const vid = useRef<HTMLVideoElement>(null);
   if (quote) {
@@ -299,7 +301,7 @@ export function Founder({ light = false, more = false, quote = false }: { light?
         {src && <h2 className="h2 founder-title" data-split>{t.videoTitle}</h2>}
         {more && <Link to="/about" className="btn founder-more" data-fade>{c.ui.about.teamEyebrow} <Arrow /></Link>}
         <div className="video-frame" data-fade onClick={() => { if (src && vid.current) { vid.current.play(); setPlaying(true); } }}>
-          {src && <video key={src} ref={vid} src={src} poster={media.poster || undefined} controls={playing} playsInline preload="metadata" />}
+          {src && <video key={src} ref={vid} src={src} poster={poster || undefined} controls={playing} playsInline preload="metadata" />}
           {!playing && (
             <div className="video-ph">
               <div>
