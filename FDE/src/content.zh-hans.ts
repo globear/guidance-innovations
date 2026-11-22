@@ -176,7 +176,7 @@ export const zhHans: Content = {
     },
     industriesSection: { eyebrow: "行业", title: "按您所在行业的运作方式打造。", lead: "面向有真实运营的中小企业，以及需要看清业务的企业主。", view: "查看 →" },
     method: { eyebrow: "工作方式", title: "从生产一线，到老板的屏幕。", step: "步骤" },
-    founderUi: { eyebrow: "创始人寄语", watch: "观看创始人视频", placeholder: "创始人寄语 · 视频即将上线", photo: "照片" },
+    founderUi: { eyebrow: "创始人寄语", videoEyebrow: "Guidance Nexus · 1 分钟概览", videoTitle: "从你的数据，到清晰的决策。", watch: "观看 1 分钟概览", placeholder: "创始人寄语 · 视频即将上线", photo: "照片" },
     demo: {
       eyebrow: "体验一下", title: "向您的企业提一个问题。",
       lead: "老板早上 7 点不会打开看板，他们会打开 LINE。我们的智能体用日常语言、基于您自己的数据，在您常用的地方作答。",

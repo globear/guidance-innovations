@@ -176,7 +176,7 @@ export const vi: Content = {
     },
     industriesSection: { eyebrow: "Ngành", title: "Xây dựng theo cách ngành của bạn vận hành.", lead: "Doanh nghiệp vừa và nhỏ có hoạt động vận hành thực tế, và những chủ doanh nghiệp cần nhìn rõ chúng.", view: "Xem →" },
     method: { eyebrow: "Cách làm việc", title: "Từ xưởng sản xuất đến màn hình của chủ doanh nghiệp.", step: "BƯỚC" },
-    founderUi: { eyebrow: "Lời nhắn từ nhà sáng lập", watch: "Xem lời nhắn của nhà sáng lập", placeholder: "Thông điệp nhà sáng lập · video sắp ra mắt", photo: "ẢNH" },
+    founderUi: { eyebrow: "Lời nhắn từ nhà sáng lập", videoEyebrow: "Guidance Nexus · Tổng quan 1 phút", videoTitle: "Từ dữ liệu của bạn đến quyết định rõ ràng.", watch: "Xem tổng quan 1 phút", placeholder: "Thông điệp nhà sáng lập · video sắp ra mắt", photo: "ẢNH" },
     demo: {
       eyebrow: "Dùng thử", title: "Hỏi doanh nghiệp của bạn một câu.",
       lead: "Chủ doanh nghiệp không mở bảng điều khiển lúc 7 giờ sáng. Họ mở LINE. Các agent của chúng tôi trả lời bằng ngôn ngữ thường ngày, từ dữ liệu của chính bạn, ở bất cứ nơi nào bạn đang làm việc.",

@@ -176,7 +176,7 @@ export const ms: Content = {
     },
     industriesSection: { eyebrow: "Industri", title: "Dibina mengikut cara industri anda berjalan.", lead: "Perniagaan kecil dan sederhana dengan operasi sebenar, dan pemilik yang perlu melihatnya dengan jelas.", view: "Lihat →" },
     method: { eyebrow: "Cara kami bekerja", title: "Dari lantai operasi ke skrin pemilik.", step: "LANGKAH" },
-    founderUi: { eyebrow: "Pesanan daripada pengasas", watch: "Tonton pesanan pengasas", placeholder: "Pesanan pengasas · video akan datang", photo: "FOTO" },
+    founderUi: { eyebrow: "Pesanan daripada pengasas", videoEyebrow: "Guidance Nexus · Gambaran 1 minit", videoTitle: "Daripada data anda kepada keputusan yang jelas.", watch: "Tonton gambaran 1 minit", placeholder: "Pesanan pengasas · video akan datang", photo: "FOTO" },
     demo: {
       eyebrow: "Cuba", title: "Tanya perniagaan anda satu soalan.",
       lead: "Pemilik tidak membuka papan pemuka pada pukul 7 pagi. Mereka membuka LINE. Ejen kami menjawab dalam bahasa biasa, daripada data anda sendiri, di mana sahaja anda sudah bekerja.",

@@ -176,7 +176,7 @@ export const zhHant: Content = {
     },
     industriesSection: { eyebrow: "產業", title: "依您產業的運作方式打造。", lead: "服務有實際營運的中小企業，以及需要看清營運狀況的企業主。", view: "查看 →" },
     method: { eyebrow: "合作方式", title: "從生產第一線，到老闆的螢幕。", step: "步驟" },
-    founderUi: { eyebrow: "創辦人的話", watch: "觀看創辦人影片", placeholder: "創辦人的話 · 影片即將上線", photo: "照片" },
+    founderUi: { eyebrow: "創辦人的話", videoEyebrow: "Guidance Nexus · 1 分鐘概覽", videoTitle: "從你的資料，到清晰的決策。", watch: "觀看 1 分鐘概覽", placeholder: "創辦人的話 · 影片即將上線", photo: "照片" },
     demo: {
       eyebrow: "試試看", title: "向您的企業提一個問題。",
       lead: "老闆早上 7 點不會打開儀表板，他們會打開 LINE。我們的代理以日常語言、根據您自己的資料，在您慣用的地方回答。",

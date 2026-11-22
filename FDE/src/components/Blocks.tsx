@@ -273,10 +273,11 @@ function IndustryCard({ ind, i, view }: { ind: Industry; i: number; view: string
   );
 }
 
-/** Founder block. Home shows the video full width (placeholder until media.video is set) with a link to the team; About passes `quote` for the message alone. */
+/** Founder block. Home shows the Guidance Nexus overview video full width (placeholder until media.video is set) with a link to the team; About passes `quote` for the message alone. */
 export function Founder({ light = false, more = false, quote = false }: { light?: boolean; more?: boolean; quote?: boolean }) {
-  const { c } = useLang();
+  const { c, lang } = useLang();
   const t = c.ui.founderUi;
+  const src = (lang === "th" && media.videoTh) || media.video;
   const [playing, setPlaying] = useState(false);
   const vid = useRef<HTMLVideoElement>(null);
   if (quote) {
@@ -294,15 +295,16 @@ export function Founder({ light = false, more = false, quote = false }: { light?
   return (
     <section className={`section ${light ? "light" : ""}`}>
       <div className="wrap founder">
-        <span className="eyebrow">{t.eyebrow}</span>
+        <span className="eyebrow">{src ? t.videoEyebrow : t.eyebrow}</span>
+        {src && <h2 className="h2 founder-title" data-split>{t.videoTitle}</h2>}
         {more && <Link to="/about" className="btn founder-more" data-fade>{c.ui.about.teamEyebrow} <Arrow /></Link>}
-        <div className="video-frame" data-fade onClick={() => { if (media.video && vid.current) { vid.current.play(); setPlaying(true); } }}>
-          {media.video && <video ref={vid} src={media.video} poster={media.poster || undefined} controls={playing} playsInline />}
+        <div className="video-frame" data-fade onClick={() => { if (src && vid.current) { vid.current.play(); setPlaying(true); } }}>
+          {src && <video key={src} ref={vid} src={src} poster={media.poster || undefined} controls={playing} playsInline preload="metadata" />}
           {!playing && (
             <div className="video-ph">
               <div>
                 <div className="play">▶</div>
-                <span className="mono muted">{media.video ? t.watch : t.placeholder}</span>
+                <span className="mono muted">{src ? t.watch : t.placeholder}</span>
               </div>
             </div>
           )}

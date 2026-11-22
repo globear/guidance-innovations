@@ -3,11 +3,12 @@
 
 export const brand = { name: "Guidance Innovation", legal: "Guidance Innovation Co., Ltd." };
 
-// Founder media. With no video, the poster photo is shown on its own.
+// Home video: the 1-minute Guidance Nexus overview. Thai visitors get the Thai-subtitled cut.
 export const media = {
   headshot: "/images/founder.webp",
-  video: "", // e.g. "/founder.mp4"
-  poster: "/images/field/ai-summit.webp",
+  video: "/videos/nexus-overview.mp4",
+  videoTh: "/videos/nexus-overview-th.mp4",
+  poster: "/images/nexus-overview-poster.jpg",
 };
 
 // Team, in the same order as ui.about.team (roles and skills are translated there).
@@ -229,7 +230,7 @@ export const en = {
     },
     industriesSection: { eyebrow: "Industries", title: "Built for how your industry runs.", lead: "Small and mid-sized businesses with real operations, and owners who need to see them clearly.", view: "View →" },
     method: { eyebrow: "How we work", title: "From the shop floor to the owner's screen.", step: "STEP" },
-    founderUi: { eyebrow: "A message from the founder", watch: "Watch the founder's message", placeholder: "Founder message · video coming soon", photo: "PHOTO" },
+    founderUi: { eyebrow: "A message from the founder", videoEyebrow: "Guidance Nexus · 1-minute overview", videoTitle: "From your data to clear decisions.", watch: "Watch the 1-minute overview", placeholder: "Founder message · video coming soon", photo: "PHOTO" },
     demo: {
       eyebrow: "Try it", title: "Ask your business a question.",
       lead: "Owners don't open dashboards at 7am. They open LINE. Our agents answer in plain language, from your own data, wherever you already work.",
