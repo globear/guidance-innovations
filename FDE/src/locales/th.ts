@@ -362,6 +362,7 @@ export const thJourney: JourneyText = {
   },
   call: {
     title: "AI Opportunity Session",
+    fde: "ผู้เชี่ยวชาญ FDE",
     owner: "เจ้าของกิจการ",
     ops: "ผู้จัดการฝ่ายปฏิบัติการ",
     share: "แชร์หน้าจอ · เส้นทางของออร์เดอร์ในวันนี้",

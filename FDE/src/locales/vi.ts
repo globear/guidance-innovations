@@ -362,6 +362,7 @@ export const viJourney: JourneyText = {
   },
   call: {
     title: "AI Opportunity Session",
+    fde: "Chuyên gia FDE",
     owner: "Chủ doanh nghiệp",
     ops: "Quản lý vận hành",
     share: "Chia sẻ màn hình · một đơn hàng đi qua những đâu",

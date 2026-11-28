@@ -1,6 +1,5 @@
 import { memo, useEffect, useRef, useState, type CSSProperties } from "react";
 import { TOOL, jData, journeyContent, phaseWeeks, type JourneyText } from "../journey";
-import { teamMembers } from "../content";
 import { useLang } from "../i18n";
 import { lenis, reducedMotion } from "../motion";
 import { CountUp } from "../pages/Case";
@@ -80,7 +79,7 @@ const Call = memo(function Call({ t, on, live }: { t: JourneyText; on: boolean; 
   }, [live]);
   const mm = String(Math.floor(sec / 60)).padStart(2, "0"), ss = String(sec % 60).padStart(2, "0");
   const people = [
-    { name: "Reed · Guidance", photo: teamMembers[0].photo },
+    { name: k.fde, logo: true },
     { name: k.owner, initial: "S" },
     { name: k.ops, initial: "N" },
   ];
@@ -119,7 +118,7 @@ const Call = memo(function Call({ t, on, live }: { t: JourneyText; on: boolean; 
       <div className="jy-people">
         {people.map((p, i) => (
           <div key={p.name} className={`jy-tile ${speaker === i ? "talk" : ""}`}>
-            {p.photo ? <img src={p.photo} alt="" loading="lazy" /> : <span className="jy-initial">{p.initial}</span>}
+            {p.logo ? <img className="jy-logo" src="/logo.png" alt="" loading="lazy" /> : <span className="jy-initial">{p.initial}</span>}
             <span className="jy-tile-name">{p.name}</span>
           </div>
         ))}

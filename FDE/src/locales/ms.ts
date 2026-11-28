@@ -362,6 +362,7 @@ export const msJourney: JourneyText = {
   },
   call: {
     title: "AI Opportunity Session",
+    fde: "Pakar FDE",
     owner: "Pemilik",
     ops: "Pengurus operasi",
     share: "Skrin dikongsi · perjalanan sesuatu pesanan hari ini",

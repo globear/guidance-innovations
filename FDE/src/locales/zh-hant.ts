@@ -362,6 +362,7 @@ export const zhHantJourney: JourneyText = {
   },
   call: {
     title: "AI Opportunity Session",
+    fde: "FDE 專家",
     owner: "老闆",
     ops: "營運經理",
     share: "分享畫面 · 今天一張訂單如何流轉",

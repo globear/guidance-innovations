@@ -20,7 +20,7 @@ export type JourneyText = {
     request: string; company: string; industry: string; industryV: string; area: string; areaV: string;
     reply: string; replyIn: string; replyText: string; invite: string; when: string; where: string; accepted: string;
   };
-  call: { title: string; owner: string; ops: string; share: string; nodes: string[]; flags: string[]; notesTitle: string; notes: string[] };
+  call: { title: string; fde: string; owner: string; ops: string; share: string; nodes: string[]; flags: string[]; notesTitle: string; notes: string[] };
   report: {
     title: string; clientSuffix: string; meta: string; rows: string; sources: string; open: string; close: string; confidential: string;
     processedIn: string; stages: string[];
@@ -99,7 +99,7 @@ const en: JourneyText = {
     invite: "AI Opportunity Session", when: "Tuesday · 10:00–10:45", where: "Video call · 45 min · free", accepted: "Accepted",
   },
   call: {
-    title: "AI Opportunity Session", owner: "Owner", ops: "Operations manager",
+    title: "AI Opportunity Session", fde: "FDE specialist", owner: "Owner", ops: "Operations manager",
     share: "Shared screen · how an order moves today",
     nodes: ["Order in LINE", "Dispatch in Excel", "Loading bay", "On the road", "Proof of delivery", "Invoice"],
     flags: ["Typed again", "Waiting", "Photos in chats", "16 days"],

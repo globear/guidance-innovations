@@ -880,6 +880,7 @@ html[lang^="zh"] .df-tabs button, html[lang^="zh"] .df-zlabel, html[lang^="zh"] 
 .jy-tile { position: relative; background: var(--ink-3); border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; min-height: 64px; transition: border-color .3s, box-shadow .3s; }
 .jy-tile.talk { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .jy-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.jy-tile img.jy-logo { position: static; inset: auto; width: 44%; max-width: 72px; height: auto; aspect-ratio: 1; object-fit: contain; object-position: center; }
 .jy-initial { width: 40px; height: 40px; border-radius: 50%; background: #2a2b2f; display: grid; place-items: center; font-weight: 500; }
 .jy-tile-name { position: absolute; left: 6px; bottom: 5px; font-family: var(--mono); font-size: 9.5px; background: rgba(10,10,11,.75); padding: 2px 5px; max-width: calc(100% - 12px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .jy-notes { grid-area: notes; padding: 4px 14px 12px; }
