@@ -176,7 +176,7 @@ export const zhHant: Content = {
     },
     industriesSection: { eyebrow: "產業", title: "依您產業的運作方式打造。", lead: "服務有實際營運的中小企業，以及需要看清營運狀況的企業主。", view: "查看 →" },
     method: { eyebrow: "合作方式", title: "從生產第一線，到老闆的螢幕。", step: "步驟" },
-    founderUi: { eyebrow: "創辦人的話", videoEyebrow: "Guidance Nexus · 1 分鐘概覽", videoTitle: "從你的資料，到清晰的決策。", watch: "觀看 1 分鐘概覽", placeholder: "創辦人的話 · 影片即將上線", photo: "照片" },
+    founderUi: { eyebrow: "創辦人的話", videoEyebrow: "Guidance Nexus · 1 分鐘概覽", videoTitle: "從你的資料，到清晰的決策。", watch: "觀看 1 分鐘概覽", placeholder: "創辦人的話 · 影片即將上線", photo: "照片", analysisLink: "了解分析如何進行" },
     demo: {
       eyebrow: "試試看", title: "向您的企業提一個問題。",
       lead: "老闆早上 7 點不會打開儀表板，他們會打開 LINE。我們的代理以日常語言、根據您自己的資料，在您慣用的地方回答。",
@@ -220,6 +220,7 @@ export const zhHant: Content = {
     how: {
       eyebrow: "合作方式", title: "我們不賣軟體，我們派駐工程師。",
       lead: "前線部署工程，代表我們在您的營運內部工作，而不是遠端遙控。先找到真正的問題，再依您事業實際的運作方式打造系統。",
+      video: { eyebrow: "第 03 步 · 首次分析如何進行", title: "看 Guidance Nexus 如何讀取企業的檔案。", lead: "在示範公司上的真實執行：匯入並檢查每個檔案，找出各部門資料如何關聯，再計算指標並說明發現。", watch: "觀看 85 秒操作示範" },
       principles: [
         { t: "在現場，不在簡報上", b: "我們和第一線人員坐在一起，因為真正的問題就在那裡。" },
         { t: "善用現有工具", b: "Excel、LINE、您的 ERP、您的 POS。我們串接它們，而不是取代它們。" },

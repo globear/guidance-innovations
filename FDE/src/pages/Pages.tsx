@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
-import { Arrow, CTA, Founder, MethodPinned, MiniDash, PageHead, SecurityTeaser } from "../components/Blocks";
+import { Arrow, CTA, Founder, MethodPinned, MiniDash, PageHead, SecurityTeaser, TutorialVideo } from "../components/Blocks";
 import DataFlow from "../components/DataFlow";
 import { AgentBuild, AgentDay, LeaderMap, SecondBrain } from "../components/AgentStack";
 import Select from "../components/Select";
@@ -151,6 +151,7 @@ export function HowWeWork() {
       <PageHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} photo={photos.how} />
       <section style={{ padding: "40px 0" }}><MethodPinned /></section>
       <Journey />
+      <TutorialVideo />
       <section className="section light">
         <div className="wrap">
           <div className="cols-3" data-stagger>

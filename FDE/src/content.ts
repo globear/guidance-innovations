@@ -13,6 +13,11 @@ export const media = {
   videoThPhone: "/videos/nexus-overview-th-720.mp4",
   poster: "/images/nexus-overview-poster.webp",
   posterPhone: "/images/nexus-overview-poster-1280.webp",
+  // How we work, step 03: the 85-second walkthrough of a real Guidance Nexus run (English for now).
+  tutorial: "/videos/nexus-tutorial.mp4",
+  tutorialPhone: "/videos/nexus-tutorial-720.mp4",
+  tutorialPoster: "/images/nexus-tutorial-poster.jpg",
+  tutorialPosterPhone: "/images/nexus-tutorial-poster-1280.jpg",
 };
 
 // Team, in the same order as ui.about.team (roles and skills are translated there).
@@ -234,7 +239,7 @@ export const en = {
     },
     industriesSection: { eyebrow: "Industries", title: "Built for how your industry runs.", lead: "Small and mid-sized businesses with real operations, and owners who need to see them clearly.", view: "View →" },
     method: { eyebrow: "How we work", title: "From the shop floor to the owner's screen.", step: "STEP" },
-    founderUi: { eyebrow: "A message from the founder", videoEyebrow: "Guidance Nexus · 1-minute overview", videoTitle: "From your data to clear decisions.", watch: "Watch the 1-minute overview", placeholder: "Founder message · video coming soon", photo: "PHOTO" },
+    founderUi: { eyebrow: "A message from the founder", videoEyebrow: "Guidance Nexus · 1-minute overview", videoTitle: "From your data to clear decisions.", watch: "Watch the 1-minute overview", placeholder: "Founder message · video coming soon", photo: "PHOTO", analysisLink: "See how the analysis works" },
     demo: {
       eyebrow: "Try it", title: "Ask your business a question.",
       lead: "Owners don't open dashboards at 7am. They open LINE. Our agents answer in plain language, from your own data, wherever you already work.",
@@ -278,6 +283,7 @@ export const en = {
     how: {
       eyebrow: "How we work", title: "We don't sell software. We deploy engineers.",
       lead: "Forward-deployed engineering means we work inside your operation, not from a distance. We find the real problem first, then build the system around how your business actually runs.",
+      video: { eyebrow: "Step 03 · How the first analysis works", title: "Watch Guidance Nexus read a company's files.", lead: "A real run on a sample company: import and check every file, map how the departments connect, then measure and explain what we found.", watch: "Watch the 85-second walkthrough" },
       principles: [
         { t: "On site, not on slides", b: "We sit with the people doing the work, because that's where the real problems are." },
         { t: "Use what you have", b: "Excel, LINE, your ERP, your POS. We connect it rather than replace it." },

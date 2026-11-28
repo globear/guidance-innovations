@@ -55,7 +55,7 @@ export type JourneyText = {
 };
 
 /** The local analysis tool named in the sample report. */
-export const TOOL = "Guardian Inno Interface";
+export const TOOL = "Guidance Nexus";
 
 /** Shared numbers (language-neutral). */
 export const jData = {

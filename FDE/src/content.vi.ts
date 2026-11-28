@@ -176,7 +176,7 @@ export const vi: Content = {
     },
     industriesSection: { eyebrow: "Ngành", title: "Xây dựng theo cách ngành của bạn vận hành.", lead: "Doanh nghiệp vừa và nhỏ có hoạt động vận hành thực tế, và những chủ doanh nghiệp cần nhìn rõ chúng.", view: "Xem →" },
     method: { eyebrow: "Cách làm việc", title: "Từ xưởng sản xuất đến màn hình của chủ doanh nghiệp.", step: "BƯỚC" },
-    founderUi: { eyebrow: "Lời nhắn từ nhà sáng lập", videoEyebrow: "Guidance Nexus · Tổng quan 1 phút", videoTitle: "Từ dữ liệu của bạn đến quyết định rõ ràng.", watch: "Xem tổng quan 1 phút", placeholder: "Thông điệp nhà sáng lập · video sắp ra mắt", photo: "ẢNH" },
+    founderUi: { eyebrow: "Lời nhắn từ nhà sáng lập", videoEyebrow: "Guidance Nexus · Tổng quan 1 phút", videoTitle: "Từ dữ liệu của bạn đến quyết định rõ ràng.", watch: "Xem tổng quan 1 phút", placeholder: "Thông điệp nhà sáng lập · video sắp ra mắt", photo: "ẢNH", analysisLink: "Xem cách phân tích hoạt động" },
     demo: {
       eyebrow: "Dùng thử", title: "Hỏi doanh nghiệp của bạn một câu.",
       lead: "Chủ doanh nghiệp không mở bảng điều khiển lúc 7 giờ sáng. Họ mở LINE. Các agent của chúng tôi trả lời bằng ngôn ngữ thường ngày, từ dữ liệu của chính bạn, ở bất cứ nơi nào bạn đang làm việc.",
@@ -220,6 +220,7 @@ export const vi: Content = {
     how: {
       eyebrow: "Cách làm việc", title: "Chúng tôi không bán phần mềm. Chúng tôi cử kỹ sư.",
       lead: "Triển khai tại chỗ nghĩa là chúng tôi làm việc bên trong hoạt động của bạn, không phải từ xa. Chúng tôi tìm ra vấn đề thực sự trước, rồi xây hệ thống theo đúng cách doanh nghiệp bạn vận hành.",
+      video: { eyebrow: "Bước 03 · Phân tích đầu tiên diễn ra thế nào", title: "Xem Guidance Nexus đọc dữ liệu của một công ty.", lead: "Một lần chạy thật trên công ty mẫu: nhập và kiểm tra từng tệp, nối dữ liệu giữa các phòng ban, rồi đo lường và giải thích kết quả.", watch: "Xem hướng dẫn 85 giây" },
       principles: [
         { t: "Tại hiện trường, không phải trên slide", b: "Chúng tôi ngồi cùng những người trực tiếp làm việc, vì đó là nơi có vấn đề thực sự." },
         { t: "Dùng những gì bạn có", b: "Excel, LINE, ERP, POS của bạn. Chúng tôi kết nối chứ không thay thế." },

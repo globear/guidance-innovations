@@ -4,6 +4,7 @@ import { teamMembers } from "../content";
 import { useLang } from "../i18n";
 import { lenis, reducedMotion } from "../motion";
 import { CountUp } from "../pages/Case";
+import { scrollToAnalysisVideo } from "./Blocks";
 
 const NAV = 68; // fixed header height
 /** Desktop with enough height: the section pins and scrolling moves through the steps. Otherwise: tabs. */
@@ -242,26 +243,11 @@ const Proposal = memo(function Proposal({ t, on }: { t: JourneyText; on: boolean
 });
 
 /* ---------- the full report, in a dialog ---------- */
-const LOG: [string, string][] = [
-  ["$", "gii ingest ./client-data --mask-pii"],
-  ["✓", "dispatch_jul-sep.xlsx          3,512 rows"],
-  ["✓", "gps_export.csv             2,991,204 points"],
-  ["✓", "fuel_card_q3.pdf               2,618 fill-ups (ocr)"],
-  ["✓", "line_export/                  26,930 messages · 9,812 photos"],
-  ["✓", "invoices_q3.csv                1,940 rows"],
-  ["$", "gii match --geofence 150m --tz Asia/Bangkok"],
-  ["✓", "28,205 drops matched · 2,284 arrival times recovered from GPS"],
-  ["$", "gii analyse --kpi otd,empty-km,dwell,fuel-per-drop --causes local-llm"],
-  ["✓", "13 KPIs · 8 charts · 4 findings"],
-  ["$", "gii report --review"],
-  ["✓", "report ready in 6 m 42 s · 0 bytes sent off this machine"],
-];
-
 function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClose: () => void }) {
   const r = t.report;
+  const { c } = useLang();
   const ref = useRef<HTMLDialogElement>(null);
   const [drawn, setDrawn] = useState(false);
-  const logN = useSeq(drawn, LOG.length, 260, 600);
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
@@ -316,10 +302,7 @@ function FullReport({ t, open, onClose }: { t: JourneyText; open: boolean; onClo
           <p className="jy-r-lead">{r.pipeLead}</p>
           <ol className="jy-pipe">{r.pipe.map((s, i) => <li key={s.t}><span className="k">0{i + 1}</span><b>{s.t}</b><p>{s.b}</p></li>)}</ol>
           <div className="jy-env"><span className="chip acc">{TOOL}</span>{r.env.map((e) => <span className="chip" key={e}>{e}</span>)}</div>
-          <div className="jy-term">
-            <div className="jy-term-bar"><i /><i /><i /><span>{TOOL} · {r.logTitle}</span></div>
-            <pre>{LOG.slice(0, logN).map(([p, l], i) => <span key={i} className={p === "$" ? "cmd" : "ok"}>{p} {l}{"\n"}</span>)}{logN < LOG.length && <span className="caret">▍</span>}</pre>
-          </div>
+          <button type="button" className="btn jy-watch" onClick={() => { onClose(); window.setTimeout(scrollToAnalysisVideo, 250); }}>▶ {c.ui.how.video.watch} <span className="arrow" aria-hidden>→</span></button>
         </section>
 
         <section className="jy-r-sec">

@@ -176,7 +176,7 @@ export const zhHans: Content = {
     },
     industriesSection: { eyebrow: "行业", title: "按您所在行业的运作方式打造。", lead: "面向有真实运营的中小企业，以及需要看清业务的企业主。", view: "查看 →" },
     method: { eyebrow: "工作方式", title: "从生产一线，到老板的屏幕。", step: "步骤" },
-    founderUi: { eyebrow: "创始人寄语", videoEyebrow: "Guidance Nexus · 1 分钟概览", videoTitle: "从你的数据，到清晰的决策。", watch: "观看 1 分钟概览", placeholder: "创始人寄语 · 视频即将上线", photo: "照片" },
+    founderUi: { eyebrow: "创始人寄语", videoEyebrow: "Guidance Nexus · 1 分钟概览", videoTitle: "从你的数据，到清晰的决策。", watch: "观看 1 分钟概览", placeholder: "创始人寄语 · 视频即将上线", photo: "照片", analysisLink: "了解分析如何进行" },
     demo: {
       eyebrow: "体验一下", title: "向您的企业提一个问题。",
       lead: "老板早上 7 点不会打开看板，他们会打开 LINE。我们的智能体用日常语言、基于您自己的数据，在您常用的地方作答。",
@@ -220,6 +220,7 @@ export const zhHans: Content = {
     how: {
       eyebrow: "工作方式", title: "我们不卖软件，我们派驻工程师。",
       lead: "前线部署工程，意味着我们在您的业务内部工作，而不是远程遥控。先找到真正的问题，再围绕您业务的实际运作方式构建系统。",
+      video: { eyebrow: "第 03 步 · 首次分析如何进行", title: "看 Guidance Nexus 如何读取企业的文件。", lead: "在示例公司上的真实运行：导入并检查每个文件，找出各部门数据如何关联，再计算指标并解释发现。", watch: "观看 85 秒操作演示" },
       principles: [
         { t: "在现场，而不是在幻灯片上", b: "我们和一线人员坐在一起，因为真正的问题就在那里。" },
         { t: "用好现有工具", b: "Excel、LINE、您的 ERP、您的 POS。我们连接它们，而不是替换它们。" },

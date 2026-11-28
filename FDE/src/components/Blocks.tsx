@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { brand, media, photos, type Industry } from "../content";
 import { useLang } from "../i18n";
-import { gsap, ScrollTrigger, reducedMotion } from "../motion";
+import { gsap, lenis, ScrollTrigger, reducedMotion } from "../motion";
 
 export const Arrow = () => <span className="arrow" aria-hidden>→</span>;
 
@@ -307,6 +307,51 @@ export function Founder({ light = false, more = false, quote = false }: { light?
               <div>
                 <div className="play">▶</div>
                 <span className="mono muted">{src ? t.watch : t.placeholder}</span>
+              </div>
+            </div>
+          )}
+        </div>
+        {more && src && <Link to="/how-we-work#analysis-video" className="founder-link mono" data-fade>{t.analysisLink} <Arrow /></Link>}
+      </div>
+    </section>
+  );
+}
+
+/** Scroll to the How we work analysis video: smooth with Lenis when it runs, native otherwise. */
+export function scrollToAnalysisVideo() {
+  const el = document.getElementById("analysis-video");
+  if (!el) return;
+  if (lenis) lenis.scrollTo(el, { offset: -40 });
+  else el.scrollIntoView({ block: "start" });
+}
+
+/** How we work, step 03: the walkthrough of a real Guidance Nexus run. Home links here with #analysis-video. */
+export function TutorialVideo() {
+  const { c } = useLang();
+  const t = c.ui.how.video;
+  const [phone] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 900px)").matches);
+  const src = phone ? media.tutorialPhone : media.tutorial;
+  const poster = phone ? media.tutorialPosterPhone : media.tutorialPoster;
+  const [playing, setPlaying] = useState(false);
+  const vid = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    if (window.location.hash !== "#analysis-video") return;
+    const id = window.setTimeout(scrollToAnalysisVideo, 400);
+    return () => window.clearTimeout(id);
+  }, []);
+  return (
+    <section className="section" id="analysis-video">
+      <div className="wrap tutorial">
+        <span className="eyebrow">{t.eyebrow}</span>
+        <h2 className="h2 tutorial-title" data-split>{t.title}</h2>
+        <p className="lead" data-fade>{t.lead}</p>
+        <div className="video-frame" data-fade onClick={() => { if (vid.current) { vid.current.play(); setPlaying(true); } }}>
+          <video ref={vid} src={src} poster={poster} controls={playing} playsInline preload="metadata" />
+          {!playing && (
+            <div className="video-ph">
+              <div>
+                <div className="play">▶</div>
+                <span className="mono muted">{t.watch}</span>
               </div>
             </div>
           )}
